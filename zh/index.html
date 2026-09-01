@@ -13,6 +13,7 @@
     <link rel="alternate" hreflang="ko" href="https://genlayerlabs.github.io/research/ko/" />
     <link rel="alternate" hreflang="zh-Hans" href="https://genlayerlabs.github.io/research/zh/" />
     <link rel="alternate" hreflang="ru" href="https://genlayerlabs.github.io/research/ru/" />
+    <link rel="alternate" hreflang="tr" href="https://genlayerlabs.github.io/research/tr/" />
     <link rel="alternate" hreflang="x-default" href="https://genlayerlabs.github.io/research/" />
     <link rel="icon" href="../favicon.ico" sizes="32x32" />
     <link rel="icon" href="../brand/genlayer-icon.svg?v=2" type="image/svg+xml" />
@@ -78,7 +79,8 @@
               "es",
               "ko",
               "zh-Hans",
-              "ru"
+              "ru",
+              "tr"
             ]
           },
           {
@@ -163,7 +165,7 @@
             "url": "https://genlayerlabs.github.io/research/papers/genlayer-whitepaper-v2.pdf",
             "name": "GenLayer: The Intelligent Contract Network",
             "alternativeHeadline": "GenLayer Technical Whitepaper",
-            "description": "一个有限期决策框架：综合成本、延迟和出错损失，判断何时停止、何时重新评估当前答案、何时生成新答案。",
+            "description": "介绍执行环境、Optimistic Democracy、协议经济和验证体系的 GenLayer 系统文档。",
             "version": "2.3",
             "author": [
               {
@@ -383,8 +385,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css?v=mtivq743" />
-    <link rel="stylesheet" href="../bridge-critical.css?v=mtivq743" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtjbgo9d" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtjbgo9d" />
   </head>
   <body>
 
@@ -400,7 +402,7 @@
     <nav aria-label="页面章节">
       <a href="#machine">机制</a><a href="#measure">可复现性</a><a href="#agree">等价原则</a><a href="#adapt">自适应</a><a href="#sustain">代币经济学</a><a href="#align">激励</a><a href="#verify">形式化验证</a><a href="#papers">论文</a>
     </nav>
-    <label class="language-switcher"><span>选择语言</span><select data-language-select data-current-locale="zh" aria-label="选择语言"><option value="../" data-locale="en" lang="en" aria-label="English">EN</option><option value="../es/" data-locale="es" lang="es" aria-label="Español">ES</option><option value="../ko/" data-locale="ko" lang="ko" aria-label="한국어">KO</option><option value="../zh/" data-locale="zh" lang="zh-Hans" aria-label="简体中文" selected>ZH</option><option value="../ru/" data-locale="ru" lang="ru" aria-label="Русский">RU</option></select></label>
+    <label class="language-switcher"><span>选择语言</span><select data-language-select data-current-locale="zh" aria-label="选择语言"><option value="../" data-locale="en" lang="en" aria-label="English">EN</option><option value="../es/" data-locale="es" lang="es" aria-label="Español">ES</option><option value="../ko/" data-locale="ko" lang="ko" aria-label="한국어">KO</option><option value="../zh/" data-locale="zh" lang="zh-Hans" aria-label="简体中文" selected>ZH</option><option value="../ru/" data-locale="ru" lang="ru" aria-label="Русский">RU</option><option value="../tr/" data-locale="tr" lang="tr" aria-label="Türkçe">TR</option></select></label>
     <i class="progress" aria-hidden="true"></i>
   </div>
 </header>
@@ -857,6 +859,7 @@
         "✗ reject": "✗ rechazar",
         "spawning fake voters, each costing about $0…": "generando votantes falsos, cada uno por unos 0 $…",
         "…fake voters outnumber everyone. One actor owns the vote.": "…los votantes falsos superan a todos los demás. Un solo actor controla la votación.",
+        "…and the honest majority is gone.": "…y la mayoría honesta desaparece.",
         "ACCEPTED": "ACEPTADA",
         "REJECTED": "RECHAZADA",
         "accepted: 30 minutes for anyone to object": "aceptada — 30 minutos para objetar",
@@ -917,6 +920,7 @@
         "✗ reject": "✗ 거부",
         "spawning fake voters, each costing about $0…": "가짜 투표자를 찍어내는 중, 한 명당 약 0달러…",
         "…fake voters outnumber everyone. One actor owns the vote.": "…가짜 투표자가 나머지 전부를 압도합니다. 한 사람이 투표를 쥡니다.",
+        "…and the honest majority is gone.": "…정직한 다수는 이미 수에서 밀려났습니다.",
         "ACCEPTED": "수락",
         "REJECTED": "거부",
         "accepted: 30 minutes for anyone to object": "수락 — 30분 동안 누구나 이의 제기 가능",
@@ -977,6 +981,7 @@
         "✗ reject": "✗ 拒绝",
         "spawning fake voters, each costing about $0…": "正在批量生成假选民，每个成本约 0 美元……",
         "…fake voters outnumber everyone. One actor owns the vote.": "……假选民已经压过所有人。投票落入一个人手里。",
+        "…and the honest majority is gone.": "……诚实多数已被淹没。",
         "ACCEPTED": "已接受",
         "REJECTED": "已拒绝",
         "accepted: 30 minutes for anyone to object": "已接受——任何人可在 30 分钟内提出异议",
@@ -1037,6 +1042,7 @@
         "✗ reject": "✗ отклонить",
         "spawning fake voters, each costing about $0…": "плодит поддельных голосующих, каждый примерно за 0 $…",
         "…fake voters outnumber everyone. One actor owns the vote.": "…поддельных голосующих больше, чем всех остальных. Голосование принадлежит одному игроку.",
+        "…and the honest majority is gone.": "…и честного большинства больше нет.",
         "ACCEPTED": "ПРИНЯТО",
         "REJECTED": "ОТКЛОНЕНО",
         "accepted: 30 minutes for anyone to object": "принято — 30 минут на возражения",
@@ -1049,8 +1055,65 @@
         "3–2 · ACCEPTED · THE VOTE TRACKS JUDGMENT": "3–2 · ПРИНЯТО — ГОЛОСА ОТРАЖАЮТ СУЖДЕНИЯ",
         "5–0 · ACCEPTED · UNANIMOUS, AND MEANINGLESS": "5–0 · ПРИНЯТО — ЕДИНОГЛАСНО И БЕССМЫСЛЕННО",
         "0–5 · REJECTED · HONEST WORK READS AS REFUSAL": "0–5 · ОТКЛОНЕНО — ЧЕСТНУЮ РАБОТУ СОЧЛИ СБОЕМ"
+      },
+      "tr": {
+        "Validator": "Doğrulayıcı",
+        "A computer taking part in the network's judging. In GenLayer each validator runs an AI model of its own choosing and locks GEN tokens as a security deposit (stake).": "Ağın yargısına katılan bir bilgisayar. GenLayer'da her doğrulayıcı kendi seçtiği yapay zekâ modelini çalıştırır ve güvence olarak GEN kilitler (stake).",
+        "The small random group of validators chosen to judge one decision. GenLayer's rounds use panels of 5, 7, 11 and so on, growing with each appeal.": "Bir kararı yargılamak üzere seçilen küçük, rastgele doğrulayıcı grubu. GenLayer'ın turları 5, 7, 11 diye büyüyen paneller kullanır; her itirazla bir boy büyür.",
+        "Evaluator population": "Değerlendirici popülasyonu",
+        "The full declared pool of possible judges that a panel is drawn from. The research measures how faithfully a small panel reproduces what this whole pool would decide.": "Panelin içinden çekildiği, ilan edilmiş olası yargıçlar havuzunun tamamı. Araştırma, küçük bir panelin bu havuzun vereceği kararı ne kadar sadakatle tekrarladığını ölçer.",
+        "Reproducibility": "Tekrarlanabilirlik",
+        "The chance that a random panel lands on the same side as the whole declared pool of judges would. Deliberately not the same thing as being objectively right.": "Rastgele bir panelin, ilan edilmiş yargıç havuzunun tamamıyla aynı tarafa düşme olasılığı. Bilerek ve isteyerek, nesnel olarak haklı olmakla aynı şey değil.",
+        "Adversary": "Kötü niyetli katılımcı",
+        "A participant who votes to push the decision somewhere, not to judge honestly. The research models the worst case: every adversarial vote goes against the honest majority.": "Dürüstçe yargılamak için değil, kararı bir yöne itmek için oy kullanan katılımcı. Araştırma en kötü durumu modeller: kötü niyetli her oy, dürüst çoğunluğun aleyhinedir.",
+        "Equivalence Principle": "Eşdeğerlik İlkesi",
+        "GenLayer's rule that every contract call declares what counts as “the same answer”, so validators can accept an AI answer that is worded differently from their own.": "GenLayer'ın kuralı: her sözleşme çağrısı neyin “aynı yanıt” sayılacağını ilan eder; böylece doğrulayıcılar, kendi yanıtlarından farklı sözcüklerle yazılmış bir yapay zekâ yanıtını da kabul edebilir.",
+        "GenLayer's consensus procedure: a leader proposes an answer, a small panel votes, the result stands unless someone challenges it in time, and each challenge summons a bigger panel.": "GenLayer'ın konsensüs yöntemi: bir lider yanıt önerir, küçük bir panel oylar; süresi içinde itiraz eden çıkmazsa sonuç kalır ve her itiraz daha büyük bir panel toplar.",
+        "Leader": "Lider",
+        "The validator picked to actually do the task and propose an answer. The rest of the panel then judges that proposal.": "Görevi fiilen yapıp yanıt önermek üzere seçilen doğrulayıcı. Panelin geri kalanı sonra bu öneriyi yargılar.",
+        "GEN tokens a validator locks as a security deposit. Voting power comes from locked stake, and provable misconduct can destroy part of it.": "Doğrulayıcının güvence olarak kilitlediği GEN. Oy gücü kilitli stake'ten gelir ve kanıtlanabilir suistimal bunun bir kısmını yok edebilir.",
+        "Delegation": "Delegasyon",
+        "Lending your GEN to a validator's stake. Delegators share the rewards without running a node; the minimum is 42 GEN.": "GEN'ini bir doğrulayıcının stake'ine bağlamak. Delege edenler düğüm çalıştırmadan ödüllerden pay alır; alt sınır 42 GEN'dir.",
+        "The protocol destroying part of a validator's locked stake as punishment for provable misconduct, such as fraud (5% for a leader) or prolonged inactivity (1%).": "Protokolün, kanıtlanabilir suistimalin — örneğin sahtekârlığın (liderde %5) ya da uzun süreli çevrimdışılığın (%1) — cezası olarak doğrulayıcının kilitli stake'inin bir kısmını yok etmesi.",
+        "Appeal bond": "İtiraz teminatı",
+        "Money a challenger locks to file an appeal. It funds the bigger panel; a failed appeal forfeits it, a successful one returns it with a reward.": "İtiraz edenin, itirazı açmak için kilitlediği para. Daha büyük paneli finanse eder; itiraz başarısız olursa yanar, başarılı olursa ödülüyle birlikte geri döner.",
+        "Appeal": "İtiraz",
+        "A challenge to a provisional decision during its open window. It triggers a new, larger panel to re-judge the question.": "Geçici bir karara, penceresi açıkken yapılan itiraz. Soruyu yeniden yargılamak üzere yeni ve daha büyük bir panel tetikler.",
+        "Expected loss": "Beklenen kayıp",
+        "The average cost if this exact situation repeated many times: each outcome's probability times what that outcome costs.": "Tam olarak bu durum defalarca yinelenseydi ödenecek ortalama bedel: her sonucun olasılığı çarpı o sonucun maliyeti.",
+        "Having a computer exhaustively explore every reachable state of a system model (here written in the TLA+ language) to check that stated rules can never be broken.": "Bir sistem modelinin (burada TLA+ dilinde yazılmış) ulaşılabilir her durumunu bilgisayara taratıp, sayılan kuralların asla bozulamayacağını denetlemek.",
+        "Issuance": "İhraç",
+        "New GEN created by the protocol on a fixed declining schedule to help pay validators: 9% a year at launch, falling toward 4%. The schedule is a ceiling, not a promise.": "Doğrulayıcı ödemelerine katkı için protokolün sabit ve azalan bir takvimle yarattığı yeni GEN: başlangıçta yılda %9, %4'e doğru düşüyor. Takvim bir söz değil, bir tavandır.",
+        "an ambiguous decision arrives": "belirsiz bir karar geliyor",
+        "each validator judges with its own model": "her doğrulayıcı kendi modeliyle yargılıyor",
+        "“Meets the brief; the pricing analysis is the strongest part.”": "“İstenenleri karşılıyor; fiyat analizi en güçlü kısmı.”",
+        "“The regulation section reads as missing, so it doesn’t meet the brief.”": "“Mevzuat bölümü yok gibi; bu hâliyle istenenleri karşılamıyor.”",
+        "“Solid pricing work, but I can’t call the brief met.”": "“Fiyat tarafı sağlam; ama istenenler karşılandı diyemem.”",
+        "Even the two validators who think the brief is unmet must vote accept, because the leader's answer is certainly coherent. Perfect agreement, zero information.": "İstenenlerin karşılanmadığını düşünen iki doğrulayıcı bile kabul oyu vermek zorunda; çünkü liderin yanıtı hiç kuşkusuz tutarlı. Kusursuz uzlaşma, sıfır bilgi.",
+        "No re-execution reproduces the leader's exact bytes, so even validators who agree with the verdict must reject. This is classical consensus's rule applied to judgment.": "Hiçbir yeniden çalıştırma liderin baytlarını birebir üretemez; bu yüzden hükme katılan doğrulayıcılar bile reddetmek zorunda. Bu, klasik konsensüsün kuralının yargıya uygulanmış hâli.",
+        "\"same verdict as your own re-execution\"": "\"kendi yeniden çalıştırmanla aynı hüküm\"",
+        "\"any coherent assessment\"": "\"tutarlı herhangi bir değerlendirme\"",
+        "\"byte-identical to your re-execution\"": "\"yeniden çalıştırmanla baytı baytına aynı\"",
+        "✓ accept": "✓ kabul",
+        "✗ reject": "✗ ret",
+        "spawning fake voters, each costing about $0…": "sahte seçmenler basılıyor; tanesi aşağı yukarı 0 $…",
+        "…fake voters outnumber everyone. One actor owns the vote.": "…sahte seçmenler herkesi geride bırakıyor. Oylama tek bir kişinin elinde.",
+        "…and the honest majority is gone.": "…ve dürüst çoğunluk artık azınlıkta.",
+        "ACCEPTED": "KABUL EDİLDİ",
+        "REJECTED": "REDDEDİLDİ",
+        "accepted: 30 minutes for anyone to object": "kabul edildi — itiraz için herkese 30 dakika",
+        "no one objects: final, payment executes": "itiraz eden yok — kesinleşti, ödeme gerçekleşiyor",
+        "challenged: the bond funds a panel of 7": "itiraz edildi — teminat 7 kişilik paneli finanse ediyor",
+        "upheld: a fresh window opens": "hüküm ayakta — yeni bir pencere açılıyor",
+        "final: the failed bond pays the round's majority validators": "kesinleşti — kaybedilen teminat, turun çoğunluk doğrulayıcılarına ödeniyor",
+        "“Meets the brief: all three areas are covered.”": "“İstenenleri karşılıyor: üç alan da kapsanmış.”",
+        "“Meets it: regulation is covered, if thinly.”": "“Karşılıyor: mevzuat ince de olsa ele alınmış.”",
+        "3–2 · ACCEPTED · THE VOTE TRACKS JUDGMENT": "3–2 · KABUL — OYLAR YARGIYI YANSITIYOR",
+        "5–0 · ACCEPTED · UNANIMOUS, AND MEANINGLESS": "5–0 · KABUL — OYBİRLİĞİ, AMA ANLAMSIZ",
+        "0–5 · REJECTED · HONEST WORK READS AS REFUSAL": "0–5 · RET — DÜRÜST İŞ, ARIZA GİBİ OKUNUYOR"
       }
     };
+    const GL_PCT = (n) => (document.documentElement.lang || "en").split("-")[0] === "tr" ? `%${n}` : `${n}%`;
     const GL_T = (s) => (GL_I18N[(document.documentElement.lang || "en").split("-")[0]] || {})[s] || s;
 
     (() => {
@@ -1111,7 +1174,7 @@
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         for (let k = 0; k < 120; k++) { const d = document.createElement("i"); d.className = "p38-flood-dot"; flood.appendChild(d); }
         for (let k = 0; k < 8; k++) { const s = document.createElement("i"); s.className = "p38-stake-dot"; staked.appendChild(s); }
-        cost.textContent = "40%"; fill.style.width = "40%";
+        cost.textContent = GL_PCT(40); fill.style.width = "40%";
         badnote.textContent = GL_T("\u2026and the honest majority is gone.");
         return;
       }
@@ -1124,7 +1187,7 @@
           for (let k = 0; k < 3; k++) { const d = document.createElement("i"); d.className = "p38-flood-dot"; flood.appendChild(d); }
           if (n <= 8) {
             const s = document.createElement("i"); s.className = "p38-stake-dot"; staked.appendChild(s);
-            cost.textContent = (n * 5) + "%";
+            cost.textContent = GL_PCT(n * 5);
             fill.style.width = (n * 5) + "%";
           }
           if (n === 20) badnote.textContent = GL_T("\u2026fake voters outnumber everyone. One actor owns the vote.");
@@ -1258,6 +1321,6 @@
       } else cycle();
     })();
     </script>
-    <script src="../bridge-critical.js?v=mtivq743"></script>
+    <script src="../bridge-critical.js?v=mtjbgo9d"></script>
   </body>
 </html>

@@ -297,6 +297,53 @@
       dialSpamCopy: "При {rho} слепая апелляция на каждое пограничное решение приносит прибыль без всякой работы. После ≈2,9× выплата перестаёт покупать проверку и начинает покупать шум.",
       clarityLevels: ["крайне спорный","спорный","с явным перевесом","однозначный"],
     },
+    tr: {
+      yes: "EVET", no: "HAYIR", stakesLevels: ["DÜŞÜK", "ORTA", "YÜKSEK"], strengthLevels: ["DÜŞÜK", "ORTA", "YÜKSEK"],
+      panelResult: (size, label) => label.startsWith("> ")
+        ? `Bu bağımsız örnekleme modelinde, rastgele seçilmiş ${size} kişilik bir panelin popülasyon çoğunluğuyla aynı tarafa ulaşma oranı ${label.slice(2)} değerini aşıyor.`
+        : `Bu bağımsız örnekleme modelinde, rastgele seçilmiş ${size} kişilik bir panelin popülasyon çoğunluğuyla aynı tarafa ulaşma oranı ${label}.`,
+      selectedCase: (stakes, strength) => `Seçili örnek: yanılma bedeli ${stakes.toLowerCase()}, mevcut yanıtın gücü ${strength.toLowerCase()}. Noktayı sürükle ya da ok tuşlarını kullan.`,
+      stopCase: "DÜŞÜK RİSKLİ ÖRNEK", stop: "DUR",
+      stopExplanation: "Bu örnekte yanılmanın bedeli, bir değerlendirme daha satın almayı haklı çıkarmıyor.",
+      replaceCase: "ÖNEMLİ KARAR · ZAYIF MEVCUT YANIT", replace: "YENİ BİR YANITLA BAŞLA",
+      replaceExplanation: "Riskteki tutar bir deneme daha yapmayı haklı çıkarıyor; ama mevcut yanıt tutmaya değmez.",
+      recheckCase: "ÖNEMLİ KARAR · UMUT VEREN MEVCUT YANIT", recheck: "BU YANITI YENİDEN SINA",
+      recheckExplanation: "Riskteki tutar daha fazla kanıtı haklı çıkarıyor ve mevcut yanıt tutmaya değer.",
+      anotherPanel: "BİR PANEL DAHA", appeal: "İTİRAZ ET", noAppeal: "İTİRAZ YOK",
+      missedAppeal: "YAPILMAYAN İTİRAZ", missedCopy: "Sistem bir panele daha değer veriyor; ama hiçbir birey onu tetiklemeyi göze almıyor.",
+      excessAppeal: "GEREKSİZ İTİRAZ", excessCopy: "Sistem durmayı yeğlerken katılımcı yine de itiraz etmek istiyor.",
+      aligned: "SEÇİMLER ÖRTÜŞÜYOR", alignedContinue: "Hem sistem hem katılımcı bir panel daha diyor.", alignedStop: "Hem sistem hem katılımcı durmayı seçiyor.",
+      advFlipped: "%{pct} ÇEVRİLDİ",
+      advBelow: "En kötü durum: kötü niyetliler popülasyonda %{flipped} oranında oyu EVET'ten HAYIR'a çeviriyor. Rastgele {size} kişilik panel yine de olayların {label} oranında dürüst çoğunluğun tarafına ulaşıyor.",
+      advTie: "Kötü niyetli pay, dürüst farkı tam olarak siliyor: bozulmuş popülasyon 50/50 bölünmüş durumda ve panelin kararı yazı tura.",
+      advAbove: "Kötü niyetli pay dürüst farkı aşıyor: bozulmuş popülasyon artık HAYIR'a eğilimli ve panel büyüdükçe devrilen karar daha da sağlamlaşıyor. Panel, dürüst çoğunluğun tarafına olayların yalnızca {label} oranında ulaşıyor.",
+      clarityLevels: ["kıyasıya tartışmalı", "tartışmalı", "bir yana eğilimli", "net"],
+      clarityReadout: "%{pct} hemfikir · {word}",
+      stopTooRisky: "FAZLA RİSKLİ", stopSweet: "TATLI NOKTA", stopOverkill: "AŞIRIYA KAÇAR",
+      stopRisk: "RİSK", stopFees: "ÜCRET", stopTotal: "TOPLAM",
+      stopXAxis: "DURDUĞUN TURUN PANEL BÜYÜKLÜĞÜ",
+      stopAction: "{K} DEĞERLENDİRİCİLİK TURDA DUR",
+      stopCopy: "{word} bir soruda {L} riskteyken {K} değerlendiricide durmak en iyisi: {feesK} ücret artı geriye kalan {riskK} risk. Sonraki tur ({nextK}) {fees} ekleyip riski yalnızca {risk} azaltır. Değmez.",
+      stopCopyMax: "{word} bir soruda {L} riskteyken en büyük panel bile masrafını çıkarıyor: {feesK} ücret, geriye {riskK} risk. Bundan büyük tur yok.",
+      dialRhoLabel: "{rho} teminat",
+      dialTitle: "İTİRAZ EDENİN BAŞABAŞ İNANCI",
+      dialCeiling: "≈%50 TAVAN: 3–2'Yİ YENİDEN ÇALIŞTIRMAK YAZI TURA",
+      dialReachable: "DÜRÜST YENİDEN ÇALIŞTIRMAYLA ULAŞILABİLİR",
+      dialPrivate: "ÖZEL BİLGİ GEREKTİRİR",
+      dialCosts: "MASRAFLAR BUNU YER",
+      dialToday: "%67 · BUGÜNKÜ 1,5× İLE",
+      dialThreshold: "EŞİK {pct}",
+      dialAxisTitle: "ÖDEME KATSAYISI",
+      dialDead: "ÖLÜ BÖLGE · TAVANA ULAŞILAMIYOR", dialWindow: "PENCERE", dialSpam: "SPAM KAZANDIRIYOR",
+      dialFloorTick: "2× · bilgili başabaş",
+      dialSpamTick: "≈2,9× · kör itiraz artıya geçer",
+      dialDeadAction: "KIL PAYI KARARLARDA MEKANİZMA ÖLÜ",
+      dialDeadCopy: "{rho} düzeyinde {pct} eşiği, 3–2'lik bir kararın dürüst yeniden çalıştırmasının haklı çıkarabileceği ≈%50'nin ötesinde kalıyor. Bilgiye dayanan hiçbir itiraz rasyonel değil; yalnızca özel kesinliği olan harekete geçer. Sıfıra yakın ölçülen itiraz oranı tasarımın geometrisidir, katılımcıların kayıtsızlığı değil.",
+      dialWindowAction: "PENCERENİN İÇİNDE",
+      dialWindowCopy: "{rho} düzeyinde {pct} eşiği, dürüstçe ulaşılabilir bandın içinde ve itiraz edenin gerçek masrafları için {room} puanlık pay bırakıyor. Kıl payı kararlarda bilgili itiraz rasyonel hâle geliyor; kör spam hâlâ zarar ediyor.",
+      dialSpamAction: "SPAM KÂRA GEÇİYOR",
+      dialSpamCopy: "{rho} düzeyinde, her kıl payı karara körlemesine itiraz etmek sıfır emekle kâr getiriyor. ≈2,9× sonrasında ödeme artık inceleme değil, gürültü satın alıyor; daha cömerti daha iyi değil, nedeni bu.",
+    },
   };
   const copy = { ...localizedCopy.en, ...(localizedCopy[locale] || {}) };
   const compactCopy = {
@@ -351,12 +398,26 @@
       dialWindowCopy: "При пороге {pct} информированные апелляции выгодны, слепой спам — нет.",
       dialSpamCopy: "Выше ≈2,9× слепые апелляции выгодны и создают лишь шум.",
     },
+    tr: {
+      advBelow: "{size} kişilik panellerde dürüst çoğunluk {label} oranında kazanıyor.",
+      advTie: "Dürüst fark silindi: panelin kararı yazı tura.",
+      advAbove: "Çoğunluk devrildi: paneller onu yalnızca {label} oranında koruyor.",
+      stopAction: "{K} DEĞERLENDİRİCİDE DUR",
+      stopCopy: "En ucuzu: {feesK} ücret, kalan risk {riskK}. Sonraki tur {fees} ekler, yalnızca {risk} azaltır.",
+      stopCopyMax: "En ucuzu: {feesK} ücret, kalan risk {riskK}. Bundan büyük tur yok.",
+      dialDeadCopy: "{pct}, dürüst ≈%50 tavanını aşıyor. Bilgiye dayalı itiraz başabaşı tutturamaz.",
+      dialWindowCopy: "{pct} eşiğinde bilgiye dayalı itiraz kazandırır; kör spam kazandırmaz.",
+      dialSpamCopy: "≈2,9× üzerinde kör itiraz kârlı. Fazla ödeme artık gürültü satın alıyor.",
+    },
   };
   const compact = { ...compactCopy.en, ...(compactCopy[locale] || {}) };
   const tpl = (str, vars) => str.replace(/\{(\w+)\}/g, (m, k) => vars[k] !== undefined ? vars[k] : m);
-  // Decimal commas for es and ru (ru keeps en-US money grouping; probabilities
-  // still localize via the ru hook).
-  const fmtDec = (s) => (locale === "es" || locale === "ru") ? String(s).replace(".", ",") : String(s);
+  // Decimal commas for es, ru, and tr (ru and tr keep en-US money grouping;
+  // probabilities still localize via the per-locale hook).
+  const fmtDec = (s) => (locale === "es" || locale === "ru" || locale === "tr") ? String(s).replace(".", ",") : String(s);
+  // Turkish puts the percent sign before the number (%55); every JS-written
+  // percentage funnels through this so runtime values match the static copy.
+  const fmtPct = (s) => locale === "tr" ? String(s).replace(/(≈?>?\s?)(\d[\d.,]*)%/g, (m, pre, n) => `${pre}%${n}`) : String(s);
   const langTag = locale === "es" ? "es-ES" : "en-US";
 
   const intro = document.querySelector(".critical-onboard");
@@ -497,7 +558,7 @@
     return `${percent.toFixed(1)}%`;
   };
 
-  const localizeProbabilityLabel = (label) => ["es", "ru"].includes(locale) ? label.replace(".", ",") : label;
+  const localizeProbabilityLabel = (label) => ["es", "ru", "tr"].includes(locale) ? label.replace(".", ",") : label;
 
   // Worst-case variant: non-adaptive corruption flips a declared share of the
   // population from YES to NO before the panel is sampled, so the panel draws
@@ -523,14 +584,14 @@
       const flipped = Number(advShare.value);
       const corruptedYes = honestYes - flipped;
       const repeatProbability = Math.min(1, Math.max(0, 1 - reversalProbability(corruptedYes / 100, advPanelSize)));
-      const label = localizeProbabilityLabel(probabilityLabel(repeatProbability));
-      advAgreementOutput.textContent = `${honestYes}%`;
-      advShareOutput.textContent = `${flipped}%`;
+      const label = fmtPct(localizeProbabilityLabel(probabilityLabel(repeatProbability)));
+      advAgreementOutput.textContent = fmtPct(`${honestYes}%`);
+      advShareOutput.textContent = fmtPct(`${flipped}%`);
       advYesBar.style.width = `${corruptedYes}%`;
       advFlipBar.style.width = `${flipped}%`;
-      advYesLabel.textContent = `${corruptedYes}% ${copy.yes}`;
+      advYesLabel.textContent = fmtPct(`${corruptedYes}% ${copy.yes}`);
       advFlipLabel.textContent = tpl(copy.advFlipped, { pct: flipped });
-      advNoLabel.textContent = `${100 - honestYes}% ${copy.no}`;
+      advNoLabel.textContent = fmtPct(`${100 - honestYes}% ${copy.no}`);
       advRepeatOutput.textContent = label;
       advRepeatFill.style.width = `${Math.max(.2, repeatProbability * 100)}%`;
       if (corruptedYes > 50) {
@@ -566,7 +627,12 @@
     const stopAction = document.querySelector("#p2s-action");
     const stopCopy = document.querySelector("#p2s-copy");
     const presetButtons = [...document.querySelectorAll("[data-p2s-preset]")];
-    const stopMoney = (x) => x < 20 ? `$${fmtDec(x.toFixed(2).replace(/\.00$/, ""))}` : `$${Math.round(x).toLocaleString(langTag)}`;
+    const stopMoney = (x) => {
+      // Turkish money reads "9,50 $" / "2.000 $": symbol after, tr-TR grouping,
+      // so runtime readouts agree with the static preset chips.
+      const value = x < 20 ? fmtDec(x.toFixed(2).replace(/\.00$/, "")) : Math.round(x).toLocaleString(locale === "tr" ? "tr-TR" : langTag);
+      return locale === "tr" ? `${value} $` : `$${value}`;
+    };
     const clarityWord = (v) => copy.clarityLevels[v < 62 ? 0 : v < 72 ? 1 : v < 82 ? 2 : 3];
 
     const updateStopLab = () => {
@@ -652,7 +718,7 @@
     const updateDial = () => {
       const rho = Number(dialRho.value) / 100;
       const threshold = 1 / rho;
-      const pct = `${Math.round(threshold * 100)}%`;
+      const pct = fmtPct(`${Math.round(threshold * 100)}%`);
       const rhoShort = `${fmtDec(rho.toFixed(2).replace(/0$/, "").replace(/\.0$/, ""))}×`;
       const rhoLabel = tpl(copy.dialRhoLabel, { rho: rhoShort });
       dialRhoOut.textContent = rhoLabel;

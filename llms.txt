@@ -11,6 +11,7 @@ The guide is a single page available in five languages; the papers are PDFs.
 - [한국어 안내서](https://genlayerlabs.github.io/research/ko/)
 - [简体中文指南](https://genlayerlabs.github.io/research/zh/)
 - [Руководство на русском](https://genlayerlabs.github.io/research/ru/)
+- [Türkçe rehber](https://genlayerlabs.github.io/research/tr/)
 
 ## Papers
 
