@@ -68,7 +68,8 @@
       stopRisk: "RISK", stopFees: "FEES", stopTotal: "TOTAL",
       stopXAxis: "PANEL SIZE OF THE ROUND YOU STOP AT",
       stopAction: "STOP AT THE {K}-EVALUATOR ROUND",
-      stopCopy: "With {L} at stake on a {word} question, the {K}-evaluator round costs {total} all-in. Escalating to {nextK} evaluators adds {fees} in fees to remove only {risk} of risk.",
+      stopCopy: "With {L} at stake on a {word} question, stop at {K} evaluators: {feesK} in fees plus {riskK} of risk left. The next round ({nextK}) would add {fees} to remove only {risk}. Not worth it.",
+      stopCopyMax: "With {L} at stake on a {word} question, even the largest panel pays for itself: {feesK} in fees, {riskK} of risk left. There is no bigger round.",
       dialRhoLabel: "{rho} the bond",
       dialTitle: "A CHALLENGER'S BREAK-EVEN BELIEF",
       dialCeiling: "\u224850% CEILING: A RE-RUN 3\u20132 IS A COIN FLIP",
@@ -304,7 +305,8 @@
       advTie: "Honest margin erased: the panel is a coin flip.",
       advAbove: "Majority overturned: panels preserve it only {label} of the time.",
       stopAction: "STOP AT {K} EVALUATORS",
-      stopCopy: "Lowest cost: {total}. Next round adds {fees} in fees.",
+      stopCopy: "Cheapest: {feesK} in fees, {riskK} of risk left. The next round adds {fees} in fees, removes only {risk}.",
+      stopCopyMax: "Cheapest: {feesK} in fees, {riskK} of risk left. This is the largest round.",
       dialDeadCopy: "{pct} exceeds the honest ≈50% ceiling. Informed appeals cannot break even.",
       dialWindowCopy: "At {pct}, informed appeals pay; blind spam does not.",
       dialSpamCopy: "Above ≈2.9×, blind appeals are profitable. More payout now buys noise.",
@@ -362,9 +364,11 @@
   const progress = [...document.querySelectorAll("[data-intro-progress]")];
   const skip = document.querySelector(".bi-skip");
   const replay = document.querySelector(".bi-replay");
-  // Reading time grows with each scene's copy and visual complexity. The
-  // proposal frame arrives at exactly 25 seconds.
-  const sceneDurations = [4500, 3100, 4200, 5200, 8000, 8000];
+  const arrowPrev = document.querySelector(".bi-arrow-prev");
+  const arrowNext = document.querySelector(".bi-arrow-next");
+  // Reading time grows with each scene's copy and visual complexity.
+  // One entry per scene transition: five scenes, four transitions.
+  const sceneDurations = [4500, 3100, 4200, 5200];
   const timings = [0];
   sceneDurations.forEach((duration) => timings.push(timings[timings.length - 1] + duration));
   let introTimers = [];
@@ -388,6 +392,8 @@
     const complete = step === scenes.length;
     skip.hidden = complete;
     replay.hidden = !complete;
+    if (arrowPrev) arrowPrev.disabled = step === 1;
+    if (arrowNext) arrowNext.disabled = complete;
   };
 
   const stopIntro = () => {
@@ -412,6 +418,14 @@
     stopIntro();
     showIntro(Number(item.dataset.introProgress));
   }));
+  if (arrowPrev) arrowPrev.addEventListener("click", () => {
+    stopIntro();
+    if (currentIntroStep > 1) showIntro(currentIntroStep - 1);
+  });
+  if (arrowNext) arrowNext.addEventListener("click", () => {
+    stopIntro();
+    if (currentIntroStep < scenes.length) showIntro(currentIntroStep + 1);
+  });
 
   // Horizontal swipes move the story. Vertical gestures remain native so the
   // reader can leave the story and continue down the page.
@@ -456,21 +470,10 @@
       showIntro(currentIntroStep - 1);
     }
   });
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) showIntro(scenes.length);
+  // Always open on slide 1. Visitors with reduced motion just don't autoplay;
+  // they step through with the arrows, dots, keys, or swipes.
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) showIntro(1);
   else playIntro();
-
-  // Part I uses the exact odd-panel binomial probability for this declared
-  // product-superpopulation illustration.
-  const agreement = document.querySelector("#p1-agreement");
-  const agreementOutput = document.querySelector("#p1-agreement-output");
-  const repeatOutput = document.querySelector("#p1-risk");
-  const repeatFill = document.querySelector("#p1-risk-fill");
-  const repeatCopy = document.querySelector("#p1-risk-copy");
-  const yesBar = document.querySelector("#p1-yes-bar");
-  const yesLabel = document.querySelector("#p1-yes-label");
-  const noLabel = document.querySelector("#p1-no-label");
-  const sizeButtons = [...document.querySelectorAll("[data-p1-size]")];
-  let panelSize = 11;
 
   const reversalProbability = (probabilityYes, size) => {
     const lastReversingCount = Math.floor(size / 2);
@@ -495,29 +498,6 @@
   };
 
   const localizeProbabilityLabel = (label) => ["es", "ru"].includes(locale) ? label.replace(".", ",") : label;
-
-  const updatePartOne = () => {
-    const yesPercent = Number(agreement.value);
-    const repeatProbability = Math.min(1, Math.max(0, 1 - reversalProbability(yesPercent / 100, panelSize)));
-    const label = localizeProbabilityLabel(probabilityLabel(repeatProbability));
-    agreementOutput.textContent = `${yesPercent}%`;
-    yesBar.style.width = `${yesPercent}%`;
-    yesLabel.textContent = `${yesPercent}% ${copy.yes}`;
-    noLabel.textContent = `${100 - yesPercent}% ${copy.no}`;
-    repeatOutput.textContent = label;
-    repeatFill.style.width = `${Math.max(.2, repeatProbability * 100)}%`;
-    repeatCopy.textContent = copy.panelResult(panelSize, label);
-  };
-
-  if (agreement) {
-    agreement.addEventListener("input", updatePartOne);
-    sizeButtons.forEach((button) => button.addEventListener("click", () => {
-      panelSize = Number(button.dataset.p1Size);
-      sizeButtons.forEach((item) => item.classList.toggle("active", item === button));
-      updatePartOne();
-    }));
-    updatePartOne();
-  }
 
   // Worst-case variant: non-adaptive corruption flips a declared share of the
   // population from YES to NO before the panel is sampled, so the panel draws
@@ -590,6 +570,7 @@
     const clarityWord = (v) => copy.clarityLevels[v < 62 ? 0 : v < 72 ? 1 : v < 82 ? 2 : 3];
 
     const updateStopLab = () => {
+      const CM = isCompactPhone();
       const L = Number(stopStakes.value) * 50;
       const agree = Number(stopClarity.value);
       const p = agree / 100;
@@ -610,32 +591,34 @@
       const sweet = pts.filter((q) => q.total <= best.total * 1.05);
       const slot = (720 - PL - PR) / N / 2;
       const sweetL = X(sweet[0].i) - slot, sweetR = X(sweet[sweet.length - 1].i) + slot;
-      const zoneLabel = (x1, x2, text, color, minW = 118) => (x2 - x1) > minW
-        ? `<text x="${(x1 + x2) / 2}" y="${PT + 18}" font-size="12" font-weight="900" letter-spacing=".08em" text-anchor="middle" fill="${color}">${text}</text>` : "";
+      const zoneLabel = (x1, x2, text, color, minW = CM ? 190 : 118) => (x2 - x1) > minW
+        ? `<text x="${(x1 + x2) / 2}" y="${PT + 18}" font-size="${CM ? 19 : 12}" font-weight="900" letter-spacing=".08em" text-anchor="middle" fill="${color}">${text}</text>` : "";
       const lastPt = pts[N - 1];
       stopSvg.innerHTML = `
-        <rect x="${PL}" y="${PT}" width="${Math.max(0, sweetL - PL)}" height="${H}" fill="#d9971e" opacity=".09"/>
-        <rect x="${sweetL}" y="${PT}" width="${Math.max(4, sweetR - sweetL)}" height="${H}" fill="#078b87" opacity=".13"/>
-        <rect x="${sweetR}" y="${PT}" width="${Math.max(0, 720 - PR - sweetR)}" height="${H}" fill="#cf6231" opacity=".08"/>
-        ${zoneLabel(PL, sweetL, copy.stopTooRisky, "#a3720f")}
-        ${zoneLabel(sweetL, sweetR, copy.stopSweet, "#067672", 52)}
-        ${zoneLabel(sweetR, 720 - PR, copy.stopOverkill, "#b3542a")}
-        ${[0, .5, 1].map((f) => { const t = maxY * f; return `<line x1="${PL}" y1="${Y(t)}" x2="${720 - PR}" y2="${Y(t)}" stroke="#dbe2ef"/><text x="${PL - 8}" y="${Y(t) + 4}" font-size="12" text-anchor="end" fill="#68758a">${stopMoney(t)}</text>`; }).join("")}
-        ${pts.map((q, i) => `<text x="${X(i)}" y="${300 - PB + 18}" font-size="12" font-weight="${q.K === best.K ? 900 : 400}" text-anchor="middle" fill="${q.K === best.K ? "#17233f" : "#68758a"}">${q.K}</text>`).join("")}
-        <text x="${(PL + 720 - PR) / 2}" y="${300 - 5}" font-size="12" font-weight="800" text-anchor="middle" fill="#53617a">${copy.stopXAxis}</text>
-        <path d="${path("risk")}" fill="none" stroke="#cf6231" stroke-width="2" stroke-dasharray="5 4"/>
-        <path d="${path("fees")}" fill="none" stroke="#8894ab" stroke-width="1.5" stroke-dasharray="2 3"/>
-        <path d="${path("total")}" fill="none" stroke="#17233f" stroke-width="3"/>
-        <text x="${X(2) + 10}" y="${Y(pts[2].risk) - 10}" font-size="12" font-weight="800" fill="#b3542a">${copy.stopRisk}</text>
-        <text x="${X(6)}" y="${Y(pts[6].fees) + 24}" font-size="12" font-weight="800" text-anchor="middle" fill="#5f6d85">${copy.stopFees}</text>
-        <text x="${X(N - 1) - 6}" y="${Y(lastPt.total) - 14}" font-size="12.5" font-weight="900" text-anchor="end" fill="#17233f">${copy.stopTotal}</text>
-        ${pts.map((q, i) => `<circle cx="${X(i)}" cy="${Y(q.total)}" r="4" fill="${q.K === best.K ? "#f7d154" : "white"}" stroke="#17233f" stroke-width="2"/>`).join("")}
-        <circle cx="${X(best.i)}" cy="${Y(best.total)}" r="8" fill="#f7d154" stroke="#17233f" stroke-width="3"/>
-        <text x="${Math.min(X(best.i) + 14, 560)}" y="${Math.max(PT + 38, Y(best.total) - 16)}" font-size="15" font-weight="800" fill="#17233f">${stopMoney(best.total)}</text>`;
+        <rect x="${PL}" y="${PT}" width="${Math.max(0, sweetL - PL)}" height="${H}" fill="#D22F2F" opacity=".09"/>
+        <rect x="${sweetL}" y="${PT}" width="${Math.max(4, sweetR - sweetL)}" height="${H}" fill="#0B8A47" opacity=".13"/>
+        <rect x="${sweetR}" y="${PT}" width="${Math.max(0, 720 - PR - sweetR)}" height="${H}" fill="#8A8A86" opacity=".12"/>
+        ${zoneLabel(PL, sweetL, copy.stopTooRisky, "#BD2A2A")}
+        ${zoneLabel(sweetL, sweetR, copy.stopSweet, "#09753C", CM ? 84 : 52)}
+        ${zoneLabel(sweetR, 720 - PR, copy.stopOverkill, "#606060")}
+        ${[0, .5, 1].map((f) => { const t = maxY * f; return `<line x1="${PL}" y1="${Y(t)}" x2="${720 - PR}" y2="${Y(t)}" stroke="#DCDCD8"/><text x="${PL - 8}" y="${Y(t) + 4}" font-size="${CM ? 19 : 12}" text-anchor="end" fill="#606060">${stopMoney(t)}</text>`; }).join("")}
+        ${pts.map((q, i) => `<text x="${X(i)}" y="${300 - PB + 18}" font-size="${CM ? 19 : 12}" font-weight="${q.K === best.K ? 900 : 400}" text-anchor="middle" fill="${q.K === best.K ? "#070707" : "#606060"}">${q.K}</text>`).join("")}
+        <text x="${(PL + 720 - PR) / 2}" y="${300 - 5}" font-size="${CM ? 19 : 12}" font-weight="800" text-anchor="middle" fill="#606060">${copy.stopXAxis}</text>
+        <path d="${path("risk")}" fill="none" stroke="#D22F2F" stroke-width="2" stroke-dasharray="5 4"/>
+        <path d="${path("fees")}" fill="none" stroke="#8A8A86" stroke-width="1.5" stroke-dasharray="2 3"/>
+        <path d="${path("total")}" fill="none" stroke="#070707" stroke-width="3"/>
+        <text x="${X(2) + 10}" y="${Y(pts[2].risk) - 10}" font-size="${CM ? 19 : 12}" font-weight="800" fill="#BD2A2A">${copy.stopRisk}</text>
+        <text x="${X(6)}" y="${Y(pts[6].fees) + 24}" font-size="${CM ? 19 : 12}" font-weight="800" text-anchor="middle" fill="#606060">${copy.stopFees}</text>
+        <text x="${X(N - 1) - 6}" y="${Y(lastPt.total) - 14}" font-size="${CM ? 20 : 12.5}" font-weight="900" text-anchor="end" fill="#070707">${copy.stopTotal}</text>
+        ${pts.map((q, i) => `<circle cx="${X(i)}" cy="${Y(q.total)}" r="4" fill="${q.K === best.K ? "#110FFF" : "white"}" stroke="#070707" stroke-width="2"/>`).join("")}
+        <circle cx="${X(best.i)}" cy="${Y(best.total)}" r="8" fill="#110FFF" stroke="#070707" stroke-width="3"/>
+        <text x="${Math.min(X(best.i) + 14, 560)}" y="${Math.max(PT + 38, Y(best.total) - 16)}" font-size="${CM ? 22 : 15}" font-weight="800" fill="#070707">${stopMoney(best.total)}</text>`;
+      const atMax = best.i === N - 1;
       const next = pts[Math.min(best.i + 1, N - 1)];
-      const stopVars = { L: stopMoney(L), word: clarityWord(agree), K: best.K, total: stopMoney(best.total), nextK: next.K, fees: stopMoney(SEAT * (next.K - best.K)), risk: stopMoney(Math.max(0, best.risk - next.risk)) };
-      stopAction.textContent = tpl(isCompactPhone() ? compact.stopAction : copy.stopAction, stopVars);
-      stopCopy.textContent = tpl(isCompactPhone() ? compact.stopCopy : copy.stopCopy, stopVars);
+      const stopVars = { L: stopMoney(L), word: clarityWord(agree), K: best.K, total: stopMoney(best.total), feesK: stopMoney(best.fees), riskK: stopMoney(best.risk), nextK: next.K, fees: stopMoney(SEAT * (next.K - best.K)), risk: stopMoney(Math.max(0, best.risk - next.risk)) };
+      const dict = isCompactPhone() ? compact : copy;
+      stopAction.textContent = tpl(dict.stopAction, stopVars);
+      stopCopy.textContent = tpl(atMax ? dict.stopCopyMax : dict.stopCopy, stopVars);
     };
 
     presetButtons.forEach((button) => button.addEventListener("click", () => {
@@ -649,6 +632,7 @@
     });
     stopClarity.addEventListener("input", updateStopLab);
     updateStopLab();
+    window.matchMedia("(max-width: 560px)").addEventListener("change", updateStopLab);
   }
 
   // Part IV: the payout multiple sets the break-even belief (1/rho). What makes
@@ -675,6 +659,7 @@
       dialRho.setAttribute("aria-valuetext", rhoLabel);
 
       // Belief axis: x = 20..700 for 0..100%.
+      const CM = isCompactPhone();
       const BX = (b) => 20 + b * 680;
       const BT = 66, BH = 46, BB = BT + BH;
       // Multiple axis: x = 20..700 for 1x..4x.
@@ -683,33 +668,33 @@
       const tX = BX(threshold);
       const headroom = threshold < CEILING;
       dialSvg.innerHTML = `
-        <text x="20" y="20" font-size="13" font-weight="900" letter-spacing=".06em" fill="#53617a">${copy.dialTitle}</text>
-        <rect x="${BX(0)}" y="${BT}" width="${BX(CEILING) - BX(0)}" height="${BH}" fill="#078b87" opacity=".16"/>
-        <rect x="${BX(CEILING)}" y="${BT}" width="${BX(1) - BX(CEILING)}" height="${BH}" fill="#8894ab" opacity=".14"/>
-        ${headroom ? `<rect x="${tX}" y="${BT}" width="${BX(CEILING) - tX}" height="${BH}" fill="#f7d154" opacity=".38"/>` : ""}
-        <line x1="${BX(CEILING)}" y1="${BT - 14}" x2="${BX(CEILING)}" y2="${BB}" stroke="#067672" stroke-width="2.5" stroke-dasharray="5 3"/>
-        <text x="${BX(CEILING) - 8}" y="${BT - 20}" font-size="12" font-weight="900" text-anchor="end" fill="#067672">${copy.dialCeiling}</text>
-        <text x="${BX(.03)}" y="${BB - 18}" font-size="11.5" font-weight="800" fill="#067672">${copy.dialReachable}</text>
-        <text x="${BX(.97)}" y="${BB - 18}" font-size="11.5" font-weight="800" text-anchor="end" fill="#5f6d85">${copy.dialPrivate}</text>
-        ${headroom && BX(CEILING) - tX > 46 ? `<text x="${(tX + BX(CEILING)) / 2}" y="${BB - 6}" font-size="10.5" font-weight="900" text-anchor="middle" fill="#8a6d00">${copy.dialCosts}</text>` : ""}
-        <line x1="${BX(2 / 3)}" y1="${BT - 4}" x2="${BX(2 / 3)}" y2="${BB + 4}" stroke="#cf6231" stroke-width="2" stroke-dasharray="2 3"/>
-        <text x="${BX(2 / 3) + 6}" y="${BT - 8}" font-size="11" font-weight="800" fill="#cf6231">${copy.dialToday}</text>
-        <line x1="${tX}" y1="${BT - 10}" x2="${tX}" y2="${BB + 8}" stroke="#17233f" stroke-width="3"/>
-        <text x="${Math.min(Math.max(tX, 70), 620)}" y="${BB + 24}" font-size="13" font-weight="900" text-anchor="middle" fill="#17233f">${tpl(copy.dialThreshold, { pct })}</text>
-        <text x="20" y="${MT - 12}" font-size="13" font-weight="900" letter-spacing=".06em" fill="#53617a">${copy.dialAxisTitle}</text>
-        <rect x="${MX(1)}" y="${MT}" width="${MX(FLOOR_RHO) - MX(1)}" height="${MH}" fill="#8894ab" opacity=".16"/>
-        <rect x="${MX(FLOOR_RHO)}" y="${MT}" width="${MX(SPAM_RHO) - MX(FLOOR_RHO)}" height="${MH}" fill="#078b87" opacity=".2"/>
-        <rect x="${MX(SPAM_RHO)}" y="${MT}" width="${MX(4) - MX(SPAM_RHO)}" height="${MH}" fill="#cf6231" opacity=".2"/>
-        <text x="${(MX(1) + MX(FLOOR_RHO)) / 2}" y="${MT + 21}" font-size="11.5" font-weight="900" text-anchor="middle" fill="#5f6d85">${copy.dialDead}</text>
-        <text x="${(MX(FLOOR_RHO) + MX(SPAM_RHO)) / 2}" y="${MT + 21}" font-size="11.5" font-weight="900" text-anchor="middle" fill="#067672">${copy.dialWindow}</text>
-        <text x="${(MX(SPAM_RHO) + MX(4)) / 2}" y="${MT + 21}" font-size="11.5" font-weight="900" text-anchor="middle" fill="#b3542a">${copy.dialSpam}</text>
-        <text x="${MX(FLOOR_RHO)}" y="${MB + 16}" font-size="11" font-weight="800" text-anchor="middle" fill="#067672">${copy.dialFloorTick}</text>
-        <text x="${MX(SPAM_RHO)}" y="${MB + 16}" font-size="11" font-weight="800" text-anchor="middle" fill="#b3542a">${copy.dialSpamTick}</text>
-        <text x="${MX(1)}" y="${MB + 16}" font-size="11" fill="#68758a">1×</text>
-        <text x="${MX(4) - 4}" y="${MB + 16}" font-size="11" text-anchor="end" fill="#68758a">4×</text>
-        <line x1="${MX(rho)}" y1="${MT - 8}" x2="${MX(rho)}" y2="${MB + 4}" stroke="#17233f" stroke-width="3"/>
-        <circle cx="${MX(rho)}" cy="${MT - 12}" r="6" fill="#f7d154" stroke="#17233f" stroke-width="2.5"/>
-        <text x="${Math.min(Math.max(MX(rho) + 12, 46), 640)}" y="${MT - 18}" font-size="13" font-weight="900" fill="#17233f">${rhoShort}</text>`;
+        <text x="20" y="20" font-size="${CM ? 18 : 13}" font-weight="900" letter-spacing=".06em" fill="#606060">${copy.dialTitle}</text>
+        <rect x="${BX(0)}" y="${BT}" width="${BX(CEILING) - BX(0)}" height="${BH}" fill="#0B8A47" opacity=".14"/>
+        <rect x="${BX(CEILING)}" y="${BT}" width="${BX(1) - BX(CEILING)}" height="${BH}" fill="#8A8A86" opacity=".14"/>
+        ${headroom ? `<rect x="${tX}" y="${BT}" width="${BX(CEILING) - tX}" height="${BH}" fill="#110FFF" opacity=".18"/>` : ""}
+        <line x1="${BX(CEILING)}" y1="${BT - 14}" x2="${BX(CEILING)}" y2="${BB}" stroke="#0B8A47" stroke-width="2.5" stroke-dasharray="5 3"/>
+        <text x="${CM ? 20 : BX(CEILING) - 8}" y="${BT - 20}" font-size="${CM ? 15 : 12}" font-weight="900" text-anchor="${CM ? "start" : "end"}" fill="#09753C">${copy.dialCeiling}</text>
+        ${CM ? "" : `<text x="${BX(.03)}" y="${BB - 18}" font-size="11.5" font-weight="800" fill="#09753C">${copy.dialReachable}</text>`}
+        ${CM ? "" : `<text x="${BX(.97)}" y="${BB - 18}" font-size="11.5" font-weight="800" text-anchor="end" fill="#606060">${copy.dialPrivate}</text>`}
+        ${!CM && headroom && BX(CEILING) - tX > 96 ? `<text x="${(tX + BX(CEILING)) / 2}" y="${BB - 6}" font-size="10.5" font-weight="900" text-anchor="middle" fill="#070707">${copy.dialCosts}</text>` : ""}
+        <line x1="${BX(2 / 3)}" y1="${BT - 4}" x2="${BX(2 / 3)}" y2="${BB + 4}" stroke="#D22F2F" stroke-width="2" stroke-dasharray="2 3"/>
+        ${CM ? "" : `<text x="${BX(2 / 3) + 6}" y="${BT - 8}" font-size="11" font-weight="800" fill="#BD2A2A">${copy.dialToday}</text>`}
+        <line x1="${tX}" y1="${BT - 10}" x2="${tX}" y2="${BB + 8}" stroke="#070707" stroke-width="3"/>
+        <text x="${Math.min(Math.max(tX, 70), 620)}" y="${BB + 24}" font-size="${CM ? 18 : 13}" font-weight="900" text-anchor="middle" fill="#070707">${tpl(copy.dialThreshold, { pct })}</text>
+        <text x="20" y="${MT - 12}" font-size="${CM ? 18 : 13}" font-weight="900" letter-spacing=".06em" fill="#606060">${copy.dialAxisTitle}</text>
+        <rect x="${MX(1)}" y="${MT}" width="${MX(FLOOR_RHO) - MX(1)}" height="${MH}" fill="#8A8A86" opacity=".16"/>
+        <rect x="${MX(FLOOR_RHO)}" y="${MT}" width="${MX(SPAM_RHO) - MX(FLOOR_RHO)}" height="${MH}" fill="#0B8A47" opacity=".14"/>
+        <rect x="${MX(SPAM_RHO)}" y="${MT}" width="${MX(4) - MX(SPAM_RHO)}" height="${MH}" fill="#D22F2F" opacity=".14"/>
+        ${CM ? "" : `<text x="${(MX(1) + MX(FLOOR_RHO)) / 2}" y="${MT + 21}" font-size="11.5" font-weight="900" text-anchor="middle" fill="#606060">${copy.dialDead}</text>`}
+        ${CM ? "" : `<text x="${(MX(FLOOR_RHO) + MX(SPAM_RHO)) / 2}" y="${MT + 21}" font-size="11.5" font-weight="900" text-anchor="middle" fill="#09753C">${copy.dialWindow}</text>`}
+        ${CM ? "" : `<text x="${(MX(SPAM_RHO) + MX(4)) / 2}" y="${MT + 21}" font-size="11.5" font-weight="900" text-anchor="middle" fill="#BD2A2A">${copy.dialSpam}</text>`}
+        <text x="${MX(FLOOR_RHO)}" y="${MB + 16}" font-size="${CM ? 15 : 11}" font-weight="800" text-anchor="middle" fill="#09753C">${copy.dialFloorTick}</text>
+        <text x="${MX(SPAM_RHO)}" y="${CM ? MB + 34 : MB + 16}" font-size="${CM ? 15 : 11}" font-weight="800" text-anchor="middle" fill="#BD2A2A">${copy.dialSpamTick}</text>
+        <text x="${MX(1)}" y="${MB + 16}" font-size="${CM ? 15 : 11}" fill="#606060">1×</text>
+        <text x="${MX(4) - 4}" y="${MB + 16}" font-size="${CM ? 15 : 11}" text-anchor="end" fill="#606060">4×</text>
+        <line x1="${MX(rho)}" y1="${MT - 8}" x2="${MX(rho)}" y2="${MB + 4}" stroke="#070707" stroke-width="3"/>
+        <circle cx="${MX(rho)}" cy="${MT - 12}" r="6" fill="#110FFF" stroke="#070707" stroke-width="2.5"/>
+        <text x="${Math.min(Math.max(MX(rho) + 12, 46), 640)}" y="${MT - 18}" font-size="${CM ? 18 : 13}" font-weight="900" fill="#070707">${rhoShort}</text>`;
 
       if (rho < FLOOR_RHO) {
         dialAction.textContent = copy.dialDeadAction;
@@ -726,54 +711,163 @@
 
     dialRho.addEventListener("input", updateDial);
     updateDial();
+    window.matchMedia("(max-width: 560px)").addEventListener("change", updateDial);
   }
 
-  // Legacy Part IV widget (system value vs private payoff), retained while
-  // the dial iteration settles.
-  const systemValue = document.querySelector("#p4-system-value");
-  const privatePayoff = document.querySelector("#p4-private-payoff");
-  const systemValueOutput = document.querySelector("#p4-system-output");
-  const privatePayoffOutput = document.querySelector("#p4-private-output");
-  const systemAction = document.querySelector("#p4-system-action");
-  const actorAction = document.querySelector("#p4-actor-action");
-  const appealGapResult = document.querySelector("#p4-gap-result");
-  const appealGapStatus = document.querySelector("#p4-gap-status");
-  const appealGapCopy = document.querySelector("#p4-gap-copy");
-  const formatSigned = (value) => value > 0 ? `+${value}` : value < 0 ? `−${Math.abs(value)}` : "0";
 
-  const updatePartFour = () => {
-    const social = Number(systemValue.value);
-    const privateValue = Number(privatePayoff.value);
-    const systemContinues = social > 0;
-    const actorAppeals = privateValue > 0;
-    systemValueOutput.textContent = formatSigned(social);
-    privatePayoffOutput.textContent = formatSigned(privateValue);
-    systemValue.setAttribute("aria-valuetext", formatSigned(social));
-    privatePayoff.setAttribute("aria-valuetext", formatSigned(privateValue));
-    systemAction.textContent = systemContinues ? copy.anotherPanel : copy.stop;
-    actorAction.textContent = actorAppeals ? copy.appeal : copy.noAppeal;
-    appealGapResult.classList.remove("missed", "excess", "aligned");
-
-    if (systemContinues && !actorAppeals) {
-      appealGapResult.classList.add("missed");
-      appealGapStatus.textContent = copy.missedAppeal;
-      appealGapCopy.textContent = copy.missedCopy;
-    } else if (!systemContinues && actorAppeals) {
-      appealGapResult.classList.add("excess");
-      appealGapStatus.textContent = copy.excessAppeal;
-      appealGapCopy.textContent = copy.excessCopy;
-    } else {
-      appealGapResult.classList.add("aligned");
-      appealGapStatus.textContent = copy.aligned;
-      appealGapCopy.textContent = systemContinues
-        ? copy.alignedContinue
-        : copy.alignedStop;
-    }
+  // Plain-words glossary. One source of truth for the hover cards and the
+  // glossary list; definitions grounded in the papers, not paraphrased loosely.
+  const GLOSSARY = {
+    "validator": ["Validator", "A computer taking part in the network's judging. In GenLayer each validator runs an AI model of its own choosing and locks GEN tokens as a security deposit (stake)."],
+    "panel": ["Panel", "The small random group of validators chosen to judge one decision. GenLayer's rounds use panels of 5, 7, 11 and so on, growing with each appeal."],
+    "population": ["Evaluator population", "The full declared pool of possible judges that a panel is drawn from. The research measures how faithfully a small panel reproduces what this whole pool would decide."],
+    "reproducibility": ["Reproducibility", "The chance that a random panel lands on the same side as the whole declared pool of judges would. Deliberately not the same thing as being objectively right."],
+    "adversary": ["Adversary", "A participant who votes to push the decision somewhere, not to judge honestly. The research models the worst case: every adversarial vote goes against the honest majority."],
+    "equivalence": ["Equivalence Principle", "GenLayer's rule that every contract call declares what counts as “the same answer”, so validators can accept an AI answer that is worded differently from their own."],
+    "od": ["Optimistic Democracy", "GenLayer's consensus procedure: a leader proposes an answer, a small panel votes, the result stands unless someone challenges it in time, and each challenge summons a bigger panel."],
+    "leader": ["Leader", "The validator picked to actually do the task and propose an answer. The rest of the panel then judges that proposal."],
+    "stake": ["Stake", "GEN tokens a validator locks as a security deposit. Voting power comes from locked stake, and provable misconduct can destroy part of it."],
+    "delegation": ["Delegation", "Lending your GEN to a validator's stake. Delegators share the rewards without running a node; the minimum is 42 GEN."],
+    "slashing": ["Slashing", "The protocol destroying part of a validator's locked stake as punishment for provable misconduct, such as fraud (5% for a leader) or prolonged inactivity (1%)."],
+    "bond": ["Appeal bond", "Money a challenger locks to file an appeal. It funds the bigger panel; a failed appeal forfeits it, a successful one returns it with a reward."],
+    "appeal": ["Appeal", "A challenge to a provisional decision during its open window. It triggers a new, larger panel to re-judge the question."],
+    "expectedloss": ["Expected loss", "The average cost if this exact situation repeated many times: each outcome's probability times what that outcome costs."],
+    "modelchecking": ["Model checking", "Having a computer exhaustively explore every reachable state of a system model (here written in the TLA+ language) to check that stated rules can never be broken."],
+    "issuance": ["Issuance", "New GEN created by the protocol on a fixed declining schedule to help pay validators: 9% a year at launch, falling toward 4%. The schedule is a ceiling, not a promise."],
   };
 
-  if (systemValue) {
-    systemValue.addEventListener("input", updatePartFour);
-    privatePayoff.addEventListener("input", updatePartFour);
-    updatePartFour();
+  const glTargets = [...document.querySelectorAll("[data-gl], [data-tip]")];
+  if (glTargets.length) {
+    const card = document.createElement("div");
+    card.className = "gl-card";
+    card.id = "gl-card";
+    card.setAttribute("role", "tooltip");
+    card.hidden = true;
+    document.body.appendChild(card);
+    let hoverTimer = 0;
+    let openFor = null;
+    let openedAt = 0;
+    const closeCard = () => {
+      if (!openFor) return;
+      card.hidden = true;
+      openFor.setAttribute("aria-expanded", "false");
+      openFor = null;
+    };
+    const openCard = (el) => {
+      const entry = el.dataset.gl ? GLOSSARY[el.dataset.gl] : null;
+      // The glossary lives in this shared file in English; GL_T (the runtime
+      // locale map in the page) translates it at open time, falling back to
+      // the English text when no translation exists.
+      const localized = (value) => (typeof GL_T === "function" ? GL_T(value) : value);
+      const text = entry ? localized(entry[1]) : el.dataset.tip;
+      if (!text) return;
+      card.innerHTML = "";
+      if (entry) {
+        const heading = document.createElement("strong");
+        heading.textContent = localized(entry[0]);
+        card.appendChild(heading);
+      }
+      const body = document.createElement("p");
+      body.textContent = text;
+      card.appendChild(body);
+      card.hidden = false;
+      const box = el.getBoundingClientRect();
+      card.style.maxWidth = `${Math.min(320, window.innerWidth - 24)}px`;
+      let left = box.left + box.width / 2 - card.offsetWidth / 2;
+      left = Math.max(12, Math.min(left, window.innerWidth - card.offsetWidth - 12));
+      const below = box.bottom + card.offsetHeight + 18 <= window.innerHeight;
+      const top = below ? box.bottom + 10 : box.top - card.offsetHeight - 10;
+      card.style.left = `${left + window.scrollX}px`;
+      card.style.top = `${top + window.scrollY}px`;
+      card.classList.toggle("gl-card-above", !below);
+      if (openFor && openFor !== el) openFor.setAttribute("aria-expanded", "false");
+      openFor = el;
+      openedAt = Date.now();
+      el.setAttribute("aria-expanded", "true");
+    };
+    glTargets.forEach((el) => {
+      if (el.tagName !== "BUTTON") el.setAttribute("tabindex", "0");
+      el.setAttribute("aria-describedby", "gl-card");
+      el.setAttribute("aria-expanded", "false");
+      el.addEventListener("mouseenter", () => {
+        window.clearTimeout(hoverTimer);
+        hoverTimer = window.setTimeout(() => openCard(el), 450);
+      });
+      el.addEventListener("mouseleave", () => {
+        window.clearTimeout(hoverTimer);
+        window.setTimeout(() => {
+          if (openFor === el && !card.matches(":hover")) closeCard();
+        }, 200);
+      });
+      el.addEventListener("focus", () => openCard(el));
+      el.addEventListener("blur", () => { if (openFor === el) closeCard(); });
+      el.addEventListener("click", (event) => {
+        event.preventDefault();
+        // On a touch tap the button's focus event has just opened the card;
+        // without the grace window this click would immediately toggle it
+        // closed again and the tip would never be seen.
+        if (openFor === el && Date.now() - openedAt > 400) closeCard(); else openCard(el);
+      });
+    });
+    card.addEventListener("mouseleave", closeCard);
+    window.addEventListener("keydown", (event) => { if (event.key === "Escape") closeCard(); });
+    window.addEventListener("scroll", closeCard, { passive: true });
+    document.addEventListener("pointerdown", (event) => {
+      const target = event.target;
+      if (openFor && target instanceof Node && !card.contains(target) && !openFor.contains(target)) closeCard();
+    }, true);
   }
+
+  // Predict-before-reveal widgets. Answers come from the same models the labs
+  // use, so the reveal always matches what the lab below will show.
+  document.querySelectorAll("[data-predict]").forEach((box) => {
+    const buttons = [...box.querySelectorAll("button[data-guess]")];
+    const reveal = box.querySelector(".predict-reveal");
+    if (!buttons.length || !reveal) return;
+    const correct = box.dataset.answer;
+    buttons.forEach((button) => button.addEventListener("click", () => {
+      if (box.classList.contains("predict-done")) return;
+      box.classList.add("predict-done");
+      buttons.forEach((item) => {
+        item.disabled = true;
+        if (item.dataset.guess === correct) item.classList.add("predict-right");
+        else if (item === button) item.classList.add("predict-wrong");
+      });
+      reveal.hidden = false;
+      reveal.classList.toggle("predict-hit", button.dataset.guess === correct);
+    }));
+  });
+
+  // ---------- V2: reading progress + section scrollspy ----------
+  const progressBar = document.querySelector(".site-header .progress");
+  if (progressBar) {
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      progressBar.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+  const navLinks = [...document.querySelectorAll(".site-header nav a")];
+  const spyTargets = navLinks.map((a) => document.querySelector(a.hash)).filter(Boolean);
+  if (spyTargets.length && "IntersectionObserver" in window) {
+    const spy = new IntersectionObserver((entryList) => {
+      entryList.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((a) => a.setAttribute("aria-current", String(a.hash === `#${entry.target.id}`)));
+      });
+    }, { rootMargin: "-30% 0px -60% 0px" });
+    spyTargets.forEach((t) => spy.observe(t));
+  }
+
+  // ---------- V2: glossary section fills from the same GLOSSARY the cards use,
+  // localized at load through GL_T exactly like the popover. ----------
+  document.querySelectorAll(".glossary details[data-glentry]").forEach((d) => {
+    const entry = GLOSSARY[d.dataset.glentry];
+    if (!entry) return;
+    const localized = (value) => (typeof GL_T === "function" ? GL_T(value) : value);
+    d.querySelector("summary").textContent = localized(entry[0]);
+    d.querySelector("p").textContent = localized(entry[1]);
+  });
 })();

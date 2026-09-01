@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Cómo la investigación de GenLayer automatiza el juicio con IA en entornos con adversarios: medir la fiabilidad, ajustar la evaluación y alinear los incentivos para apelar." />
+    <meta name="description" content="Cómo GenLayer automatiza el juicio con IA en entornos con adversarios: medir la fiabilidad de cada decisión, ajustar la evaluación y alinear los incentivos." />
     <meta name="author" content="GenLayer Research" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <title>Cómo automatizar decisiones ambiguas | GenLayer Research</title>
@@ -14,19 +14,22 @@
     <link rel="alternate" hreflang="zh-Hans" href="https://genlayerlabs.github.io/research/zh/" />
     <link rel="alternate" hreflang="ru" href="https://genlayerlabs.github.io/research/ru/" />
     <link rel="alternate" hreflang="x-default" href="https://genlayerlabs.github.io/research/" />
+    <link rel="icon" href="../favicon.ico" sizes="32x32" />
     <link rel="icon" href="../brand/genlayer-icon.svg?v=2" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../brand/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="GenLayer Research" />
     <meta property="og:title" content="Cómo automatizar decisiones ambiguas | GenLayer Research" />
-    <meta property="og:description" content="Cómo la investigación de GenLayer automatiza el juicio con IA en entornos con adversarios: medir la fiabilidad, ajustar la evaluación y alinear los incentivos para apelar." />
+    <meta property="og:description" content="Cómo GenLayer automatiza el juicio con IA en entornos con adversarios: medir la fiabilidad de cada decisión, ajustar la evaluación y alinear los incentivos." />
     <meta property="og:url" content="https://genlayerlabs.github.io/research/es/" />
+    <meta property="og:locale" content="es_ES" />
     <meta property="og:image" content="https://genlayerlabs.github.io/research/brand/aggregate-disambiguation-social.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Aggregate Disambiguation Systems: guía visual de la investigación de GenLayer" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Cómo automatizar decisiones ambiguas | GenLayer Research" />
-    <meta name="twitter:description" content="Cómo la investigación de GenLayer automatiza el juicio con IA en entornos con adversarios: medir la fiabilidad, ajustar la evaluación y alinear los incentivos para apelar." />
+    <meta name="twitter:description" content="Cómo GenLayer automatiza el juicio con IA en entornos con adversarios: medir la fiabilidad de cada decisión, ajustar la evaluación y alinear los incentivos." />
     <meta name="twitter:image" content="https://genlayerlabs.github.io/research/brand/aggregate-disambiguation-social.png" />
     <meta name="twitter:image:alt" content="Aggregate Disambiguation Systems: guía visual de la investigación de GenLayer" />
     <script type="application/ld+json">
@@ -38,6 +41,10 @@
             "@id": "https://genlayer.com/#organization",
             "name": "GenLayer",
             "url": "https://genlayer.com/",
+            "sameAs": [
+              "https://x.com/GenLayer",
+              "https://github.com/genlayerlabs"
+            ],
             "logo": {
               "@type": "ImageObject",
               "url": "https://genlayerlabs.github.io/research/brand/genlayer-icon.svg"
@@ -79,7 +86,7 @@
             "@id": "https://genlayerlabs.github.io/research/es/#guide",
             "url": "https://genlayerlabs.github.io/research/es/",
             "name": "Cómo automatizar decisiones ambiguas | GenLayer Research",
-            "description": "Cómo la investigación de GenLayer automatiza el juicio con IA en entornos con adversarios: medir la fiabilidad, ajustar la evaluación y alinear los incentivos para apelar.",
+            "description": "Cómo GenLayer automatiza el juicio con IA en entornos con adversarios: medir la fiabilidad de cada decisión, ajustar la evaluación y alinear los incentivos.",
             "isPartOf": {
               "@id": "https://genlayerlabs.github.io/research/#website"
             },
@@ -271,500 +278,669 @@
               "@id": "https://genlayer.com/#organization"
             },
             "inLanguage": "en"
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://genlayerlabs.github.io/research/es/#faq",
+            "inLanguage": "es",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "¿Por qué ayuda que el grupo de evaluadores sea más grande?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cuantos más jueces consultes, menor es la probabilidad de que el panel se aparte del lado que prefiere todo el conjunto."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué hace que una decisión sea más fácil de resolver?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cuanto mayor es el acuerdo dentro del conjunto, menos jueces hacen falta para un resultado estable."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Una decisión reproducible es necesariamente verdadera?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Significa que los paneles elegidos al azar tienden a coincidir con el conjunto declarado. La verdad es una cuestión aparte, y empírica."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué ocurre si algunos evaluadores son adversarios?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "El paper calcula el error exacto en el peor caso cuando una proporción conocida del conjunto está corrompida antes de sortear el panel. La tolerancia se mide, no se supone."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Es sintaxis real?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No, es ilustrativa. Los contratos reales de GenVM son clases de Python que se ejecutan aisladas, pero el mecanismo —un criterio declarado por llamada para cada operación de IA— es exactamente el que especifica el whitepaper."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Por qué dos validadores rechazan una respuesta honesta?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sus propias reejecuciones llegan honestamente al veredicto contrario. Eso es discrepancia, no trampa: nunca se castiga, y la estadística de Fiabilidad está pensada para absorberla."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Quién elige el criterio?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "El desarrollador del contrato, en cada llamada. Distintas llamadas de un mismo contrato pueden declarar criterios distintos."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Por qué no exigir sin más que todos los validadores obtengan exactamente el mismo resultado?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "En las llamadas a una IA y en las lecturas de la web no hay un único resultado correcto: dos resúmenes correctos difieren en las palabras. El código determinista se sigue comprobando byte a byte."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Por qué puede el sistema empezar con pocos evaluadores?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "La mayoría de las decisiones se resuelven barato. Añade jueces solo cuando el beneficio supere al coste."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cuándo merece la pena evaluar más?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cuando hay bastante en juego, o la evidencia es lo bastante débil, como para pagar otra mirada."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Por qué distinguir entre volver a evaluar esta respuesta y generar otra?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Compran cosas distintas: volver a comprobar añade evidencia sobre la misma respuesta; regenerar cambia la respuesta misma. El paper pone precio a cada opción antes de gastar."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿La red en producción sigue realmente esta regla ideal?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Aquí no se demuestra. La regla es un ideal de referencia; la red solo lo alcanza si a alguien le compensa en privado presentar la apelación adecuada. Eso es justamente lo que estudia Incentivos."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿De dónde sale el dinero que paga a los validadores?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Dos flujos: las comisiones de transacción y una emisión que baja del 9% hacia el 4% siguiendo una curva fija (un techo; las quemas solo pueden rebajarlo). La DAO se financia solo con comisiones, así que sus ingresos siguen el uso real."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Por qué acaba sancionado un validador?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "El error honesto y la mala conducta tienen precios distintos. Perder una votación solo quema cantidades del tamaño de una comisión, nunca el principal. La inactividad penaliza un 1%, el fraude demostrable penaliza al líder un 5%, y una apelación fallida pierde su fianza. La discrepancia se absorbe; la mala conducta se castiga."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿La ponderación por raíz cuadrada detiene por sí sola los ataques Sybil?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No, y el paper lo dice. El peso cóncavo solo amortigua la concentración; lo que impide fragmentarse es que cada identidad tiene que bloquear los 42.000 GEN completos, mantener su propio nodo y exponerse a su propia penalización."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Puedo ganar recompensas sin operar un validador?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí. Delega 42 GEN o más y las recompensas se recomponen solas. No hay comisiones que comparar: el protocolo fija el reparto, y cada GEN en la posición de un validador rinde lo mismo."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué lleva a alguien a apelar?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sus probabilidades de ganar, la recompensa, la fianza en riesgo, lo que cuesta apelar y cualquier interés privado en el resultado."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Se pueden diseñar incentivos para que las apelaciones útiles lleguen a presentarse?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Bajo ciertas condiciones, sí. El paper muestra cómo calibrar las recompensas para que el interés privado siga de cerca los casos en que al sistema le conviene otro panel."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Por qué importa que varias personas puedan apelar?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "En cuanto muchas personas pueden apelar, sus decisiones interactúan: esperar, competir por llegar primero, duplicar esfuerzo. El mecanismo tiene que poner precio a las tres cosas."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Por qué no subir la fianza sin más para frenar las apelaciones frívolas?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Una fianza mayor financia el panel y disuade el spam, pero inmoviliza capital: las cuentas del beneficio pueden seguir siendo idénticas mientras el grupo de personas que puede permitirse apelar se reduce drásticamente."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué cubre exactamente la verificación?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Un modelo por capas: un grafo de estados canónico, especificaciones TLA+ comprobadas contra él y una correspondencia entre cada transición y el código Solidity de una revisión fijada."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Demuestra esto que el código no tiene errores?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Demuestra propiedades declaradas sobre un modelo declarado de una revisión fijada. Precisamente ese acotamiento es lo que hace que las afirmaciones se puedan comprobar."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Por qué volver a verificar en lugar de demostrar una sola vez?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "El protocolo sigue evolucionando. Cada revisión se vuelve a comprobar contra las mismas propiedades, así que una desviación silenciosa aparece como una comprobación fallida y no como una incidencia en producción."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Ha cazado algo real este banco de pruebas?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí: la condición de carrera y los tres invariantes rotos que se mencionan arriba. Todos confirmados en la implementación y comunicados al equipo."
+                }
+              }
+            ]
           }
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css" />
-    <link rel="stylesheet" href="../bridge-critical.css" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtikod1b" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtikod1b" />
   </head>
   <body>
-    <a class="skip-link" href="#genlayer">Saltar la introducción</a>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="GenLayer, volver arriba">
-        <img src="../brand/genlayer-logo-white.svg" alt="GenLayer" />
-        <span>EL JUICIO COMO PROTOCOLO<small>GUÍA VISUAL DE LA INVESTIGACIÓN</small></span>
-      </a>
-      <nav aria-label="Secciones de la página">
-        <a href="#genlayer">GenLayer</a><a href="#measure">Fiabilidad</a><a href="#equivalence">Equivalencia</a><a href="#adapt">Adaptación</a><a href="#tokenomics">Tokenomics</a><a href="#align">Incentivos</a><a href="#verify">Verificación formal</a><a href="#papers">Los artículos</a>
-      </nav>
-      <label class="language-switcher"><span>Elegir idioma</span><select data-language-select data-current-locale="es" aria-label="Elegir idioma"><option value="../" data-locale="en" lang="en" aria-label="English">EN</option><option value="../es/" data-locale="es" lang="es" aria-label="Español" selected>ES</option><option value="../ko/" data-locale="ko" lang="ko" aria-label="한국어">KO</option><option value="../zh/" data-locale="zh" lang="zh-Hans" aria-label="简体中文">ZH</option><option value="../ru/" data-locale="ru" lang="ru" aria-label="Русский">RU</option></select></label>
-    </header>
 
 
-    <main id="top">
-      <section class="bi-onboard critical-onboard" aria-label="Por qué juzgar lo ambiguo necesita un sistema">
-        <div class="bi-stage">
-          <div class="bi-scene active" data-intro-scene="1">
-            <h1>Algunas decisiones pueden <em>automatizarse.</em></h1>
-            <div class="bi-question-flow">
-              <div class="bi-question-card"><small>UNA REGLA CLARA</small><strong>¿Ha llegado el pago?</strong></div><b>→</b>
-              <div class="bi-single-answer"><small>UNA RESPUESTA</small><strong>SÍ.</strong></div>
-            </div>
-          </div>
-          <div class="bi-scene" data-intro-scene="2" aria-hidden="true">
-            <h1>Otras requieren <em>juicio.</em></h1>
-            <div class="bi-question-card bi-ambiguous-card"><small>UNA PREGUNTA AMBIGUA</small><strong>¿Ha cumplido el trabajo con el encargo?</strong></div>
-          </div>
-          <div class="bi-scene" data-intro-scene="3" aria-hidden="true">
-            <h1>Los evaluadores de IA pueden dar <em>respuestas diferentes.</em></h1>
-            <div class="bi-judgment-row" aria-label="Tres juicios emitidos por separado: sí, no, sí">
-              <div><small>JUICIO 01</small><strong>SÍ.</strong></div><div><small>JUICIO 02</small><strong>NO.</strong></div><div><small>JUICIO 03</small><strong>SÍ.</strong></div>
-            </div>
-          </div>
-          <div class="bi-scene" data-intro-scene="4" aria-hidden="true">
-            <h1>Pero el software sigue necesitando <em>una sola decisión para actuar.</em></h1>
-            <div class="bi-bottleneck">
-              <div class="bi-mini-verdicts"><i>SÍ</i><i>NO</i><i>SÍ</i></div><b>→</b>
-              <div class="bi-decision-gap"><small>?</small><strong>¿CÓMO?</strong></div><b>→</b>
-              <div class="bi-final-box"><small>UN RESULTADO</small><strong>EL SOFTWARE PUEDE ACTUAR</strong></div>
-            </div>
-          </div>
-          <div class="bi-scene bi-research-origin" data-intro-scene="5" aria-hidden="true">
-            <div class="bi-research-copy">
-              <p class="bi-final-kicker">LA INVESTIGACIÓN</p>
-              <h1>Durante tres años hemos estudiado cómo automatizar decisiones ambiguas en <em>entornos con adversarios.</em></h1>
-              <div class="bi-built-ctas">
-                <a class="bi-research-enter" href="#genlayer">Ver la guía completa <span>↓</span></a>
-              </div>
-            </div>
-            <div class="bi-paper-fan" aria-label="Los tres artículos centrales de la investigación">
-              <article><img src="../covers/part-1.webp" alt="Primera página de Aggregate Disambiguation Systems" /><span><small>FIABILIDAD</small><strong>Propiedades estadísticas</strong></span></article>
-              <article><img src="../covers/part-2.webp" alt="Primera página de Adaptive Economic Aggregate Disambiguation" /><span><small>ADAPTACIÓN</small><strong>Evaluación ajustada al coste</strong></span></article>
-              <article><img src="../covers/part-4.webp" alt="Primera página de Multi-Agent Appeal Games" /><span><small>INCENTIVOS</small><strong>Quién paga por apelar</strong></span></article>
-            </div>
+
+<a class="skip-link" href="#map">Saltar la introducción</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="GenLayer, volver arriba">
+      <img src="../brand/genlayer-logo-white.svg" alt="GenLayer" width="300" height="72" />
+      <span>EL JUICIO COMO PROTOCOLO<small>GUÍA VISUAL DE LA INVESTIGACIÓN</small></span>
+    </a>
+    <nav aria-label="Secciones de la página">
+      <a href="#machine">La máquina</a><a href="#measure">Fiabilidad</a><a href="#agree">Equivalencia</a><a href="#adapt">Adaptación</a><a href="#sustain">Tokenomics</a><a href="#align">Incentivos</a><a href="#verify">Verificación formal</a><a href="#papers">Papers</a>
+    </nav>
+    <label class="language-switcher"><span>Elegir idioma</span><select data-language-select data-current-locale="es" aria-label="Elegir idioma"><option value="../" data-locale="en" lang="en" aria-label="English">EN</option><option value="../es/" data-locale="es" lang="es" aria-label="Español" selected>ES</option><option value="../ko/" data-locale="ko" lang="ko" aria-label="한국어">KO</option><option value="../zh/" data-locale="zh" lang="zh-Hans" aria-label="简体中文">ZH</option><option value="../ru/" data-locale="ru" lang="ru" aria-label="Русский">RU</option></select></label>
+    <i class="progress" aria-hidden="true"></i>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="bi-onboard critical-onboard" aria-label="Por qué juzgar lo ambiguo necesita un sistema">
+    <div class="bi-overview">
+      <p class="bi-overview-kicker">GENLAYER RESEARCH</p>
+      <p class="bi-overview-title">Una breve introducción a esta exploración:</p>
+    </div>
+    <div class="bi-stage">
+      <button class="bi-arrow bi-arrow-prev" type="button" aria-label="Diapositiva anterior">&#8249;</button>
+      <button class="bi-arrow bi-arrow-next" type="button" aria-label="Diapositiva siguiente">&#8250;</button>
+      <div class="bi-scene active" data-intro-scene="1">
+        <h1>Algunas decisiones pueden <em>automatizarse.</em></h1>
+        <div class="bi-question-flow">
+          <div class="bi-question-card"><small>UNA REGLA CLARA</small><strong>¿Ha llegado el pago?</strong></div><b>→</b>
+          <div class="bi-single-answer"><small>UNA RESPUESTA</small><strong>SÍ.</strong></div>
+        </div>
+      </div>
+      <div class="bi-scene" data-intro-scene="2" aria-hidden="true">
+        <h2>Otras requieren <em>juicio.</em></h2>
+        <div class="bi-question-card bi-ambiguous-card"><small>UNA PREGUNTA AMBIGUA</small><strong>¿Ha cumplido el trabajo con el encargo?</strong></div>
+      </div>
+      <div class="bi-scene" data-intro-scene="3" aria-hidden="true">
+        <h2>Los evaluadores de IA pueden dar <em>respuestas diferentes.</em></h2>
+        <div class="bi-judgment-row" aria-label="Cinco juicios separados: sí, no, sí, no, sí">
+          <div><small>JUICIO 01</small><strong>SÍ</strong></div><div><small>JUICIO 02</small><strong>NO</strong></div><div><small>JUICIO 03</small><strong>SÍ</strong></div><div><small>JUICIO 04</small><strong>NO</strong></div><div><small>JUICIO 05</small><strong>SÍ</strong></div>
+        </div>
+      </div>
+      <div class="bi-scene" data-intro-scene="4" aria-hidden="true">
+        <h2>Pero el software sigue necesitando <em>una sola decisión para actuar.</em></h2>
+        <div class="bi-bottleneck">
+          <div class="bi-mini-verdicts" aria-label="Cinco juicios: tres sí, dos no"><i>SÍ</i><i>NO</i><i>SÍ</i><i>NO</i><i>SÍ</i></div><b>→</b>
+          <div class="bi-decision-gap"><small>EL PASO QUE FALTA</small><strong>¿VEREDICTO?</strong></div><b>→</b>
+          <div class="bi-final-box"><small>UN RESULTADO</small><strong>EL SOFTWARE PUEDE ACTUAR</strong></div>
+        </div>
+      </div>
+      <div class="bi-scene bi-research-origin" data-intro-scene="5" aria-hidden="true">
+        <div class="bi-research-copy">
+          <p class="bi-final-kicker">LA INVESTIGACIÓN</p>
+          <h2>Durante tres años hemos estudiado cómo automatizar decisiones ambiguas en <em>entornos con adversarios.</em></h2>
+          <div class="bi-built-ctas">
+            <a class="bi-research-enter" href="#map">Ver la guía completa <span>↓</span></a>
           </div>
         </div>
-        <div class="bi-controls">
-          <div class="bi-progress" aria-label="Progreso de la introducción"><button class="active" type="button" data-intro-progress="1" aria-label="Mostrar el paso 1 de 5 de la introducción" aria-current="step"></button><button type="button" data-intro-progress="2" aria-label="Mostrar el paso 2 de 5 de la introducción"></button><button type="button" data-intro-progress="3" aria-label="Mostrar el paso 3 de 5 de la introducción"></button><button type="button" data-intro-progress="4" aria-label="Mostrar el paso 4 de 5 de la introducción"></button><button type="button" data-intro-progress="5" aria-label="Mostrar el paso 5 de 5 de la introducción"></button></div>
-          <button class="bi-skip" type="button">Saltar la introducción</button><button class="bi-replay" type="button" hidden>Repetir la introducción ↺</button>
+        <div class="bi-paper-fan" aria-label="Los tres papers centrales de la investigación">
+          <article><img src="../covers/part-1-560.webp" alt="Primera página de Aggregate Disambiguation Systems" width="850" height="1100" /><span><small>FIABILIDAD</small><strong>Propiedades estadísticas</strong></span></article>
+          <article><img src="../covers/part-2-560.webp" alt="Primera página de Adaptive Economic Aggregate Disambiguation" width="850" height="1100" /><span><small>ADAPTACIÓN</small><strong>Evaluación ajustada al coste</strong></span></article>
+          <article><img src="../covers/part-4-560.webp" alt="Primera página de Multi-Agent Appeal Games" width="850" height="1100" /><span><small>INCENTIVOS</small><strong>Quién paga por apelar</strong></span></article>
         </div>
-      </section>
+      </div>
+    </div>
+    <div class="bi-controls">
+      <div class="bi-progress" aria-label="Progreso de la introducción"><button class="active" type="button" data-intro-progress="1" aria-label="Mostrar el paso 1 de 5 de la introducción" aria-current="step"></button><button type="button" data-intro-progress="2" aria-label="Mostrar el paso 2 de 5 de la introducción"></button><button type="button" data-intro-progress="3" aria-label="Mostrar el paso 3 de 5 de la introducción"></button><button type="button" data-intro-progress="4" aria-label="Mostrar el paso 4 de 5 de la introducción"></button><button type="button" data-intro-progress="5" aria-label="Mostrar el paso 5 de 5 de la introducción"></button></div>
+      <button class="bi-skip" type="button">Saltar la introducción</button><button class="bi-replay" type="button" hidden>Repetir la introducción ↺</button>
+    </div>
+  </section>
 
-      <section class="critical-chapter chapter-genlayer" id="genlayer">
-        <div class="shell solution-layout">
-          <div class="chapter-copy solution-head">
-            <p class="eyebrow">NUESTRA PROPUESTA</p>
-            <h2>GenLayer: una blockchain capaz de <em>juzgar.</em></h2>
-            <p class="chapter-lede">GenLayer es una red cuyos contratos pueden actuar ante preguntas sin una respuesta evidente. Su consenso, Optimistic Democracy, funciona en tres tiempos: los validadores —cada uno con el modelo de IA que elija— juzgan la decisión, una regla declarada combina sus votos y el veredicto queda abierto a impugnación antes de ser definitivo.</p>
-          </div>
-          <div class="od-flow">
-            <p class="od-flow-label">Una decisión, de principio a fin.</p>
-            <svg id="odf-svg" viewBox="0 0 760 236" style="display:block;width:100%;height:auto">
-              <defs><marker id="odf-arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#b7c1d1"/></marker><marker id="odf-arr-hot" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#e2734a"/></marker></defs>
-              <line x1="182" y1="74" x2="212" y2="74" stroke="#c5cdd9" stroke-width="1.5" marker-end="url(#odf-arr)"/>
-              <line x1="380" y1="74" x2="410" y2="74" stroke="#c5cdd9" stroke-width="1.5" marker-end="url(#odf-arr)"/>
-              <line x1="578" y1="74" x2="608" y2="74" stroke="#c5cdd9" stroke-width="1.5" marker-end="url(#odf-arr)"/>
-              <path id="odf-loop" d="M 495,110 L 495,176 Q 495,188 483,188 L 309,188 Q 297,188 297,176 L 297,112" fill="none" stroke="#e2734a" stroke-width="1.5" marker-end="url(#odf-arr-hot)"/>
-              <text x="396" y="212" font-size="9.5" font-weight="700" letter-spacing=".1em" text-anchor="middle" fill="#b3542a">IMPUGNADA · LA FIANZA FINANCIA UN PANEL MAYOR · 7 · 11 · 13 …</text>
-              <g id="odf-st">
-                <g data-b="0"><rect class="sc-card" x="20" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="18" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="101" y="70">Enviada</text><text class="sc-t2" x="101" y="88">una decisión ambigua</text></g>
-                <g data-b="1"><rect class="sc-card" x="216" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="214" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="297" y="70">Vota el panel</text><text class="sc-t2" x="297" y="88">validadores sorteados</text></g>
-                <g data-b="2"><rect class="sc-card" x="414" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="412" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="495" y="70">Ventana abierta</text><text class="sc-t2" x="495" y="88">30 minutos para objetar</text></g>
-                <g data-b="3"><rect class="sc-card sc-dark" x="612" y="42" width="128" height="64" rx="10"/><rect class="sc-ring" x="610" y="40" width="132" height="68" rx="12"/><text class="sc-t1 sc-w" x="676" y="70">Definitiva</text><text class="sc-t2 sc-wm" x="676" y="88">se ejecuta el pago</text></g>
-              </g>
-              <circle id="odf-token" r="5.5" fill="#3157d5" stroke="white" stroke-width="2"/>
-            </svg>
-            <p class="odf-status"><span id="odf-note"></span></p>
-          </div>
+  <section class="map" id="map" aria-label="El argumento en una pantalla">
+    <div class="wide">
+      <p class="label" style="color: var(--blue-ink)">El argumento</p>
+      <h2>Seis preguntas, un sistema.</h2>
+      <p class="intro">Cada capítulo plantea una pregunta y la responde. Aquí están todas las respuestas de una vez; el resto de la página es la evidencia, y cada capítulo termina con el paper que lleva la prueba.</p>
+      <ol>
+        <li><a href="#machine"><span class="num">00</span><span class="word">LA MÁQUINA</span><span class="q">¿Qué estamos construyendo?</span><span class="a">Una blockchain que puede juzgar.</span></a></li>
+        <li><a href="#measure"><span class="num">01</span><span class="word">FIABILIDAD</span><span class="q">¿Puedes fiarte de un panel pequeño de jueces de IA?</span><span class="a">La confianza se convierte en un número.</span></a></li>
+        <li><a href="#agree"><span class="num">02</span><span class="word">EQUIVALENCIA</span><span class="q">¿Cuándo dos respuestas de IA son «la misma»?</span><span class="a">Lo declara el contrato.</span></a></li>
+        <li><a href="#adapt"><span class="num">03</span><span class="word">ADAPTACIÓN</span><span class="q">¿Cuánta evaluación debe comprar una decisión?</span><span class="a">Exactamente la que justifica lo que hay en juego.</span></a></li>
+        <li><a href="#sustain"><span class="num">04</span><span class="word">TOKENOMICS</span><span class="q">¿Por qué el voto no se puede comprar con ordenadores?</span><span class="a">Los votos son capital bloqueado.</span></a></li>
+        <li><a href="#align"><span class="num">05</span><span class="word">INCENTIVOS</span><span class="q">¿Quién paga por impugnar una decisión errónea?</span><span class="a">Aquel para quien la recompensa lo haga racional.</span></a></li>
+        <li><a href="#verify"><span class="num">06</span><span class="word">VERIFICACIÓN FORMAL</span><span class="q">¿El código desplegado coincide con las matemáticas?</span><span class="a">Se reverifica con cada cambio.</span></a></li>
+      </ol>
+    </div>
+  </section>
+
+  <span id="genlayer"></span>
+  <section class="machine" id="machine" aria-label="GenLayer y Optimistic Democracy">
+    <div class="wide">
+      <p class="label"><span>00</span> · <span>La máquina</span></p>
+      <h2>GenLayer: una blockchain capaz de <em>juzgar.</em></h2>
+      <p class="lede">GenLayer es una blockchain cuyos contratos pueden actuar ante preguntas sin respuesta demostrable: ¿se entregó el trabajo como se prometió?, ¿llegó dañado el envío? Su consenso es <span class="gl" data-gl="od">Optimistic Democracy</span>: un <span class="gl" data-gl="leader">líder</span> propone, un <span class="gl" data-gl="panel">panel</span> de <span class="gl" data-gl="validator">validadores</span> —cada uno con su propio modelo de IA— vota, y el veredicto queda abierto a impugnación antes de ser definitivo.</p>
+      <div class="od-flow">
+        <p class="od-flow-label">Una decisión, de principio a fin.</p>
+        <svg id="odf-svg" viewBox="0 0 760 236">
+          <defs><marker id="odf-arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#55557A"/></marker><marker id="odf-arr-hot" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#FF7B4A"/></marker></defs>
+          <line x1="182" y1="74" x2="212" y2="74" stroke="#55557A" stroke-width="1.5" marker-end="url(#odf-arr)"/>
+          <line x1="380" y1="74" x2="410" y2="74" stroke="#55557A" stroke-width="1.5" marker-end="url(#odf-arr)"/>
+          <line x1="578" y1="74" x2="608" y2="74" stroke="#55557A" stroke-width="1.5" marker-end="url(#odf-arr)"/>
+          <path id="odf-loop" d="M 495,110 L 495,176 Q 495,188 483,188 L 309,188 Q 297,188 297,176 L 297,112" fill="none" stroke="#FF7B4A" stroke-width="1.5" marker-end="url(#odf-arr-hot)"/>
+          <text x="396" y="212" font-size="9.5" font-weight="700" letter-spacing=".1em" text-anchor="middle" fill="#FF7B4A">IMPUGNADA · LA FIANZA FINANCIA UN PANEL MAYOR · 7 · 11 · 13 …</text>
+          <g id="odf-st">
+            <g data-b="0"><rect class="sc-card" x="20" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="18" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="101" y="70">Enviada</text><text class="sc-t2" x="101" y="88">una decisión ambigua</text></g>
+            <g data-b="1"><rect class="sc-card" x="216" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="214" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="297" y="70">Vota el panel</text><text class="sc-t2" x="297" y="88">validadores sorteados</text></g>
+            <g data-b="2"><rect class="sc-card" x="414" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="412" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="495" y="70">Ventana abierta</text><text class="sc-t2" x="495" y="88">30 minutos para objetar</text></g>
+            <g data-b="3"><rect class="sc-card sc-dark" x="612" y="42" width="128" height="64" rx="10"/><rect class="sc-ring" x="610" y="40" width="132" height="68" rx="12"/><text class="sc-t1 sc-w" x="676" y="70">Definitiva</text><text class="sc-t2 sc-wm" x="676" y="88">se ejecuta el pago</text></g>
+          </g>
+          <circle id="odf-token" r="5.5" fill="#8B8AFF" stroke="white" stroke-width="2"/>
+        </svg>
+        <svg class="odf-mobile" viewBox="0 0 320 416" aria-hidden="true">
+          <defs><marker id="odfm-arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#55557A"/></marker><marker id="odfm-arr-hot" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#FF7B4A"/></marker></defs>
+          <line x1="160" y1="88" x2="160" y2="118" stroke="#55557A" stroke-width="1.5" marker-end="url(#odfm-arr)"/>
+          <line x1="160" y1="192" x2="160" y2="222" stroke="#55557A" stroke-width="1.5" marker-end="url(#odfm-arr)"/>
+          <line x1="160" y1="296" x2="160" y2="326" stroke="#55557A" stroke-width="1.5" marker-end="url(#odfm-arr)"/>
+          <path d="M 60,276 L 46,276 Q 34,276 34,264 L 34,184 Q 34,172 46,172 L 52,172" fill="none" stroke="#FF7B4A" stroke-width="1.5" marker-end="url(#odfm-arr-hot)"/>
+          <text transform="rotate(-90 20 224)" x="20" y="224" font-size="9.5" font-weight="700" letter-spacing=".12em" text-anchor="middle" fill="#FF7B4A">IMPUGNADA</text>
+          <g>
+            <g><rect class="sc-card" x="60" y="20" width="200" height="64" rx="10"/><text class="sc-t1" x="160" y="48" font-size="14">Enviada</text><text class="sc-t2" x="160" y="66" font-size="10.5">una decisión ambigua</text></g>
+            <g><rect class="sc-card" x="60" y="124" width="200" height="64" rx="10"/><text class="sc-t1" x="160" y="152" font-size="14">Vota el panel</text><text class="sc-t2" x="160" y="170" font-size="10.5">validadores sorteados</text></g>
+            <g><rect class="sc-card" x="60" y="228" width="200" height="64" rx="10"/><text class="sc-t1" x="160" y="256" font-size="14">Ventana abierta</text><text class="sc-t2" x="160" y="274" font-size="10.5">30 minutos para objetar</text></g>
+            <g><rect class="sc-card sc-dark" x="60" y="332" width="200" height="64" rx="10"/><text class="sc-t1 sc-w" x="160" y="360" font-size="14">Definitiva</text><text class="sc-t2 sc-wm" x="160" y="378" font-size="10.5">se ejecuta el pago</text></g>
+          </g>
+        </svg>
+        <p class="odf-status"><span id="odf-note"></span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 MEASURE -->
+  <section class="chapter" id="measure" aria-label="Fiabilidad">
+    <div class="spine">
+      <p class="marker"><span class="num">01</span><span class="word">FIABILIDAD</span><button class="title-help" type="button" data-tip="Fiabilidad = poner un número a lo fiable que es la decisión de un panel pequeño, antes de que entren en juego el dinero, las apelaciones o los incentivos.">?</button></p>
+      <h2>¿Se puede confiar en una decisión cuando los evaluadores discrepan o hacen trampas?</h2>
+      <div class="answer"><span class="label">La respuesta corta</span><p>Sí, porque la confianza se convierte en un número. El paper calcula con exactitud con qué frecuencia un panel pequeño y aleatorio coincide con su conjunto declarado de jueces, incluso con adversarios dentro.</p></div>
+      <p class="lede">Haz una pregunta discutible a un conjunto amplio de evaluadores honestos y puede que 65 digan que sí y 35 que no. GenLayer solo pregunta a un puñado pequeño y elegido al azar. ¿Hasta dónde puedes fiarte de ese puñado?</p>
+      <div class="plain"><span class="label">LA IDEA EN PALABRAS SENCILLAS</span>
+        <p>Imagina el conjunto declarado de posibles jueces <span class="gl" data-gl="population">(la población de evaluadores)</span>. Si se inclina hacia un lado, ¿con qué frecuencia un <span class="gl" data-gl="panel">panel</span> pequeño y aleatorio cae del mismo lado? Esa probabilidad es la <span class="gl" data-gl="reproducibility">reproducibilidad</span>: coincidir con el conjunto, deliberadamente no con la verdad. El paper la calcula con exactitud, incluido el peor caso, en el que los <span class="gl" data-gl="adversary">adversarios</span> votan siempre contra la mayoría honesta.</p>
+      </div>
+    </div>
+    <div class="wide">
+      <div class="lab" aria-label="Laboratorio de fiabilidad del panel">
+        <span class="lab-chip">PRUÉBALO</span>
+        <p class="lab-head">Cambia la proporción de respuestas, los adversarios y el número de evaluadores.</p>
+        <div class="predict" data-predict="measure" data-answer="63">
+          <small>HAZ UNA PREDICCIÓN</small>
+          <p>Los adversarios convierten un conjunto de 65/35 en uno de 55/45. Votan once jueces al azar. ¿Con qué frecuencia siguen coincidiendo con la mayoría honesta?</p>
+          <div class="predict-choices"><button type="button" data-guess="50">Alrededor del 50%</button><button type="button" data-guess="63">Alrededor del 63%</button><button type="button" data-guess="90">Alrededor del 90%</button></div>
+          <p class="predict-reveal" hidden>Alrededor del 63%. Once jueces salen baratos, pero el resultado es frágil. Con 1.537 jueces esa misma cifra es del 99,996%. Pruébalo aquí abajo.</p>
         </div>
-      </section>
+        <label for="p1b-agreement">Proporción de evaluadores honestos que responden «sí» <output id="p1b-agreement-output" for="p1b-agreement">65%</output></label>
+        <input id="p1b-agreement" type="range" min="51" max="95" value="65" />
+        <label for="p1b-adversary">Proporción de evaluadores cuyo voto invierten los adversarios <output id="p1b-adversary-output" for="p1b-adversary">10%</output></label>
+        <input id="p1b-adversary" type="range" min="0" max="40" value="10" />
+        <div class="population-bar" aria-hidden="true"><i id="p1b-yes-bar"></i><b id="p1b-adv-bar"></b></div>
+        <div class="bar-labels"><span id="p1b-yes-label">55% SÍ</span><span id="p1b-adv-label">10% INVERTIDO</span><span id="p1b-no-label">35% NO</span></div>
+        <fieldset><legend>Número de evaluadores</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" class="active" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
+        <div class="lab-result" role="status" aria-live="polite"><small>CON QUÉ FRECUENCIA EL GRUPO SIGUE COINCIDIENDO CON LA MAYORÍA HONESTA</small><strong id="p1b-risk">—</strong><i><b id="p1b-risk-fill"></b></i><p id="p1b-risk-copy"></p></div>
+        <p class="fine">Peor caso según el modelo exacto no adaptativo del paper: todos los votos de los adversarios van en contra de la mayoría honesta.</p>
+      </div>
+    </div>
+    <div class="spine">
+      <div class="deeper">
+        <span class="label">Para profundizar</span>
+        <details class="proves"><summary>Lo que demuestra el paper, exactamente</summary><p>Fórmulas exactas para saber con qué frecuencia un panel de cualquier tamaño coincide con el conjunto declarado, con adversarios y sin ellos, y un modo de certificar cuántas decisiones futuras se resolverán de forma reproducible (probabilidades de error de panel finito, superficies de sensibilidad y certificados operativos).</p></details>
+        <details class="faq"><summary>¿Por qué ayuda que el grupo de evaluadores sea más grande?</summary><p>Cuantos más jueces consultes, menor es la probabilidad de que el panel se aparte del lado que prefiere todo el conjunto.</p></details>
+        <details class="faq"><summary>¿Qué hace que una decisión sea más fácil de resolver?</summary><p>Cuanto mayor es el acuerdo dentro del conjunto, menos jueces hacen falta para un resultado estable.</p></details>
+        <details class="faq"><summary>¿Una decisión reproducible es necesariamente verdadera?</summary><p>No. Significa que los paneles elegidos al azar tienden a coincidir con el conjunto declarado. La verdad es una cuestión aparte, y empírica.</p></details>
+        <details class="faq"><summary>¿Qué ocurre si algunos evaluadores son adversarios?</summary><p>El paper calcula el error exacto en el peor caso cuando una proporción conocida del conjunto está corrompida antes de sortear el panel. La tolerancia se mide, no se supone.</p></details>
+      </div>
+      <a class="read-paper" href="../papers/part-1-aggregate-disambiguation-systems.pdf" target="paper-aggregate-disambiguation">LEER EL PAPER · AGGREGATE DISAMBIGUATION SYSTEMS ↗</a>
+    </div>
+  </section>
 
-      <section class="critical-chapter chapter-one" id="measure">
-        <div class="shell chapter-layout">
-          <div class="chapter-copy">
-            <p class="eyebrow">FIABILIDAD</p>
-            <h2>¿Se puede confiar en una decisión cuando los evaluadores discrepan o hacen trampas?</h2>
-            <p class="chapter-lede">Acabas de ver una decisión recorrer el sistema de principio a fin. Todo lo que sigue es lo que podemos demostrar sobre un sistema así, empezando por el propio grupo: si el conjunto amplio de evaluadores se inclina hacia un lado, ¿con qué frecuencia un grupo más pequeño elegido al azar llegará a la misma conclusión? ¿Y qué parte de esa fiabilidad se mantiene cuando hay adversarios en la población?</p>
-            <div class="chapter-contribution"><span>APORTACIÓN PRINCIPAL</span><strong>El artículo calcula con exactitud la probabilidad de error de un panel finito, y separa la reproducibilidad de la verdad.</strong></div>
-          </div>
-          <div class="chapter-lab panel-lab adversary-lab">
-            <div class="lab-head"><strong>Cambia la proporción de respuestas, los adversarios y el número de evaluadores.</strong></div>
-            <label for="p1b-agreement">Proporción de evaluadores honestos que responden «sí» <output id="p1b-agreement-output" for="p1b-agreement">65%</output></label>
-            <input id="p1b-agreement" type="range" min="51" max="95" value="65" />
-            <label for="p1b-adversary">Proporción de evaluadores cuyo voto invierten los adversarios <output id="p1b-adversary-output" for="p1b-adversary">10%</output></label>
-            <input id="p1b-adversary" type="range" min="0" max="40" value="10" />
-            <div class="population-bar adversary-bar" aria-hidden="true"><i id="p1b-yes-bar"></i><b id="p1b-adv-bar"></b></div>
-            <div class="bar-labels"><span id="p1b-yes-label">55% SÍ</span><span id="p1b-adv-label">10% INVERTIDO</span><span id="p1b-no-label">35% NO</span></div>
-            <fieldset><legend>Número de evaluadores</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" class="active" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
-            <div class="lab-result"><small>CON QUÉ FRECUENCIA EL GRUPO SIGUE COINCIDIENDO CON LA MAYORÍA HONESTA</small><strong id="p1b-risk">—</strong><i><b id="p1b-risk-fill"></b></i><p id="p1b-risk-copy"></p></div>
-            <p class="appeal-gap-note">Peor caso según el modelo exacto no adaptativo del artículo: todos los votos de los adversarios van en contra de la mayoría honesta.</p>
-          </div>
-          <div class="chapter-source-row">
-            <div class="paper-faq" aria-label="Preguntas sobre Aggregate Disambiguation Systems">
-              <p class="paper-faq-label">PARA ENTENDERLO MEJOR</p>
-              <details name="faq-part-1">
-                <summary>¿Por qué ayuda que el grupo de evaluadores sea más grande?</summary>
-                <p>Porque cuando la población de evaluadores se inclina hacia un lado, la probabilidad certificada de que un grupo elegido al azar no reproduzca esa decisión va cayendo hacia cero a medida que el grupo crece.</p>
-              </details>
-              <details name="faq-part-1">
-                <summary>¿Qué hace que una decisión sea más fácil de resolver?</summary>
-                <p>Cuanto mayor es el acuerdo de fondo entre los evaluadores, menos evaluadores suelen hacer falta para llegar a un resultado estable.</p>
-              </details>
-              <details name="faq-part-1">
-                <summary>¿Una decisión reproducible es necesariamente verdadera?</summary>
-                <p>No. Significa que, dentro de una población de evaluadores fijada de antemano, lo más probable es que distintos grupos elegidos al azar tomen la misma decisión. El artículo mide reproducibilidad, no verdad objetiva.</p>
-              </details>
-              <details name="faq-part-1">
-                <summary>¿Qué ocurre si algunos evaluadores son adversarios?</summary>
-                <p>El artículo calcula el error exacto en el peor caso cuando una proporción conocida de la población de evaluadores está corrompida de antemano, antes de elegir el grupo al azar. Con eso, la tolerancia a los adversarios deja de ser un supuesto y pasa a ser un número.</p>
-              </details>
-            </div>
-            <a class="chapter-read" href="../papers/part-1-aggregate-disambiguation-systems.pdf" target="paper-aggregate-disambiguation">LEER EL ARTÍCULO · AGGREGATE DISAMBIGUATION SYSTEMS ↗</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="critical-chapter chapter-equivalence" id="equivalence">
-        <div class="shell chapter-layout">
-          <div class="chapter-copy">
-            <p class="eyebrow">EQUIVALENCIA</p>
-            <h2>¿Quién decide cuándo dos respuestas de IA son la misma respuesta?</h2>
-            <p class="chapter-lede">Aggregate Disambiguation Systems contaba votos de sí o no. Aquí está el origen de cada voto: hazle dos veces la misma pregunta a una IA y las palabras que vuelven no son las mismas, y el consenso clásico leería cualquier diferencia como un fallo. La respuesta de GenLayer es el Principio de Equivalencia (Equivalence Principle): el contrato declara, en cada llamada, qué cuenta como la misma respuesta; un validador redacta la propuesta y los demás la juzgan según ese criterio.</p>
-            <div class="chapter-contribution"><span>DEL WHITEPAPER</span><strong>En cada llamada, el contrato declara el criterio con el que cada validador juzga si la respuesta del líder es aceptable; cuando el criterio lo pide, la compara con su propia reejecución.</strong></div>
-          </div>
-          <div class="chapter-lab">
-            <div class="lab-head"><strong>Cambia el criterio y observa cómo cambia el voto.</strong></div>
-            <p class="i9-stage"><b>1</b> EL CONTRATO DECLARA QUÉ CUENTA COMO LA MISMA RESPUESTA</p>
-            <pre class="i9-code">llm_call(
+  <!-- 02 AGREE -->
+  <span id="equivalence"></span>
+  <section class="chapter" id="agree" aria-label="Equivalencia">
+    <div class="spine">
+      <p class="marker"><span class="num">02</span><span class="word">EQUIVALENCIA</span><button class="title-help" type="button" data-tip="Equivalencia = cómo respuestas de IA redactadas de forma distinta llegan a ser votos contables de sí o no. Sin este paso, el panel no tiene nada que contar.">?</button></p>
+      <h2>¿Quién decide cuándo dos respuestas de IA son la misma respuesta?</h2>
+      <div class="answer"><span class="label">La respuesta corta</span><p>Lo decide el contrato. Cada llamada declara qué cuenta como «la misma respuesta», y los validadores juzgan la propuesta del líder bajo esa regla declarada: el Principio de Equivalencia.</p></div>
+      <p class="lede">¿De dónde sale un voto? Hazle dos veces la misma pregunta a una IA y las palabras que vuelven no son las mismas. Una blockchain clásica interpreta cualquier diferencia como un fallo y rechaza trabajo honesto.</p>
+      <div class="plain"><span class="label">LA IDEA EN PALABRAS SENCILLAS</span>
+        <p>La solución es el <span class="gl" data-gl="equivalence">Principio de Equivalencia</span>: cada llamada del contrato declara qué cuenta como «la misma respuesta». El <span class="gl" data-gl="leader">líder</span> hace el trabajo y propone; los demás repiten la tarea y juzgan con esa regla. Decláralo bien y los votos llevan juicio dentro. Decláralo mal y se vuelven unánimes pero vacíos, o rechazan todo lo honesto.</p>
+      </div>
+    </div>
+    <div class="wide">
+      <div class="lab" aria-label="Laboratorio del criterio de equivalencia">
+        <span class="lab-chip">PRUÉBALO</span>
+        <p class="lab-head">Cambia el criterio y observa cómo cambia el voto.</p>
+        <p class="i9-stage"><b>1</b> EL CONTRATO DECLARA QUÉ CUENTA COMO LA MISMA RESPUESTA</p>
+        <pre class="i9-code">llm_call(
   task = "¿Cumple el informe entregado con el encargo?",
   <b>equivalence = <i id="i9-eq">"el mismo veredicto que tu propia reejecución"</i></b>,
 )</pre>
-            <p class="i9-alt"><span># o declara: </span><button type="button" class="active" data-c="0">mismo veredicto</button><span> · </span><button type="button" data-c="1">algo coherente</button><span> · </span><button type="button" data-c="2">idéntica byte a byte</button></p>
-            <p class="i9-stage"><b>2</b> EL LÍDER LO EJECUTA Y PROPONE</p>
-            <div class="i3-lead"><p>«Cumple el encargo: precios y competidores están bien tratados; la parte regulatoria es escueta, pero está.»</p></div>
-            <p class="i9-stage"><b>3</b> CINCO VALIDADORES LO REEJECUTAN Y VOTAN SOBRE LA RESPUESTA DEL LÍDER</p>
-            <table class="i9-table" id="i9-table"></table>
-            <div class="i3-tally"><div class="i3-pips" id="i9-pips"></div><strong id="i9-tally"></strong></div>
-            <div class="ep-verdict"><strong id="i9-action"></strong><p id="i9-copy"></p></div>
+        <p class="i9-alt"><span># o declara: </span><button type="button" class="active" data-c="0">mismo veredicto</button><span> · </span><button type="button" data-c="1">algo coherente</button><span> · </span><button type="button" data-c="2">idéntica byte a byte</button></p>
+        <p class="i9-stage"><b>2</b> EL LÍDER LO EJECUTA Y PROPONE</p>
+        <div class="i3-lead"><p>«Cumple el encargo: precios y competidores están bien tratados; la parte regulatoria es escueta, pero está.»</p></div>
+        <p class="i9-stage"><b>3</b> CINCO VALIDADORES LO REEJECUTAN Y VOTAN SOBRE LA RESPUESTA DEL LÍDER</p>
+        <table class="i9-table" id="i9-table"></table>
+        <div class="i3-tally"><div class="i3-pips" id="i9-pips"></div><strong id="i9-tally"></strong></div>
+        <div class="ep-verdict" role="status" aria-live="polite"><strong id="i9-action"></strong><p id="i9-copy"></p></div>
+      </div>
+    </div>
+    <div class="spine">
+      <div class="deeper">
+        <span class="label">Para profundizar</span>
+        <details class="proves"><summary>Lo que especifica el whitepaper, exactamente</summary><p>En cada llamada, el contrato declara el criterio con el que cada validador juzga si la respuesta del líder es aceptable; cuando el criterio lo pide, la compara con su propia reejecución.</p></details>
+        <details class="faq"><summary>¿Es sintaxis real?</summary><p>No, es ilustrativa. Los contratos reales de GenVM son clases de Python que se ejecutan aisladas, pero el mecanismo —un criterio declarado por llamada para cada operación de IA— es exactamente el que especifica el whitepaper.</p></details>
+        <details class="faq"><summary>¿Por qué dos validadores rechazan una respuesta honesta?</summary><p>Sus propias reejecuciones llegan honestamente al veredicto contrario. Eso es discrepancia, no trampa: nunca se castiga, y la estadística de Fiabilidad está pensada para absorberla.</p></details>
+        <details class="faq"><summary>¿Quién elige el criterio?</summary><p>El desarrollador del contrato, en cada llamada. Distintas llamadas de un mismo contrato pueden declarar criterios distintos.</p></details>
+        <details class="faq"><summary>¿Por qué no exigir sin más que todos los validadores obtengan exactamente el mismo resultado?</summary><p>En las llamadas a una IA y en las lecturas de la web no hay un único resultado correcto: dos resúmenes correctos difieren en las palabras. El código determinista se sigue comprobando byte a byte.</p></details>
+      </div>
+      <a class="read-paper" href="../papers/genlayer-whitepaper-v2.pdf" target="paper-genlayer-whitepaper">LEER EL WHITEPAPER · EL PRINCIPIO DE EQUIVALENCIA ↗</a>
+    </div>
+  </section>
+
+  <!-- 03 ADAPT -->
+  <section class="chapter" id="adapt" aria-label="Adaptación">
+    <div class="spine">
+      <p class="marker"><span class="num">03</span><span class="word">ADAPTACIÓN</span><button class="title-help" type="button" data-tip="Adaptación = decidir cuánta evaluación compra cada decisión. Los jueces cuestan dinero, así que el tamaño del panel es una elección, no una constante.">?</button></p>
+      <h2>¿Para qué preguntar a mil evaluadores cuando bastan once?</h2>
+      <div class="answer"><span class="label">La respuesta corta</span><p>Comprar exactamente la evaluación que justifica lo que hay en juego. En cada paso —parar, volver a evaluar o regenerar— la mejor jugada es la de menor pérdida total esperada, y el paper la calcula.</p></div>
+      <p class="lede">Cada evaluación es trabajo remunerado. Un reembolso de 200 $ no merece un panel de 1.537 jueces; un movimiento de tesorería de 20.000 $ quizá sí.</p>
+      <div class="plain"><span class="label">LA IDEA EN PALABRAS SENCILLAS</span>
+        <p>En cada paso el sistema puede parar, pagar más jueces para la misma respuesta (volver a evaluar) o pagar una respuesta nueva (regenerar). La mejor jugada minimiza la <span class="gl" data-gl="expectedloss">pérdida total esperada</span>: lo que cuestan los jueces más el coste medio de equivocarse. El paper calcula el ideal de referencia; si las apelaciones reales lo siguen o no es la pregunta de Incentivos, más abajo.</p>
+      </div>
+    </div>
+    <div class="wide">
+      <div class="lab" aria-label="Laboratorio de la regla de parada">
+        <span class="lab-chip">PRUÉBALO</span>
+        <p class="lab-head">¿Cuántos evaluadores conviene pagar para esta decisión?</p>
+        <div class="predict" data-predict="adapt" data-answer="95">
+          <small>HAZ UNA PREDICCIÓN</small>
+          <p>Hay 2.000 $ en juego en una pregunta discutible. Cada juez cuesta 10 centavos. ¿Dónde sale más barato parar?</p>
+          <div class="predict-choices"><button type="button" data-guess="11">11 jueces</button><button type="button" data-guess="95">95 jueces</button><button type="button" data-guess="767">767 jueces</button></div>
+          <p class="predict-reveal" hidden>95 jueces: unos 12 $ en total. Parar en 11 deja 297 $ de pérdida esperada; llegar a 767 cuesta 76,70 $ en honorarios para eliminar casi nada.</p>
+        </div>
+        <fieldset><legend>Elegir una decisión de ejemplo</legend>
+          <div class="size-buttons stop-presets">
+            <button type="button" data-p2s-preset="4">Disputa por un reembolso · $200</button>
+            <button type="button" class="active" data-p2s-preset="40">Hito freelance · $2.000</button>
+            <button type="button" data-p2s-preset="400">Tesorería de una DAO · $20.000</button>
           </div>
-          <div class="chapter-source-row">
-            <div class="paper-faq" aria-label="Preguntas sobre el Principio de Equivalencia">
-              <p class="paper-faq-label">PARA ENTENDERLO MEJOR</p>
-              <details name="faq-equivalence">
-                <summary>¿Es sintaxis real?</summary>
-                <p>Es ilustrativa. Los contratos de GenVM son clases de Python que se ejecutan en un entorno aislado; el mecanismo —un criterio de equivalencia declarado por llamada sobre cada operación no determinista— es exactamente el que especifica el whitepaper.</p>
-              </details>
-              <details name="faq-equivalence">
-                <summary>¿Por qué dos validadores rechazan una respuesta honesta?</summary>
-                <p>Porque sus propias reejecuciones llegan honestamente al veredicto contrario. Es una discrepancia de criterio, no una trampa: nunca se castiga como fraude, y la estadística de grupos de Aggregate Disambiguation Systems está pensada para absorberla.</p>
-              </details>
-              <details name="faq-equivalence">
-                <summary>¿Quién elige el criterio?</summary>
-                <p>El desarrollador del contrato, en cada llamada. Distintas llamadas de un mismo contrato pueden declarar criterios distintos.</p>
-              </details>
-              <details name="faq-equivalence">
-                <summary>¿Por qué no exigir sin más que todos los validadores obtengan exactamente el mismo resultado?</summary>
-                <p>Porque en las llamadas a un LLM y las lecturas de la web no existe un único resultado correcto: dos resúmenes correctos de un mismo texto no coinciden palabra por palabra. Las partes deterministas de un contrato se siguen comprobando por igualdad exacta; el criterio declarado se aplica solo a las llamadas no deterministas.</p>
-              </details>
-            </div>
-            <a class="chapter-read" href="../papers/genlayer-whitepaper-v2.pdf" target="paper-genlayer-whitepaper">LEER EL WHITEPAPER · EL PRINCIPIO DE EQUIVALENCIA ↗</a>
+        </fieldset>
+        <label for="p2s-stakes">Valor en riesgo si la decisión es errónea <output id="p2s-stakes-output" for="p2s-stakes">$2.000</output></label>
+        <input id="p2s-stakes" type="range" min="1" max="400" value="40" />
+        <label for="p2s-clarity">¿Hasta qué punto está disputada la pregunta? <output id="p2s-clarity-output" for="p2s-clarity">65% de acuerdo · disputada</output></label>
+        <input id="p2s-clarity" type="range" min="55" max="90" value="65" />
+        <p class="fine">Cada evaluador cobra 10 ¢. Los paneles siguen los tamaños de ronda del protocolo, de 5 hasta 1.537.</p>
+        <svg class="stop-curve" id="p2s-svg" viewBox="0 0 720 300" role="img" aria-label="Coste total esperado de detenerse en cada ronda del protocolo: las tarifas de los evaluadores suben con el número de evaluadores, la pérdida esperada por una decisión errónea baja y la suma alcanza su mínimo en el punto óptimo."></svg>
+        <p class="stop-caption">Total = tarifas + riesgo en cada ronda. Detente donde la línea negra alcanza su mínimo.</p>
+        <div class="lab-result" role="status" aria-live="polite"><small>LA REGLA DE PARADA</small><strong id="p2s-action">—</strong><p id="p2s-copy"></p></div>
+      </div>
+    </div>
+    <div class="spine">
+      <div class="deeper">
+        <span class="label">Para profundizar</span>
+        <details class="proves"><summary>Lo que demuestra el paper, exactamente</summary><p>Una regla precisa para saber qué jugada tiene la menor pérdida esperada, certificados que siguen siendo válidos aunque la respuesta cambie, y una demostración de que la escalera de escalado de GenLayer hace menos de seis veces el trabajo de una elección perfectamente informada (el planificador G-AE-ADS, una planificación seis-competitiva).</p></details>
+        <details class="faq"><summary>¿Por qué puede el sistema empezar con pocos evaluadores?</summary><p>La mayoría de las decisiones se resuelven barato. Añade jueces solo cuando el beneficio supere al coste.</p></details>
+        <details class="faq"><summary>¿Cuándo merece la pena evaluar más?</summary><p>Cuando hay bastante en juego, o la evidencia es lo bastante débil, como para pagar otra mirada.</p></details>
+        <details class="faq"><summary>¿Por qué distinguir entre volver a evaluar esta respuesta y generar otra?</summary><p>Compran cosas distintas: volver a comprobar añade evidencia sobre la misma respuesta; regenerar cambia la respuesta misma. El paper pone precio a cada opción antes de gastar.</p></details>
+        <details class="faq"><summary>¿La red en producción sigue realmente esta regla ideal?</summary><p>Aquí no se demuestra. La regla es un ideal de referencia; la red solo lo alcanza si a alguien le compensa en privado presentar la apelación adecuada. Eso es justamente lo que estudia Incentivos.</p></details>
+      </div>
+      <a class="read-paper" href="../papers/part-2-adaptive-economic-disambiguation.pdf" target="paper-adaptive-economic-disambiguation">LEER EL PAPER · ADAPTIVE ECONOMIC DISAMBIGUATION ↗</a>
+    </div>
+  </section>
+
+  <!-- 04 SUSTAIN -->
+  <span id="tokenomics"></span>
+  <section class="chapter" id="sustain" aria-label="Tokenomics">
+    <div class="spine">
+      <p class="marker"><span class="num">04</span><span class="word">TOKENOMICS</span><button class="title-help" type="button" data-tip="Tokenomics = el motor económico: de dónde sale la paga de los validadores y por qué hacerse con el control del voto sale ruinosamente caro.">?</button></p>
+      <h2>¿Qué impide que un solo participante levante nodos suficientes para tomar el control?</h2>
+      <div class="answer"><span class="label">La respuesta corta</span><p>Los votos son capital bloqueado, no ordenadores. Hacerse con el control exige comprar —y poner en riesgo— una parte enorme del GEN, un token que nadie puede emitir a voluntad.</p></div>
+      <p class="lede">Hasta aquí dimos por supuesto que los votos son difíciles de comprar. Pero los ordenadores son baratos: una sola persona puede levantar mil nodos.</p>
+      <div class="plain"><span class="label">LA IDEA EN PALABRAS SENCILLAS</span>
+        <p>Por eso los votos pertenecen a GEN bloqueado, un token que nadie puede emitir a voluntad. Un validador bloquea al menos 42.000 GEN que puede perder <span class="gl" data-gl="stake">(stake)</span>; cualquier otra persona puede asignar GEN a un validador en quien confíe <span class="gl" data-gl="delegation">(delegación)</span>. Hacerse con el control exige comprar una parte enorme de todo el GEN y dejarla donde la red pueda quemarla <span class="gl" data-gl="slashing">(slashing)</span>.</p>
+      </div>
+    </div>
+    <div class="wide">
+      <div class="lab" aria-label="Demostración de la barrera de stake">
+        <span class="lab-chip">MÍRALO</span>
+        <p class="lab-head">Mira al mismo atacante intentar hacerse con el control en dos mundos distintos.</p>
+        <div class="p38-wrap">
+          <div class="p38-panel p38-bad">
+            <small>MUNDO 1 · UN NODO, UN VOTO</small>
+            <strong>Los votantes falsos salen gratis, así que el atacante los fabrica</strong>
+            <div class="p38-dots" id="p38-flood" aria-hidden="true"></div>
+            <p id="p38-badnote">generando votantes falsos, cada uno por unos 0 $&hellip;</p>
+          </div>
+          <div class="p38-panel p38-good">
+            <small>MUNDO 2 · GENLAYER: UN TOKEN BLOQUEADO, UN VOTO</small>
+            <strong>Cada voto tiene que bloquear GEN, un token que nadie puede emitir a voluntad</strong>
+            <div class="p38-dots" id="p38-staked" aria-hidden="true"></div>
+            <div class="p38-supply" role="img" aria-label="Proporción de todo el GEN existente que el atacante ha tenido que comprar"><i id="p38-fill"></i></div><p class="p38-supply-label">PROPORCIÓN DE TODO EL GEN QUE EL ATACANTE HA TENIDO QUE COMPRAR</p>
+            <p id="p38-goodnote">mismo ataque aquí: comprar y bloquear el <b id="p38-cost">0%</b> de todo el GEN. Si hace trampas, ese stake se quema (slashing).</p>
           </div>
         </div>
-      </section>
+        <p class="p38-footer">Los nodos son gratis; el GEN no. Hacerse con el control significa comprar una parte gigantesca de la red y entregarla como rehén para que la red pueda quemarla. Los porcentajes son ilustrativos; las reglas exactas están en el paper.</p>
+        <p class="fine">De las tablas fijadas en el paper: mínimo de 42.000 GEN por validador, mínimo de 42 GEN por delegación, desbloqueo de 7 épocas y hasta un 5% de penalización por fraude.</p>
+      </div>
+    </div>
+    <div class="spine">
+      <div class="deeper">
+        <span class="label">Para profundizar</span>
+        <details class="proves"><summary>Lo que especifica el paper, exactamente</summary><p>El motor económico que sostiene el tribunal: una emisión inicial fija de 4.200 millones de GEN, una emisión que baja del 9% hacia el 4% (un techo, no una promesa), recompensas a partir de comisiones y emisión, reglas de staking y penalizaciones que nunca castigan la discrepancia honesta, solo la mala conducta demostrable.</p></details>
+        <details class="faq"><summary>¿De dónde sale el dinero que paga a los validadores?</summary><p>Dos flujos: las comisiones de transacción y una emisión que baja del 9% hacia el 4% siguiendo una curva fija (un techo; las quemas solo pueden rebajarlo). La DAO se financia solo con comisiones, así que sus ingresos siguen el uso real.</p></details>
+        <details class="faq"><summary>¿Por qué acaba sancionado un validador?</summary><p>El error honesto y la mala conducta tienen precios distintos. Perder una votación solo quema cantidades del tamaño de una comisión, nunca el principal. La inactividad penaliza un 1%, el fraude demostrable penaliza al líder un 5%, y una apelación fallida pierde su fianza. La discrepancia se absorbe; la mala conducta se castiga.</p></details>
+        <details class="faq"><summary>¿La ponderación por raíz cuadrada detiene por sí sola los ataques Sybil?</summary><p>No, y el paper lo dice. El peso cóncavo solo amortigua la concentración; lo que impide fragmentarse es que cada identidad tiene que bloquear los 42.000 GEN completos, mantener su propio nodo y exponerse a su propia penalización.</p></details>
+        <details class="faq"><summary>¿Puedo ganar recompensas sin operar un validador?</summary><p>Sí. Delega 42 GEN o más y las recompensas se recomponen solas. No hay comisiones que comparar: el protocolo fija el reparto, y cada GEN en la posición de un validador rinde lo mismo.</p></details>
+      </div>
+      <span class="read-paper soon">GEN TOKENOMICS · PAPER EN PREPARACIÓN (BORRADOR V0.2, AÚN NO PÚBLICO)</span>
+    </div>
+  </section>
 
-      <section class="critical-chapter chapter-two" id="adapt">
-        <div class="shell part-two-layout">
-          <div class="chapter-copy part-two-intro">
-            <p class="eyebrow">ADAPTACIÓN</p>
-            <h2>¿Para qué preguntar a mil evaluadores cuando bastan once?</h2>
-            <p class="chapter-lede">Cada evaluación es trabajo remunerado, así que cuántos evaluadores usar es una decisión de presupuesto. Una decisión fácil o de poco riesgo puede zanjarse pronto; en las más difíciles o importantes, en cambio, puede compensar seguir evaluando, ya sea para volver a comprobar la respuesta actual o para probar una nueva.</p>
-            <div class="chapter-contribution"><span>APORTACIÓN PRINCIPAL</span><strong>El artículo calcula cuál de los pasos posibles minimiza la pérdida total esperada.</strong></div>
-          </div>
-          <div class="chapter-lab policy-lab stop-lab">
-            <div class="lab-head"><strong>¿Cuántos evaluadores conviene pagar para esta decisión?</strong></div>
-            <div class="size-buttons stop-presets" role="group" aria-label="Elegir una decisión de ejemplo">
-              <button type="button" data-p2s-preset="4">Disputa por un reembolso · $200</button>
-              <button type="button" class="active" data-p2s-preset="40">Hito freelance · $2.000</button>
-              <button type="button" data-p2s-preset="400">Tesorería de una DAO · $20.000</button>
-            </div>
-            <label for="p2s-stakes">Valor en riesgo si la decisión es errónea <output id="p2s-stakes-output" for="p2s-stakes">$2.000</output></label>
-            <input id="p2s-stakes" type="range" min="1" max="400" value="40" />
-            <label for="p2s-clarity">¿Hasta qué punto está disputada la pregunta? <output id="p2s-clarity-output" for="p2s-clarity">65% de acuerdo · disputada</output></label>
-            <input id="p2s-clarity" type="range" min="55" max="90" value="65" />
-            <p class="stop-note">Cada evaluador cobra 10 céntimos por evaluación. Los grupos siguen los tamaños de ronda del protocolo, desde 5 hasta 1537 evaluadores.</p>
-            <svg class="stop-curve" id="p2s-svg" viewBox="0 0 720 300" role="img" aria-label="Coste total esperado de detenerse en cada ronda del protocolo: las tarifas de los evaluadores suben con el número de evaluadores, la pérdida esperada por una decisión errónea baja y la suma alcanza su mínimo en el punto óptimo."></svg>
-            <p class="stop-caption">Total = tarifas + riesgo en cada ronda. Detente donde la línea negra alcanza su mínimo.</p>
-            <div class="lab-result stop-verdict" role="status" aria-live="polite"><small>LA REGLA DE PARADA</small><strong id="p2s-action">—</strong><p id="p2s-copy"></p></div>
-          </div>
-          <div class="part-two-source-row">
-            <div class="paper-faq" aria-label="Preguntas sobre Adaptive Economic Aggregate Disambiguation">
-              <p class="paper-faq-label">PARA ENTENDERLO MEJOR</p>
-              <details name="faq-part-2">
-                <summary>¿Por qué puede el sistema empezar con pocos evaluadores?</summary>
-                <p>Porque muchas decisiones pueden resolverse con poco coste. Solo compensa añadir evaluadores cuando el beneficio esperado supera el coste adicional.</p>
-              </details>
-              <details name="faq-part-2">
-                <summary>¿Cuándo merece la pena evaluar más?</summary>
-                <p>Cuando el coste de equivocarse es alto o la información disponible es insuficiente, y el beneficio esperado de otra evaluación supera su coste.</p>
-              </details>
-              <details name="faq-part-2">
-                <summary>¿Por qué distinguir entre volver a evaluar esta respuesta y generar otra?</summary>
-                <p>Porque cada una compra algo distinto: evaluar de nuevo añade información sobre la misma respuesta, mientras que generar una respuesta nueva cambia lo que se está evaluando. El artículo sopesa cada opción frente a su coste antes de gastar la siguiente evaluación.</p>
-              </details>
-              <details name="faq-part-2">
-                <summary>¿La red en producción sigue realmente esta regla ideal?</summary>
-                <p>Eso no se demuestra aquí. La regla es la referencia de un planificador omnisciente; la red solo coincide con ella si a alguien le compensa, por interés propio, activar la escalada adecuada en el momento justo. Si los incentivos reales de las apelaciones se alinean con esa referencia es precisamente lo que estudia Multi-Agent Appeal Games.</p>
-              </details>
-            </div>
-            <a class="chapter-read" href="../papers/part-2-adaptive-economic-disambiguation.pdf" target="paper-adaptive-economic-disambiguation">LEER EL ARTÍCULO · ADAPTIVE ECONOMIC DISAMBIGUATION ↗</a>
-          </div>
-        </div>
-      </section>
+  <!-- 05 ALIGN -->
+  <section class="chapter" id="align" aria-label="Incentivos">
+    <div class="spine">
+      <p class="marker"><span class="num">05</span><span class="word">INCENTIVOS</span><button class="title-help" type="button" data-tip="Incentivos = hacer que a alguien le compense impugnar una decisión errónea, para que las apelaciones que el sistema necesita lleguen a presentarse.">?</button></p>
+      <h2>¿Quién paga por impugnar una decisión errónea?</h2>
+      <div class="answer"><span class="label">La respuesta corta</span><p>Aquel para quien la recompensa lo haga racional. El premio por apelar tiene una ventana segura estrecha: lo bastante grande para que las dudas informadas actúen y lo bastante pequeño para que el spam a ciegas siga perdiendo dinero.</p></div>
+      <p class="lede">¿Recuerdas la votación de 3 a 2? Las decisiones que quedan así de ajustadas merecen una segunda mirada. Pero quien impugna tiene que bloquear dinero <span class="gl" data-gl="bond">(una fianza)</span> y arriesgarse a perderlo. ¿Por qué iba a dar el paso?</p>
+      <div class="plain"><span class="label">LA IDEA EN PALABRAS SENCILLAS</span>
+        <p>El paper separa dos cosas que suenan igual: cuándo el sistema necesita otro panel y cuándo a una persona concreta le sale a cuenta provocarlo. Divergen en ambos sentidos: <span class="gl" data-gl="appeal">apelaciones</span> que nadie presenta (y nadie paga) y apelaciones inútiles (alguien paga sin necesidad). La recompensa es la palanca: si es pequeña, las dudas se callan; si es grande, impugnar a ciegas se convierte en negocio.</p>
+      </div>
+    </div>
+    <div class="wide">
+      <div class="lab" aria-label="Laboratorio de la recompensa por apelar">
+        <span class="lab-chip">PRUÉBALO</span>
+        <p class="lab-head">El pago decide qué dudas merecen convertirse en apelación.</p>
+        <label for="p4d-rho">Una apelación que prospera devuelve <output id="p4d-rho-output" for="p4d-rho">2,5× la fianza</output></label>
+        <input id="p4d-rho" type="range" min="110" max="400" step="5" value="250" />
+        <svg class="dial-svg" id="p4d-svg" viewBox="0 0 720 320" role="img" aria-label="Dos ejes vinculados: la creencia mínima que hace rentable apelar frente al techo que puede justificar una reevaluación honesta, y el multiplicador del pago frente a su ventana segura entre 2 y aproximadamente 2,9."></svg>
+        <div class="lab-result" id="p4d-result" role="status" aria-live="polite"><small>QUIÉN APELARÁ</small><strong id="p4d-action">—</strong><p id="p4d-copy"></p></div>
+      </div>
+    </div>
+    <div class="spine">
+      <div class="deeper">
+        <span class="label">Para profundizar</span>
+        <details class="proves"><summary>Lo que demuestra el paper, exactamente</summary><p>Un precio exacto para la distancia entre la regla de parada ideal y el comportamiento real de las apelaciones (regret de implementación), una demostración de que ninguna combinación fija de fianza y recompensa sirve para toda carga de trabajo, y las condiciones bajo las cuales una recompensa bien calibrada cierra esa distancia.</p></details>
+        <details class="faq"><summary>¿Qué lleva a alguien a apelar?</summary><p>Sus probabilidades de ganar, la recompensa, la fianza en riesgo, lo que cuesta apelar y cualquier interés privado en el resultado.</p></details>
+        <details class="faq"><summary>¿Se pueden diseñar incentivos para que las apelaciones útiles lleguen a presentarse?</summary><p>Bajo ciertas condiciones, sí. El paper muestra cómo calibrar las recompensas para que el interés privado siga de cerca los casos en que al sistema le conviene otro panel.</p></details>
+        <details class="faq"><summary>¿Por qué importa que varias personas puedan apelar?</summary><p>En cuanto muchas personas pueden apelar, sus decisiones interactúan: esperar, competir por llegar primero, duplicar esfuerzo. El mecanismo tiene que poner precio a las tres cosas.</p></details>
+        <details class="faq"><summary>¿Por qué no subir la fianza sin más para frenar las apelaciones frívolas?</summary><p>Una fianza mayor financia el panel y disuade el spam, pero inmoviliza capital: las cuentas del beneficio pueden seguir siendo idénticas mientras el grupo de personas que puede permitirse apelar se reduce drásticamente.</p></details>
+      </div>
+      <a class="read-paper" href="../papers/part-4-multi-agent-appeal-games.pdf" target="paper-multi-agent-appeal-games">LEER EL PAPER · MULTI-AGENT APPEAL GAMES ↗</a>
+    </div>
+  </section>
 
-      <section class="critical-chapter chapter-five" id="tokenomics">
-        <div class="shell chapter-layout">
-          <div class="chapter-copy">
-            <p class="eyebrow">TOKENOMICS</p>
-            <h2>¿Qué impide que un solo participante levante nodos suficientes para tomar el control?</h2>
-            <p class="chapter-lede">Los nodos son baratos: cualquiera puede levantar mil. Por eso los votos no pueden venir de los nodos: GEN Tokenomics liga el poder de voto a un activo de oferta limitada, GEN. Cada validador bloquea un stake que puede perder, y quienes tienen GEN pero nunca operan un nodo se lo prestan a uno que sí lo hace: prueba de participación delegada (delegated proof of stake).</p>
-            <div class="chapter-contribution"><span>APORTACIÓN PRINCIPAL</span><strong>El motor económico que sostiene el tribunal: oferta, emisión, recompensas, staking y penalizaciones, especificados para que la seguridad y la utilidad se mantengan alineadas.</strong></div>
-          </div>
-          <div class="chapter-lab">
-            <div class="lab-head"><strong>El mismo atacante, con y sin la barrera del stake.</strong></div>
-            <div class="p38-wrap">
-              <div class="p38-panel p38-bad">
-                <small>SI LOS VOTOS VINIERAN DE LOS NODOS</small>
-                <strong>Un atacante, nodos sin límite</strong>
-                <div class="p38-dots" id="p38-flood"></div>
-                <p id="p38-badnote">levantar nodos no cuesta nada…</p>
-              </div>
-              <div class="p38-panel p38-good">
-                <small>VOTOS LIGADOS A UN ACTIVO ESCASO</small>
-                <strong>Cada voto bloquea una parte de una oferta limitada</strong>
-                <div class="p38-dots" id="p38-staked"></div>
-                <div class="p38-supply"><i id="p38-fill"></i></div><p class="p38-supply-label">LA OFERTA TIENE UN TECHO — LA NUEVA EMISIÓN SOLO DESCIENDE</p>
-                <p id="p38-goodnote">participación del atacante: <b id="p38-cost">0%</b> de todo el GEN, en riesgo y expuesta a slashing</p>
-              </div>
-            </div>
-            <p class="p38-footer">La barrera es capital, no hardware: tomar el control exige comprar —y arriesgar— una parte enorme de la propia red.</p>
-            <p class="appeal-gap-note">Parámetros que el artículo deja fijados: mínimo de 42.000 GEN por validador, mínimo de 42 GEN para delegar, desbloqueo (unbonding) de 7 épocas, peso de selección √(0,6·propio + 0,4·delegado).</p>
-          </div>
-          <div class="chapter-source-row">
-            <div class="paper-faq" aria-label="Preguntas sobre la tokenomics de GEN">
-              <p class="paper-faq-label">PARA ENTENDERLO MEJOR</p>
-              <details name="faq-part-5">
-                <summary>¿De dónde sale el dinero que paga a los validadores?</summary>
-                <p>De dos flujos: las tarifas de transacción y una emisión programada que desciende del 9% hacia el 4% siguiendo una curva fija. El calendario fija un máximo que las quemas solo pueden rebajar, y la inflación efectiva va cayendo a medida que la oferta crece. La DAO se financia solo con tarifas, de modo que sus ingresos crecen con el uso real, nunca con la emisión.</p>
-              </details>
-              <details name="faq-part-5">
-                <summary>¿Por qué acaba sancionado un validador?</summary>
-                <p>Las penalizaciones distinguen entre el error honesto del modelo y la mala conducta demostrable. Votar con el bando perdedor solo quema importes del orden de las tarifas, nunca el principal en stake. La inactividad se sanciona con un slashing del 1%; el fraude demostrable, con un 5% al líder; y una apelación fallida entrega la fianza a los validadores de esa ronda que votaron con la mayoría. El resultado es un sistema que encaja la discrepancia sin dramatismo y le pone precio a la mala conducta.</p>
-              </details>
-              <details name="faq-part-5">
-                <summary>¿La ponderación por raíz cuadrada detiene por sí sola los ataques Sybil?</summary>
-                <p>No, y el artículo lo dice sin rodeos: el peso cóncavo amortigua la concentración, pero dividir el stake aumentaría el peso total si las identidades fueran gratis. No lo son: cada identidad debe bloquear el mínimo completo de 42.000 GEN, operar su propio nodo, cumplir sus propios deberes de disponibilidad y asumir su propio slashing.</p>
-              </details>
-              <details name="faq-part-5">
-                <summary>¿Puedo ganar recompensas sin operar un validador?</summary>
-                <p>Sí. Cualquiera puede delegar 42 GEN o más en uno o varios validadores, y las recompensas se reinvierten automáticamente. No hay comisiones que comparar: el protocolo fija el reparto y, dentro de la posición de un validador, cada GEN —propio o delegado— rinde lo mismo.</p>
-              </details>
-            </div>
-            <p class="chapter-read chapter-read-soon">GEN TOKENOMICS · ARTÍCULO PRÓXIMAMENTE</p>
-          </div>
-        </div>
-      </section>
+  <!-- 06 VERIFY -->
+  <section class="chapter" id="verify" aria-label="Verificación formal">
+    <div class="spine">
+      <p class="marker"><span class="num">06</span><span class="word">VERIFICACIÓN FORMAL</span><button class="title-help" type="button" data-tip="Verificación formal = comprobar que el código desplegado implementa de verdad el protocolo que describen las matemáticas, y volver a comprobarlo cada vez que el código cambia.">?</button></p>
+      <h2>¿Se comporta realmente el protocolo según su diseño?</h2>
+      <div class="answer"><span class="label">La respuesta corta</span><p>Se reverifica con cada cambio. Un modelo de Optimistic Democracy verificado por máquina se contrasta con los contratos desplegados a medida que evolucionan, y ya ha cazado errores reales.</p></div>
+      <p class="lede">Todo lo anterior son matemáticas sobre un diseño; la red, en cambio, ejecuta código que cambia cada semana. Por eso hay un modelo de Optimistic Democracy verificado por máquina <span class="gl" data-gl="modelchecking">(model checking en TLA+)</span> que se vuelve a comprobar contra los contratos a medida que evolucionan.</p>
+      <div class="evidence" aria-label="Lo que ha cazado la reverificación">
+        <b>253</b><span>commits de evolución del protocolo reverificados contra las mismas propiedades verificadas por máquina.</span>
+        <b>1</b><span>condición de carrera cazada entre dos rutas de código que gestionan el mismo evento de apelación.</span>
+        <b>3</b><span>reglas del protocolo que un único parche urgente rompió sin avisar, halladas por model checking. Todos los hallazgos, confirmados en la implementación y comunicados al equipo.</span>
+      </div>
+      <div class="deeper">
+        <span class="label">Para profundizar</span>
+        <details class="faq"><summary>¿Qué cubre exactamente la verificación?</summary><p>Un modelo por capas: un grafo de estados canónico, especificaciones TLA+ comprobadas contra él y una correspondencia entre cada transición y el código Solidity de una revisión fijada.</p></details>
+        <details class="faq"><summary>¿Demuestra esto que el código no tiene errores?</summary><p>No. Demuestra propiedades declaradas sobre un modelo declarado de una revisión fijada. Precisamente ese acotamiento es lo que hace que las afirmaciones se puedan comprobar.</p></details>
+        <details class="faq"><summary>¿Por qué volver a verificar en lugar de demostrar una sola vez?</summary><p>El protocolo sigue evolucionando. Cada revisión se vuelve a comprobar contra las mismas propiedades, así que una desviación silenciosa aparece como una comprobación fallida y no como una incidencia en producción.</p></details>
+        <details class="faq"><summary>¿Ha cazado algo real este banco de pruebas?</summary><p>Sí: la condición de carrera y los tres invariantes rotos que se mencionan arriba. Todos confirmados en la implementación y comunicados al equipo.</p></details>
+      </div>
+      <a class="read-paper" href="../papers/part-3-layered-formal-verification.pdf" target="paper-formal-verification">LEER EL PAPER · LAYERED FORMAL VERIFICATION ↗</a>
+    </div>
+  </section>
 
-      <section class="critical-chapter chapter-four" id="align">
-        <div class="shell chapter-layout">
-          <div class="chapter-copy">
-            <p class="eyebrow">INCENTIVOS</p>
-            <h2>¿Quién paga por impugnar una decisión errónea?</h2>
-            <p class="chapter-lede">¿Recuerdas el 3–2? Las decisiones ajustadas como esa son justo las que merecen una segunda mirada. Una apelación puede mejorar la decisión del sistema, pero ese beneficio público, por sí solo, no garantiza que un participante vaya a pagar por activarla.</p>
-            <div class="chapter-contribution"><span>APORTACIÓN PRINCIPAL</span><strong>El artículo distingue lo que beneficia al sistema de lo que beneficia a cada participante y estudia cuándo pueden alinearse ambos intereses.</strong></div>
-          </div>
-          <div class="chapter-lab incentive-lab dial-lab">
-            <div class="lab-head"><strong>El pago decide qué dudas merecen convertirse en apelación.</strong></div>
-            <label for="p4d-rho">Una apelación que prospera devuelve <output id="p4d-rho-output" for="p4d-rho">2,5× la fianza</output></label>
-            <input id="p4d-rho" type="range" min="110" max="400" step="5" value="250" />
-            <svg class="dial-svg" id="p4d-svg" viewBox="0 0 720 320" role="img" aria-label="Dos ejes vinculados: la creencia mínima que hace rentable apelar frente al techo que puede justificar una reevaluación honesta, y el multiplicador del pago frente a su ventana segura entre 2 y aproximadamente 2,9."></svg>
-            <div class="lab-result stop-verdict" id="p4d-result" role="status" aria-live="polite"><small>QUIÉN APELARÁ</small><strong id="p4d-action">—</strong><p id="p4d-copy"></p></div>
-          </div>
-          <div class="chapter-source-row">
-            <div class="paper-faq" aria-label="Preguntas sobre Multi-Agent Appeal Games">
-              <p class="paper-faq-label">PARA ENTENDERLO MEJOR</p>
-              <details name="faq-part-4">
-                <summary>¿Qué lleva a alguien a apelar?</summary>
-                <p>La probabilidad de éxito que atribuye a la apelación, la recompensa, la fianza que arriesga, el coste de presentarla y lo que tenga personalmente en juego en el resultado.</p>
-              </details>
-              <details name="faq-part-4">
-                <summary>¿Se pueden diseñar incentivos para que las apelaciones útiles lleguen a presentarse?</summary>
-                <p>En determinadas condiciones. El artículo muestra cómo ajustar las recompensas para que el interés por apelar se alinee mejor con los momentos en que al sistema le beneficia seguir evaluando.</p>
-              </details>
-              <details name="faq-part-4">
-                <summary>¿Por qué importa que varias personas puedan apelar?</summary>
-                <p>Porque sus decisiones dependen unas de otras. El mecanismo debe tener en cuenta la espera, la competencia y la posibilidad de duplicar una misma apelación.</p>
-              </details>
-              <details name="faq-part-4">
-                <summary>¿Por qué no subir la fianza sin más para frenar las apelaciones frívolas?</summary>
-                <p>Una fianza mayor sí financia la ronda adicional y disuade el spam, pero queda inmovilizada hasta que la apelación se resuelve. El artículo muestra que las cuentas del pago pueden salir idénticas sobre el papel mientras se reduce drásticamente el número de personas que de verdad pueden permitirse apelar.</p>
-              </details>
-            </div>
-            <a class="chapter-read" href="../papers/part-4-multi-agent-appeal-games.pdf" target="paper-multi-agent-appeal-games">LEER EL ARTÍCULO · MULTI-AGENT APPEAL GAMES ↗</a>
-          </div>
-        </div>
-      </section>
+  <section class="papers" id="papers" aria-label="Los papers">
+    <div class="wide">
+      <p class="label">LA INVESTIGACIÓN PRINCIPAL</p>
+      <h2>Seis preguntas. Cinco papers.</h2>
+      <p class="intro">Medir el panel, poner precio al escalado, financiar el tribunal, alinear las apelaciones y verificar el código.</p>
+      <div class="shelf">
+        <a href="../papers/part-1-aggregate-disambiguation-systems.pdf" target="paper-aggregate-disambiguation"><img src="../covers/part-1-560.webp" srcset="../covers/part-1-560.webp 560w, ../covers/part-1.webp 850w" sizes="(max-width: 560px) 54vw, (max-width: 900px) 76vw, min(31vw, 360px)" alt="Primera página de Aggregate Disambiguation Systems" width="560" loading="lazy" decoding="async" height="724" /><span>FIABILIDAD</span><strong>Aggregate Disambiguation Systems</strong><small>Cómo influye el número de evaluadores en la fiabilidad</small></a>
+        <a href="../papers/part-2-adaptive-economic-disambiguation.pdf" target="paper-adaptive-economic-disambiguation"><img src="../covers/part-2-560.webp" srcset="../covers/part-2-560.webp 560w, ../covers/part-2.webp 850w" sizes="(max-width: 560px) 54vw, (max-width: 900px) 76vw, min(31vw, 360px)" alt="Primera página de Adaptive Economic Aggregate Disambiguation" width="560" loading="lazy" decoding="async" height="724" /><span>ADAPTACIÓN</span><strong>Adaptive Economic Disambiguation</strong><small>Cuándo compensa seguir evaluando</small></a>
+        <a class="shelf-soon" aria-disabled="true"><img src="../covers/part-5-noalloc-1-560.webp" srcset="../covers/part-5-noalloc-1-560.webp 560w, ../covers/part-5-noalloc-1.webp 827w" sizes="(max-width: 560px) 54vw, (max-width: 900px) 76vw, min(31vw, 360px)" alt="Primera página de GEN Tokenomics" width="560" loading="lazy" decoding="async" height="792" /><span>TOKENOMICS</span><strong>GEN Tokenomics</strong><small>En preparación, borrador v0.2</small></a>
+        <a href="../papers/part-4-multi-agent-appeal-games.pdf" target="paper-multi-agent-appeal-games"><img src="../covers/part-4-560.webp" srcset="../covers/part-4-560.webp 560w, ../covers/part-4.webp 850w" sizes="(max-width: 560px) 54vw, (max-width: 900px) 76vw, min(31vw, 360px)" alt="Primera página de Multi-Agent Appeal Games" width="560" loading="lazy" decoding="async" height="724" /><span>INCENTIVOS</span><strong>Multi-Agent Appeal Games</strong><small>Cuándo le conviene apelar a un participante</small></a>
+        <a href="../papers/part-3-layered-formal-verification.pdf" target="paper-layered-formal-verification"><img src="../covers/part-3-560.webp" srcset="../covers/part-3-560.webp 560w, ../covers/part-3.webp 850w" sizes="(max-width: 560px) 54vw, (max-width: 900px) 76vw, min(31vw, 360px)" alt="Primera página de Layered Formal Verification" width="560" loading="lazy" decoding="async" height="724" /><span>VERIFICACIÓN FORMAL</span><strong>Layered Formal Verification</strong><small>Un modelo del protocolo verificado mecánicamente</small></a>
+      </div>
+    </div>
+  </section>
 
-      <section class="critical-chapter chapter-three verify-band" id="verify">
-        <div class="shell verify-band-grid">
-          <div class="verify-band-copy">
-            <p class="eyebrow">VERIFICACIÓN FORMAL</p>
-            <h2>¿Se comporta realmente el protocolo según su diseño?</h2>
-            <p class="chapter-lede">Layered Formal Verification mantiene un modelo de Optimistic Democracy verificado mecánicamente y ligado a los contratos desplegados, y lo vuelve a comprobar con cada cambio del código: 253 commits después, ese proceso ha detectado una divergencia dependiente del orden de las transacciones y tres invariantes rotos en silencio, todos notificados al equipo de desarrollo.</p>
-          </div>
-          <div class="chapter-source-row">
-            <div class="paper-faq" aria-label="Preguntas sobre Layered Formal Verification">
-              <p class="paper-faq-label">PARA ENTENDERLO MEJOR</p>
-              <details name="faq-part-3">
-                <summary>¿Qué cubre exactamente la verificación?</summary>
-                <p>Propiedades explícitas de un modelo por capas: un grafo canónico de estados, especificaciones TLA+ contrastadas con ese grafo y una correspondencia de cada transición con las rutas de código Solidity de una revisión concreta.</p>
-              </details>
-              <details name="faq-part-3">
-                <summary>¿Demuestra esto que el código no tiene errores?</summary>
-                <p>No. Demuestra propiedades declaradas sobre un modelo declarado de una revisión concreta. Ese alcance acotado es justo lo que permite comprobar las afirmaciones, y volver a comprobarlas.</p>
-              </details>
-              <details name="faq-part-3">
-                <summary>¿Por qué volver a verificar en lugar de demostrar una sola vez?</summary>
-                <p>Porque el protocolo sigue evolucionando. La especificación funciona como un banco de pruebas de regresión semántica: cada nueva revisión se contrasta con las mismas propiedades, de modo que una desviación silenciosa sale a la luz como una comprobación fallida en lugar de estallar en producción.</p>
-              </details>
-              <details name="faq-part-3">
-                <summary>¿Ha cazado algo real este banco de pruebas?</summary>
-                <p>Sí. La reverificación tras cuatro meses y 253 commits destapó una condición de carrera entre dos rutas de código que gestionaban el mismo evento de apelación, y la comprobación de modelos encontró tres invariantes del protocolo que un único hotfix había roto de forma silenciosa. Todos los hallazgos se confirmaron en la implementación y se notificaron a sus responsables.</p>
-              </details>
-            </div>
-            <a class="chapter-read" href="../papers/part-3-layered-formal-verification.pdf" target="paper-formal-verification">LEER EL ARTÍCULO · LAYERED FORMAL VERIFICATION ↗</a>
-          </div>
-        </div>
-      </section>
+  <section class="glossary" id="glossary" aria-label="Glosario">
+    <div class="wide">
+      <p class="label" style="color: var(--blue-ink)">Cada término, una vez</p>
+      <h2>El glosario.</h2>
+      <div class="grid">
+        <details data-glentry="validator"><summary>Validator</summary><p></p></details>
+        <details data-glentry="panel"><summary>Panel</summary><p></p></details>
+        <details data-glentry="population"><summary>Evaluator population</summary><p></p></details>
+        <details data-glentry="reproducibility"><summary>Reproducibility</summary><p></p></details>
+        <details data-glentry="adversary"><summary>Adversary</summary><p></p></details>
+        <details data-glentry="equivalence"><summary>Equivalence Principle</summary><p></p></details>
+        <details data-glentry="od"><summary>Optimistic Democracy</summary><p></p></details>
+        <details data-glentry="leader"><summary>Leader</summary><p></p></details>
+        <details data-glentry="stake"><summary>Stake</summary><p></p></details>
+        <details data-glentry="delegation"><summary>Delegation</summary><p></p></details>
+        <details data-glentry="slashing"><summary>Slashing</summary><p></p></details>
+        <details data-glentry="bond"><summary>Appeal bond</summary><p></p></details>
+        <details data-glentry="appeal"><summary>Appeal</summary><p></p></details>
+        <details data-glentry="expectedloss"><summary>Expected loss</summary><p></p></details>
+        <details data-glentry="modelchecking"><summary>Model checking</summary><p></p></details>
+        <details data-glentry="issuance"><summary>Issuance</summary><p></p></details>
+      </div>
+    </div>
+  </section>
+</main>
 
-      <section class="critical-papers" id="papers">
-        <div class="shell">
-          <div class="papers-heading"><p class="eyebrow">LA INVESTIGACIÓN PRINCIPAL</p><h2>Cinco preguntas. Cinco artículos.</h2><p>En el orden en que las plantea esta página: medir el panel, poner precio a la escalada, financiar el tribunal, alinear las apelaciones y verificar el código.</p></div>
-          <div class="critical-shelf">
-            <a href="../papers/part-1-aggregate-disambiguation-systems.pdf" target="paper-aggregate-disambiguation"><img src="../covers/part-1.webp" alt="Primera página de Aggregate Disambiguation Systems" /><span>FIABILIDAD</span><strong>Aggregate Disambiguation Systems</strong><small>Cómo influye el número de evaluadores en la fiabilidad</small></a>
-            <a href="../papers/part-2-adaptive-economic-disambiguation.pdf" target="paper-adaptive-economic-disambiguation"><img src="../covers/part-2.webp" alt="Primera página de Adaptive Economic Aggregate Disambiguation" /><span>ADAPTACIÓN</span><strong>Adaptive Economic Disambiguation</strong><small>Cuándo compensa seguir evaluando</small></a>
-            <a class="shelf-soon" aria-disabled="true"><img src="../covers/part-5-noalloc-1.png" alt="Primera página de GEN Tokenomics" /><span>TOKENOMICS</span><strong>GEN Tokenomics</strong><small>Disponible próximamente</small></a>
-            <a href="../papers/part-4-multi-agent-appeal-games.pdf" target="paper-multi-agent-appeal-games"><img src="../covers/part-4.webp" alt="Primera página de Multi-Agent Appeal Games" /><span>INCENTIVOS</span><strong>Multi-Agent Appeal Games</strong><small>Cuándo le conviene apelar a un participante</small></a>
-            <a href="../papers/part-3-layered-formal-verification.pdf" target="paper-layered-formal-verification"><img src="../covers/part-3.webp" alt="Primera página de Layered Formal Verification" /><span>VERIFICACIÓN FORMAL</span><strong>Layered Formal Verification</strong><small>Un modelo del protocolo verificado mecánicamente</small></a>
-          </div>
-        </div>
-      </section>
-    </main>
+<footer>
+  <div class="spine"><span>GenLayerLabs Research · El juicio como protocolo</span><a href="#top">Volver arriba ↑</a></div>
+</footer>
 
-    <footer><div class="shell"><span>GenLayerLabs Research · El juicio como protocolo</span><div><a href="#top">Volver arriba ↑</a></div></div></footer>
-    <script src="../bridge-critical.js"></script>
-
-    <style>
-      .i9-stage { font-size: .62rem; font-weight: 900; letter-spacing: .1em; color: #8894ab; margin: 1.2rem 0 .45rem; }
-      .i9-stage:first-of-type { margin-top: 0; }
-      .i9-stage b { color: #ff5347; margin-right: .35rem; }
-      .i9-code { background: #161d44; color: #d5dcf2; font: .82rem/1.75 "SF Mono", Menlo, Consolas, monospace; padding: 1rem 1.2rem; margin: 0; white-space: pre-wrap; word-break: break-word; }
-      .i9-code b { font-weight: 400; color: #f7d154; }
-      .i9-code i { font-style: normal; background: rgba(247,209,84,.16); padding: .1rem .3rem; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-      .i9-alt { background: #161d44; padding: .1rem 1.2rem .8rem; margin: 0 0 .2rem; }
-      .i9-alt span { color: #7d89b8; font: .74rem/1.6 "SF Mono", Menlo, Consolas, monospace; }
-      .i9-alt button { font: inherit; font-size: .74rem; background: none; border: 0; cursor: pointer; color: #7d89b8; padding: 0; border-bottom: 1px dotted #7d89b8; }
-      .i9-alt button.active { color: #f7d154; border-bottom: 2px solid #f7d154; font-weight: 700; }
-      .i3-lead { border: 1px solid #d7deec; background: #fbfcfe; padding: .7rem .9rem; }
-      .i3-lead p { margin: 0; font: 700 .92rem/1.45 Georgia, serif; }
-      .i9-table { width: 100%; border-collapse: collapse; }
-      .i9-table td { border-top: 1px solid #17233f22; padding: .48rem .2rem; font: italic .84rem/1.4 Georgia, serif; }
-      .i9-table tr:first-child td { border-top: 0; }
-      .i9-table td:last-child { text-align: right; font: 900 .82rem/1 Georgia, serif; white-space: nowrap; padding-left: 1rem; }
-      .i9-table .g-ok { color: #078b87; } .i9-table .g-ko { color: #ff5347; }
-      .i3-tally { display: flex; align-items: center; gap: .9rem; margin-top: 1rem; }
-      .i3-pips { display: flex; gap: .35rem; }
-      .i3-pips span { width: 15px; height: 15px; background: #cfd7e6; transition: background .25s; }
-      .i3-pips span.ok { background: #078b87; } .i3-pips span.ko { background: #ff5347; }
-      .i3-tally strong { font: 800 1.05rem/1 Georgia, serif; white-space: nowrap; }
-      .ep-verdict { margin-top: 1rem; border-top: 3px solid #17233f; padding-top: .8rem; }
-      .ep-verdict strong { display: block; font-size: .8rem; font-weight: 900; letter-spacing: .05em; }
-      .ep-verdict p { margin: .35rem 0 0; font-size: .78rem; line-height: 1.5; color: #53617a; }
-      .ep-verdict p:empty { display: none; }
-      .od-flow { grid-column: 1 / -1; background: white; border-radius: 4px; padding: 1.2rem 1.4rem 1rem; margin-top: 1.4rem; }
-      .od-flow-label { margin: 0 0 .6rem; font-size: .64rem; font-weight: 900; letter-spacing: .12em; color: #53617a; }
-      .od-flow .sc-card { fill: #f0f3f9; }
-      .od-flow .sc-dark { fill: #1c2740; }
-      .od-flow .sc-ring { fill: none; stroke: #e2734a; stroke-width: 1.6; opacity: 0; transition: opacity .3s; }
-      .od-flow g.lit .sc-ring { opacity: 1; }
-      .od-flow .sc-t1 { font-size: 13px; font-weight: 700; text-anchor: middle; fill: #1c2740; }
-      .od-flow .sc-t2 { font-size: 9px; font-weight: 500; text-anchor: middle; fill: #8a94a6; }
-      .od-flow .sc-w { fill: white; } .od-flow .sc-wm { fill: #93a0b8; }
-      .odf-status { margin: .45rem 0 0; text-align: center; min-height: 1.2em; font-size: .62rem; font-weight: 700; letter-spacing: .12em; color: #8a94a6; text-transform: uppercase; }
-
-      /* OPTION C overrides: 5-scene intro + dark GenLayer block */
-      .critical-onboard .bi-progress { grid-template-columns: repeat(5, 1fr); }
-      @media (min-width: 1051px) { .bi-research-origin { grid-template-columns: minmax(360px, 1fr) minmax(480px, 1fr); } }
-      .bi-research-copy h1 { font-size: clamp(2.4rem, 3.4vw, 3.6rem); line-height: 1.06; max-width: none; }
-      .bi-research-origin .bi-built-ctas { justify-content: flex-start; margin-top: 1.4rem; }
-      .chapter-genlayer { background: #211c3d; color: white; padding: clamp(52px, 5vw, 72px) 0; }
-      .chapter-genlayer .eyebrow { color: #bba8f1; }
-      .chapter-genlayer h2 { max-width: 1020px; }
-      .chapter-genlayer .chapter-lede { max-width: 880px; color: #d0c9df; }
-      .solution-layout { display: grid; grid-template-columns: minmax(0, 940px); justify-content: center; gap: clamp(1.6rem, 3vw, 2.4rem); }
-      .solution-layout .od-flow { margin-top: 0; }
-      .p38-wrap { display: grid; grid-template-columns: 1fr; gap: .9rem; }
-      .p38-panel { border-radius: 12px; padding: 1rem 1.1rem 1.1rem; }
-      .p38-bad { background: #fdf3f0; }
-      .p38-good { background: #f0f7f5; }
-      .p38-panel small { display: block; font-size: .6rem; font-weight: 900; letter-spacing: .12em; margin-bottom: .3rem; }
-      .p38-bad small { color: #b3542a; }
-      .p38-good small { color: #0b6d6a; }
-      .p38-panel strong { display: block; font-size: .88rem; color: #1c2740; margin-bottom: .6rem; }
-      .p38-dots { display: flex; flex-wrap: wrap; gap: 5px; min-height: 50px; align-content: flex-start; }
-      .p38-dots i { width: 12px; height: 12px; border-radius: 50%; }
-      .p38-flood-dot { background: #e2734a; }
-      .p38-stake-dot { background: #0f8f8b; outline: 2px solid #bfe0dc; }
-      .p38-panel p { margin: .6rem 0 0; font-size: .72rem; color: #53617a; }
-      .p38-panel p b { color: #0b6d6a; font-weight: 800; }
-      .p38-supply { position: relative; height: 12px; background: #dde8e5; border-radius: 6px; margin-top: .7rem; overflow: hidden; }
-      .p38-supply i { position: absolute; inset: 0 auto 0 0; width: 0%; background: #0f8f8b; transition: width .4s; }
-      .p38-supply-label { margin: .4rem 0 0 !important; font-size: .54rem; font-weight: 900; letter-spacing: .1em; color: #33514c !important; text-align: center; }
-      .p38-footer { margin: 1rem 0 0; font-size: .8rem; line-height: 1.55; color: #33415e; border-top: 2px solid #1c2740; padding-top: .8rem; }
-      .chapter-genlayer h2 em { font-style: italic; color: #bba8f1; }
-      .chapter-genlayer .solution-head { text-align: center; }
-      .chapter-genlayer .chapter-lede { margin-left: auto; margin-right: auto; }
-            .chapter-genlayer .od-flow-label { text-align: center; }
-      .chapter-genlayer .od-flow { background: transparent; border: 0; box-shadow: none; padding: 0; border-radius: 0; }
-      .chapter-genlayer .od-flow-label { font: 700 1rem/1.25 Georgia, serif; letter-spacing: 0; text-transform: none; color: white; text-align: center; margin: 0 0 1.6rem; }
-      .chapter-genlayer .odf-status { color: #9aa3c7; }
-      .chapter-genlayer .sc-dark { fill: #3157d5; }
-      .chapter-genlayer .od-flow svg text[fill="#b3542a"] { fill: #e88b5e; }
-      .chapter-genlayer .chapter-lede { margin-bottom: .6rem; }
-            /* larger diagram cards */
-      .critical-chapter .shell { width: min(1320px, calc(100% - 48px)); }
-      @media (min-width: 1051px) { .chapter-layout, .part-two-layout { grid-template-columns: minmax(0, .85fr) minmax(560px, 1.15fr); } }
-      .i9-code { font-size: .9rem; }
-      .i9-alt span, .i9-alt button { font-size: .8rem; }
-      .i9-stage { font-size: .68rem; }
-      .i9-table td { font-size: .9rem; }
-      .i3-lead p { font-size: 1rem; }
-      .ep-verdict p { font-size: .84rem; }
-      .p38-panel p { font-size: .8rem; }
-      .p38-panel strong { font-size: .95rem; }
-      .p38-footer { font-size: .85rem; }
-      .verify-band { padding: clamp(34px, 3.5vw, 48px) 0; }
-      .verify-band-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4.5rem); align-items: start; }
-      .verify-band h2 { font-size: clamp(1.9rem, 2.6vw, 2.6rem); margin-top: .4rem; }
-      .verify-band .chapter-lede { margin-top: .9rem; }
-      .verify-band .chapter-source-row { margin-top: .2rem; grid-column: 2; grid-row: 1; }
-      .verify-band-copy { grid-column: 1; grid-row: 1; }
-      @media (max-width: 900px) { .verify-band .chapter-source-row { grid-column: 1; grid-row: auto; } }
-      @media (max-width: 900px) { .verify-band-grid { grid-template-columns: 1fr; } }
-      .chapter-lab { width: min(100%, 720px); }
-      .chapter-genlayer .od-flow { max-width: 720px; justify-self: center; width: 100%; }
-      .critical-papers .shell { width: min(1320px, calc(100% - 48px)); }
-      .policy-lab { padding: clamp(1.4rem, 3vw, 2.2rem); }
-      .critical-shelf a.shelf-soon { pointer-events: none; cursor: default; }
-      .critical-shelf a.shelf-soon img { opacity: .55; }
-      .critical-shelf a.shelf-soon small { color: var(--yellow); font-weight: 700; }
-    </style>
     <script>
     // Runtime strings for the inline widgets, keyed by English source text.
     // The build-time translator cannot reach inside <script>, so locale maps are
     // generated into GL_I18N by the translation integration; English falls through.
     const GL_I18N = {
       "es": {
+        // Glossary cards (GLOSSARY in bridge-critical.js is English-only).
+        "Validator": "Validador",
+        "A computer taking part in the network's judging. In GenLayer each validator runs an AI model of its own choosing and locks GEN tokens as a security deposit (stake).": "Un ordenador que participa en el juicio de la red. En GenLayer cada validador ejecuta el modelo de IA que elige y bloquea tokens GEN como depósito de garantía (stake).",
+        "The small random group of validators chosen to judge one decision. GenLayer's rounds use panels of 5, 7, 11 and so on, growing with each appeal.": "El pequeño grupo aleatorio de validadores elegido para juzgar una decisión. Las rondas de GenLayer usan paneles de 5, 7, 11 y así sucesivamente, creciendo con cada apelación.",
+        "Evaluator population": "Población de evaluadores",
+        "The full declared pool of possible judges that a panel is drawn from. The research measures how faithfully a small panel reproduces what this whole pool would decide.": "El conjunto declarado completo de posibles jueces del que se sortea el panel. La investigación mide con qué fidelidad un panel pequeño reproduce lo que decidiría todo el conjunto.",
+        "Reproducibility": "Reproducibilidad",
+        "The chance that a random panel lands on the same side as the whole declared pool of judges would. Deliberately not the same thing as being objectively right.": "La probabilidad de que un panel aleatorio caiga del mismo lado que el conjunto declarado de jueces al completo. Deliberadamente, no es lo mismo que tener razón objetivamente.",
+        "Adversary": "Adversario",
+        "A participant who votes to push the decision somewhere, not to judge honestly. The research models the worst case: every adversarial vote goes against the honest majority.": "Un participante que vota para empujar la decisión hacia algún lado, no para juzgar con honestidad. La investigación modela el peor caso: cada voto adversario va contra la mayoría honesta.",
+        "Equivalence Principle": "Principio de Equivalencia",
+        "GenLayer's rule that every contract call declares what counts as “the same answer”, so validators can accept an AI answer that is worded differently from their own.": "La regla de GenLayer por la que cada llamada del contrato declara qué cuenta como «la misma respuesta», de modo que los validadores puedan aceptar una respuesta de IA redactada de forma distinta a la suya.",
+        "GenLayer's consensus procedure: a leader proposes an answer, a small panel votes, the result stands unless someone challenges it in time, and each challenge summons a bigger panel.": "El procedimiento de consenso de GenLayer: un líder propone una respuesta, un panel pequeño vota, el resultado se mantiene salvo que alguien lo impugne a tiempo, y cada impugnación convoca un panel mayor.",
+        "Leader": "Líder",
+        "The validator picked to actually do the task and propose an answer. The rest of the panel then judges that proposal.": "El validador elegido para hacer la tarea y proponer una respuesta. El resto del panel juzga después esa propuesta.",
+        "GEN tokens a validator locks as a security deposit. Voting power comes from locked stake, and provable misconduct can destroy part of it.": "Los tokens GEN que un validador bloquea como depósito de garantía. El poder de voto nace del stake bloqueado, y una infracción demostrable puede destruir parte de él.",
+        "Delegation": "Delegación",
+        "Lending your GEN to a validator's stake. Delegators share the rewards without running a node; the minimum is 42 GEN.": "Prestar tu GEN al stake de un validador. Quien delega comparte las recompensas sin operar un nodo; el mínimo son 42 GEN.",
+        "The protocol destroying part of a validator's locked stake as punishment for provable misconduct, such as fraud (5% for a leader) or prolonged inactivity (1%).": "El protocolo destruye parte del stake bloqueado de un validador como castigo por una infracción demostrable, como el fraude (5% para un líder) o la inactividad prolongada (1%).",
+        "Appeal bond": "Fianza de apelación",
+        "Money a challenger locks to file an appeal. It funds the bigger panel; a failed appeal forfeits it, a successful one returns it with a reward.": "El dinero que un impugnador bloquea para presentar una apelación. Financia el panel mayor; si la apelación fracasa se pierde, y si prospera se devuelve con una recompensa.",
+        "Appeal": "Apelación",
+        "A challenge to a provisional decision during its open window. It triggers a new, larger panel to re-judge the question.": "Una impugnación de una decisión provisional dentro de su ventana abierta. Convoca un panel nuevo y mayor para volver a juzgar la cuestión.",
+        "Expected loss": "Pérdida esperada",
+        "The average cost if this exact situation repeated many times: each outcome's probability times what that outcome costs.": "El coste medio si esta situación exacta se repitiera muchas veces: la probabilidad de cada desenlace multiplicada por lo que ese desenlace cuesta.",
+        "Having a computer exhaustively explore every reachable state of a system model (here written in the TLA+ language) to check that stated rules can never be broken.": "Hacer que un ordenador explore exhaustivamente todos los estados alcanzables de un modelo del sistema (aquí escrito en el lenguaje TLA+) para comprobar que las reglas declaradas no pueden romperse nunca.",
+        "Issuance": "Emisión",
+        "New GEN created by the protocol on a fixed declining schedule to help pay validators: 9% a year at launch, falling toward 4%. The schedule is a ceiling, not a promise.": "GEN nuevo que el protocolo crea según un calendario decreciente fijo para ayudar a pagar a los validadores: 9% anual al inicio, bajando hacia el 4%. El calendario es un techo, no una promesa.",
         "an ambiguous decision arrives": "llega una decisión ambigua",
         "each validator judges with its own model": "cada validador juzga con su propio modelo",
         "“Meets the brief; the pricing analysis is the strongest part.”": "«Cumple el encargo; el análisis de precios es lo más sólido.»",
@@ -777,8 +953,8 @@
         "\"byte-identical to your re-execution\"": "\"idéntica byte a byte a tu reejecución\"",
         "✓ accept": "✓ aceptar",
         "✗ reject": "✗ rechazar",
-        "spawning nodes costs nothing…": "levantar nodos no cuesta nada…",
-        "…and the honest majority is gone.": "…y la mayoría honesta ha desaparecido.",
+        "spawning fake voters, each costing about $0…": "generando votantes falsos, cada uno por unos 0 $…",
+        "…fake voters outnumber everyone. One actor owns the vote.": "…los votantes falsos superan a todos los demás. Un solo actor controla la votación.",
         "ACCEPTED": "ACEPTADA",
         "REJECTED": "RECHAZADA",
         "accepted: 30 minutes for anyone to object": "aceptada — 30 minutos para objetar",
@@ -793,6 +969,38 @@
         "0–5 · REJECTED · HONEST WORK READS AS REFUSAL": "0–5 · RECHAZADA — EL TRABAJO HONESTO SE LEE COMO FALLO"
       },
       "ko": {
+        // Glossary cards (GLOSSARY in bridge-critical.js is English-only).
+        "Validator": "검증자",
+        "A computer taking part in the network's judging. In GenLayer each validator runs an AI model of its own choosing and locks GEN tokens as a security deposit (stake).": "네트워크의 판정에 참여하는 컴퓨터입니다. GenLayer에서는 각 검증자가 스스로 고른 AI 모델을 돌리고, 보증금으로 GEN 토큰을 잠급니다(스테이크).",
+        "Panel": "패널",
+        "The small random group of validators chosen to judge one decision. GenLayer's rounds use panels of 5, 7, 11 and so on, growing with each appeal.": "하나의 결정을 판정하기 위해 무작위로 뽑히는 소수의 검증자 그룹입니다. GenLayer의 라운드는 5, 7, 11명처럼 이의 제기 때마다 커지는 패널을 사용합니다.",
+        "Evaluator population": "평가자 집단",
+        "The full declared pool of possible judges that a panel is drawn from. The research measures how faithfully a small panel reproduces what this whole pool would decide.": "패널을 추첨하는, 미리 선언된 판정자 후보 전체 집단입니다. 이 연구는 작은 패널이 전체 집단의 결정을 얼마나 충실히 재현하는지 측정합니다.",
+        "Reproducibility": "재현성",
+        "The chance that a random panel lands on the same side as the whole declared pool of judges would. Deliberately not the same thing as being objectively right.": "무작위 패널이 선언된 판정자 집단 전체와 같은 쪽에 설 확률입니다. 객관적으로 옳다는 것과는 의도적으로 구분되는 개념입니다.",
+        "Adversary": "적대적 참여자",
+        "A participant who votes to push the decision somewhere, not to judge honestly. The research models the worst case: every adversarial vote goes against the honest majority.": "정직하게 판정하는 대신 결정을 특정 방향으로 밀기 위해 투표하는 참여자입니다. 연구는 최악의 경우, 곧 모든 적대적 표가 정직한 다수의 반대쪽으로 가는 상황을 모델링합니다.",
+        "Equivalence Principle": "동등성 원칙",
+        "GenLayer's rule that every contract call declares what counts as “the same answer”, so validators can accept an AI answer that is worded differently from their own.": "모든 컨트랙트 호출이 무엇을 “같은 답”으로 칠지 선언한다는 GenLayer의 규칙입니다. 덕분에 검증자는 자기 답과 표현이 달라도 AI의 답을 받아들일 수 있습니다.",
+        "GenLayer's consensus procedure: a leader proposes an answer, a small panel votes, the result stands unless someone challenges it in time, and each challenge summons a bigger panel.": "GenLayer의 합의 절차입니다. 리더가 답을 제안하고 작은 패널이 투표하며, 기한 안에 이의가 없으면 결과가 확정되고, 이의가 제기될 때마다 더 큰 패널이 소집됩니다.",
+        "Leader": "리더",
+        "The validator picked to actually do the task and propose an answer. The rest of the panel then judges that proposal.": "실제로 작업을 수행하고 답을 제안하도록 뽑힌 검증자입니다. 나머지 패널이 그 제안을 판정합니다.",
+        "Stake": "스테이크",
+        "GEN tokens a validator locks as a security deposit. Voting power comes from locked stake, and provable misconduct can destroy part of it.": "검증자가 보증금으로 잠그는 GEN 토큰입니다. 투표력은 잠긴 스테이크에서 나오며, 입증 가능한 위법 행위는 그 일부를 소각시킬 수 있습니다.",
+        "Delegation": "위임",
+        "Lending your GEN to a validator's stake. Delegators share the rewards without running a node; the minimum is 42 GEN.": "자기 GEN을 검증자의 스테이크에 보태는 것입니다. 위임자는 노드를 돌리지 않고도 보상을 나눠 받으며, 최소액은 42 GEN입니다.",
+        "Slashing": "슬래싱",
+        "The protocol destroying part of a validator's locked stake as punishment for provable misconduct, such as fraud (5% for a leader) or prolonged inactivity (1%).": "입증 가능한 위법 행위, 예컨대 사기(리더는 5%)나 장기 비활성(1%)에 대한 처벌로 프로토콜이 검증자의 잠긴 스테이크 일부를 소각하는 것입니다.",
+        "Appeal bond": "이의 제기 예치금",
+        "Money a challenger locks to file an appeal. It funds the bigger panel; a failed appeal forfeits it, a successful one returns it with a reward.": "이의를 제기하려는 사람이 잠가야 하는 돈입니다. 더 큰 패널의 비용을 대며, 이의가 기각되면 몰수되고 받아들여지면 보상과 함께 돌려받습니다.",
+        "Appeal": "이의 제기",
+        "A challenge to a provisional decision during its open window. It triggers a new, larger panel to re-judge the question.": "확정 전 결정에 대해 열린 기간 안에 제기하는 이의입니다. 더 큰 새 패널이 소집되어 그 질문을 다시 판정합니다.",
+        "Expected loss": "기대 손실",
+        "The average cost if this exact situation repeated many times: each outcome's probability times what that outcome costs.": "똑같은 상황이 여러 번 반복된다고 할 때의 평균 비용입니다. 각 결과의 확률에 그 결과의 비용을 곱해 더한 값입니다.",
+        "Model checking": "모델 검사",
+        "Having a computer exhaustively explore every reachable state of a system model (here written in the TLA+ language) to check that stated rules can never be broken.": "컴퓨터가 시스템 모델(여기서는 TLA+ 언어로 작성)의 도달 가능한 모든 상태를 남김없이 탐색해, 선언된 규칙이 결코 깨질 수 없음을 확인하는 기법입니다.",
+        "Issuance": "발행",
+        "New GEN created by the protocol on a fixed declining schedule to help pay validators: 9% a year at launch, falling toward 4%. The schedule is a ceiling, not a promise.": "검증자 보수를 돕기 위해 프로토콜이 정해진 감소 일정에 따라 새로 발행하는 GEN입니다. 출시 시점 연 9%에서 4%를 향해 내려갑니다. 이 일정은 상한이지 약속이 아닙니다.",
         "an ambiguous decision arrives": "모호한 결정이 도착합니다",
         "each validator judges with its own model": "검증자마다 자신의 모델로 판단합니다",
         "“Meets the brief; the pricing analysis is the strongest part.”": "“요구사항 충족. 가격 분석이 가장 탄탄하다.”",
@@ -805,8 +1013,8 @@
         "\"byte-identical to your re-execution\"": "\"자신의 재실행과 바이트 단위로 일치\"",
         "✓ accept": "✓ 수락",
         "✗ reject": "✗ 거부",
-        "spawning nodes costs nothing…": "노드는 공짜로 얼마든지 만들 수 있습니다…",
-        "…and the honest majority is gone.": "…그리고 정직한 다수는 사라집니다.",
+        "spawning fake voters, each costing about $0…": "가짜 투표자를 찍어내는 중, 한 명당 약 0달러…",
+        "…fake voters outnumber everyone. One actor owns the vote.": "…가짜 투표자가 나머지 전부를 압도합니다. 한 사람이 투표를 쥡니다.",
         "ACCEPTED": "수락",
         "REJECTED": "거부",
         "accepted: 30 minutes for anyone to object": "수락 — 30분 동안 누구나 이의 제기 가능",
@@ -821,6 +1029,38 @@
         "0–5 · REJECTED · HONEST WORK READS AS REFUSAL": "0–5 · 거부 — 정직한 작업이 결함으로 취급됩니다"
       },
       "zh": {
+        // Glossary cards (GLOSSARY in bridge-critical.js is English-only).
+        "Validator": "验证者",
+        "A computer taking part in the network's judging. In GenLayer each validator runs an AI model of its own choosing and locks GEN tokens as a security deposit (stake).": "参与网络判定的计算机。在 GenLayer，每个验证者运行自己选择的 AI 模型，并锁定 GEN 代币作为保证金（质押）。",
+        "Panel": "评估组",
+        "The small random group of validators chosen to judge one decision. GenLayer's rounds use panels of 5, 7, 11 and so on, growing with each appeal.": "为判定一个决策而随机抽出的少数验证者小组。GenLayer 的各轮使用 5、7、11 人等规模的评估组，每次申诉后扩大。",
+        "Evaluator population": "评估者群体",
+        "The full declared pool of possible judges that a panel is drawn from. The research measures how faithfully a small panel reproduces what this whole pool would decide.": "抽取评估组所依据的、事先声明的全部候选裁判群体。研究衡量的是：小评估组能多忠实地复现整个群体会作出的决定。",
+        "Reproducibility": "可复现性",
+        "The chance that a random panel lands on the same side as the whole declared pool of judges would. Deliberately not the same thing as being objectively right.": "随机评估组与全体既定裁判群体站在同一边的概率。它刻意不同于客观正确。",
+        "Adversary": "对抗者",
+        "A participant who votes to push the decision somewhere, not to judge honestly. The research models the worst case: every adversarial vote goes against the honest majority.": "投票是为了把决定推向某个方向、而不是诚实判定的参与者。研究按最坏情况建模：每一张对抗票都投向诚实多数的对立面。",
+        "Equivalence Principle": "等价原则",
+        "GenLayer's rule that every contract call declares what counts as “the same answer”, so validators can accept an AI answer that is worded differently from their own.": "GenLayer 的规则：每次合约调用都要声明什么算作“同一个答案”，这样验证者就能接受与自己措辞不同的 AI 答案。",
+        "GenLayer's consensus procedure: a leader proposes an answer, a small panel votes, the result stands unless someone challenges it in time, and each challenge summons a bigger panel.": "GenLayer 的共识流程：领导者提出答案，小评估组投票，若无人及时挑战则结果生效，每次挑战都会召集更大的评估组。",
+        "Leader": "领导者",
+        "The validator picked to actually do the task and propose an answer. The rest of the panel then judges that proposal.": "被选中实际执行任务并提出答案的验证者。评估组的其他成员随后对这个提案进行判定。",
+        "Stake": "质押",
+        "GEN tokens a validator locks as a security deposit. Voting power comes from locked stake, and provable misconduct can destroy part of it.": "验证者作为保证金锁定的 GEN 代币。投票权来自锁定的质押，可证实的不当行为会销毁其中一部分。",
+        "Delegation": "委托",
+        "Lending your GEN to a validator's stake. Delegators share the rewards without running a node; the minimum is 42 GEN.": "把自己的 GEN 借给验证者的质押。委托人无需运行节点即可分享奖励；最低为 42 GEN。",
+        "Slashing": "罚没",
+        "The protocol destroying part of a validator's locked stake as punishment for provable misconduct, such as fraud (5% for a leader) or prolonged inactivity (1%).": "协议销毁验证者部分锁定质押作为惩罚，针对可证实的不当行为，如欺诈（领导者 5%）或长期不在线（1%）。",
+        "Appeal bond": "申诉保证金",
+        "Money a challenger locks to file an appeal. It funds the bigger panel; a failed appeal forfeits it, a successful one returns it with a reward.": "挑战者提出申诉时必须锁定的资金。它资助更大的评估组；申诉失败则没收，成功则连同奖励一并退还。",
+        "Appeal": "申诉",
+        "A challenge to a provisional decision during its open window. It triggers a new, larger panel to re-judge the question.": "在开放窗口期内对临时决定提出的挑战。它会触发一个更大的新评估组重新判定该问题。",
+        "Expected loss": "预期损失",
+        "The average cost if this exact situation repeated many times: each outcome's probability times what that outcome costs.": "如果同样的情形重复许多次的平均成本：每种结果的概率乘以该结果的代价。",
+        "Model checking": "模型检验",
+        "Having a computer exhaustively explore every reachable state of a system model (here written in the TLA+ language) to check that stated rules can never be broken.": "让计算机穷尽地探索系统模型（这里用 TLA+ 语言编写）的每一个可达状态，以检验声明的规则永远不会被打破。",
+        "Issuance": "增发",
+        "New GEN created by the protocol on a fixed declining schedule to help pay validators: 9% a year at launch, falling toward 4%. The schedule is a ceiling, not a promise.": "协议按固定递减时间表新发行的 GEN，用于支付验证者：上线时每年 9%，逐步降向 4%。该时间表是上限，不是承诺。",
         "an ambiguous decision arrives": "一个模糊的决定提交进来",
         "each validator judges with its own model": "每个验证者用自己的模型作出判断",
         "“Meets the brief; the pricing analysis is the strongest part.”": "“符合要求；定价分析是最出色的部分。”",
@@ -833,8 +1073,8 @@
         "\"byte-identical to your re-execution\"": "\"与你的重新执行逐字节一致\"",
         "✓ accept": "✓ 接受",
         "✗ reject": "✗ 拒绝",
-        "spawning nodes costs nothing…": "开节点毫无成本……",
-        "…and the honest majority is gone.": "……诚实多数就此消失。",
+        "spawning fake voters, each costing about $0…": "正在批量生成假选民，每个成本约 0 美元……",
+        "…fake voters outnumber everyone. One actor owns the vote.": "……假选民已经压过所有人。投票落入一个人手里。",
         "ACCEPTED": "已接受",
         "REJECTED": "已拒绝",
         "accepted: 30 minutes for anyone to object": "已接受——任何人可在 30 分钟内提出异议",
@@ -849,6 +1089,38 @@
         "0–5 · REJECTED · HONEST WORK READS AS REFUSAL": "0–5 · 已拒绝——诚实的答案被当成了故障"
       },
       "ru": {
+        // Glossary cards (GLOSSARY in bridge-critical.js is English-only).
+        "Validator": "Валидатор",
+        "A computer taking part in the network's judging. In GenLayer each validator runs an AI model of its own choosing and locks GEN tokens as a security deposit (stake).": "Компьютер, участвующий в вынесении решений сети. В GenLayer каждый валидатор запускает ИИ-модель по своему выбору и блокирует токены GEN как страховой депозит (стейк).",
+        "Panel": "Группа",
+        "The small random group of validators chosen to judge one decision. GenLayer's rounds use panels of 5, 7, 11 and so on, growing with each appeal.": "Небольшая случайная группа валидаторов, выбранная судить одно решение. Раунды GenLayer используют группы из 5, 7, 11 участников и так далее — с каждой апелляцией группа растёт.",
+        "Evaluator population": "Совокупность оценщиков",
+        "The full declared pool of possible judges that a panel is drawn from. The research measures how faithfully a small panel reproduces what this whole pool would decide.": "Полная заранее объявленная совокупность возможных судей, из которой разыгрывается группа. Исследование измеряет, насколько точно малая группа воспроизводит решение всей совокупности.",
+        "Reproducibility": "Воспроизводимость",
+        "The chance that a random panel lands on the same side as the whole declared pool of judges would. Deliberately not the same thing as being objectively right.": "Вероятность того, что случайная группа окажется на той же стороне, что и вся объявленная совокупность судей. Намеренно не то же самое, что объективная правота.",
+        "Adversary": "Злоумышленник",
+        "A participant who votes to push the decision somewhere, not to judge honestly. The research models the worst case: every adversarial vote goes against the honest majority.": "Участник, который голосует, чтобы продавить решение, а не судить честно. Исследование моделирует худший случай: каждый голос злоумышленника направлен против честного большинства.",
+        "Equivalence Principle": "Принцип эквивалентности",
+        "GenLayer's rule that every contract call declares what counts as “the same answer”, so validators can accept an AI answer that is worded differently from their own.": "Правило GenLayer: каждый вызов контракта объявляет, что считается «тем же ответом», поэтому валидаторы могут принять ответ ИИ, сформулированный иначе, чем их собственный.",
+        "GenLayer's consensus procedure: a leader proposes an answer, a small panel votes, the result stands unless someone challenges it in time, and each challenge summons a bigger panel.": "Процедура консенсуса GenLayer: лидер предлагает ответ, малая группа голосует, результат вступает в силу, если его вовремя не оспорили, а каждое оспаривание созывает группу побольше.",
+        "Leader": "Лидер",
+        "The validator picked to actually do the task and propose an answer. The rest of the panel then judges that proposal.": "Валидатор, выбранный выполнить задачу и предложить ответ. Остальная группа затем судит это предложение.",
+        "Stake": "Стейк",
+        "GEN tokens a validator locks as a security deposit. Voting power comes from locked stake, and provable misconduct can destroy part of it.": "Токены GEN, которые валидатор блокирует как страховой депозит. Право голоса даёт заблокированный стейк, а доказуемое нарушение может уничтожить его часть.",
+        "Delegation": "Делегирование",
+        "Lending your GEN to a validator's stake. Delegators share the rewards without running a node; the minimum is 42 GEN.": "Передача своих GEN в стейк валидатора. Делегаторы делят вознаграждение, не запуская узел; минимум — 42 GEN.",
+        "Slashing": "Слэшинг",
+        "The protocol destroying part of a validator's locked stake as punishment for provable misconduct, such as fraud (5% for a leader) or prolonged inactivity (1%).": "Протокол уничтожает часть заблокированного стейка валидатора в наказание за доказуемое нарушение — например, мошенничество (5% для лидера) или длительный простой (1%).",
+        "Appeal bond": "Залог апелляции",
+        "Money a challenger locks to file an appeal. It funds the bigger panel; a failed appeal forfeits it, a successful one returns it with a reward.": "Деньги, которые претендент блокирует, чтобы подать апелляцию. Они оплачивают увеличенную группу; при проигрыше они теряются, при выигрыше возвращаются с наградой.",
+        "Appeal": "Апелляция",
+        "A challenge to a provisional decision during its open window. It triggers a new, larger panel to re-judge the question.": "Оспаривание предварительного решения в течение открытого окна. Оно созывает новую, более многочисленную группу, которая судит вопрос заново.",
+        "Expected loss": "Ожидаемые потери",
+        "The average cost if this exact situation repeated many times: each outcome's probability times what that outcome costs.": "Средняя цена, если бы точно такая ситуация повторялась много раз: вероятность каждого исхода, умноженная на его стоимость.",
+        "Model checking": "Проверка модели",
+        "Having a computer exhaustively explore every reachable state of a system model (here written in the TLA+ language) to check that stated rules can never be broken.": "Компьютер исчерпывающе перебирает все достижимые состояния модели системы (здесь она написана на языке TLA+), проверяя, что заявленные правила не могут быть нарушены.",
+        "Issuance": "Эмиссия",
+        "New GEN created by the protocol on a fixed declining schedule to help pay validators: 9% a year at launch, falling toward 4%. The schedule is a ceiling, not a promise.": "Новые GEN, которые протокол выпускает по фиксированному убывающему графику в помощь оплате валидаторов: 9% в год на старте со снижением к 4%. График — потолок, а не обещание.",
         "an ambiguous decision arrives": "поступает неоднозначный вопрос",
         "each validator judges with its own model": "каждый валидатор судит своей моделью",
         "“Meets the brief; the pricing analysis is the strongest part.”": "«Соответствует заданию; сильнее всего проработан анализ ценообразования».",
@@ -861,8 +1133,8 @@
         "\"byte-identical to your re-execution\"": "\"байт в байт с вашим повторным запуском\"",
         "✓ accept": "✓ принять",
         "✗ reject": "✗ отклонить",
-        "spawning nodes costs nothing…": "запуск узлов ничего не стоит…",
-        "…and the honest majority is gone.": "…и честного большинства больше нет.",
+        "spawning fake voters, each costing about $0…": "плодит поддельных голосующих, каждый примерно за 0 $…",
+        "…fake voters outnumber everyone. One actor owns the vote.": "…поддельных голосующих больше, чем всех остальных. Голосование принадлежит одному игроку.",
         "ACCEPTED": "ПРИНЯТО",
         "REJECTED": "ОТКЛОНЕНО",
         "accepted: 30 minutes for anyone to object": "принято — 30 минут на возражения",
@@ -878,21 +1150,6 @@
       }
     };
     const GL_T = (s) => (GL_I18N[(document.documentElement.lang || "en").split("-")[0]] || {})[s] || s;
-
-    (() => {
-      // OPTION A: the intro is trimmed to 5 scenes, but shared bridge-critical.js
-      // still autoplays through its hardcoded 7-step schedule (sceneDurations has
-      // six entries, so timers for steps 6 and 7 fire and hide every scene).
-      // When the shared stepper advances past scene 5, snap back to the final
-      // scene through the real progress control, whose click handler also runs
-      // the stepper's own stopIntro and clears the remaining timer.
-      const intro = document.querySelector(".critical-onboard");
-      const last = document.querySelector('[data-intro-progress="5"]');
-      if (!intro || !last) return;
-      new MutationObserver(() => {
-        if (Number(intro.dataset.step) > 5) last.click();
-      }).observe(intro, { attributes: true, attributeFilter: ["data-step"] });
-    })();
 
     (() => {
       const t9 = document.getElementById("i9-table");
@@ -949,8 +1206,17 @@
       const fill = document.getElementById("p38-fill");
       const cost = document.getElementById("p38-cost");
       const badnote = document.getElementById("p38-badnote");
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        for (let k = 0; k < 120; k++) { const d = document.createElement("i"); d.className = "p38-flood-dot"; flood.appendChild(d); }
+        for (let k = 0; k < 8; k++) { const s = document.createElement("i"); s.className = "p38-stake-dot"; staked.appendChild(s); }
+        cost.textContent = "40%"; fill.style.width = "40%";
+        badnote.textContent = GL_T("\u2026and the honest majority is gone.");
+        return;
+      }
       let n = 0;
-      setInterval(() => {
+      // Was setInterval(…, 420) — an endless loop that ignored
+      // prefers-reduced-motion and animated off screen. Body unchanged.
+      const tick = () => {
         n++;
         if (n <= 40) {
           for (let k = 0; k < 3; k++) { const d = document.createElement("i"); d.className = "p38-flood-dot"; flood.appendChild(d); }
@@ -959,13 +1225,26 @@
             cost.textContent = (n * 5) + "%";
             fill.style.width = (n * 5) + "%";
           }
-          if (n === 20) badnote.textContent = GL_T("\u2026and the honest majority is gone.");
+          if (n === 20) badnote.textContent = GL_T("\u2026fake voters outnumber everyone. One actor owns the vote.");
         } else {
           flood.innerHTML = ""; staked.innerHTML = ""; n = 0;
           fill.style.width = "0%"; cost.textContent = "0%";
-          badnote.textContent = GL_T("spawning nodes costs nothing\u2026");
+          badnote.textContent = GL_T("spawning fake voters, each costing about $0\u2026");
         }
-      }, 420);
+      };
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        // The demo's point is that costless fake voters end up
+        // outnumbering the staked ones. Run straight to that
+        // conclusion and hold it, so the argument survives the stillness.
+        for (let i = 0; i < 40; i++) tick();
+      } else {
+        let onScreen = true;
+        if (window.IntersectionObserver) {
+          new IntersectionObserver((e) => { onScreen = e[0].isIntersecting; },
+            { rootMargin: "200px" }).observe(flood);
+        }
+        setInterval(() => { if (onScreen) tick(); }, 420);
+      }
     })();
 
     (() => {
@@ -973,6 +1252,10 @@
       if (!svg) return;
       const token = document.getElementById("odf-token");
       const note = document.getElementById("odf-note");
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        note.textContent = GL_T("an ambiguous decision arrives");
+        return;
+      }
       const boxes = [...svg.querySelectorAll("#odf-st g[data-b]")];
       const loop = document.getElementById("odf-loop");
       const loopLen = loop.getTotalLength();
@@ -1054,10 +1337,25 @@
           ? [L(0,1,1,"each validator judges with its own model"), L(1,2,2,"accepted: 30 minutes for anyone to object"), { arc: true, box: 1, note: "challenged: the bond funds a panel of 7", ms: 1150 }, L(1,2,2,"upheld: a fresh window opens"), L(2,3,3,"final: the failed bond pays the round's majority validators")]
           : [L(0,1,1,"each validator judges with its own model"), L(1,2,2,"accepted: 30 minutes for anyone to object"), L(2,3,3,"no one objects: final, payment executes")];
         legs.forEach((lg) => { if (lg.box === 1) lg.sceneN = lg.arc ? 7 : 5; });
-        setTimeout(() => play(legs, 0, () => setTimeout(cycle, 1700)), 950);
+        setTimeout(() => play(legs, 0, () => setTimeout(odfNext, 1700)), 950);
       };
-      cycle();
+      // As above — an endless loop that ignored prefers-reduced-motion
+      // and kept animating off screen. A run in flight always finishes.
+      let onScreen = true;
+      if (window.IntersectionObserver) {
+        new IntersectionObserver((e) => { onScreen = e[0].isIntersecting; },
+          { rootMargin: "200px" }).observe(svg);
+      }
+      var odfNext = () => { if (onScreen) cycle(); else setTimeout(odfNext, 500); };
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        // Hold the completed flow: token at its final box, lit, outcome
+        // spelled out. Every stage stays legible; nothing moves.
+        token.setAttribute("cx", C[3].x); token.setAttribute("cy", C[3].y);
+        light(3);
+        note.textContent = GL_T("no one objects: final, payment executes");
+      } else cycle();
     })();
     </script>
+    <script src="../bridge-critical.js?v=mtikod1b"></script>
   </body>
 </html>

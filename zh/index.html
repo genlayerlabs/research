@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="了解 GenLayer 如何让区块链作出判断：衡量决策的可复现性、声明何为同一答案、按需调整评估、以质押维持安全、校准申诉激励，并对协议做形式化验证。" />
+    <meta name="description" content="了解 GenLayer 如何让区块链作出判断：衡量决策的可复现性、按需调整评估、校准申诉激励，并对协议做形式化验证。" />
     <meta name="author" content="GenLayer Research" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <title>会判断的区块链 | GenLayer Research</title>
@@ -14,19 +14,22 @@
     <link rel="alternate" hreflang="zh-Hans" href="https://genlayerlabs.github.io/research/zh/" />
     <link rel="alternate" hreflang="ru" href="https://genlayerlabs.github.io/research/ru/" />
     <link rel="alternate" hreflang="x-default" href="https://genlayerlabs.github.io/research/" />
+    <link rel="icon" href="../favicon.ico" sizes="32x32" />
     <link rel="icon" href="../brand/genlayer-icon.svg?v=2" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../brand/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="GenLayer Research" />
     <meta property="og:title" content="会判断的区块链 | GenLayer Research" />
-    <meta property="og:description" content="了解 GenLayer 如何让区块链作出判断：衡量决策的可复现性、声明何为同一答案、按需调整评估、以质押维持安全、校准申诉激励，并对协议做形式化验证。" />
+    <meta property="og:description" content="了解 GenLayer 如何让区块链作出判断：衡量决策的可复现性、按需调整评估、校准申诉激励，并对协议做形式化验证。" />
     <meta property="og:url" content="https://genlayerlabs.github.io/research/zh/" />
+    <meta property="og:locale" content="zh_CN" />
     <meta property="og:image" content="https://genlayerlabs.github.io/research/brand/aggregate-disambiguation-social.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="GenLayer 研究指南：会判断的区块链与五篇论文" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="会判断的区块链 | GenLayer Research" />
-    <meta name="twitter:description" content="了解 GenLayer 如何让区块链作出判断：衡量决策的可复现性、声明何为同一答案、按需调整评估、以质押维持安全、校准申诉激励，并对协议做形式化验证。" />
+    <meta name="twitter:description" content="了解 GenLayer 如何让区块链作出判断：衡量决策的可复现性、按需调整评估、校准申诉激励，并对协议做形式化验证。" />
     <meta name="twitter:image" content="https://genlayerlabs.github.io/research/brand/aggregate-disambiguation-social.png" />
     <meta name="twitter:image:alt" content="GenLayer 研究指南：会判断的区块链与五篇论文" />
     <script type="application/ld+json">
@@ -38,6 +41,10 @@
             "@id": "https://genlayer.com/#organization",
             "name": "GenLayer",
             "url": "https://genlayer.com/",
+            "sameAs": [
+              "https://x.com/GenLayer",
+              "https://github.com/genlayerlabs"
+            ],
             "logo": {
               "@type": "ImageObject",
               "url": "https://genlayerlabs.github.io/research/brand/genlayer-icon.svg"
@@ -79,7 +86,7 @@
             "@id": "https://genlayerlabs.github.io/research/zh/#guide",
             "url": "https://genlayerlabs.github.io/research/zh/",
             "name": "会判断的区块链 | GenLayer Research",
-            "description": "了解 GenLayer 如何让区块链作出判断：衡量决策的可复现性、声明何为同一答案、按需调整评估、以质押维持安全、校准申诉激励，并对协议做形式化验证。",
+            "description": "了解 GenLayer 如何让区块链作出判断：衡量决策的可复现性、按需调整评估、校准申诉激励，并对协议做形式化验证。",
             "isPartOf": {
               "@id": "https://genlayerlabs.github.io/research/#website"
             },
@@ -271,500 +278,669 @@
               "@id": "https://genlayer.com/#organization"
             },
             "inLanguage": "en"
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://genlayerlabs.github.io/research/zh/#faq",
+            "inLanguage": "zh-Hans",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "为什么评估组越大越有帮助？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "抽的裁判越多，评估组偏离整个群体所倾向那一边的概率就越小。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "什么样的决定更容易解决？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "群体本身越一致，得到稳定结果所需的裁判就越少。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "可复现就代表答案正确吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不是。它的意思是：随机抽取的评估组倾向于与声明群体站在同一边。答案是否为真，是另一个需要靠经验检验的问题。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "如果部分评估者是对抗者，会怎样？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "当群体中被腐化的比例已知、且发生在抽取评估组之前，论文能精确算出最坏情况下的错误率。系统的容忍度是算出来的，不是假设出来的。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "这是真实的语法吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不是，只是示意。真实的 GenVM 合约是运行在沙箱里的 Python 类；但机制本身——为每个 AI 操作逐次调用声明标准——与白皮书的规定完全一致。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "为什么会有两名验证者拒绝一个诚实的答案？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "因为他们自己重跑之后，诚实地得出了相反的结论。这是分歧，不是作弊：它绝不会被惩罚，而“可复现性”一节的数学正是为吸收这种分歧而设计的。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "谁来选定这个标准？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "由合约开发者定，而且逐次调用分别声明：同一份合约里，不同调用尽可以各用各的标准。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "为什么不干脆要求每个验证者都得出完全相同的输出？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "对 AI 调用和网页读取来说，不存在唯一正确的输出：两份都正确的摘要，措辞也不会一样。确定性的代码仍然逐字节检查。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "为什么系统可以先从少量评估者开始？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "多数决定花不了几个钱。只有当收益盖过成本时，才值得加裁判。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "什么时候值得增加评估？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "当赌注够大、或证据够弱，值得再花钱看一眼的时候。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "为什么要区分重新评估当前答案和生成新答案？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "它们买的是不同的东西：再核查是为同一个答案添证据，重新生成则是换掉答案本身。论文在花钱之前先给两者各自定价。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "实际运行的网络真的遵循这条理想规则吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "这里并没有证明这一点。这条规则只是规划者的基准；网络要贴合它，前提是有人私下觉得提出恰当的申诉对自己划算。这正是“激励”一节研究的问题。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "付给验证者的钱从哪里来？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "两条来源：交易手续费，以及沿固定曲线从 9% 递减至 4% 的增发（这是上限；销毁只会把它压低）。DAO 只靠手续费供给，所以它的收入随真实使用量而动。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "验证者到底因为什么才会受罚？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "诚实的错误与不当行为，定价截然不同。投票落败只会销毁手续费量级的金额，绝不动本金。怠工罚没 1%，可证明的欺诈罚没领导者 5%，申诉失败则没收保证金。分歧被吸收，不当行为才受罚。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "单靠平方根加权，就能防住一个人分身出许多虚假身份吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不能，论文自己也这么说。凹权重只是削弱集中度；真正阻止拆分的是：每一个身份都必须锁满 42,000 GEN、自己跑节点、自己承担罚没。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "不运行验证者节点也能获得奖励吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。委托 42 GEN 及以上，奖励会自动复利。也不用比价佣金：分成比例由协议写死，验证者仓位里的每一枚 GEN 收益率都一样。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "什么会让人愿意申诉？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "他的胜算、奖励、押上的保证金、申诉的成本，以及他对结果本身是否另有私利。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "能否设计激励，让有用的申诉真正发生？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "在一定条件下可以。论文给出了校准奖励的办法，让私人激励贴合系统确实需要再开一个评估组的时机。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "为什么多个潜在申诉者很重要？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "一旦很多人都能申诉，他们的选择就会互相影响：观望、抢跑、重复劳动。机制必须为这三者都定价。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "为什么不直接提高申诉保证金，把轻率的申诉挡在门外？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "保证金越高，越能为评估组买单、越能阻吓灌水，但它也占住了资本：收益的算术可以一模一样，而付得起申诉成本的人却急剧减少。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "这项验证究竟覆盖了什么？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "一个分层的模型：一张规范的状态图、对照它检查的 TLA+ 规约，以及把每一次状态转移映射到某个固定版本 Solidity 代码的对应关系。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "这能否证明代码没有任何漏洞？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不是。它证明的是：关于某个固定版本的一个明确模型，具备一组明确声明的性质。正是这种限定，才让这些主张变得可检验。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "为什么要反复验证，而不是一次证明了事？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "协议一直在演进。每个版本都用同一组性质重新检查，于是悄无声息的偏移会表现为一次检查失败，而不是一次线上事故。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "这套语义回归测试抓到过真实问题吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "有：上面提到的那个竞态，以及三条被破坏的不变式。全部已在实现中确认，并上报给开发团队。"
+                }
+              }
+            ]
           }
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css" />
-    <link rel="stylesheet" href="../bridge-critical.css" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtikod1b" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtikod1b" />
   </head>
   <body>
-    <a class="skip-link" href="#genlayer">跳过引导</a>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="GenLayer，返回顶部">
-        <img src="../brand/genlayer-logo-white.svg" alt="GenLayer" />
-        <span>判断即协议<small>图解研究指南</small></span>
-      </a>
-      <nav aria-label="页面章节">
-        <a href="#genlayer">GenLayer</a><a href="#measure">可复现性</a><a href="#equivalence">等价原则</a><a href="#adapt">自适应</a><a href="#tokenomics">代币经济学</a><a href="#align">激励</a><a href="#verify">形式化验证</a><a href="#papers">论文</a>
-      </nav>
-      <label class="language-switcher"><span>选择语言</span><select data-language-select data-current-locale="zh" aria-label="选择语言"><option value="../" data-locale="en" lang="en" aria-label="English">EN</option><option value="../es/" data-locale="es" lang="es" aria-label="Español">ES</option><option value="../ko/" data-locale="ko" lang="ko" aria-label="한국어">KO</option><option value="../zh/" data-locale="zh" lang="zh-Hans" aria-label="简体中文" selected>ZH</option><option value="../ru/" data-locale="ru" lang="ru" aria-label="Русский">RU</option></select></label>
-    </header>
 
 
-    <main id="top">
-      <section class="bi-onboard critical-onboard" aria-label="为什么模糊判断需要一套机制">
-        <div class="bi-stage">
-          <div class="bi-scene active" data-intro-scene="1">
-            <h1>有些决定可以<em>轻松自动化。</em></h1>
-            <div class="bi-question-flow">
-              <div class="bi-question-card"><small>明确的规则</small><strong>付款到账了吗？</strong></div><b>→</b>
-              <div class="bi-single-answer"><small>一个答案</small><strong>是。</strong></div>
-            </div>
-          </div>
-          <div class="bi-scene" data-intro-scene="2" aria-hidden="true">
-            <h1>另一些决定需要<em>作出判断。</em></h1>
-            <div class="bi-question-card bi-ambiguous-card"><small>一个模糊的问题</small><strong>这项工作符合要求吗？</strong></div>
-          </div>
-          <div class="bi-scene" data-intro-scene="3" aria-hidden="true">
-            <h1>AI 评估者可能得出<em>不同的答案。</em></h1>
-            <div class="bi-judgment-row" aria-label="三次分别作出的判断：是、否、是">
-              <div><small>判断 01</small><strong>是。</strong></div><div><small>判断 02</small><strong>否。</strong></div><div><small>判断 03</small><strong>是。</strong></div>
-            </div>
-          </div>
-          <div class="bi-scene" data-intro-scene="4" aria-hidden="true">
-            <h1>但软件最终仍需要<em>一个能够执行的决定。</em></h1>
-            <div class="bi-bottleneck">
-              <div class="bi-mini-verdicts"><i>是</i><i>否</i><i>是</i></div><b>→</b>
-              <div class="bi-decision-gap"><small>?</small><strong>怎么合并？</strong></div><b>→</b>
-              <div class="bi-final-box"><small>一个结果</small><strong>软件可以执行</strong></div>
-            </div>
-          </div>
-          <div class="bi-scene bi-research-origin" data-intro-scene="5" aria-hidden="true">
-            <div class="bi-research-copy">
-              <p class="bi-final-kicker">研究</p>
-              <h1>三年来，我们一直在研究：如何在<em>充满对抗的环境中，把模糊的决策自动化。</em></h1>
-              <div class="bi-built-ctas">
-                <a class="bi-research-enter" href="#genlayer">进入完整指南 <span>↓</span></a>
-              </div>
-            </div>
-            <div class="bi-paper-fan" aria-label="三篇核心研究论文">
-              <article><img src="../covers/part-1.webp" alt="《Aggregate Disambiguation Systems》首页" /><span><small>可复现性</small><strong>统计可复现性</strong></span></article>
-              <article><img src="../covers/part-2.webp" alt="《Adaptive Economic Aggregate Disambiguation》首页" /><span><small>自适应</small><strong>按成本调整评估</strong></span></article>
-              <article><img src="../covers/part-4.webp" alt="《Multi-Agent Appeal Games》首页" /><span><small>激励</small><strong>申诉激励</strong></span></article>
-            </div>
+
+<a class="skip-link" href="#map">跳过引导</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="GenLayer，返回顶部">
+      <img src="../brand/genlayer-logo-white.svg" alt="GenLayer" width="300" height="72" />
+      <span>判断即协议<small>图解研究指南</small></span>
+    </a>
+    <nav aria-label="页面章节">
+      <a href="#machine">机制</a><a href="#measure">可复现性</a><a href="#agree">等价原则</a><a href="#adapt">自适应</a><a href="#sustain">代币经济学</a><a href="#align">激励</a><a href="#verify">形式化验证</a><a href="#papers">论文</a>
+    </nav>
+    <label class="language-switcher"><span>选择语言</span><select data-language-select data-current-locale="zh" aria-label="选择语言"><option value="../" data-locale="en" lang="en" aria-label="English">EN</option><option value="../es/" data-locale="es" lang="es" aria-label="Español">ES</option><option value="../ko/" data-locale="ko" lang="ko" aria-label="한국어">KO</option><option value="../zh/" data-locale="zh" lang="zh-Hans" aria-label="简体中文" selected>ZH</option><option value="../ru/" data-locale="ru" lang="ru" aria-label="Русский">RU</option></select></label>
+    <i class="progress" aria-hidden="true"></i>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="bi-onboard critical-onboard" aria-label="为什么模糊判断需要一套机制">
+    <div class="bi-overview">
+      <p class="bi-overview-kicker">GENLAYER RESEARCH</p>
+      <p class="bi-overview-title">这项探索的简要导览：</p>
+    </div>
+    <div class="bi-stage">
+      <button class="bi-arrow bi-arrow-prev" type="button" aria-label="上一页">&#8249;</button>
+      <button class="bi-arrow bi-arrow-next" type="button" aria-label="下一页">&#8250;</button>
+      <div class="bi-scene active" data-intro-scene="1">
+        <h1>有些决定可以<em>轻松自动化。</em></h1>
+        <div class="bi-question-flow">
+          <div class="bi-question-card"><small>明确的规则</small><strong>付款到账了吗？</strong></div><b>→</b>
+          <div class="bi-single-answer"><small>一个答案</small><strong>是。</strong></div>
+        </div>
+      </div>
+      <div class="bi-scene" data-intro-scene="2" aria-hidden="true">
+        <h2>另一些决定需要<em>作出判断。</em></h2>
+        <div class="bi-question-card bi-ambiguous-card"><small>一个模糊的问题</small><strong>这项工作符合要求吗？</strong></div>
+      </div>
+      <div class="bi-scene" data-intro-scene="3" aria-hidden="true">
+        <h2>AI 评估者可能得出<em>不同的答案。</em></h2>
+        <div class="bi-judgment-row" aria-label="五次各自独立的判断：是、否、是、否、是">
+          <div><small>判断 01</small><strong>是</strong></div><div><small>判断 02</small><strong>否</strong></div><div><small>判断 03</small><strong>是</strong></div><div><small>判断 04</small><strong>否</strong></div><div><small>判断 05</small><strong>是</strong></div>
+        </div>
+      </div>
+      <div class="bi-scene" data-intro-scene="4" aria-hidden="true">
+        <h2>但软件最终仍需要<em>一个能够执行的决定。</em></h2>
+        <div class="bi-bottleneck">
+          <div class="bi-mini-verdicts" aria-label="五次判断：三次是，两次否"><i>是</i><i>否</i><i>是</i><i>否</i><i>是</i></div><b>→</b>
+          <div class="bi-decision-gap"><small>缺失的一步</small><strong>结论？</strong></div><b>→</b>
+          <div class="bi-final-box"><small>一个结果</small><strong>软件可以执行</strong></div>
+        </div>
+      </div>
+      <div class="bi-scene bi-research-origin" data-intro-scene="5" aria-hidden="true">
+        <div class="bi-research-copy">
+          <p class="bi-final-kicker">研究</p>
+          <h2>三年来，我们一直在研究：如何在<em>充满对抗的环境中，把模糊的决策自动化。</em></h2>
+          <div class="bi-built-ctas">
+            <a class="bi-research-enter" href="#map">进入完整指南 <span>↓</span></a>
           </div>
         </div>
-        <div class="bi-controls">
-          <div class="bi-progress" aria-label="引导进度"><button class="active" type="button" data-intro-progress="1" aria-label="显示引导第 1 步（共 5 步）" aria-current="step"></button><button type="button" data-intro-progress="2" aria-label="显示引导第 2 步（共 5 步）"></button><button type="button" data-intro-progress="3" aria-label="显示引导第 3 步（共 5 步）"></button><button type="button" data-intro-progress="4" aria-label="显示引导第 4 步（共 5 步）"></button><button type="button" data-intro-progress="5" aria-label="显示引导第 5 步（共 5 步）"></button></div>
-          <button class="bi-skip" type="button">跳过引导</button><button class="bi-replay" type="button" hidden>重新播放引导 ↺</button>
+        <div class="bi-paper-fan" aria-label="三篇核心研究论文">
+          <article><img src="../covers/part-1-560.webp" alt="《Aggregate Disambiguation Systems》首页" width="850" height="1100" /><span><small>可复现性</small><strong>统计可复现性</strong></span></article>
+          <article><img src="../covers/part-2-560.webp" alt="《Adaptive Economic Aggregate Disambiguation》首页" width="850" height="1100" /><span><small>自适应</small><strong>按成本调整评估</strong></span></article>
+          <article><img src="../covers/part-4-560.webp" alt="《Multi-Agent Appeal Games》首页" width="850" height="1100" /><span><small>激励</small><strong>申诉激励</strong></span></article>
         </div>
-      </section>
+      </div>
+    </div>
+    <div class="bi-controls">
+      <div class="bi-progress" aria-label="引导进度"><button class="active" type="button" data-intro-progress="1" aria-label="显示引导第 1 步（共 5 步）" aria-current="step"></button><button type="button" data-intro-progress="2" aria-label="显示引导第 2 步（共 5 步）"></button><button type="button" data-intro-progress="3" aria-label="显示引导第 3 步（共 5 步）"></button><button type="button" data-intro-progress="4" aria-label="显示引导第 4 步（共 5 步）"></button><button type="button" data-intro-progress="5" aria-label="显示引导第 5 步（共 5 步）"></button></div>
+      <button class="bi-skip" type="button">跳过引导</button><button class="bi-replay" type="button" hidden>重新播放引导 ↺</button>
+    </div>
+  </section>
 
-      <section class="critical-chapter chapter-genlayer" id="genlayer">
-        <div class="shell solution-layout">
-          <div class="chapter-copy solution-head">
-            <p class="eyebrow">我们的方案</p>
-            <h2>GenLayer：一条会<em>判断的区块链。</em></h2>
-            <p class="chapter-lede">GenLayer 是一个网络：即使问题没有现成的答案，它的合约也能作出决定并付诸执行。其共识机制 Optimistic Democracy 分三步运作：验证者各自用自己选择的 AI 模型对决定作出判断；一条事先声明的规则合并他们的投票；在结果最终生效之前，任何人都可以对它发起挑战。</p>
-          </div>
-          <div class="od-flow">
-            <p class="od-flow-label">一个决定，从头到尾。</p>
-            <svg id="odf-svg" viewBox="0 0 760 236" style="display:block;width:100%;height:auto">
-              <defs><marker id="odf-arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#b7c1d1"/></marker><marker id="odf-arr-hot" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#e2734a"/></marker></defs>
-              <line x1="182" y1="74" x2="212" y2="74" stroke="#c5cdd9" stroke-width="1.5" marker-end="url(#odf-arr)"/>
-              <line x1="380" y1="74" x2="410" y2="74" stroke="#c5cdd9" stroke-width="1.5" marker-end="url(#odf-arr)"/>
-              <line x1="578" y1="74" x2="608" y2="74" stroke="#c5cdd9" stroke-width="1.5" marker-end="url(#odf-arr)"/>
-              <path id="odf-loop" d="M 495,110 L 495,176 Q 495,188 483,188 L 309,188 Q 297,188 297,176 L 297,112" fill="none" stroke="#e2734a" stroke-width="1.5" marker-end="url(#odf-arr-hot)"/>
-              <text x="396" y="212" font-size="9.5" font-weight="700" letter-spacing=".1em" text-anchor="middle" fill="#b3542a">遭到挑战 · 保证金资助更大的评估组 · 7 · 11 · 13 …</text>
-              <g id="odf-st">
-                <g data-b="0"><rect class="sc-card" x="20" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="18" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="101" y="70">已提交</text><text class="sc-t2" x="101" y="88">一个模糊的决定</text></g>
-                <g data-b="1"><rect class="sc-card" x="216" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="214" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="297" y="70">评估组投票</text><text class="sc-t2" x="297" y="88">随机抽样的验证者</text></g>
-                <g data-b="2"><rect class="sc-card" x="414" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="412" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="495" y="70">挑战窗口</text><text class="sc-t2" x="495" y="88">30 分钟内可提出异议</text></g>
-                <g data-b="3"><rect class="sc-card sc-dark" x="612" y="42" width="128" height="64" rx="10"/><rect class="sc-ring" x="610" y="40" width="132" height="68" rx="12"/><text class="sc-t1 sc-w" x="676" y="70">最终生效</text><text class="sc-t2 sc-wm" x="676" y="88">付款执行</text></g>
-              </g>
-              <circle id="odf-token" r="5.5" fill="#3157d5" stroke="white" stroke-width="2"/>
-            </svg>
-            <p class="odf-status"><span id="odf-note"></span></p>
-          </div>
+  <section class="map" id="map" aria-label="一屏之内的论证">
+    <div class="wide">
+      <p class="label" style="color: var(--blue-ink)">论证脉络</p>
+      <h2>六个问题，一个系统。</h2>
+      <p class="intro">每一章提出一个问题并作出回答。这里把所有答案一次列出；页面其余部分是证据，每章末尾都是承载证明的论文。</p>
+      <ol>
+        <li><a href="#machine"><span class="num">00</span><span class="word">机制</span><span class="q">我们在构建什么？</span><span class="a">会判断的区块链。</span></a></li>
+        <li><a href="#measure"><span class="num">01</span><span class="word">可复现性</span><span class="q">能信任一小组 AI 裁判吗？</span><span class="a">信任变成一个数字。</span></a></li>
+        <li><a href="#agree"><span class="num">02</span><span class="word">等价原则</span><span class="q">两个 AI 答案何时算“相同”？</span><span class="a">由合约声明。</span></a></li>
+        <li><a href="#adapt"><span class="num">03</span><span class="word">自适应</span><span class="q">一个决策该买多少评估？</span><span class="a">恰好与利害相称的那么多。</span></a></li>
+        <li><a href="#sustain"><span class="num">04</span><span class="word">代币经济学</span><span class="q">为什么用电脑买不到投票权？</span><span class="a">投票权是锁定的资本。</span></a></li>
+        <li><a href="#align"><span class="num">05</span><span class="word">激励</span><span class="q">谁来出钱挑战一个错误的决定？</span><span class="a">赔付让谁划算，谁就来。</span></a></li>
+        <li><a href="#verify"><span class="num">06</span><span class="word">形式化验证</span><span class="q">部署的代码与数学相符吗？</span><span class="a">每次改动都重新检验。</span></a></li>
+      </ol>
+    </div>
+  </section>
+
+  <span id="genlayer"></span>
+  <section class="machine" id="machine" aria-label="GenLayer 与 Optimistic Democracy">
+    <div class="wide">
+      <p class="label"><span>00</span> · <span>机制</span></p>
+      <h2>GenLayer：一条会<em>判断的区块链。</em></h2>
+      <p class="lede">GenLayer 是一条区块链：即使问题没有可证明的答案——工作是否按约交付、货物是否在途中损坏——它的合约也能作出决定并执行。它的共识机制是 <span class="gl" data-gl="od">Optimistic Democracy</span>：先由一名<span class="gl" data-gl="leader">领导者</span>提出答案，再由若干<span class="gl" data-gl="validator">验证者</span>组成的<span class="gl" data-gl="panel">评估组</span>投票——每人运行自己选择的 AI 模型；在结果最终生效之前，它始终可以被挑战。</p>
+      <div class="od-flow">
+        <p class="od-flow-label">一个决定，从头到尾。</p>
+        <svg id="odf-svg" viewBox="0 0 760 236">
+          <defs><marker id="odf-arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#55557A"/></marker><marker id="odf-arr-hot" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#FF7B4A"/></marker></defs>
+          <line x1="182" y1="74" x2="212" y2="74" stroke="#55557A" stroke-width="1.5" marker-end="url(#odf-arr)"/>
+          <line x1="380" y1="74" x2="410" y2="74" stroke="#55557A" stroke-width="1.5" marker-end="url(#odf-arr)"/>
+          <line x1="578" y1="74" x2="608" y2="74" stroke="#55557A" stroke-width="1.5" marker-end="url(#odf-arr)"/>
+          <path id="odf-loop" d="M 495,110 L 495,176 Q 495,188 483,188 L 309,188 Q 297,188 297,176 L 297,112" fill="none" stroke="#FF7B4A" stroke-width="1.5" marker-end="url(#odf-arr-hot)"/>
+          <text x="396" y="212" font-size="9.5" font-weight="700" letter-spacing=".1em" text-anchor="middle" fill="#FF7B4A">遭到挑战 · 保证金资助更大的评估组 · 7 · 11 · 13 …</text>
+          <g id="odf-st">
+            <g data-b="0"><rect class="sc-card" x="20" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="18" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="101" y="70">已提交</text><text class="sc-t2" x="101" y="88">一个模糊的决定</text></g>
+            <g data-b="1"><rect class="sc-card" x="216" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="214" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="297" y="70">评估组投票</text><text class="sc-t2" x="297" y="88">随机抽样的验证者</text></g>
+            <g data-b="2"><rect class="sc-card" x="414" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="412" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="495" y="70">挑战窗口</text><text class="sc-t2" x="495" y="88">30 分钟内可提出异议</text></g>
+            <g data-b="3"><rect class="sc-card sc-dark" x="612" y="42" width="128" height="64" rx="10"/><rect class="sc-ring" x="610" y="40" width="132" height="68" rx="12"/><text class="sc-t1 sc-w" x="676" y="70">最终生效</text><text class="sc-t2 sc-wm" x="676" y="88">付款执行</text></g>
+          </g>
+          <circle id="odf-token" r="5.5" fill="#8B8AFF" stroke="white" stroke-width="2"/>
+        </svg>
+        <svg class="odf-mobile" viewBox="0 0 320 416" aria-hidden="true">
+          <defs><marker id="odfm-arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#55557A"/></marker><marker id="odfm-arr-hot" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#FF7B4A"/></marker></defs>
+          <line x1="160" y1="88" x2="160" y2="118" stroke="#55557A" stroke-width="1.5" marker-end="url(#odfm-arr)"/>
+          <line x1="160" y1="192" x2="160" y2="222" stroke="#55557A" stroke-width="1.5" marker-end="url(#odfm-arr)"/>
+          <line x1="160" y1="296" x2="160" y2="326" stroke="#55557A" stroke-width="1.5" marker-end="url(#odfm-arr)"/>
+          <path d="M 60,276 L 46,276 Q 34,276 34,264 L 34,184 Q 34,172 46,172 L 52,172" fill="none" stroke="#FF7B4A" stroke-width="1.5" marker-end="url(#odfm-arr-hot)"/>
+          <text transform="rotate(-90 20 224)" x="20" y="224" font-size="9.5" font-weight="700" letter-spacing=".12em" text-anchor="middle" fill="#FF7B4A">遭到挑战</text>
+          <g>
+            <g><rect class="sc-card" x="60" y="20" width="200" height="64" rx="10"/><text class="sc-t1" x="160" y="48" font-size="14">已提交</text><text class="sc-t2" x="160" y="66" font-size="10.5">一个模糊的决定</text></g>
+            <g><rect class="sc-card" x="60" y="124" width="200" height="64" rx="10"/><text class="sc-t1" x="160" y="152" font-size="14">评估组投票</text><text class="sc-t2" x="160" y="170" font-size="10.5">随机抽样的验证者</text></g>
+            <g><rect class="sc-card" x="60" y="228" width="200" height="64" rx="10"/><text class="sc-t1" x="160" y="256" font-size="14">挑战窗口</text><text class="sc-t2" x="160" y="274" font-size="10.5">30 分钟内可提出异议</text></g>
+            <g><rect class="sc-card sc-dark" x="60" y="332" width="200" height="64" rx="10"/><text class="sc-t1 sc-w" x="160" y="360" font-size="14">最终生效</text><text class="sc-t2 sc-wm" x="160" y="378" font-size="10.5">付款执行</text></g>
+          </g>
+        </svg>
+        <p class="odf-status"><span id="odf-note"></span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 MEASURE -->
+  <section class="chapter" id="measure" aria-label="可复现性">
+    <div class="spine">
+      <p class="marker"><span class="num">01</span><span class="word">可复现性</span><button class="title-help" type="button" data-tip="可复现性 = 在金钱、申诉和激励介入之前，先用一个数字衡量小评估组的决定有多可靠。">?</button></p>
+      <h2>评估者意见不一，甚至有人作弊，这个决定还能信任吗？</h2>
+      <div class="answer"><span class="label">简短回答</span><p>能——因为信任变成了一个数字。论文精确计算出随机抽取的小评估组与其声明的裁判群体一致的频率，即使里面混入了对抗者。</p></div>
+      <p class="lede">把一个有争议的问题抛给一大群诚实的评估者，可能 65 人说是、35 人说否。而 GenLayer 每次只问随机抽出的一小撮人。这一小撮人的答案，能信到什么程度？</p>
+      <div class="plain"><span class="label">用大白话说</span>
+        <p>先设想合约声明的全部可能裁判 <span class="gl" data-gl="population">(评估者群体)</span>。如果这个群体整体倾向某一边，一个随机抽取的小<span class="gl" data-gl="panel">评估组</span>有多大概率站到同一边？这个概率就是<span class="gl" data-gl="reproducibility">可复现性</span>——它衡量的是与群体是否一致，而刻意不是真伪。论文对它作了精确计算，也包括<span class="gl" data-gl="adversary">对抗者</span>始终投票反对诚实多数的最坏情况。</p>
+      </div>
+    </div>
+    <div class="wide">
+      <div class="lab" aria-label="评估组可靠性实验">
+        <span class="lab-chip">试一试</span>
+        <p class="lab-head">调整群体倾向、对抗者比例和评估者人数。</p>
+        <div class="predict" data-predict="measure" data-answer="63">
+          <small>先猜一猜</small>
+          <p>对抗者把 65/35 的群体扭成了 55/45。十一名随机裁判投票。他们仍与诚实多数站在一起的概率有多大？</p>
+          <div class="predict-choices"><button type="button" data-guess="50">约 50%</button><button type="button" data-guess="63">约 63%</button><button type="button" data-guess="90">约 90%</button></div>
+          <p class="predict-reveal" hidden>约 63%。十一名裁判便宜，但结果不稳。换成 1,537 名裁判，同一个数字就是 99.996%。在下面试试看。</p>
         </div>
-      </section>
+        <label for="p1b-agreement">诚实评估者中回答“是”的比例 <output id="p1b-agreement-output" for="p1b-agreement">65%</output></label>
+        <input id="p1b-agreement" type="range" min="51" max="95" value="65" />
+        <label for="p1b-adversary">被对抗者翻转的群体比例 <output id="p1b-adversary-output" for="p1b-adversary">10%</output></label>
+        <input id="p1b-adversary" type="range" min="0" max="40" value="10" />
+        <div class="population-bar" aria-hidden="true"><i id="p1b-yes-bar"></i><b id="p1b-adv-bar"></b></div>
+        <div class="bar-labels"><span id="p1b-yes-label">55% 是</span><span id="p1b-adv-label">10% 被翻转</span><span id="p1b-no-label">35% 否</span></div>
+        <fieldset><legend>评估者人数</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" class="active" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
+        <div class="lab-result" role="status" aria-live="polite"><small>评估组仍与诚实多数一致的概率</small><strong id="p1b-risk">—</strong><i><b id="p1b-risk-fill"></b></i><p id="p1b-risk-copy"></p></div>
+        <p class="fine">这是论文中精确非自适应模型的最坏情况：每一张对抗票都投向诚实多数的对立面。</p>
+      </div>
+    </div>
+    <div class="spine">
+      <div class="deeper">
+        <span class="label">更进一步</span>
+        <details class="proves"><summary>论文究竟证明了什么</summary><p>精确的公式：任意规模的评估组与声明群体一致的频率，有无腐化两种情形都算得出来；以及一套办法，用来认证未来有多少决定能可复现地解决（有限评估组错误概率、敏感度曲面、运营认证书）。</p></details>
+        <details class="faq"><summary>为什么评估组越大越有帮助？</summary><p>抽的裁判越多，评估组偏离整个群体所倾向那一边的概率就越小。</p></details>
+        <details class="faq"><summary>什么样的决定更容易解决？</summary><p>群体本身越一致，得到稳定结果所需的裁判就越少。</p></details>
+        <details class="faq"><summary>可复现就代表答案正确吗？</summary><p>不是。它的意思是：随机抽取的评估组倾向于与声明群体站在同一边。答案是否为真，是另一个需要靠经验检验的问题。</p></details>
+        <details class="faq"><summary>如果部分评估者是对抗者，会怎样？</summary><p>当群体中被腐化的比例已知、且发生在抽取评估组之前，论文能精确算出最坏情况下的错误率。系统的容忍度是算出来的，不是假设出来的。</p></details>
+      </div>
+      <a class="read-paper" href="../papers/part-1-aggregate-disambiguation-systems.pdf" target="paper-aggregate-disambiguation">阅读论文 · AGGREGATE DISAMBIGUATION SYSTEMS ↗</a>
+    </div>
+  </section>
 
-      <section class="critical-chapter chapter-one" id="measure">
-        <div class="shell chapter-layout">
-          <div class="chapter-copy">
-            <p class="eyebrow">可复现性</p>
-            <h2>评估者意见不一，甚至有人作弊，这个决定还能信任吗？</h2>
-            <p class="chapter-lede">刚才，你看到一个决定从提交一路走到生效。接下来要讲的，是我们能对这样一个系统证明什么——先从评估组本身说起。如果更大的评估者群体整体倾向某一边，一个较小的随机抽样评估组有多大概率站到同一边？而当群体中有一部分是对抗者时，这种可靠性还能剩下几分？</p>
-            <div class="chapter-contribution"><span>核心贡献</span><strong>论文精确给出有限评估组的错误概率，并把可复现性与客观真伪明确区分开来。</strong></div>
-          </div>
-          <div class="chapter-lab panel-lab adversary-lab">
-            <div class="lab-head"><strong>调整群体倾向、对抗者比例和评估者人数。</strong></div>
-            <label for="p1b-agreement">诚实评估者中回答“是”的比例 <output id="p1b-agreement-output" for="p1b-agreement">65%</output></label>
-            <input id="p1b-agreement" type="range" min="51" max="95" value="65" />
-            <label for="p1b-adversary">被对抗者翻转的群体比例 <output id="p1b-adversary-output" for="p1b-adversary">10%</output></label>
-            <input id="p1b-adversary" type="range" min="0" max="40" value="10" />
-            <div class="population-bar adversary-bar" aria-hidden="true"><i id="p1b-yes-bar"></i><b id="p1b-adv-bar"></b></div>
-            <div class="bar-labels"><span id="p1b-yes-label">55% 是</span><span id="p1b-adv-label">10% 被翻转</span><span id="p1b-no-label">35% 否</span></div>
-            <fieldset><legend>评估者人数</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" class="active" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
-            <div class="lab-result"><small>评估组仍与诚实多数一致的概率</small><strong id="p1b-risk">—</strong><i><b id="p1b-risk-fill"></b></i><p id="p1b-risk-copy"></p></div>
-            <p class="appeal-gap-note">这是论文中精确非自适应模型的最坏情况：每一张对抗票都投向诚实多数的对立面。</p>
-          </div>
-          <div class="chapter-source-row">
-            <div class="paper-faq" aria-label="关于 Aggregate Disambiguation Systems 的问题">
-              <p class="paper-faq-label">进一步了解</p>
-              <details name="faq-part-1">
-                <summary>为什么评估组越大越有帮助？</summary>
-                <p>因为当评估者群体整体倾向某一边时，随机抽取的评估组未能复现这个决定的概率有一个可认证的上界；评估组越大，这个上界就越趋近于零。</p>
-              </details>
-              <details name="faq-part-1">
-                <summary>什么样的决定更容易解决？</summary>
-                <p>评估者之间原本的一致程度越高，通常只需越少的评估者，就能得到稳定的结果。</p>
-              </details>
-              <details name="faq-part-1">
-                <summary>可复现就代表答案正确吗？</summary>
-                <p>不是。它只表示从既定评估者群体中随机抽取的不同评估组，很可能得出相同结论。论文衡量的是可复现性，而不是客观真伪。</p>
-              </details>
-              <details name="faq-part-1">
-                <summary>如果部分评估者是对抗者，会怎样？</summary>
-                <p>当评估者群体中被操控的比例已知，而且这种操控在抽取评估组之前就已固定时，论文可以精确计算最坏情况下的错误率。系统究竟扛得住多大比例的对抗者，由此成了一个算得出来的数字，用不着凭空假设。</p>
-              </details>
-            </div>
-            <a class="chapter-read" href="../papers/part-1-aggregate-disambiguation-systems.pdf" target="paper-aggregate-disambiguation">阅读论文 · AGGREGATE DISAMBIGUATION SYSTEMS ↗</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="critical-chapter chapter-equivalence" id="equivalence">
-        <div class="shell chapter-layout">
-          <div class="chapter-copy">
-            <p class="eyebrow">等价原则</p>
-            <h2>两个 AI 的答案算不算同一个，由谁说了算？</h2>
-            <p class="chapter-lede">《Aggregate Disambiguation Systems》统计的是“是/否”的票数。这里要讲的是一张票从何而来：向 AI 问同一个问题两次，返回的措辞就会不同，而经典共识会把任何差异都当作故障。GenLayer 的答案是等价原则（Equivalence Principle）——合约在每次调用时声明什么算作同一个答案；答案由一名验证者起草，其余验证者再依据该标准作出判断。</p>
-            <div class="chapter-contribution"><span>来自白皮书</span><strong>合约在每次调用时声明一个标准，验证者据此判断领导者的输出是否为可接受的答案——必要时对照自己重新执行的结果。</strong></div>
-          </div>
-          <div class="chapter-lab">
-            <div class="lab-head"><strong>切换标准，看投票如何变化。</strong></div>
-            <p class="i9-stage"><b>1</b> 合约声明什么算作同一个答案</p>
-            <pre class="i9-code">llm_call(
+  <!-- 02 AGREE -->
+  <span id="equivalence"></span>
+  <section class="chapter" id="agree" aria-label="等价原则">
+    <div class="spine">
+      <p class="marker"><span class="num">02</span><span class="word">等价原则</span><button class="title-help" type="button" data-tip="等价原则 = 措辞不同的 AI 答案如何变成可以清点的赞成/反对票。没有这一步，评估组就无票可数。">?</button></p>
+      <h2>两个 AI 的答案算不算同一个，由谁说了算？</h2>
+      <div class="answer"><span class="label">简短回答</span><p>由合约决定。每次调用都声明什么算“同一个答案”，验证者按这条声明的规则判断领导者的提案——这就是等价原则。</p></div>
+      <p class="lede">一张票是从哪儿来的？向 AI 问同一个问题两次，回来的措辞就不一样。经典区块链会把任何差异都当成故障，连诚实的工作也一并拒掉。</p>
+      <div class="plain"><span class="label">用大白话说</span>
+        <p>解法是<span class="gl" data-gl="equivalence">等价原则</span>：合约在每次调用时声明什么算作“同一个答案”。<span class="gl" data-gl="leader">领导者</span>实际执行任务并提出答案，其余人重跑一遍，再按这条规则作出判断。标准定得好，每一张票都承载着判断；定得不好，票要么一致却毫无信息，要么把诚实的答案全部否掉。</p>
+      </div>
+    </div>
+    <div class="wide">
+      <div class="lab" aria-label="等价标准实验">
+        <span class="lab-chip">试一试</span>
+        <p class="lab-head">切换标准，看投票如何变化。</p>
+        <p class="i9-stage"><b>1</b> 合约声明什么算作同一个答案</p>
+        <pre class="i9-code">llm_call(
   task = "交付的报告符合要求吗？",
   <b>equivalence = <i id="i9-eq">"与你自己重新执行的结论一致"</i></b>,
 )</pre>
-            <p class="i9-alt"><span># 或声明： </span><button type="button" class="active" data-c="0">结论一致</button><span> · </span><button type="button" data-c="1">言之成理</button><span> · </span><button type="button" data-c="2">逐字节一致</button></p>
-            <p class="i9-stage"><b>2</b> 领导者执行并提出答案</p>
-            <div class="i3-lead"><p>“符合要求——定价与竞争分析扎实；监管部分单薄，但确实覆盖了。”</p></div>
-            <p class="i9-stage"><b>3</b> 五名验证者重新执行，并对领导者的答案投票</p>
-            <table class="i9-table" id="i9-table"></table>
-            <div class="i3-tally"><div class="i3-pips" id="i9-pips"></div><strong id="i9-tally"></strong></div>
-            <div class="ep-verdict"><strong id="i9-action"></strong><p id="i9-copy"></p></div>
+        <p class="i9-alt"><span># 或声明： </span><button type="button" class="active" data-c="0">结论一致</button><span> · </span><button type="button" data-c="1">言之成理</button><span> · </span><button type="button" data-c="2">逐字节一致</button></p>
+        <p class="i9-stage"><b>2</b> 领导者执行并提出答案</p>
+        <div class="i3-lead"><p>“符合要求——定价与竞争分析扎实；监管部分单薄，但确实覆盖了。”</p></div>
+        <p class="i9-stage"><b>3</b> 五名验证者重新执行，并对领导者的答案投票</p>
+        <table class="i9-table" id="i9-table"></table>
+        <div class="i3-tally"><div class="i3-pips" id="i9-pips"></div><strong id="i9-tally"></strong></div>
+        <div class="ep-verdict" role="status" aria-live="polite"><strong id="i9-action"></strong><p id="i9-copy"></p></div>
+      </div>
+    </div>
+    <div class="spine">
+      <div class="deeper">
+        <span class="label">更进一步</span>
+        <details class="proves"><summary>白皮书究竟规定了什么</summary><p>合约在每次调用时声明一个标准，验证者据此判断领导者的输出是否为可接受的答案——必要时对照自己重新执行的结果。</p></details>
+        <details class="faq"><summary>这是真实的语法吗？</summary><p>不是，只是示意。真实的 GenVM 合约是运行在沙箱里的 Python 类；但机制本身——为每个 AI 操作逐次调用声明标准——与白皮书的规定完全一致。</p></details>
+        <details class="faq"><summary>为什么会有两名验证者拒绝一个诚实的答案？</summary><p>因为他们自己重跑之后，诚实地得出了相反的结论。这是分歧，不是作弊：它绝不会被惩罚，而“可复现性”一节的数学正是为吸收这种分歧而设计的。</p></details>
+        <details class="faq"><summary>谁来选定这个标准？</summary><p>由合约开发者定，而且逐次调用分别声明：同一份合约里，不同调用尽可以各用各的标准。</p></details>
+        <details class="faq"><summary>为什么不干脆要求每个验证者都得出完全相同的输出？</summary><p>对 AI 调用和网页读取来说，不存在唯一正确的输出：两份都正确的摘要，措辞也不会一样。确定性的代码仍然逐字节检查。</p></details>
+      </div>
+      <a class="read-paper" href="../papers/genlayer-whitepaper-v2.pdf" target="paper-genlayer-whitepaper">阅读白皮书 · 等价原则 ↗</a>
+    </div>
+  </section>
+
+  <!-- 03 ADAPT -->
+  <section class="chapter" id="adapt" aria-label="自适应">
+    <div class="spine">
+      <p class="marker"><span class="num">03</span><span class="word">自适应</span><button class="title-help" type="button" data-tip="自适应 = 决定每个决策买多少评估。裁判要花钱，所以评估组的规模是一种选择，而不是常数。">?</button></p>
+      <h2>十一名评估者就够用时，何必动用一千名？</h2>
+      <div class="answer"><span class="label">简短回答</span><p>只买利害关系所值的评估。每一步——停止、再评估或重新生成——最好的一步就是预期总损失最小的那一步，论文把它算了出来。</p></div>
+      <p class="lede">每一次评估都是付费的工作。200 美元的退款用不着 1,537 名裁判的评估组；两万美元的资金调动也许就值得。</p>
+      <div class="plain"><span class="label">用大白话说</span>
+        <p>每一步，系统都可以就此停下、为同一个答案多买几名裁判（再评估），或者花钱换一个新答案（重新生成）。最好的一步是让<span class="gl" data-gl="expectedloss">预期总损失</span>最小：裁判费用，加上判错的平均代价。论文算出了这个理想基准；真实的申诉行为是否贴合它，则是下面“激励”一节要回答的问题。</p>
+      </div>
+    </div>
+    <div class="wide">
+      <div class="lab" aria-label="停止规则实验">
+        <span class="lab-chip">试一试</span>
+        <p class="lab-head">这个决定值得请多少名评估者？</p>
+        <div class="predict" data-predict="adapt" data-answer="95">
+          <small>先猜一猜</small>
+          <p>一个有争议的问题上押着 2,000 美元。每名裁判收费 10 美分。在哪里停下最划算？</p>
+          <div class="predict-choices"><button type="button" data-guess="11">11 名裁判</button><button type="button" data-guess="95">95 名裁判</button><button type="button" data-guess="767">767 名裁判</button></div>
+          <p class="predict-reveal" hidden>95 名裁判：全部算下来约 12 美元。停在 11 名，会留下 297 美元的预期损失；用到 767 名，则要付 76.70 美元的费用，却几乎消不掉什么。</p>
+        </div>
+        <fieldset><legend>选择一个示例决策</legend>
+          <div class="size-buttons stop-presets">
+            <button type="button" data-p2s-preset="4">退款争议 · $200</button>
+            <button type="button" class="active" data-p2s-preset="40">自由职业里程碑 · $2,000</button>
+            <button type="button" data-p2s-preset="400">DAO 金库 · $20,000</button>
           </div>
-          <div class="chapter-source-row">
-            <div class="paper-faq" aria-label="关于等价原则的问题">
-              <p class="paper-faq-label">进一步了解</p>
-              <details name="faq-equivalence">
-                <summary>这是真实的语法吗？</summary>
-                <p>这只是示意写法。GenVM 合约是沙箱化的 Python 类；但机制本身与白皮书的规定完全一致：每次调用都为每个非确定性操作声明等价标准。</p>
-              </details>
-              <details name="faq-equivalence">
-                <summary>为什么会有两名验证者拒绝一个诚实的答案？</summary>
-                <p>因为他们自己重新执行后，诚实地得出了相反的结论。这是判断分歧，不是作弊：它绝不会被当作欺诈来惩罚，而《Aggregate Disambiguation Systems》的评估组数学正是为吸收这种分歧而设计的。</p>
-              </details>
-              <details name="faq-equivalence">
-                <summary>谁来选定这个标准？</summary>
-                <p>由合约开发者定，而且逐次调用分别声明：同一份合约里，不同调用尽可以各用各的标准。</p>
-              </details>
-              <details name="faq-equivalence">
-                <summary>为什么不干脆要求每个验证者都得出完全相同的输出？</summary>
-                <p>因为对 LLM 调用和网页读取来说，不存在唯一正确的输出：同一篇文章的两份正确摘要，措辞上就不会一样。合约中确定性的部分仍然按完全一致来检查；声明的标准只适用于非确定性调用。</p>
-              </details>
-            </div>
-            <a class="chapter-read" href="../papers/genlayer-whitepaper-v2.pdf" target="paper-genlayer-whitepaper">阅读白皮书 · 等价原则 ↗</a>
+        </fieldset>
+        <label for="p2s-stakes">决定出错时可能损失的金额 <output id="p2s-stakes-output" for="p2s-stakes">$2,000</output></label>
+        <input id="p2s-stakes" type="range" min="1" max="400" value="40" />
+        <label for="p2s-clarity">这个问题争议有多大？ <output id="p2s-clarity-output" for="p2s-clarity">65% 同意 · 有争议</output></label>
+        <input id="p2s-clarity" type="range" min="55" max="90" value="65" />
+        <p class="fine">每名评估者收费 10 美分。评估组的规模取协议规定的轮次大小，从 5 到 1,537。</p>
+        <svg class="stop-curve" id="p2s-svg" viewBox="0 0 720 300" role="img" aria-label="在每个协议轮次停止的总预期成本：评估费用随评估者人数上升，判错带来的预期损失下降，两者之和在最佳区间降到最低。"></svg>
+        <p class="stop-caption">总计 = 费用 + 风险，按轮次计算。在黑线降到最低处停止。</p>
+        <div class="lab-result" role="status" aria-live="polite"><small>停止规则</small><strong id="p2s-action">—</strong><p id="p2s-copy"></p></div>
+      </div>
+    </div>
+    <div class="spine">
+      <div class="deeper">
+        <span class="label">更进一步</span>
+        <details class="proves"><summary>论文究竟证明了什么</summary><p>一条精确的规则，判定哪一步的预期损失最低；一批在答案变化时仍然有效的认证书；以及一个证明：GenLayer 的升级阶梯所做的工作，不到完全知情选择的六倍（G-AE-ADS 规划器，六竞争调度）。</p></details>
+        <details class="faq"><summary>为什么系统可以先从少量评估者开始？</summary><p>多数决定花不了几个钱。只有当收益盖过成本时，才值得加裁判。</p></details>
+        <details class="faq"><summary>什么时候值得增加评估？</summary><p>当赌注够大、或证据够弱，值得再花钱看一眼的时候。</p></details>
+        <details class="faq"><summary>为什么要区分重新评估当前答案和生成新答案？</summary><p>它们买的是不同的东西：再核查是为同一个答案添证据，重新生成则是换掉答案本身。论文在花钱之前先给两者各自定价。</p></details>
+        <details class="faq"><summary>实际运行的网络真的遵循这条理想规则吗？</summary><p>这里并没有证明这一点。这条规则只是规划者的基准；网络要贴合它，前提是有人私下觉得提出恰当的申诉对自己划算。这正是“激励”一节研究的问题。</p></details>
+      </div>
+      <a class="read-paper" href="../papers/part-2-adaptive-economic-disambiguation.pdf" target="paper-adaptive-economic-disambiguation">阅读论文 · ADAPTIVE ECONOMIC DISAMBIGUATION ↗</a>
+    </div>
+  </section>
+
+  <!-- 04 SUSTAIN -->
+  <span id="tokenomics"></span>
+  <section class="chapter" id="sustain" aria-label="代币经济学">
+    <div class="spine">
+      <p class="marker"><span class="num">04</span><span class="word">代币经济学</span><button class="title-help" type="button" data-tip="代币经济学 = 经济引擎：验证者的报酬从哪里来，以及为什么买下投票控制权的代价高到得不偿失。">?</button></p>
+      <h2>是什么阻止单一参与者用海量节点接管网络？</h2>
+      <div class="answer"><span class="label">简短回答</span><p>投票权是被锁定的资本，而不是电脑。想要接管，就得买下——并押上——全部 GEN 中巨大的一份，而这种代币没人能随意增发。</p></div>
+      <p class="lede">到这里为止，我们都假定选票不容易买。可是计算机很便宜：一个人就能跑一千个节点。</p>
+      <div class="plain"><span class="label">用大白话说</span>
+        <p>所以投票权归于被锁定的 GEN——一种没人能随意增发的代币。验证者至少锁定 42,000 个有可能赔掉的 GEN <span class="gl" data-gl="stake">(质押)</span>；其他人则可以把自己的 GEN 委托给信任的验证者 <span class="gl" data-gl="delegation">(委托)</span>。想要控制网络，就得买下全部 GEN 中极大的一份，并把它放在网络随时可以销毁的地方 <span class="gl" data-gl="slashing">(罚没)</span>。</p>
+      </div>
+    </div>
+    <div class="wide">
+      <div class="lab" aria-label="质押门槛演示">
+        <span class="lab-chip">看一看</span>
+        <p class="lab-head">看同一个攻击者，在两个不同的世界里试图夺取控制权。</p>
+        <div class="p38-wrap">
+          <div class="p38-panel p38-bad">
+            <small>世界一 · 一个节点，一票</small>
+            <strong>假选民不要钱，攻击者就成批地造</strong>
+            <div class="p38-dots" id="p38-flood" aria-hidden="true"></div>
+            <p id="p38-badnote">正在批量生成假选民，每个成本约 0 美元&hellip;</p>
+          </div>
+          <div class="p38-panel p38-good">
+            <small>世界二 · GENLAYER：一枚锁定代币，一票</small>
+            <strong>每一票都必须锁定 GEN——一种没人能随意增发的代币</strong>
+            <div class="p38-dots" id="p38-staked" aria-hidden="true"></div>
+            <div class="p38-supply" role="img" aria-label="攻击者不得不买下的现有 GEN 占比"><i id="p38-fill"></i></div><p class="p38-supply-label">攻击者不得不买下的 GEN 占全部的比例</p>
+            <p id="p38-goodnote">同样的攻击放在这里：买下并锁定全部 GEN 的 <b id="p38-cost">0%</b>。一旦作弊，这份质押就会被销毁（罚没）。</p>
           </div>
         </div>
-      </section>
+        <p class="p38-footer">节点不要钱，GEN 要。夺取控制权，意味着买下网络中极大的一份，再把它作为人质交给网络去随时销毁。百分比只是示意，确切规则以论文为准。</p>
+        <p class="fine">取自论文中固定的表格：验证者最低 42,000 GEN，委托最低 42 GEN，解绑 7 个纪元，欺诈最高罚没 5%。</p>
+      </div>
+    </div>
+    <div class="spine">
+      <div class="deeper">
+        <span class="label">更进一步</span>
+        <details class="proves"><summary>论文究竟规定了什么</summary><p>支撑这座法庭的经济引擎：创世供应固定为 42 亿 GEN，增发率从 9% 向 4% 递减（是上限，不是承诺），奖励来自手续费与增发，加上质押规则，以及只惩罚可证明的不当行为、绝不罚没诚实分歧的处罚机制。</p></details>
+        <details class="faq"><summary>付给验证者的钱从哪里来？</summary><p>两条来源：交易手续费，以及沿固定曲线从 9% 递减至 4% 的增发（这是上限；销毁只会把它压低）。DAO 只靠手续费供给，所以它的收入随真实使用量而动。</p></details>
+        <details class="faq"><summary>验证者到底因为什么才会受罚？</summary><p>诚实的错误与不当行为，定价截然不同。投票落败只会销毁手续费量级的金额，绝不动本金。怠工罚没 1%，可证明的欺诈罚没领导者 5%，申诉失败则没收保证金。分歧被吸收，不当行为才受罚。</p></details>
+        <details class="faq"><summary>单靠平方根加权，就能防住一个人分身出许多虚假身份吗？</summary><p>不能，论文自己也这么说。凹权重只是削弱集中度；真正阻止拆分的是：每一个身份都必须锁满 42,000 GEN、自己跑节点、自己承担罚没。</p></details>
+        <details class="faq"><summary>不运行验证者节点也能获得奖励吗？</summary><p>可以。委托 42 GEN 及以上，奖励会自动复利。也不用比价佣金：分成比例由协议写死，验证者仓位里的每一枚 GEN 收益率都一样。</p></details>
+      </div>
+      <span class="read-paper soon">GEN TOKENOMICS · 论文准备中（草稿 v0.2，尚未公开）</span>
+    </div>
+  </section>
 
-      <section class="critical-chapter chapter-two" id="adapt">
-        <div class="shell part-two-layout">
-          <div class="chapter-copy part-two-intro">
-            <p class="eyebrow">自适应</p>
-            <h2>十一名评估者就够用时，何必动用一千名？</h2>
-            <p class="chapter-lede">每一次评估都要花钱，评估组的规模本质上是个预算问题。简单或低风险的决定可以早早停手；更难或更重要的决定则值得投入更多评估——要么再核查一次当前答案，要么换一个新答案试试。</p>
-            <div class="chapter-contribution"><span>核心贡献</span><strong>论文可以计算出预期总损失最低的下一步。</strong></div>
-          </div>
-          <div class="chapter-lab policy-lab stop-lab">
-            <div class="lab-head"><strong>这个决定值得请多少名评估者？</strong></div>
-            <div class="size-buttons stop-presets" role="group" aria-label="选择一个示例决策">
-              <button type="button" data-p2s-preset="4">退款争议 · $200</button>
-              <button type="button" class="active" data-p2s-preset="40">自由职业里程碑 · $2,000</button>
-              <button type="button" data-p2s-preset="400">DAO 金库 · $20,000</button>
-            </div>
-            <label for="p2s-stakes">决定出错时可能损失的金额 <output id="p2s-stakes-output" for="p2s-stakes">$2,000</output></label>
-            <input id="p2s-stakes" type="range" min="1" max="400" value="40" />
-            <label for="p2s-clarity">这个问题争议有多大？ <output id="p2s-clarity-output" for="p2s-clarity">65% 同意 · 有争议</output></label>
-            <input id="p2s-clarity" type="range" min="55" max="90" value="65" />
-            <p class="stop-note">每名评估者每次评估收费 10¢。评估组按协议的轮次规模设定，从 5 名到 1537 名评估者。</p>
-            <svg class="stop-curve" id="p2s-svg" viewBox="0 0 720 300" role="img" aria-label="在每个协议轮次停止的总预期成本：评估费用随评估者人数上升，判错带来的预期损失下降，两者之和在最佳区间降到最低。"></svg>
-            <p class="stop-caption">总计 = 费用 + 风险，按轮次计算。在黑线降到最低处停止。</p>
-            <div class="lab-result stop-verdict" role="status" aria-live="polite"><small>停止规则</small><strong id="p2s-action">—</strong><p id="p2s-copy"></p></div>
-          </div>
-          <div class="part-two-source-row">
-            <div class="paper-faq" aria-label="关于 Adaptive Economic Aggregate Disambiguation 的问题">
-              <p class="paper-faq-label">进一步了解</p>
-              <details name="faq-part-2">
-                <summary>为什么系统可以先从少量评估者开始？</summary>
-                <p>因为许多决定可以低成本解决。只有当预期收益足以覆盖额外成本时，才应增加评估者。</p>
-              </details>
-              <details name="faq-part-2">
-                <summary>什么时候值得增加评估？</summary>
-                <p>出错的代价够大，或者手头证据还太单薄，再花钱多评估一次是划算的时候。</p>
-              </details>
-              <details name="faq-part-2">
-                <summary>为什么要区分重新评估当前答案和生成新答案？</summary>
-                <p>因为两者买到的东西不同：重新评估是在为同一个答案积累证据，生成新答案则换掉了被评估的对象。论文会先把每个选项和它的成本放在一起权衡，再决定下一次评估花在哪里。</p>
-              </details>
-              <details name="faq-part-2">
-                <summary>实际运行的网络真的遵循这条理想规则吗？</summary>
-                <p>这里并没有证明这一点。这条规则是给一个全知的规划者的基准；网络要与它吻合，得有人觉得，在恰当的时刻触发恰当的追加评估对自己有利可图。现实中的申诉激励能否与这个基准对上，正是《Multi-Agent Appeal Games》要研究的问题。</p>
-              </details>
-            </div>
-            <a class="chapter-read" href="../papers/part-2-adaptive-economic-disambiguation.pdf" target="paper-adaptive-economic-disambiguation">阅读论文 · ADAPTIVE ECONOMIC DISAMBIGUATION ↗</a>
-          </div>
-        </div>
-      </section>
+  <!-- 05 ALIGN -->
+  <section class="chapter" id="align" aria-label="激励">
+    <div class="spine">
+      <p class="marker"><span class="num">05</span><span class="word">激励</span><button class="title-help" type="button" data-tip="激励 = 让挑战错误决定对个人有利可图，这样系统需要的申诉才会真正有人提出。">?</button></p>
+      <h2>谁来出钱挑战一个错误的决定？</h2>
+      <div class="answer"><span class="label">简短回答</span><p>赔付让谁觉得划算，谁就来。申诉奖励的安全区间很窄：要大到让有依据的怀疑愿意出手，又要小到让盲目滥发照样亏钱。</p></div>
+      <p class="lede">还记得那次 3 比 2 的投票吗？这么接近的结果值得再看一眼。可是发起挑战的人必须锁定一笔钱 <span class="gl" data-gl="bond">(保证金)</span>，而且可能血本无归。他为什么要主动出面？</p>
+      <div class="plain"><span class="label">用大白话说</span>
+        <p>论文把两件听起来相似的事分开：系统什么时候需要再开一个评估组，和某个人什么时候能从发起挑战中获利。两者会朝两个方向背离——该提却没人提的<span class="gl" data-gl="appeal">申诉</span>（没人付出代价），和毫无意义的申诉（有人白花钱）。杠杆在于赔付金额：太低，疑虑就沉默；太高，盲目挑战就成了一门生意。</p>
+      </div>
+    </div>
+    <div class="wide">
+      <div class="lab" aria-label="申诉赔付实验">
+        <span class="lab-chip">试一试</span>
+        <p class="lab-head">回报大小决定了哪些怀疑值得付诸行动。</p>
+        <label for="p4d-rho">申诉成功可获得 <output id="p4d-rho-output" for="p4d-rho">2.5× 保证金</output></label>
+        <input id="p4d-rho" type="range" min="110" max="400" step="5" value="250" />
+        <svg class="dial-svg" id="p4d-svg" viewBox="0 0 720 320" role="img" aria-label="两条联动的轴：一条对比申诉者保本所需的成功概率与诚实重新执行所能支持的上限，另一条对比回报倍数与它在 2 到约 2.9 之间的安全区间。"></svg>
+        <div class="lab-result" id="p4d-result" role="status" aria-live="polite"><small>谁会发起申诉</small><strong id="p4d-action">—</strong><p id="p4d-copy"></p></div>
+      </div>
+    </div>
+    <div class="spine">
+      <div class="deeper">
+        <span class="label">更进一步</span>
+        <details class="proves"><summary>论文究竟证明了什么</summary><p>为理想停止规则与真实申诉行为之间的落差给出精确定价（实现遗憾）；证明没有任何一组固定的保证金与奖励能适配所有工作负载；以及经过校准的赔付能弥合这道落差的条件。</p></details>
+        <details class="faq"><summary>什么会让人愿意申诉？</summary><p>他的胜算、奖励、押上的保证金、申诉的成本，以及他对结果本身是否另有私利。</p></details>
+        <details class="faq"><summary>能否设计激励，让有用的申诉真正发生？</summary><p>在一定条件下可以。论文给出了校准奖励的办法，让私人激励贴合系统确实需要再开一个评估组的时机。</p></details>
+        <details class="faq"><summary>为什么多个潜在申诉者很重要？</summary><p>一旦很多人都能申诉，他们的选择就会互相影响：观望、抢跑、重复劳动。机制必须为这三者都定价。</p></details>
+        <details class="faq"><summary>为什么不直接提高申诉保证金，把轻率的申诉挡在门外？</summary><p>保证金越高，越能为评估组买单、越能阻吓灌水，但它也占住了资本：收益的算术可以一模一样，而付得起申诉成本的人却急剧减少。</p></details>
+      </div>
+      <a class="read-paper" href="../papers/part-4-multi-agent-appeal-games.pdf" target="paper-multi-agent-appeal-games">阅读论文 · MULTI-AGENT APPEAL GAMES ↗</a>
+    </div>
+  </section>
 
-      <section class="critical-chapter chapter-five" id="tokenomics">
-        <div class="shell chapter-layout">
-          <div class="chapter-copy">
-            <p class="eyebrow">代币经济学</p>
-            <h2>是什么阻止单一参与者用海量节点接管网络？</h2>
-            <p class="chapter-lede">节点很廉价——任何人都能开上一千个。所以投票权不能来自节点：《GEN Tokenomics》把投票权绑定到供应量设有上限的资产 GEN 上。每个验证者都锁定一笔可能失去的质押，而从不运行节点的持有者则把自己的 GEN 委托给运行节点的验证者——这就是委托权益证明。</p>
-            <div class="chapter-contribution"><span>核心贡献</span><strong>支撑这座法庭的经济引擎：供应、增发、奖励、质押与惩罚，逐项写明规格，使安全性与实用性保持一致。</strong></div>
-          </div>
-          <div class="chapter-lab">
-            <div class="lab-head"><strong>同一个攻击者，有没有质押门槛，结果截然不同。</strong></div>
-            <div class="p38-wrap">
-              <div class="p38-panel p38-bad">
-                <small>如果投票权来自节点</small>
-                <strong>一个攻击者，无数个节点</strong>
-                <div class="p38-dots" id="p38-flood"></div>
-                <p id="p38-badnote">开节点毫无成本……</p>
-              </div>
-              <div class="p38-panel p38-good">
-                <small>投票权绑定稀缺资产</small>
-                <strong>每一票都要在总量有上限的供应中锁定一份</strong>
-                <div class="p38-dots" id="p38-staked"></div>
-                <div class="p38-supply"><i id="p38-fill"></i></div><p class="p38-supply-label">供应量设有上限——新增发行只降不升</p>
-                <p id="p38-goodnote">攻击者持有全部 GEN 的 <b id="p38-cost">0%</b>——面临风险，可被罚没</p>
-              </div>
-            </div>
-            <p class="p38-footer">门槛在于资本，而不是硬件：想接管网络，就得先买下网络相当大的一份，还要把这份筹码押上去。</p>
-            <p class="appeal-gap-note">参数取自论文锁定的参数表：验证者自质押下限 42,000 GEN，委托下限 42 GEN，解绑期 7 个 epoch，抽选权重 √(0.6·自质押 + 0.4·委托质押)。</p>
-          </div>
-          <div class="chapter-source-row">
-            <div class="paper-faq" aria-label="关于 GEN 代币经济学的问题">
-              <p class="paper-faq-label">进一步了解</p>
-              <details name="faq-part-5">
-                <summary>付给验证者的钱从哪里来？</summary>
-                <p>两个来源：交易费用，以及按固定曲线从 9% 逐步趋向 4% 的计划增发。这份时间表规定的只是上限，并不保证真会发这么多：销毁只会让它更低；随着供应量增长，实际通胀也会不断下降。DAO 的资金完全来自费用，因此它的收入只随真实使用量增长，绝不随增发增长。</p>
-              </details>
-              <details name="faq-part-5">
-                <summary>验证者到底因为什么才会受罚？</summary>
-                <p>这套惩罚把诚实的模型误差与可证明的不当行为区分开来。投在落败一方，只会销毁与该笔任务报酬等额的费用，绝不触及质押本金。长期不在线会被罚没 1%；可证明的欺诈会让领导者被罚没 5%；申诉失败则保证金被没收，付给该轮中与多数一致的验证者。也就是说，正常的分歧被当作运行成本消化掉，各类不当行为则分别标好了价。</p>
-              </details>
-              <details name="faq-part-5">
-                <summary>单靠平方根加权，就能防住一个人分身出许多虚假身份吗？</summary>
-                <p>不能，论文也说得很直白：凹形权重能抑制集中度，但如果身份是免费的，拆分质押反而会提高总权重。身份并不免费——每个身份都必须足额锁定 42,000 GEN 的下限、运行自己的节点、履行自己的在线义务，并独立承担罚没。</p>
-              </details>
-              <details name="faq-part-5">
-                <summary>不运行验证者节点也能获得奖励吗？</summary>
-                <p>可以。任何人都可以把 42 GEN 或更多委托给一名或多名验证者，奖励会自动复投。这里没有需要货比三家的佣金：分成比例由协议固定，同一名验证者名下的每一枚 GEN，无论是自质押还是委托而来，收益率都相同。</p>
-              </details>
-            </div>
-            <p class="chapter-read chapter-read-soon">GEN TOKENOMICS · 论文即将发布</p>
-          </div>
-        </div>
-      </section>
+  <!-- 06 VERIFY -->
+  <section class="chapter" id="verify" aria-label="形式化验证">
+    <div class="spine">
+      <p class="marker"><span class="num">06</span><span class="word">形式化验证</span><button class="title-help" type="button" data-tip="形式化验证 = 检查已部署的代码是否真正实现了数学所描述的协议，并在代码每次变化时反复核查。">?</button></p>
+      <h2>协议真的按设计运行吗？</h2>
+      <div class="answer"><span class="label">简短回答</span><p>每次改动都重新检验。一个机器检验的 Optimistic Democracy 模型随部署合约的演进反复对照——而且已经抓到过真实的缺陷。</p></div>
+      <p class="lede">以上都是关于设计的数学；而网络实际运行的代码每周都在变。所以我们为 Optimistic Democracy 建了一个可由机器检验的模型 <span class="gl" data-gl="modelchecking">(TLA+ 模型检验)</span>，并随着合约的演进反复对照。</p>
+      <div class="evidence" aria-label="重新验证抓到的问题">
+        <b>253</b><span>次提交的协议演进，均按同一组机器验证的性质重新检验。</span>
+        <b>1</b><span>个竞态被抓出：两条代码路径在处理同一个申诉事件。</span>
+        <b>3</b><span>条规则被一次热修复悄悄破坏，由模型检验发现。所有发现均已在实现中确认并上报开发团队。</span>
+      </div>
+      <div class="deeper">
+        <span class="label">更进一步</span>
+        <details class="faq"><summary>这项验证究竟覆盖了什么？</summary><p>一个分层的模型：一张规范的状态图、对照它检查的 TLA+ 规约，以及把每一次状态转移映射到某个固定版本 Solidity 代码的对应关系。</p></details>
+        <details class="faq"><summary>这能否证明代码没有任何漏洞？</summary><p>不是。它证明的是：关于某个固定版本的一个明确模型，具备一组明确声明的性质。正是这种限定，才让这些主张变得可检验。</p></details>
+        <details class="faq"><summary>为什么要反复验证，而不是一次证明了事？</summary><p>协议一直在演进。每个版本都用同一组性质重新检查，于是悄无声息的偏移会表现为一次检查失败，而不是一次线上事故。</p></details>
+        <details class="faq"><summary>这套语义回归测试抓到过真实问题吗？</summary><p>有：上面提到的那个竞态，以及三条被破坏的不变式。全部已在实现中确认，并上报给开发团队。</p></details>
+      </div>
+      <a class="read-paper" href="../papers/part-3-layered-formal-verification.pdf" target="paper-formal-verification">阅读论文 · LAYERED FORMAL VERIFICATION ↗</a>
+    </div>
+  </section>
 
-      <section class="critical-chapter chapter-four" id="align">
-        <div class="shell chapter-layout">
-          <div class="chapter-copy">
-            <p class="eyebrow">激励</p>
-            <h2>谁来出钱挑战一个错误的决定？</h2>
-            <p class="chapter-lede">还记得那次 3–2 吗？正是这类边缘决定最值得再看一眼。一次申诉可以改进系统的决定，但仅凭这份公共收益，并不能保证有参与者愿意出钱去触发它。</p>
-            <div class="chapter-contribution"><span>核心贡献</span><strong>论文把对系统有利的选择与对参与者有利的选择分开考察，并研究二者在什么条件下能够一致。</strong></div>
-          </div>
-          <div class="chapter-lab incentive-lab dial-lab">
-            <div class="lab-head"><strong>回报大小决定了哪些怀疑值得付诸行动。</strong></div>
-            <label for="p4d-rho">申诉成功可获得 <output id="p4d-rho-output" for="p4d-rho">2.5× 保证金</output></label>
-            <input id="p4d-rho" type="range" min="110" max="400" step="5" value="250" />
-            <svg class="dial-svg" id="p4d-svg" viewBox="0 0 720 320" role="img" aria-label="两条联动的轴：一条对比申诉者保本所需的成功概率与诚实重新执行所能支持的上限，另一条对比回报倍数与它在 2 到约 2.9 之间的安全区间。"></svg>
-            <div class="lab-result stop-verdict" id="p4d-result" role="status" aria-live="polite"><small>谁会发起申诉</small><strong id="p4d-action">—</strong><p id="p4d-copy"></p></div>
-          </div>
-          <div class="chapter-source-row">
-            <div class="paper-faq" aria-label="关于 Multi-Agent Appeal Games 的问题">
-              <p class="paper-faq-label">进一步了解</p>
-              <details name="faq-part-4">
-                <summary>什么会让人愿意申诉？</summary>
-                <p>取决于参与者对申诉成功概率的判断、奖励、可能损失的申诉保证金、申诉本身的成本，以及参与者自身在这笔交易结果中的利害关系。</p>
-              </details>
-              <details name="faq-part-4">
-                <summary>能否设计激励，让有用的申诉真正发生？</summary>
-                <p>在特定条件下可以。论文说明如何校准奖励，让参与者愿意申诉的时机，更接近系统确实需要继续评估的时机。</p>
-              </details>
-              <details name="faq-part-4">
-                <summary>为什么多个潜在申诉者很重要？</summary>
-                <p>因为当许多人都可以申诉时，他们的决策会相互影响。机制必须考虑等待、竞争和重复投入。</p>
-              </details>
-              <details name="faq-part-4">
-                <summary>为什么不直接提高申诉保证金，把轻率的申诉挡在门外？</summary>
-                <p>更高的保证金确实能资助追加的评估组、遏制滥发申诉，但这笔钱必须一直锁定到申诉出结果。论文表明，账面上的收益计算可以完全不变，而真正出得起钱去申诉的人群却会急剧缩小。</p>
-              </details>
-            </div>
-            <a class="chapter-read" href="../papers/part-4-multi-agent-appeal-games.pdf" target="paper-multi-agent-appeal-games">阅读论文 · MULTI-AGENT APPEAL GAMES ↗</a>
-          </div>
-        </div>
-      </section>
+  <section class="papers" id="papers" aria-label="论文">
+    <div class="wide">
+      <p class="label">核心研究</p>
+      <h2>六个问题，五篇论文。</h2>
+      <p class="intro">衡量评估组，为升级定价，为法庭筹资，校准申诉激励，验证代码。</p>
+      <div class="shelf">
+        <a href="../papers/part-1-aggregate-disambiguation-systems.pdf" target="paper-aggregate-disambiguation"><img src="../covers/part-1-560.webp" srcset="../covers/part-1-560.webp 560w, ../covers/part-1.webp 850w" sizes="(max-width: 560px) 54vw, (max-width: 900px) 76vw, min(31vw, 360px)" alt="《Aggregate Disambiguation Systems》首页" width="560" loading="lazy" decoding="async" height="724" /><span>可复现性</span><strong>Aggregate Disambiguation Systems</strong><small>有限评估组的可复现性</small></a>
+        <a href="../papers/part-2-adaptive-economic-disambiguation.pdf" target="paper-adaptive-economic-disambiguation"><img src="../covers/part-2-560.webp" srcset="../covers/part-2-560.webp 560w, ../covers/part-2.webp 850w" sizes="(max-width: 560px) 54vw, (max-width: 900px) 76vw, min(31vw, 360px)" alt="《Adaptive Economic Aggregate Disambiguation》首页" width="560" loading="lazy" decoding="async" height="724" /><span>自适应</span><strong>Adaptive Economic Disambiguation</strong><small>何时值得继续评估</small></a>
+        <a class="shelf-soon" aria-disabled="true"><img src="../covers/part-5-noalloc-1-560.webp" srcset="../covers/part-5-noalloc-1-560.webp 560w, ../covers/part-5-noalloc-1.webp 827w" sizes="(max-width: 560px) 54vw, (max-width: 900px) 76vw, min(31vw, 360px)" alt="《GEN Tokenomics》首页" width="560" loading="lazy" decoding="async" height="792" /><span>代币经济学</span><strong>GEN Tokenomics</strong><small>准备中，草稿 v0.2</small></a>
+        <a href="../papers/part-4-multi-agent-appeal-games.pdf" target="paper-multi-agent-appeal-games"><img src="../covers/part-4-560.webp" srcset="../covers/part-4-560.webp 560w, ../covers/part-4.webp 850w" sizes="(max-width: 560px) 54vw, (max-width: 900px) 76vw, min(31vw, 360px)" alt="《Multi-Agent Appeal Games》首页" width="560" loading="lazy" decoding="async" height="724" /><span>激励</span><strong>Multi-Agent Appeal Games</strong><small>个体激励与系统对齐</small></a>
+        <a href="../papers/part-3-layered-formal-verification.pdf" target="paper-layered-formal-verification"><img src="../covers/part-3-560.webp" srcset="../covers/part-3-560.webp 560w, ../covers/part-3.webp 850w" sizes="(max-width: 560px) 54vw, (max-width: 900px) 76vw, min(31vw, 360px)" alt="《Layered Formal Verification》首页" width="560" loading="lazy" decoding="async" height="724" /><span>形式化验证</span><strong>Layered Formal Verification</strong><small>一个机器检验的协议模型</small></a>
+      </div>
+    </div>
+  </section>
 
-      <section class="critical-chapter chapter-three verify-band" id="verify">
-        <div class="shell verify-band-grid">
-          <div class="verify-band-copy">
-            <p class="eyebrow">形式化验证</p>
-            <h2>协议真的按设计运行吗？</h2>
-            <p class="chapter-lede">《Layered Formal Verification》维护着一个机器检验的 Optimistic Democracy 模型，将它与已部署的合约绑定，并随代码变更持续复查——在跟进 253 个提交的演进后，它发现了一处结果随交易顺序而异的分歧和三项被悄悄破坏的不变量，全部反馈给了上游。</p>
-          </div>
-          <div class="chapter-source-row">
-            <div class="paper-faq" aria-label="关于 Layered Formal Verification 的问题">
-              <p class="paper-faq-label">进一步了解</p>
-              <details name="faq-part-3">
-                <summary>这项验证究竟覆盖了什么？</summary>
-                <p>覆盖的是分层模型的明确性质：一张作为唯一基准的状态图、据此检查的 TLA+ 规范，以及一张映射表，它把每个状态转换对应到锁定代码版本中的具体 Solidity 代码路径。</p>
-              </details>
-              <details name="faq-part-3">
-                <summary>这能否证明代码没有任何漏洞？</summary>
-                <p>不能。它证明的是：在一个明确声明的模型下，某个锁定的代码版本满足明确声明的性质。正是划定了这个范围，这些论断才检验得了，也才经得起一遍遍地重新检验。</p>
-              </details>
-              <details name="faq-part-3">
-                <summary>为什么要反复验证，而不是一次证明了事？</summary>
-                <p>因为协议还在不断演进。这份规范相当于一套语义回归测试：每个新版本都要重新对照同一组性质检查，于是悄然偏离会表现为一次失败的检查，而不是一次线上事故。</p>
-              </details>
-              <details name="faq-part-3">
-                <summary>这套语义回归测试抓到过真实问题吗？</summary>
-                <p>抓到过。四个月、253 个提交之后的重新验证发现，两条代码路径在处理同一个申诉事件时存在竞态；模型检查又发现，一次热修复悄悄破坏了三项协议不变量。所有发现都在实现代码中得到确认，并已反馈给上游。</p>
-              </details>
-            </div>
-            <a class="chapter-read" href="../papers/part-3-layered-formal-verification.pdf" target="paper-formal-verification">阅读论文 · LAYERED FORMAL VERIFICATION ↗</a>
-          </div>
-        </div>
-      </section>
+  <section class="glossary" id="glossary" aria-label="术语表">
+    <div class="wide">
+      <p class="label" style="color: var(--blue-ink)">所有术语，一处说清</p>
+      <h2>术语表。</h2>
+      <div class="grid">
+        <details data-glentry="validator"><summary>Validator</summary><p></p></details>
+        <details data-glentry="panel"><summary>Panel</summary><p></p></details>
+        <details data-glentry="population"><summary>Evaluator population</summary><p></p></details>
+        <details data-glentry="reproducibility"><summary>Reproducibility</summary><p></p></details>
+        <details data-glentry="adversary"><summary>Adversary</summary><p></p></details>
+        <details data-glentry="equivalence"><summary>Equivalence Principle</summary><p></p></details>
+        <details data-glentry="od"><summary>Optimistic Democracy</summary><p></p></details>
+        <details data-glentry="leader"><summary>Leader</summary><p></p></details>
+        <details data-glentry="stake"><summary>Stake</summary><p></p></details>
+        <details data-glentry="delegation"><summary>Delegation</summary><p></p></details>
+        <details data-glentry="slashing"><summary>Slashing</summary><p></p></details>
+        <details data-glentry="bond"><summary>Appeal bond</summary><p></p></details>
+        <details data-glentry="appeal"><summary>Appeal</summary><p></p></details>
+        <details data-glentry="expectedloss"><summary>Expected loss</summary><p></p></details>
+        <details data-glentry="modelchecking"><summary>Model checking</summary><p></p></details>
+        <details data-glentry="issuance"><summary>Issuance</summary><p></p></details>
+      </div>
+    </div>
+  </section>
+</main>
 
-      <section class="critical-papers" id="papers">
-        <div class="shell">
-          <div class="papers-heading"><p class="eyebrow">核心研究</p><h2>五个问题，五篇论文。</h2><p>按本页提问的顺序：衡量评估组、为扩大评估组定价、为法庭供资、校准申诉激励、验证代码。</p></div>
-          <div class="critical-shelf">
-            <a href="../papers/part-1-aggregate-disambiguation-systems.pdf" target="paper-aggregate-disambiguation"><img src="../covers/part-1.webp" alt="《Aggregate Disambiguation Systems》首页" /><span>可复现性</span><strong>Aggregate Disambiguation Systems</strong><small>有限评估组的可复现性</small></a>
-            <a href="../papers/part-2-adaptive-economic-disambiguation.pdf" target="paper-adaptive-economic-disambiguation"><img src="../covers/part-2.webp" alt="《Adaptive Economic Aggregate Disambiguation》首页" /><span>自适应</span><strong>Adaptive Economic Disambiguation</strong><small>何时值得继续评估</small></a>
-            <a class="shelf-soon" aria-disabled="true"><img src="../covers/part-5-noalloc-1.png" alt="《GEN Tokenomics》首页" /><span>代币经济学</span><strong>GEN Tokenomics</strong><small>论文即将发布</small></a>
-            <a href="../papers/part-4-multi-agent-appeal-games.pdf" target="paper-multi-agent-appeal-games"><img src="../covers/part-4.webp" alt="《Multi-Agent Appeal Games》首页" /><span>激励</span><strong>Multi-Agent Appeal Games</strong><small>个体激励与系统对齐</small></a>
-            <a href="../papers/part-3-layered-formal-verification.pdf" target="paper-layered-formal-verification"><img src="../covers/part-3.webp" alt="《Layered Formal Verification》首页" /><span>形式化验证</span><strong>Layered Formal Verification</strong><small>一个机器检验的协议模型</small></a>
-          </div>
-        </div>
-      </section>
-    </main>
+<footer>
+  <div class="spine"><span>GenLayerLabs Research · 判断即协议</span><a href="#top">返回顶部 ↑</a></div>
+</footer>
 
-    <footer><div class="shell"><span>GenLayerLabs Research · 判断即协议</span><div><a href="#top">返回顶部 ↑</a></div></div></footer>
-    <script src="../bridge-critical.js"></script>
-
-    <style>
-      .i9-stage { font-size: .62rem; font-weight: 900; letter-spacing: .1em; color: #8894ab; margin: 1.2rem 0 .45rem; }
-      .i9-stage:first-of-type { margin-top: 0; }
-      .i9-stage b { color: #ff5347; margin-right: .35rem; }
-      .i9-code { background: #161d44; color: #d5dcf2; font: .82rem/1.75 "SF Mono", Menlo, Consolas, monospace; padding: 1rem 1.2rem; margin: 0; white-space: pre-wrap; word-break: break-word; }
-      .i9-code b { font-weight: 400; color: #f7d154; }
-      .i9-code i { font-style: normal; background: rgba(247,209,84,.16); padding: .1rem .3rem; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-      .i9-alt { background: #161d44; padding: .1rem 1.2rem .8rem; margin: 0 0 .2rem; }
-      .i9-alt span { color: #7d89b8; font: .74rem/1.6 "SF Mono", Menlo, Consolas, monospace; }
-      .i9-alt button { font: inherit; font-size: .74rem; background: none; border: 0; cursor: pointer; color: #7d89b8; padding: 0; border-bottom: 1px dotted #7d89b8; }
-      .i9-alt button.active { color: #f7d154; border-bottom: 2px solid #f7d154; font-weight: 700; }
-      .i3-lead { border: 1px solid #d7deec; background: #fbfcfe; padding: .7rem .9rem; }
-      .i3-lead p { margin: 0; font: 700 .92rem/1.45 Georgia, serif; }
-      .i9-table { width: 100%; border-collapse: collapse; }
-      .i9-table td { border-top: 1px solid #17233f22; padding: .48rem .2rem; font: italic .84rem/1.4 Georgia, serif; }
-      .i9-table tr:first-child td { border-top: 0; }
-      .i9-table td:last-child { text-align: right; font: 900 .82rem/1 Georgia, serif; white-space: nowrap; padding-left: 1rem; }
-      .i9-table .g-ok { color: #078b87; } .i9-table .g-ko { color: #ff5347; }
-      .i3-tally { display: flex; align-items: center; gap: .9rem; margin-top: 1rem; }
-      .i3-pips { display: flex; gap: .35rem; }
-      .i3-pips span { width: 15px; height: 15px; background: #cfd7e6; transition: background .25s; }
-      .i3-pips span.ok { background: #078b87; } .i3-pips span.ko { background: #ff5347; }
-      .i3-tally strong { font: 800 1.05rem/1 Georgia, serif; white-space: nowrap; }
-      .ep-verdict { margin-top: 1rem; border-top: 3px solid #17233f; padding-top: .8rem; }
-      .ep-verdict strong { display: block; font-size: .8rem; font-weight: 900; letter-spacing: .05em; }
-      .ep-verdict p { margin: .35rem 0 0; font-size: .78rem; line-height: 1.5; color: #53617a; }
-      .ep-verdict p:empty { display: none; }
-      .od-flow { grid-column: 1 / -1; background: white; border-radius: 4px; padding: 1.2rem 1.4rem 1rem; margin-top: 1.4rem; }
-      .od-flow-label { margin: 0 0 .6rem; font-size: .64rem; font-weight: 900; letter-spacing: .12em; color: #53617a; }
-      .od-flow .sc-card { fill: #f0f3f9; }
-      .od-flow .sc-dark { fill: #1c2740; }
-      .od-flow .sc-ring { fill: none; stroke: #e2734a; stroke-width: 1.6; opacity: 0; transition: opacity .3s; }
-      .od-flow g.lit .sc-ring { opacity: 1; }
-      .od-flow .sc-t1 { font-size: 13px; font-weight: 700; text-anchor: middle; fill: #1c2740; }
-      .od-flow .sc-t2 { font-size: 9px; font-weight: 500; text-anchor: middle; fill: #8a94a6; }
-      .od-flow .sc-w { fill: white; } .od-flow .sc-wm { fill: #93a0b8; }
-      .odf-status { margin: .45rem 0 0; text-align: center; min-height: 1.2em; font-size: .62rem; font-weight: 700; letter-spacing: .12em; color: #8a94a6; text-transform: uppercase; }
-
-      /* OPTION C overrides: 5-scene intro + dark GenLayer block */
-      .critical-onboard .bi-progress { grid-template-columns: repeat(5, 1fr); }
-      @media (min-width: 1051px) { .bi-research-origin { grid-template-columns: minmax(360px, 1fr) minmax(480px, 1fr); } }
-      .bi-research-copy h1 { font-size: clamp(2.4rem, 3.4vw, 3.6rem); line-height: 1.06; max-width: none; }
-      .bi-research-origin .bi-built-ctas { justify-content: flex-start; margin-top: 1.4rem; }
-      .chapter-genlayer { background: #211c3d; color: white; padding: clamp(52px, 5vw, 72px) 0; }
-      .chapter-genlayer .eyebrow { color: #bba8f1; }
-      .chapter-genlayer h2 { max-width: 1020px; }
-      .chapter-genlayer .chapter-lede { max-width: 880px; color: #d0c9df; }
-      .solution-layout { display: grid; grid-template-columns: minmax(0, 940px); justify-content: center; gap: clamp(1.6rem, 3vw, 2.4rem); }
-      .solution-layout .od-flow { margin-top: 0; }
-      .p38-wrap { display: grid; grid-template-columns: 1fr; gap: .9rem; }
-      .p38-panel { border-radius: 12px; padding: 1rem 1.1rem 1.1rem; }
-      .p38-bad { background: #fdf3f0; }
-      .p38-good { background: #f0f7f5; }
-      .p38-panel small { display: block; font-size: .6rem; font-weight: 900; letter-spacing: .12em; margin-bottom: .3rem; }
-      .p38-bad small { color: #b3542a; }
-      .p38-good small { color: #0b6d6a; }
-      .p38-panel strong { display: block; font-size: .88rem; color: #1c2740; margin-bottom: .6rem; }
-      .p38-dots { display: flex; flex-wrap: wrap; gap: 5px; min-height: 50px; align-content: flex-start; }
-      .p38-dots i { width: 12px; height: 12px; border-radius: 50%; }
-      .p38-flood-dot { background: #e2734a; }
-      .p38-stake-dot { background: #0f8f8b; outline: 2px solid #bfe0dc; }
-      .p38-panel p { margin: .6rem 0 0; font-size: .72rem; color: #53617a; }
-      .p38-panel p b { color: #0b6d6a; font-weight: 800; }
-      .p38-supply { position: relative; height: 12px; background: #dde8e5; border-radius: 6px; margin-top: .7rem; overflow: hidden; }
-      .p38-supply i { position: absolute; inset: 0 auto 0 0; width: 0%; background: #0f8f8b; transition: width .4s; }
-      .p38-supply-label { margin: .4rem 0 0 !important; font-size: .54rem; font-weight: 900; letter-spacing: .1em; color: #33514c !important; text-align: center; }
-      .p38-footer { margin: 1rem 0 0; font-size: .8rem; line-height: 1.55; color: #33415e; border-top: 2px solid #1c2740; padding-top: .8rem; }
-      .chapter-genlayer h2 em { font-style: italic; color: #bba8f1; }
-      .chapter-genlayer .solution-head { text-align: center; }
-      .chapter-genlayer .chapter-lede { margin-left: auto; margin-right: auto; }
-            .chapter-genlayer .od-flow-label { text-align: center; }
-      .chapter-genlayer .od-flow { background: transparent; border: 0; box-shadow: none; padding: 0; border-radius: 0; }
-      .chapter-genlayer .od-flow-label { font: 700 1rem/1.25 Georgia, serif; letter-spacing: 0; text-transform: none; color: white; text-align: center; margin: 0 0 1.6rem; }
-      .chapter-genlayer .odf-status { color: #9aa3c7; }
-      .chapter-genlayer .sc-dark { fill: #3157d5; }
-      .chapter-genlayer .od-flow svg text[fill="#b3542a"] { fill: #e88b5e; }
-      .chapter-genlayer .chapter-lede { margin-bottom: .6rem; }
-            /* larger diagram cards */
-      .critical-chapter .shell { width: min(1320px, calc(100% - 48px)); }
-      @media (min-width: 1051px) { .chapter-layout, .part-two-layout { grid-template-columns: minmax(0, .85fr) minmax(560px, 1.15fr); } }
-      .i9-code { font-size: .9rem; }
-      .i9-alt span, .i9-alt button { font-size: .8rem; }
-      .i9-stage { font-size: .68rem; }
-      .i9-table td { font-size: .9rem; }
-      .i3-lead p { font-size: 1rem; }
-      .ep-verdict p { font-size: .84rem; }
-      .p38-panel p { font-size: .8rem; }
-      .p38-panel strong { font-size: .95rem; }
-      .p38-footer { font-size: .85rem; }
-      .verify-band { padding: clamp(34px, 3.5vw, 48px) 0; }
-      .verify-band-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4.5rem); align-items: start; }
-      .verify-band h2 { font-size: clamp(1.9rem, 2.6vw, 2.6rem); margin-top: .4rem; }
-      .verify-band .chapter-lede { margin-top: .9rem; }
-      .verify-band .chapter-source-row { margin-top: .2rem; grid-column: 2; grid-row: 1; }
-      .verify-band-copy { grid-column: 1; grid-row: 1; }
-      @media (max-width: 900px) { .verify-band .chapter-source-row { grid-column: 1; grid-row: auto; } }
-      @media (max-width: 900px) { .verify-band-grid { grid-template-columns: 1fr; } }
-      .chapter-lab { width: min(100%, 720px); }
-      .chapter-genlayer .od-flow { max-width: 720px; justify-self: center; width: 100%; }
-      .critical-papers .shell { width: min(1320px, calc(100% - 48px)); }
-      .policy-lab { padding: clamp(1.4rem, 3vw, 2.2rem); }
-      .critical-shelf a.shelf-soon { pointer-events: none; cursor: default; }
-      .critical-shelf a.shelf-soon img { opacity: .55; }
-      .critical-shelf a.shelf-soon small { color: var(--yellow); font-weight: 700; }
-    </style>
     <script>
     // Runtime strings for the inline widgets, keyed by English source text.
     // The build-time translator cannot reach inside <script>, so locale maps are
     // generated into GL_I18N by the translation integration; English falls through.
     const GL_I18N = {
       "es": {
+        // Glossary cards (GLOSSARY in bridge-critical.js is English-only).
+        "Validator": "Validador",
+        "A computer taking part in the network's judging. In GenLayer each validator runs an AI model of its own choosing and locks GEN tokens as a security deposit (stake).": "Un ordenador que participa en el juicio de la red. En GenLayer cada validador ejecuta el modelo de IA que elige y bloquea tokens GEN como depósito de garantía (stake).",
+        "The small random group of validators chosen to judge one decision. GenLayer's rounds use panels of 5, 7, 11 and so on, growing with each appeal.": "El pequeño grupo aleatorio de validadores elegido para juzgar una decisión. Las rondas de GenLayer usan paneles de 5, 7, 11 y así sucesivamente, creciendo con cada apelación.",
+        "Evaluator population": "Población de evaluadores",
+        "The full declared pool of possible judges that a panel is drawn from. The research measures how faithfully a small panel reproduces what this whole pool would decide.": "El conjunto declarado completo de posibles jueces del que se sortea el panel. La investigación mide con qué fidelidad un panel pequeño reproduce lo que decidiría todo el conjunto.",
+        "Reproducibility": "Reproducibilidad",
+        "The chance that a random panel lands on the same side as the whole declared pool of judges would. Deliberately not the same thing as being objectively right.": "La probabilidad de que un panel aleatorio caiga del mismo lado que el conjunto declarado de jueces al completo. Deliberadamente, no es lo mismo que tener razón objetivamente.",
+        "Adversary": "Adversario",
+        "A participant who votes to push the decision somewhere, not to judge honestly. The research models the worst case: every adversarial vote goes against the honest majority.": "Un participante que vota para empujar la decisión hacia algún lado, no para juzgar con honestidad. La investigación modela el peor caso: cada voto adversario va contra la mayoría honesta.",
+        "Equivalence Principle": "Principio de Equivalencia",
+        "GenLayer's rule that every contract call declares what counts as “the same answer”, so validators can accept an AI answer that is worded differently from their own.": "La regla de GenLayer por la que cada llamada del contrato declara qué cuenta como «la misma respuesta», de modo que los validadores puedan aceptar una respuesta de IA redactada de forma distinta a la suya.",
+        "GenLayer's consensus procedure: a leader proposes an answer, a small panel votes, the result stands unless someone challenges it in time, and each challenge summons a bigger panel.": "El procedimiento de consenso de GenLayer: un líder propone una respuesta, un panel pequeño vota, el resultado se mantiene salvo que alguien lo impugne a tiempo, y cada impugnación convoca un panel mayor.",
+        "Leader": "Líder",
+        "The validator picked to actually do the task and propose an answer. The rest of the panel then judges that proposal.": "El validador elegido para hacer la tarea y proponer una respuesta. El resto del panel juzga después esa propuesta.",
+        "GEN tokens a validator locks as a security deposit. Voting power comes from locked stake, and provable misconduct can destroy part of it.": "Los tokens GEN que un validador bloquea como depósito de garantía. El poder de voto nace del stake bloqueado, y una infracción demostrable puede destruir parte de él.",
+        "Delegation": "Delegación",
+        "Lending your GEN to a validator's stake. Delegators share the rewards without running a node; the minimum is 42 GEN.": "Prestar tu GEN al stake de un validador. Quien delega comparte las recompensas sin operar un nodo; el mínimo son 42 GEN.",
+        "The protocol destroying part of a validator's locked stake as punishment for provable misconduct, such as fraud (5% for a leader) or prolonged inactivity (1%).": "El protocolo destruye parte del stake bloqueado de un validador como castigo por una infracción demostrable, como el fraude (5% para un líder) o la inactividad prolongada (1%).",
+        "Appeal bond": "Fianza de apelación",
+        "Money a challenger locks to file an appeal. It funds the bigger panel; a failed appeal forfeits it, a successful one returns it with a reward.": "El dinero que un impugnador bloquea para presentar una apelación. Financia el panel mayor; si la apelación fracasa se pierde, y si prospera se devuelve con una recompensa.",
+        "Appeal": "Apelación",
+        "A challenge to a provisional decision during its open window. It triggers a new, larger panel to re-judge the question.": "Una impugnación de una decisión provisional dentro de su ventana abierta. Convoca un panel nuevo y mayor para volver a juzgar la cuestión.",
+        "Expected loss": "Pérdida esperada",
+        "The average cost if this exact situation repeated many times: each outcome's probability times what that outcome costs.": "El coste medio si esta situación exacta se repitiera muchas veces: la probabilidad de cada desenlace multiplicada por lo que ese desenlace cuesta.",
+        "Having a computer exhaustively explore every reachable state of a system model (here written in the TLA+ language) to check that stated rules can never be broken.": "Hacer que un ordenador explore exhaustivamente todos los estados alcanzables de un modelo del sistema (aquí escrito en el lenguaje TLA+) para comprobar que las reglas declaradas no pueden romperse nunca.",
+        "Issuance": "Emisión",
+        "New GEN created by the protocol on a fixed declining schedule to help pay validators: 9% a year at launch, falling toward 4%. The schedule is a ceiling, not a promise.": "GEN nuevo que el protocolo crea según un calendario decreciente fijo para ayudar a pagar a los validadores: 9% anual al inicio, bajando hacia el 4%. El calendario es un techo, no una promesa.",
         "an ambiguous decision arrives": "llega una decisión ambigua",
         "each validator judges with its own model": "cada validador juzga con su propio modelo",
         "“Meets the brief; the pricing analysis is the strongest part.”": "«Cumple el encargo; el análisis de precios es lo más sólido.»",
@@ -777,8 +953,8 @@
         "\"byte-identical to your re-execution\"": "\"idéntica byte a byte a tu reejecución\"",
         "✓ accept": "✓ aceptar",
         "✗ reject": "✗ rechazar",
-        "spawning nodes costs nothing…": "levantar nodos no cuesta nada…",
-        "…and the honest majority is gone.": "…y la mayoría honesta ha desaparecido.",
+        "spawning fake voters, each costing about $0…": "generando votantes falsos, cada uno por unos 0 $…",
+        "…fake voters outnumber everyone. One actor owns the vote.": "…los votantes falsos superan a todos los demás. Un solo actor controla la votación.",
         "ACCEPTED": "ACEPTADA",
         "REJECTED": "RECHAZADA",
         "accepted: 30 minutes for anyone to object": "aceptada — 30 minutos para objetar",
@@ -793,6 +969,38 @@
         "0–5 · REJECTED · HONEST WORK READS AS REFUSAL": "0–5 · RECHAZADA — EL TRABAJO HONESTO SE LEE COMO FALLO"
       },
       "ko": {
+        // Glossary cards (GLOSSARY in bridge-critical.js is English-only).
+        "Validator": "검증자",
+        "A computer taking part in the network's judging. In GenLayer each validator runs an AI model of its own choosing and locks GEN tokens as a security deposit (stake).": "네트워크의 판정에 참여하는 컴퓨터입니다. GenLayer에서는 각 검증자가 스스로 고른 AI 모델을 돌리고, 보증금으로 GEN 토큰을 잠급니다(스테이크).",
+        "Panel": "패널",
+        "The small random group of validators chosen to judge one decision. GenLayer's rounds use panels of 5, 7, 11 and so on, growing with each appeal.": "하나의 결정을 판정하기 위해 무작위로 뽑히는 소수의 검증자 그룹입니다. GenLayer의 라운드는 5, 7, 11명처럼 이의 제기 때마다 커지는 패널을 사용합니다.",
+        "Evaluator population": "평가자 집단",
+        "The full declared pool of possible judges that a panel is drawn from. The research measures how faithfully a small panel reproduces what this whole pool would decide.": "패널을 추첨하는, 미리 선언된 판정자 후보 전체 집단입니다. 이 연구는 작은 패널이 전체 집단의 결정을 얼마나 충실히 재현하는지 측정합니다.",
+        "Reproducibility": "재현성",
+        "The chance that a random panel lands on the same side as the whole declared pool of judges would. Deliberately not the same thing as being objectively right.": "무작위 패널이 선언된 판정자 집단 전체와 같은 쪽에 설 확률입니다. 객관적으로 옳다는 것과는 의도적으로 구분되는 개념입니다.",
+        "Adversary": "적대적 참여자",
+        "A participant who votes to push the decision somewhere, not to judge honestly. The research models the worst case: every adversarial vote goes against the honest majority.": "정직하게 판정하는 대신 결정을 특정 방향으로 밀기 위해 투표하는 참여자입니다. 연구는 최악의 경우, 곧 모든 적대적 표가 정직한 다수의 반대쪽으로 가는 상황을 모델링합니다.",
+        "Equivalence Principle": "동등성 원칙",
+        "GenLayer's rule that every contract call declares what counts as “the same answer”, so validators can accept an AI answer that is worded differently from their own.": "모든 컨트랙트 호출이 무엇을 “같은 답”으로 칠지 선언한다는 GenLayer의 규칙입니다. 덕분에 검증자는 자기 답과 표현이 달라도 AI의 답을 받아들일 수 있습니다.",
+        "GenLayer's consensus procedure: a leader proposes an answer, a small panel votes, the result stands unless someone challenges it in time, and each challenge summons a bigger panel.": "GenLayer의 합의 절차입니다. 리더가 답을 제안하고 작은 패널이 투표하며, 기한 안에 이의가 없으면 결과가 확정되고, 이의가 제기될 때마다 더 큰 패널이 소집됩니다.",
+        "Leader": "리더",
+        "The validator picked to actually do the task and propose an answer. The rest of the panel then judges that proposal.": "실제로 작업을 수행하고 답을 제안하도록 뽑힌 검증자입니다. 나머지 패널이 그 제안을 판정합니다.",
+        "Stake": "스테이크",
+        "GEN tokens a validator locks as a security deposit. Voting power comes from locked stake, and provable misconduct can destroy part of it.": "검증자가 보증금으로 잠그는 GEN 토큰입니다. 투표력은 잠긴 스테이크에서 나오며, 입증 가능한 위법 행위는 그 일부를 소각시킬 수 있습니다.",
+        "Delegation": "위임",
+        "Lending your GEN to a validator's stake. Delegators share the rewards without running a node; the minimum is 42 GEN.": "자기 GEN을 검증자의 스테이크에 보태는 것입니다. 위임자는 노드를 돌리지 않고도 보상을 나눠 받으며, 최소액은 42 GEN입니다.",
+        "Slashing": "슬래싱",
+        "The protocol destroying part of a validator's locked stake as punishment for provable misconduct, such as fraud (5% for a leader) or prolonged inactivity (1%).": "입증 가능한 위법 행위, 예컨대 사기(리더는 5%)나 장기 비활성(1%)에 대한 처벌로 프로토콜이 검증자의 잠긴 스테이크 일부를 소각하는 것입니다.",
+        "Appeal bond": "이의 제기 예치금",
+        "Money a challenger locks to file an appeal. It funds the bigger panel; a failed appeal forfeits it, a successful one returns it with a reward.": "이의를 제기하려는 사람이 잠가야 하는 돈입니다. 더 큰 패널의 비용을 대며, 이의가 기각되면 몰수되고 받아들여지면 보상과 함께 돌려받습니다.",
+        "Appeal": "이의 제기",
+        "A challenge to a provisional decision during its open window. It triggers a new, larger panel to re-judge the question.": "확정 전 결정에 대해 열린 기간 안에 제기하는 이의입니다. 더 큰 새 패널이 소집되어 그 질문을 다시 판정합니다.",
+        "Expected loss": "기대 손실",
+        "The average cost if this exact situation repeated many times: each outcome's probability times what that outcome costs.": "똑같은 상황이 여러 번 반복된다고 할 때의 평균 비용입니다. 각 결과의 확률에 그 결과의 비용을 곱해 더한 값입니다.",
+        "Model checking": "모델 검사",
+        "Having a computer exhaustively explore every reachable state of a system model (here written in the TLA+ language) to check that stated rules can never be broken.": "컴퓨터가 시스템 모델(여기서는 TLA+ 언어로 작성)의 도달 가능한 모든 상태를 남김없이 탐색해, 선언된 규칙이 결코 깨질 수 없음을 확인하는 기법입니다.",
+        "Issuance": "발행",
+        "New GEN created by the protocol on a fixed declining schedule to help pay validators: 9% a year at launch, falling toward 4%. The schedule is a ceiling, not a promise.": "검증자 보수를 돕기 위해 프로토콜이 정해진 감소 일정에 따라 새로 발행하는 GEN입니다. 출시 시점 연 9%에서 4%를 향해 내려갑니다. 이 일정은 상한이지 약속이 아닙니다.",
         "an ambiguous decision arrives": "모호한 결정이 도착합니다",
         "each validator judges with its own model": "검증자마다 자신의 모델로 판단합니다",
         "“Meets the brief; the pricing analysis is the strongest part.”": "“요구사항 충족. 가격 분석이 가장 탄탄하다.”",
@@ -805,8 +1013,8 @@
         "\"byte-identical to your re-execution\"": "\"자신의 재실행과 바이트 단위로 일치\"",
         "✓ accept": "✓ 수락",
         "✗ reject": "✗ 거부",
-        "spawning nodes costs nothing…": "노드는 공짜로 얼마든지 만들 수 있습니다…",
-        "…and the honest majority is gone.": "…그리고 정직한 다수는 사라집니다.",
+        "spawning fake voters, each costing about $0…": "가짜 투표자를 찍어내는 중, 한 명당 약 0달러…",
+        "…fake voters outnumber everyone. One actor owns the vote.": "…가짜 투표자가 나머지 전부를 압도합니다. 한 사람이 투표를 쥡니다.",
         "ACCEPTED": "수락",
         "REJECTED": "거부",
         "accepted: 30 minutes for anyone to object": "수락 — 30분 동안 누구나 이의 제기 가능",
@@ -821,6 +1029,38 @@
         "0–5 · REJECTED · HONEST WORK READS AS REFUSAL": "0–5 · 거부 — 정직한 작업이 결함으로 취급됩니다"
       },
       "zh": {
+        // Glossary cards (GLOSSARY in bridge-critical.js is English-only).
+        "Validator": "验证者",
+        "A computer taking part in the network's judging. In GenLayer each validator runs an AI model of its own choosing and locks GEN tokens as a security deposit (stake).": "参与网络判定的计算机。在 GenLayer，每个验证者运行自己选择的 AI 模型，并锁定 GEN 代币作为保证金（质押）。",
+        "Panel": "评估组",
+        "The small random group of validators chosen to judge one decision. GenLayer's rounds use panels of 5, 7, 11 and so on, growing with each appeal.": "为判定一个决策而随机抽出的少数验证者小组。GenLayer 的各轮使用 5、7、11 人等规模的评估组，每次申诉后扩大。",
+        "Evaluator population": "评估者群体",
+        "The full declared pool of possible judges that a panel is drawn from. The research measures how faithfully a small panel reproduces what this whole pool would decide.": "抽取评估组所依据的、事先声明的全部候选裁判群体。研究衡量的是：小评估组能多忠实地复现整个群体会作出的决定。",
+        "Reproducibility": "可复现性",
+        "The chance that a random panel lands on the same side as the whole declared pool of judges would. Deliberately not the same thing as being objectively right.": "随机评估组与全体既定裁判群体站在同一边的概率。它刻意不同于客观正确。",
+        "Adversary": "对抗者",
+        "A participant who votes to push the decision somewhere, not to judge honestly. The research models the worst case: every adversarial vote goes against the honest majority.": "投票是为了把决定推向某个方向、而不是诚实判定的参与者。研究按最坏情况建模：每一张对抗票都投向诚实多数的对立面。",
+        "Equivalence Principle": "等价原则",
+        "GenLayer's rule that every contract call declares what counts as “the same answer”, so validators can accept an AI answer that is worded differently from their own.": "GenLayer 的规则：每次合约调用都要声明什么算作“同一个答案”，这样验证者就能接受与自己措辞不同的 AI 答案。",
+        "GenLayer's consensus procedure: a leader proposes an answer, a small panel votes, the result stands unless someone challenges it in time, and each challenge summons a bigger panel.": "GenLayer 的共识流程：领导者提出答案，小评估组投票，若无人及时挑战则结果生效，每次挑战都会召集更大的评估组。",
+        "Leader": "领导者",
+        "The validator picked to actually do the task and propose an answer. The rest of the panel then judges that proposal.": "被选中实际执行任务并提出答案的验证者。评估组的其他成员随后对这个提案进行判定。",
+        "Stake": "质押",
+        "GEN tokens a validator locks as a security deposit. Voting power comes from locked stake, and provable misconduct can destroy part of it.": "验证者作为保证金锁定的 GEN 代币。投票权来自锁定的质押，可证实的不当行为会销毁其中一部分。",
+        "Delegation": "委托",
+        "Lending your GEN to a validator's stake. Delegators share the rewards without running a node; the minimum is 42 GEN.": "把自己的 GEN 借给验证者的质押。委托人无需运行节点即可分享奖励；最低为 42 GEN。",
+        "Slashing": "罚没",
+        "The protocol destroying part of a validator's locked stake as punishment for provable misconduct, such as fraud (5% for a leader) or prolonged inactivity (1%).": "协议销毁验证者部分锁定质押作为惩罚，针对可证实的不当行为，如欺诈（领导者 5%）或长期不在线（1%）。",
+        "Appeal bond": "申诉保证金",
+        "Money a challenger locks to file an appeal. It funds the bigger panel; a failed appeal forfeits it, a successful one returns it with a reward.": "挑战者提出申诉时必须锁定的资金。它资助更大的评估组；申诉失败则没收，成功则连同奖励一并退还。",
+        "Appeal": "申诉",
+        "A challenge to a provisional decision during its open window. It triggers a new, larger panel to re-judge the question.": "在开放窗口期内对临时决定提出的挑战。它会触发一个更大的新评估组重新判定该问题。",
+        "Expected loss": "预期损失",
+        "The average cost if this exact situation repeated many times: each outcome's probability times what that outcome costs.": "如果同样的情形重复许多次的平均成本：每种结果的概率乘以该结果的代价。",
+        "Model checking": "模型检验",
+        "Having a computer exhaustively explore every reachable state of a system model (here written in the TLA+ language) to check that stated rules can never be broken.": "让计算机穷尽地探索系统模型（这里用 TLA+ 语言编写）的每一个可达状态，以检验声明的规则永远不会被打破。",
+        "Issuance": "增发",
+        "New GEN created by the protocol on a fixed declining schedule to help pay validators: 9% a year at launch, falling toward 4%. The schedule is a ceiling, not a promise.": "协议按固定递减时间表新发行的 GEN，用于支付验证者：上线时每年 9%，逐步降向 4%。该时间表是上限，不是承诺。",
         "an ambiguous decision arrives": "一个模糊的决定提交进来",
         "each validator judges with its own model": "每个验证者用自己的模型作出判断",
         "“Meets the brief; the pricing analysis is the strongest part.”": "“符合要求；定价分析是最出色的部分。”",
@@ -833,8 +1073,8 @@
         "\"byte-identical to your re-execution\"": "\"与你的重新执行逐字节一致\"",
         "✓ accept": "✓ 接受",
         "✗ reject": "✗ 拒绝",
-        "spawning nodes costs nothing…": "开节点毫无成本……",
-        "…and the honest majority is gone.": "……诚实多数就此消失。",
+        "spawning fake voters, each costing about $0…": "正在批量生成假选民，每个成本约 0 美元……",
+        "…fake voters outnumber everyone. One actor owns the vote.": "……假选民已经压过所有人。投票落入一个人手里。",
         "ACCEPTED": "已接受",
         "REJECTED": "已拒绝",
         "accepted: 30 minutes for anyone to object": "已接受——任何人可在 30 分钟内提出异议",
@@ -849,6 +1089,38 @@
         "0–5 · REJECTED · HONEST WORK READS AS REFUSAL": "0–5 · 已拒绝——诚实的答案被当成了故障"
       },
       "ru": {
+        // Glossary cards (GLOSSARY in bridge-critical.js is English-only).
+        "Validator": "Валидатор",
+        "A computer taking part in the network's judging. In GenLayer each validator runs an AI model of its own choosing and locks GEN tokens as a security deposit (stake).": "Компьютер, участвующий в вынесении решений сети. В GenLayer каждый валидатор запускает ИИ-модель по своему выбору и блокирует токены GEN как страховой депозит (стейк).",
+        "Panel": "Группа",
+        "The small random group of validators chosen to judge one decision. GenLayer's rounds use panels of 5, 7, 11 and so on, growing with each appeal.": "Небольшая случайная группа валидаторов, выбранная судить одно решение. Раунды GenLayer используют группы из 5, 7, 11 участников и так далее — с каждой апелляцией группа растёт.",
+        "Evaluator population": "Совокупность оценщиков",
+        "The full declared pool of possible judges that a panel is drawn from. The research measures how faithfully a small panel reproduces what this whole pool would decide.": "Полная заранее объявленная совокупность возможных судей, из которой разыгрывается группа. Исследование измеряет, насколько точно малая группа воспроизводит решение всей совокупности.",
+        "Reproducibility": "Воспроизводимость",
+        "The chance that a random panel lands on the same side as the whole declared pool of judges would. Deliberately not the same thing as being objectively right.": "Вероятность того, что случайная группа окажется на той же стороне, что и вся объявленная совокупность судей. Намеренно не то же самое, что объективная правота.",
+        "Adversary": "Злоумышленник",
+        "A participant who votes to push the decision somewhere, not to judge honestly. The research models the worst case: every adversarial vote goes against the honest majority.": "Участник, который голосует, чтобы продавить решение, а не судить честно. Исследование моделирует худший случай: каждый голос злоумышленника направлен против честного большинства.",
+        "Equivalence Principle": "Принцип эквивалентности",
+        "GenLayer's rule that every contract call declares what counts as “the same answer”, so validators can accept an AI answer that is worded differently from their own.": "Правило GenLayer: каждый вызов контракта объявляет, что считается «тем же ответом», поэтому валидаторы могут принять ответ ИИ, сформулированный иначе, чем их собственный.",
+        "GenLayer's consensus procedure: a leader proposes an answer, a small panel votes, the result stands unless someone challenges it in time, and each challenge summons a bigger panel.": "Процедура консенсуса GenLayer: лидер предлагает ответ, малая группа голосует, результат вступает в силу, если его вовремя не оспорили, а каждое оспаривание созывает группу побольше.",
+        "Leader": "Лидер",
+        "The validator picked to actually do the task and propose an answer. The rest of the panel then judges that proposal.": "Валидатор, выбранный выполнить задачу и предложить ответ. Остальная группа затем судит это предложение.",
+        "Stake": "Стейк",
+        "GEN tokens a validator locks as a security deposit. Voting power comes from locked stake, and provable misconduct can destroy part of it.": "Токены GEN, которые валидатор блокирует как страховой депозит. Право голоса даёт заблокированный стейк, а доказуемое нарушение может уничтожить его часть.",
+        "Delegation": "Делегирование",
+        "Lending your GEN to a validator's stake. Delegators share the rewards without running a node; the minimum is 42 GEN.": "Передача своих GEN в стейк валидатора. Делегаторы делят вознаграждение, не запуская узел; минимум — 42 GEN.",
+        "Slashing": "Слэшинг",
+        "The protocol destroying part of a validator's locked stake as punishment for provable misconduct, such as fraud (5% for a leader) or prolonged inactivity (1%).": "Протокол уничтожает часть заблокированного стейка валидатора в наказание за доказуемое нарушение — например, мошенничество (5% для лидера) или длительный простой (1%).",
+        "Appeal bond": "Залог апелляции",
+        "Money a challenger locks to file an appeal. It funds the bigger panel; a failed appeal forfeits it, a successful one returns it with a reward.": "Деньги, которые претендент блокирует, чтобы подать апелляцию. Они оплачивают увеличенную группу; при проигрыше они теряются, при выигрыше возвращаются с наградой.",
+        "Appeal": "Апелляция",
+        "A challenge to a provisional decision during its open window. It triggers a new, larger panel to re-judge the question.": "Оспаривание предварительного решения в течение открытого окна. Оно созывает новую, более многочисленную группу, которая судит вопрос заново.",
+        "Expected loss": "Ожидаемые потери",
+        "The average cost if this exact situation repeated many times: each outcome's probability times what that outcome costs.": "Средняя цена, если бы точно такая ситуация повторялась много раз: вероятность каждого исхода, умноженная на его стоимость.",
+        "Model checking": "Проверка модели",
+        "Having a computer exhaustively explore every reachable state of a system model (here written in the TLA+ language) to check that stated rules can never be broken.": "Компьютер исчерпывающе перебирает все достижимые состояния модели системы (здесь она написана на языке TLA+), проверяя, что заявленные правила не могут быть нарушены.",
+        "Issuance": "Эмиссия",
+        "New GEN created by the protocol on a fixed declining schedule to help pay validators: 9% a year at launch, falling toward 4%. The schedule is a ceiling, not a promise.": "Новые GEN, которые протокол выпускает по фиксированному убывающему графику в помощь оплате валидаторов: 9% в год на старте со снижением к 4%. График — потолок, а не обещание.",
         "an ambiguous decision arrives": "поступает неоднозначный вопрос",
         "each validator judges with its own model": "каждый валидатор судит своей моделью",
         "“Meets the brief; the pricing analysis is the strongest part.”": "«Соответствует заданию; сильнее всего проработан анализ ценообразования».",
@@ -861,8 +1133,8 @@
         "\"byte-identical to your re-execution\"": "\"байт в байт с вашим повторным запуском\"",
         "✓ accept": "✓ принять",
         "✗ reject": "✗ отклонить",
-        "spawning nodes costs nothing…": "запуск узлов ничего не стоит…",
-        "…and the honest majority is gone.": "…и честного большинства больше нет.",
+        "spawning fake voters, each costing about $0…": "плодит поддельных голосующих, каждый примерно за 0 $…",
+        "…fake voters outnumber everyone. One actor owns the vote.": "…поддельных голосующих больше, чем всех остальных. Голосование принадлежит одному игроку.",
         "ACCEPTED": "ПРИНЯТО",
         "REJECTED": "ОТКЛОНЕНО",
         "accepted: 30 minutes for anyone to object": "принято — 30 минут на возражения",
@@ -878,21 +1150,6 @@
       }
     };
     const GL_T = (s) => (GL_I18N[(document.documentElement.lang || "en").split("-")[0]] || {})[s] || s;
-
-    (() => {
-      // OPTION A: the intro is trimmed to 5 scenes, but shared bridge-critical.js
-      // still autoplays through its hardcoded 7-step schedule (sceneDurations has
-      // six entries, so timers for steps 6 and 7 fire and hide every scene).
-      // When the shared stepper advances past scene 5, snap back to the final
-      // scene through the real progress control, whose click handler also runs
-      // the stepper's own stopIntro and clears the remaining timer.
-      const intro = document.querySelector(".critical-onboard");
-      const last = document.querySelector('[data-intro-progress="5"]');
-      if (!intro || !last) return;
-      new MutationObserver(() => {
-        if (Number(intro.dataset.step) > 5) last.click();
-      }).observe(intro, { attributes: true, attributeFilter: ["data-step"] });
-    })();
 
     (() => {
       const t9 = document.getElementById("i9-table");
@@ -949,8 +1206,17 @@
       const fill = document.getElementById("p38-fill");
       const cost = document.getElementById("p38-cost");
       const badnote = document.getElementById("p38-badnote");
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        for (let k = 0; k < 120; k++) { const d = document.createElement("i"); d.className = "p38-flood-dot"; flood.appendChild(d); }
+        for (let k = 0; k < 8; k++) { const s = document.createElement("i"); s.className = "p38-stake-dot"; staked.appendChild(s); }
+        cost.textContent = "40%"; fill.style.width = "40%";
+        badnote.textContent = GL_T("\u2026and the honest majority is gone.");
+        return;
+      }
       let n = 0;
-      setInterval(() => {
+      // Was setInterval(…, 420) — an endless loop that ignored
+      // prefers-reduced-motion and animated off screen. Body unchanged.
+      const tick = () => {
         n++;
         if (n <= 40) {
           for (let k = 0; k < 3; k++) { const d = document.createElement("i"); d.className = "p38-flood-dot"; flood.appendChild(d); }
@@ -959,13 +1225,26 @@
             cost.textContent = (n * 5) + "%";
             fill.style.width = (n * 5) + "%";
           }
-          if (n === 20) badnote.textContent = GL_T("\u2026and the honest majority is gone.");
+          if (n === 20) badnote.textContent = GL_T("\u2026fake voters outnumber everyone. One actor owns the vote.");
         } else {
           flood.innerHTML = ""; staked.innerHTML = ""; n = 0;
           fill.style.width = "0%"; cost.textContent = "0%";
-          badnote.textContent = GL_T("spawning nodes costs nothing\u2026");
+          badnote.textContent = GL_T("spawning fake voters, each costing about $0\u2026");
         }
-      }, 420);
+      };
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        // The demo's point is that costless fake voters end up
+        // outnumbering the staked ones. Run straight to that
+        // conclusion and hold it, so the argument survives the stillness.
+        for (let i = 0; i < 40; i++) tick();
+      } else {
+        let onScreen = true;
+        if (window.IntersectionObserver) {
+          new IntersectionObserver((e) => { onScreen = e[0].isIntersecting; },
+            { rootMargin: "200px" }).observe(flood);
+        }
+        setInterval(() => { if (onScreen) tick(); }, 420);
+      }
     })();
 
     (() => {
@@ -973,6 +1252,10 @@
       if (!svg) return;
       const token = document.getElementById("odf-token");
       const note = document.getElementById("odf-note");
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        note.textContent = GL_T("an ambiguous decision arrives");
+        return;
+      }
       const boxes = [...svg.querySelectorAll("#odf-st g[data-b]")];
       const loop = document.getElementById("odf-loop");
       const loopLen = loop.getTotalLength();
@@ -1054,10 +1337,25 @@
           ? [L(0,1,1,"each validator judges with its own model"), L(1,2,2,"accepted: 30 minutes for anyone to object"), { arc: true, box: 1, note: "challenged: the bond funds a panel of 7", ms: 1150 }, L(1,2,2,"upheld: a fresh window opens"), L(2,3,3,"final: the failed bond pays the round's majority validators")]
           : [L(0,1,1,"each validator judges with its own model"), L(1,2,2,"accepted: 30 minutes for anyone to object"), L(2,3,3,"no one objects: final, payment executes")];
         legs.forEach((lg) => { if (lg.box === 1) lg.sceneN = lg.arc ? 7 : 5; });
-        setTimeout(() => play(legs, 0, () => setTimeout(cycle, 1700)), 950);
+        setTimeout(() => play(legs, 0, () => setTimeout(odfNext, 1700)), 950);
       };
-      cycle();
+      // As above — an endless loop that ignored prefers-reduced-motion
+      // and kept animating off screen. A run in flight always finishes.
+      let onScreen = true;
+      if (window.IntersectionObserver) {
+        new IntersectionObserver((e) => { onScreen = e[0].isIntersecting; },
+          { rootMargin: "200px" }).observe(svg);
+      }
+      var odfNext = () => { if (onScreen) cycle(); else setTimeout(odfNext, 500); };
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        // Hold the completed flow: token at its final box, lit, outcome
+        // spelled out. Every stage stays legible; nothing moves.
+        token.setAttribute("cx", C[3].x); token.setAttribute("cy", C[3].y);
+        light(3);
+        note.textContent = GL_T("no one objects: final, payment executes");
+      } else cycle();
     })();
     </script>
+    <script src="../bridge-critical.js?v=mtikod1b"></script>
   </body>
 </html>
