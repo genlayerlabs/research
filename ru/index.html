@@ -1,0 +1,1063 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Как GenLayer автоматизирует неоднозначные решения: надёжность ИИ-оценщиков, принцип эквивалентности, экономика GEN, стимулы апелляций и верификация протокола." />
+    <meta name="author" content="GenLayer Research" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <title>GenLayer: блокчейн, который умеет судить | GenLayer Research</title>
+    <link rel="canonical" href="https://genlayerlabs.github.io/research/ru/" />
+    <link rel="alternate" hreflang="en" href="https://genlayerlabs.github.io/research/" />
+    <link rel="alternate" hreflang="es" href="https://genlayerlabs.github.io/research/es/" />
+    <link rel="alternate" hreflang="ko" href="https://genlayerlabs.github.io/research/ko/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://genlayerlabs.github.io/research/zh/" />
+    <link rel="alternate" hreflang="ru" href="https://genlayerlabs.github.io/research/ru/" />
+    <link rel="alternate" hreflang="x-default" href="https://genlayerlabs.github.io/research/" />
+    <link rel="icon" href="../brand/genlayer-icon.svg?v=2" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GenLayer Research" />
+    <meta property="og:title" content="GenLayer: блокчейн, который умеет судить | GenLayer Research" />
+    <meta property="og:description" content="Как GenLayer автоматизирует неоднозначные решения: надёжность ИИ-оценщиков, принцип эквивалентности, экономика GEN, стимулы апелляций и верификация протокола." />
+    <meta property="og:url" content="https://genlayerlabs.github.io/research/ru/" />
+    <meta property="og:image" content="https://genlayerlabs.github.io/research/brand/aggregate-disambiguation-social.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="GenLayer: блокчейн, который умеет судить — наглядное руководство по исследованиям GenLayer" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GenLayer: блокчейн, который умеет судить | GenLayer Research" />
+    <meta name="twitter:description" content="Как GenLayer автоматизирует неоднозначные решения: надёжность ИИ-оценщиков, принцип эквивалентности, экономика GEN, стимулы апелляций и верификация протокола." />
+    <meta name="twitter:image" content="https://genlayerlabs.github.io/research/brand/aggregate-disambiguation-social.png" />
+    <meta name="twitter:image:alt" content="GenLayer: блокчейн, который умеет судить — наглядное руководство по исследованиям GenLayer" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://genlayer.com/#organization",
+            "name": "GenLayer",
+            "url": "https://genlayer.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://genlayerlabs.github.io/research/brand/genlayer-icon.svg"
+            }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://genlayerlabs.github.io/research/#jose-maria-lago",
+            "name": "José María Lago"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://genlayerlabs.github.io/research/#albert-castellana",
+            "name": "Albert Castellana"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://genlayerlabs.github.io/research/#edgars-nemse",
+            "name": "Edgars Nemše"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://genlayerlabs.github.io/research/#website",
+            "url": "https://genlayerlabs.github.io/research/",
+            "name": "GenLayer Research",
+            "publisher": {
+              "@id": "https://genlayer.com/#organization"
+            },
+            "inLanguage": [
+              "en",
+              "es",
+              "ko",
+              "zh-Hans",
+              "ru"
+            ]
+          },
+          {
+            "@type": "CollectionPage",
+            "@id": "https://genlayerlabs.github.io/research/ru/#guide",
+            "url": "https://genlayerlabs.github.io/research/ru/",
+            "name": "GenLayer: блокчейн, который умеет судить | GenLayer Research",
+            "description": "Как GenLayer автоматизирует неоднозначные решения: надёжность ИИ-оценщиков, принцип эквивалентности, экономика GEN, стимулы апелляций и верификация протокола.",
+            "isPartOf": {
+              "@id": "https://genlayerlabs.github.io/research/#website"
+            },
+            "publisher": {
+              "@id": "https://genlayer.com/#organization"
+            },
+            "image": "https://genlayerlabs.github.io/research/brand/aggregate-disambiguation-social.png",
+            "dateModified": "2026-08-09",
+            "inLanguage": "ru",
+            "mainEntity": {
+              "@id": "https://genlayerlabs.github.io/research/ru/#research-documents"
+            },
+            "hasPart": [
+              {
+                "@id": "https://genlayerlabs.github.io/research/papers/part-1-aggregate-disambiguation-systems.pdf#article"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/papers/part-2-adaptive-economic-disambiguation.pdf#article"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/papers/part-3-layered-formal-verification.pdf#article"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/papers/part-4-multi-agent-appeal-games.pdf#article"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/papers/genlayer-whitepaper-v2.pdf#article"
+              }
+            ],
+            "translationOfWork": {
+              "@id": "https://genlayerlabs.github.io/research/#guide"
+            }
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://genlayerlabs.github.io/research/ru/#research-documents",
+            "name": "Исследовательские документы GenLayer: протокол и пять статей",
+            "numberOfItems": 5,
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@id": "https://genlayerlabs.github.io/research/papers/part-1-aggregate-disambiguation-systems.pdf#article"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@id": "https://genlayerlabs.github.io/research/papers/part-2-adaptive-economic-disambiguation.pdf#article"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@id": "https://genlayerlabs.github.io/research/papers/part-3-layered-formal-verification.pdf#article"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "item": {
+                  "@id": "https://genlayerlabs.github.io/research/papers/part-4-multi-agent-appeal-games.pdf#article"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "item": {
+                  "@id": "https://genlayerlabs.github.io/research/papers/genlayer-whitepaper-v2.pdf#article"
+                }
+              }
+            ]
+          },
+          {
+            "@type": "ScholarlyArticle",
+            "@id": "https://genlayerlabs.github.io/research/papers/part-1-aggregate-disambiguation-systems.pdf#article",
+            "url": "https://genlayerlabs.github.io/research/papers/part-1-aggregate-disambiguation-systems.pdf",
+            "name": "Aggregate Disambiguation Systems",
+            "description": "Статистическая основа для измерения того, насколько надёжно случайно выбранная группа оценщиков воспроизводит решение заданной совокупности.",
+            "datePublished": "2026-08",
+            "author": [
+              {
+                "@id": "https://genlayerlabs.github.io/research/#jose-maria-lago"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/#albert-castellana"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/#edgars-nemse"
+              }
+            ],
+            "publisher": {
+              "@id": "https://genlayer.com/#organization"
+            },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "ScholarlyArticle",
+            "@id": "https://genlayerlabs.github.io/research/papers/part-2-adaptive-economic-disambiguation.pdf#article",
+            "url": "https://genlayerlabs.github.io/research/papers/part-2-adaptive-economic-disambiguation.pdf",
+            "name": "Adaptive Economic Aggregate Disambiguation",
+            "description": "Модель с конечным горизонтом для выбора между остановкой, дополнительной проверкой и новым ответом с учётом затрат, задержки и цены ошибки.",
+            "datePublished": "2026-08",
+            "author": [
+              {
+                "@id": "https://genlayerlabs.github.io/research/#jose-maria-lago"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/#albert-castellana"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/#edgars-nemse"
+              }
+            ],
+            "publisher": {
+              "@id": "https://genlayer.com/#organization"
+            },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "ScholarlyArticle",
+            "@id": "https://genlayerlabs.github.io/research/papers/part-3-layered-formal-verification.pdf#article",
+            "url": "https://genlayerlabs.github.io/research/papers/part-3-layered-formal-verification.pdf",
+            "name": "Layered Formal Verification of the Optimistic Democracy Protocol",
+            "description": "Многоуровневая архитектура верификации, связывающая канонический граф состояний, структурные проверки, исполняемые модели и зафиксированную версию Solidity-кода.",
+            "datePublished": "2026-08",
+            "author": [
+              {
+                "@id": "https://genlayerlabs.github.io/research/#jose-maria-lago"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/#albert-castellana"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/#edgars-nemse"
+              }
+            ],
+            "publisher": {
+              "@id": "https://genlayer.com/#organization"
+            },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "ScholarlyArticle",
+            "@id": "https://genlayerlabs.github.io/research/papers/part-4-multi-agent-appeal-games.pdf#article",
+            "url": "https://genlayerlabs.github.io/research/papers/part-4-multi-agent-appeal-games.pdf",
+            "name": "Multi-Agent Appeal Games in Aggregate Disambiguation Systems",
+            "description": "Анализ того, когда личные стимулы приводят к полезным апелляциям и почему при нескольких участниках нужная апелляция может остаться неподанной или оказаться продублированной.",
+            "datePublished": "2026-08",
+            "author": [
+              {
+                "@id": "https://genlayerlabs.github.io/research/#jose-maria-lago"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/#albert-castellana"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/#edgars-nemse"
+              }
+            ],
+            "publisher": {
+              "@id": "https://genlayer.com/#organization"
+            },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "TechArticle",
+            "@id": "https://genlayerlabs.github.io/research/papers/genlayer-whitepaper-v2.pdf#article",
+            "url": "https://genlayerlabs.github.io/research/papers/genlayer-whitepaper-v2.pdf",
+            "name": "GenLayer: The Intelligent Contract Network",
+            "alternativeHeadline": "GenLayer Technical Whitepaper",
+            "description": "Системный документ GenLayer о среде исполнения, Optimistic Democracy, экономике протокола и системе верификации.",
+            "version": "2.3",
+            "author": [
+              {
+                "@id": "https://genlayerlabs.github.io/research/#albert-castellana"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/#jose-maria-lago"
+              },
+              {
+                "@id": "https://genlayerlabs.github.io/research/#edgars-nemse"
+              }
+            ],
+            "publisher": {
+              "@id": "https://genlayer.com/#organization"
+            },
+            "inLanguage": "en"
+          }
+        ]
+      }
+    </script>
+    <link rel="stylesheet" href="../bridge-compact.css" />
+    <link rel="stylesheet" href="../bridge-critical.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#genlayer">Пропустить введение</a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="GenLayer, вернуться наверх">
+        <img src="../brand/genlayer-logo-white.svg" alt="GenLayer" />
+        <span>СУЖДЕНИЕ КАК ПРОТОКОЛ<small>НАГЛЯДНОЕ РУКОВОДСТВО ПО ИССЛЕДОВАНИЯМ</small></span>
+      </a>
+      <nav aria-label="Разделы страницы">
+        <a href="#genlayer">GenLayer</a><a href="#measure">Надёжность</a><a href="#equivalence">Согласие</a><a href="#adapt">Адаптация</a><a href="#tokenomics">Токеномика</a><a href="#align">Стимулы</a><a href="#verify">Формальная верификация</a><a href="#papers">Статьи</a>
+      </nav>
+      <label class="language-switcher"><span>Выбрать язык</span><select data-language-select data-current-locale="ru" aria-label="Выбрать язык"><option value="../" data-locale="en" lang="en" aria-label="English">EN</option><option value="../es/" data-locale="es" lang="es" aria-label="Español">ES</option><option value="../ko/" data-locale="ko" lang="ko" aria-label="한국어">KO</option><option value="../zh/" data-locale="zh" lang="zh-Hans" aria-label="简体中文">ZH</option><option value="../ru/" data-locale="ru" lang="ru" aria-label="Русский" selected>RU</option></select></label>
+    </header>
+
+
+    <main id="top">
+      <section class="bi-onboard critical-onboard" aria-label="Зачем нужна система для неоднозначных решений">
+        <div class="bi-stage">
+          <div class="bi-scene active" data-intro-scene="1">
+            <h1>Некоторые решения легко <em>автоматизировать.</em></h1>
+            <div class="bi-question-flow">
+              <div class="bi-question-card"><small>ПОНЯТНОЕ ПРАВИЛО</small><strong>Платёж поступил?</strong></div><b>→</b>
+              <div class="bi-single-answer"><small>ОДИН ОТВЕТ</small><strong>ДА.</strong></div>
+            </div>
+          </div>
+          <div class="bi-scene" data-intro-scene="2" aria-hidden="true">
+            <h1>Другие требуют <em>суждения.</em></h1>
+            <div class="bi-question-card bi-ambiguous-card"><small>НЕОДНОЗНАЧНЫЙ ВОПРОС</small><strong>Работа соответствует заданию?</strong></div>
+          </div>
+          <div class="bi-scene" data-intro-scene="3" aria-hidden="true">
+            <h1>ИИ-оценщики могут дать <em>разные ответы.</em></h1>
+            <div class="bi-judgment-row" aria-label="Три суждения, вынесенные по отдельности: да, нет, да">
+              <div><small>СУЖДЕНИЕ 01</small><strong>ДА.</strong></div><div><small>СУЖДЕНИЕ 02</small><strong>НЕТ.</strong></div><div><small>СУЖДЕНИЕ 03</small><strong>ДА.</strong></div>
+            </div>
+          </div>
+          <div class="bi-scene" data-intro-scene="4" aria-hidden="true">
+            <h1>Но программе всё равно нужен <em>однозначный результат.</em></h1>
+            <div class="bi-bottleneck">
+              <div class="bi-mini-verdicts"><i>ДА</i><i>НЕТ</i><i>ДА</i></div><b>→</b>
+              <div class="bi-decision-gap"><small>?</small><strong>КАК?</strong></div><b>→</b>
+              <div class="bi-final-box"><small>ОДИН РЕЗУЛЬТАТ</small><strong>ПРОГРАММА МОЖЕТ ДЕЙСТВОВАТЬ</strong></div>
+            </div>
+          </div>
+          <div class="bi-scene bi-research-origin" data-intro-scene="5" aria-hidden="true">
+            <div class="bi-research-copy">
+              <p class="bi-final-kicker">ИССЛЕДОВАНИЕ</p>
+              <h1>Три года мы исследовали, как автоматизировать неоднозначные решения в <em>среде, где действуют злоумышленники.</em></h1>
+              <div class="bi-built-ctas">
+                <a class="bi-research-enter" href="#genlayer">Перейти к полному руководству <span>↓</span></a>
+              </div>
+            </div>
+            <div class="bi-paper-fan" aria-label="Три основные исследовательские статьи">
+              <article><img src="../covers/part-1.webp" alt="Первая страница Aggregate Disambiguation Systems" /><span><small>НАДЁЖНОСТЬ</small><strong>Статистические свойства</strong></span></article>
+              <article><img src="../covers/part-2.webp" alt="Первая страница Adaptive Economic Aggregate Disambiguation" /><span><small>АДАПТАЦИЯ</small><strong>Оценка с учётом затрат</strong></span></article>
+              <article><img src="../covers/part-4.webp" alt="Первая страница Multi-Agent Appeal Games" /><span><small>СТИМУЛЫ</small><strong>Стимулы для подачи апелляций</strong></span></article>
+            </div>
+          </div>
+        </div>
+        <div class="bi-controls">
+          <div class="bi-progress" aria-label="Ход введения"><button class="active" type="button" data-intro-progress="1" aria-label="Показать шаг введения 1 из 5" aria-current="step"></button><button type="button" data-intro-progress="2" aria-label="Показать шаг введения 2 из 5"></button><button type="button" data-intro-progress="3" aria-label="Показать шаг введения 3 из 5"></button><button type="button" data-intro-progress="4" aria-label="Показать шаг введения 4 из 5"></button><button type="button" data-intro-progress="5" aria-label="Показать шаг введения 5 из 5"></button></div>
+          <button class="bi-skip" type="button">Пропустить введение</button><button class="bi-replay" type="button" hidden>Повторить введение ↺</button>
+        </div>
+      </section>
+
+      <section class="critical-chapter chapter-genlayer" id="genlayer">
+        <div class="shell solution-layout">
+          <div class="chapter-copy solution-head">
+            <p class="eyebrow">НАШЕ ПРЕДЛОЖЕНИЕ</p>
+            <h2>GenLayer — блокчейн, который умеет <em>судить.</em></h2>
+            <p class="chapter-lede">GenLayer — сеть, контракты которой могут принимать решения по вопросам, не имеющим очевидного ответа. Её консенсус, Optimistic Democracy, работает в три такта: валидаторы — каждый со своей ИИ-моделью — выносят суждение, объявленное правило объединяет их голоса, а вердикт ещё какое-то время можно оспорить — и только после этого он становится окончательным.</p>
+          </div>
+          <div class="od-flow">
+            <p class="od-flow-label">Одно решение — от начала до конца.</p>
+            <svg id="odf-svg" viewBox="0 0 760 236" style="display:block;width:100%;height:auto">
+              <defs><marker id="odf-arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#b7c1d1"/></marker><marker id="odf-arr-hot" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,2 L8,5 L0,8 z" fill="#e2734a"/></marker></defs>
+              <line x1="182" y1="74" x2="212" y2="74" stroke="#c5cdd9" stroke-width="1.5" marker-end="url(#odf-arr)"/>
+              <line x1="380" y1="74" x2="410" y2="74" stroke="#c5cdd9" stroke-width="1.5" marker-end="url(#odf-arr)"/>
+              <line x1="578" y1="74" x2="608" y2="74" stroke="#c5cdd9" stroke-width="1.5" marker-end="url(#odf-arr)"/>
+              <path id="odf-loop" d="M 495,110 L 495,176 Q 495,188 483,188 L 309,188 Q 297,188 297,176 L 297,112" fill="none" stroke="#e2734a" stroke-width="1.5" marker-end="url(#odf-arr-hot)"/>
+              <text x="396" y="212" font-size="9.5" font-weight="700" letter-spacing=".1em" text-anchor="middle" fill="#b3542a">ОСПОРЕНО · ЗАЛОГ ФИНАНСИРУЕТ РАСШИРЕННУЮ ГРУППУ · 7 · 11 · 13 …</text>
+              <g id="odf-st">
+                <g data-b="0"><rect class="sc-card" x="20" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="18" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="101" y="70">Подан вопрос</text><text class="sc-t2" x="101" y="88">однозначного ответа нет</text></g>
+                <g data-b="1"><rect class="sc-card" x="216" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="214" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="297" y="70">Группа голосует</text><text class="sc-t2" x="297" y="88">выборка валидаторов</text></g>
+                <g data-b="2"><rect class="sc-card" x="414" y="42" width="162" height="64" rx="10"/><rect class="sc-ring" x="412" y="40" width="166" height="68" rx="12"/><text class="sc-t1" x="495" y="70">Окно апелляции</text><text class="sc-t2" x="495" y="88">30 минут на возражения</text></g>
+                <g data-b="3"><rect class="sc-card sc-dark" x="612" y="42" width="128" height="64" rx="10"/><rect class="sc-ring" x="610" y="40" width="132" height="68" rx="12"/><text class="sc-t1 sc-w" x="676" y="70">Финализация</text><text class="sc-t2 sc-wm" x="676" y="88">платёж исполняется</text></g>
+              </g>
+              <circle id="odf-token" r="5.5" fill="#3157d5" stroke="white" stroke-width="2"/>
+            </svg>
+            <p class="odf-status"><span id="odf-note"></span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="critical-chapter chapter-one" id="measure">
+        <div class="shell chapter-layout">
+          <div class="chapter-copy">
+            <p class="eyebrow">НАДЁЖНОСТЬ</p>
+            <h2>Можно ли доверять решению, если оценщики расходятся во мнениях или действуют нечестно?</h2>
+            <p class="chapter-lede">Вы только что видели, как одно решение прошло через эту машину. Дальше — только то, что о такой системе можно строго доказать, начиная с самой группы оценщиков. Если более широкая совокупность оценщиков склоняется к одному ответу, как часто меньшая случайно выбранная группа окажется на той же стороне? И сколько от этой надёжности останется, если часть совокупности — злоумышленники?</p>
+            <div class="chapter-contribution"><span>ГЛАВНЫЙ ВКЛАД</span><strong>Если совокупность оценщиков и способ их отбора заданы заранее, статья позволяет точно рассчитать вероятность ошибки конечной группы — и показывает, почему воспроизводимое решение не обязательно объективно верно.</strong></div>
+          </div>
+          <div class="chapter-lab panel-lab adversary-lab">
+            <div class="lab-head"><strong>Измените долю ответов, долю злоумышленников и число оценщиков.</strong></div>
+            <label for="p1b-agreement">Доля честных оценщиков, выбравших «да» <output id="p1b-agreement-output" for="p1b-agreement">65%</output></label>
+            <input id="p1b-agreement" type="range" min="51" max="95" value="65" />
+            <label for="p1b-adversary">Доля совокупности, подменённая злоумышленниками <output id="p1b-adversary-output" for="p1b-adversary">10%</output></label>
+            <input id="p1b-adversary" type="range" min="0" max="40" value="10" />
+            <div class="population-bar adversary-bar" aria-hidden="true"><i id="p1b-yes-bar"></i><b id="p1b-adv-bar"></b></div>
+            <div class="bar-labels"><span id="p1b-yes-label">55% ДА</span><span id="p1b-adv-label">10% ПОДМЕНЕНО</span><span id="p1b-no-label">35% НЕТ</span></div>
+            <fieldset><legend>Число оценщиков в группе</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" class="active" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
+            <div class="lab-result"><small>КАК ЧАСТО ГРУППА ВСЁ ЖЕ ПОВТОРИТ РЕШЕНИЕ ЧЕСТНОГО БОЛЬШИНСТВА</small><strong id="p1b-risk">—</strong><i><b id="p1b-risk-fill"></b></i><p id="p1b-risk-copy"></p></div>
+            <p class="appeal-gap-note">Худший случай по точной неадаптивной модели из статьи: каждый голос злоумышленников направлен против честного большинства.</p>
+          </div>
+          <div class="chapter-source-row">
+            <div class="paper-faq" aria-label="Вопросы об Aggregate Disambiguation Systems">
+              <p class="paper-faq-label">РАЗОБРАТЬСЯ ПОДРОБНЕЕ</p>
+              <details name="faq-part-1">
+                <summary>Чем помогает более крупная группа оценщиков?</summary>
+                <p>Если совокупность оценщиков склоняется к одному ответу, статья гарантирует: вероятность того, что случайно выбранная группа разойдётся с этим решением, с ростом группы стремится к нулю.</p>
+              </details>
+              <details name="faq-part-1">
+                <summary>От чего зависит стабильность результата?</summary>
+                <p>Чем единодушнее оценщики, тем меньше их обычно требуется для стабильного результата.</p>
+              </details>
+              <details name="faq-part-1">
+                <summary>Означает ли воспроизводимость, что ответ верен?</summary>
+                <p>Нет. Это означает лишь, что разные группы, случайно выбранные из заданной совокупности оценщиков, скорее всего, примут одинаковое решение. Само по себе это не доказывает, что ответ объективно верен.</p>
+              </details>
+              <details name="faq-part-1">
+                <summary>Что если часть оценщиков — злоумышленники?</summary>
+                <p>Статья точно вычисляет ошибку в худшем случае, когда известная доля совокупности оценщиков подменена злоумышленниками заранее, ещё до случайного отбора группы, — так что у устойчивости к атаке есть конкретное число, и его можно перепроверить.</p>
+              </details>
+            </div>
+            <a class="chapter-read" href="../papers/part-1-aggregate-disambiguation-systems.pdf" target="paper-aggregate-disambiguation">ЧИТАТЬ СТАТЬЮ · AGGREGATE DISAMBIGUATION SYSTEMS ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="critical-chapter chapter-equivalence" id="equivalence">
+        <div class="shell chapter-layout">
+          <div class="chapter-copy">
+            <p class="eyebrow">СОГЛАСИЕ</p>
+            <h2>Кто решает, что два ответа ИИ совпадают?</h2>
+            <p class="chapter-lede">Статья Aggregate Disambiguation Systems считала голоса «да» и «нет». Здесь — о том, откуда берётся сам голос: задайте ИИ один и тот же вопрос дважды — и формулировки будут разными, а классический консенсус счёл бы любое расхождение сбоем. Ответ GenLayer — принцип эквивалентности (Equivalence Principle): контракт для каждого вызова объявляет, что считается тем же ответом; один валидатор готовит ответ, остальные судят по этому критерию.</p>
+            <div class="chapter-contribution"><span>ИЗ WHITEPAPER</span><strong>Для каждого вызова контракт объявляет критерий, по которому валидатор судит, является ли ответ лидера приемлемым — возможно, сверяясь с собственным повторным запуском.</strong></div>
+          </div>
+          <div class="chapter-lab">
+            <div class="lab-head"><strong>Переключите критерий — и посмотрите, как изменится голосование.</strong></div>
+            <p class="i9-stage"><b>1</b> КОНТРАКТ ОБЪЯВЛЯЕТ, ЧТО СЧИТАЕТСЯ ТЕМ ЖЕ ОТВЕТОМ</p>
+            <pre class="i9-code">llm_call(
+  task = "Соответствует ли сданный отчёт заданию?",
+  <b>equivalence = <i id="i9-eq">"тот же вердикт, что и при вашем повторном запуске"</i></b>,
+)</pre>
+            <p class="i9-alt"><span># или объявите: </span><button type="button" class="active" data-c="0">тот же вердикт</button><span> · </span><button type="button" data-c="1">любой связный ответ</button><span> · </span><button type="button" data-c="2">байт в байт</button></p>
+            <p class="i9-stage"><b>2</b> ЛИДЕР ВЫПОЛНЯЕТ ВЫЗОВ И ПРЕДЛАГАЕТ ОТВЕТ</p>
+            <div class="i3-lead"><p>«Соответствует заданию — ценообразование и конкуренты проработаны основательно; регулирование затронуто лишь вскользь, но затронуто».</p></div>
+            <p class="i9-stage"><b>3</b> ПЯТЬ ВАЛИДАТОРОВ ПОВТОРЯЮТ ЗАПУСК И ГОЛОСУЮТ ПО ОТВЕТУ ЛИДЕРА</p>
+            <table class="i9-table" id="i9-table"></table>
+            <div class="i3-tally"><div class="i3-pips" id="i9-pips"></div><strong id="i9-tally"></strong></div>
+            <div class="ep-verdict"><strong id="i9-action"></strong><p id="i9-copy"></p></div>
+          </div>
+          <div class="chapter-source-row">
+            <div class="paper-faq" aria-label="Вопросы о принципе эквивалентности">
+              <p class="paper-faq-label">РАЗОБРАТЬСЯ ПОДРОБНЕЕ</p>
+              <details name="faq-equivalence">
+                <summary>Это настоящий синтаксис?</summary>
+                <p>Синтаксис иллюстративный. Контракты GenVM — это Python-классы, работающие в песочнице; сам механизм — объявляемый для каждого вызова критерий эквивалентности на каждой недетерминированной операции — ровно такой, каким его задаёт whitepaper.</p>
+              </details>
+              <details name="faq-equivalence">
+                <summary>Почему два валидатора отклоняют честный ответ?</summary>
+                <p>Потому что их собственные повторные запуски честно приходят к противоположному вердикту. Это расхождение в суждениях, а не обман: как мошенничество оно никогда не наказывается, а математика групп в статье Aggregate Disambiguation Systems построена так, чтобы поглощать такие расхождения.</p>
+              </details>
+              <details name="faq-equivalence">
+                <summary>Кто выбирает критерий?</summary>
+                <p>Разработчик контракта, отдельно для каждого вызова. Разные вызовы в одном контракте могут объявлять разные критерии.</p>
+              </details>
+              <details name="faq-equivalence">
+                <summary>Почему просто не потребовать от всех валидаторов в точности одинакового результата?</summary>
+                <p>Потому что у вызовов LLM и чтения веб-страниц нет единственно правильного результата: два верных пересказа одного и того же текста не совпадут слово в слово. Детерминированные части контракта по-прежнему проверяются на точное совпадение; объявленный критерий действует только для недетерминированных вызовов.</p>
+              </details>
+            </div>
+            <a class="chapter-read" href="../papers/genlayer-whitepaper-v2.pdf" target="paper-genlayer-whitepaper">ЧИТАТЬ WHITEPAPER · ПРИНЦИП ЭКВИВАЛЕНТНОСТИ ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="critical-chapter chapter-two" id="adapt">
+        <div class="shell part-two-layout">
+          <div class="chapter-copy part-two-intro">
+            <p class="eyebrow">АДАПТАЦИЯ</p>
+            <h2>Зачем спрашивать тысячу оценщиков, если хватит одиннадцати?</h2>
+            <p class="chapter-lede">Каждая оценка — оплачиваемая работа, поэтому размер группы — это вопрос бюджета. На простых или недорогих решениях можно остановиться рано. Более сложные или более важные решения могут оправдать дополнительную проверку: либо ещё раз проверить текущий ответ, либо попробовать новый.</p>
+            <div class="chapter-contribution"><span>ГЛАВНЫЙ ВКЛАД</span><strong>Статья вычисляет, какой следующий шаг даёт наименьшие ожидаемые суммарные потери.</strong></div>
+          </div>
+          <div class="chapter-lab policy-lab stop-lab">
+            <div class="lab-head"><strong>Сколько оценщиков стоит оплатить для этого решения?</strong></div>
+            <div class="size-buttons stop-presets" role="group" aria-label="Выберите пример решения">
+              <button type="button" data-p2s-preset="4">Спор о возврате · $200</button>
+              <button type="button" class="active" data-p2s-preset="40">Этап фриланс-заказа · $2,000</button>
+              <button type="button" data-p2s-preset="400">Казна DAO · $20,000</button>
+            </div>
+            <label for="p2s-stakes">Сумма на кону, если решение окажется неверным <output id="p2s-stakes-output" for="p2s-stakes">$2,000</output></label>
+            <input id="p2s-stakes" type="range" min="1" max="400" value="40" />
+            <label for="p2s-clarity">Насколько спорен вопрос? <output id="p2s-clarity-output" for="p2s-clarity">65% согласны · спорный</output></label>
+            <input id="p2s-clarity" type="range" min="55" max="90" value="65" />
+            <p class="stop-note">Каждый оценщик берёт 10¢ за одну оценку. Размер группы соответствует раундам протокола: от 5 до 1537 оценщиков.</p>
+            <svg class="stop-curve" id="p2s-svg" viewBox="0 0 720 300" role="img" aria-label="Полная ожидаемая стоимость остановки на каждом раунде протокола: плата оценщикам растёт с размером группы, ожидаемые потери от неверного решения снижаются, а их сумма достигает минимума в оптимальной точке."></svg>
+            <p class="stop-caption">Итог = плата + риск для каждого раунда. Останавливайтесь там, где чёрная линия достигает минимума.</p>
+            <div class="lab-result stop-verdict" role="status" aria-live="polite"><small>ПРАВИЛО ОСТАНОВКИ</small><strong id="p2s-action">—</strong><p id="p2s-copy"></p></div>
+          </div>
+          <div class="part-two-source-row">
+            <div class="paper-faq" aria-label="Вопросы об Adaptive Economic Aggregate Disambiguation">
+              <p class="paper-faq-label">РАЗОБРАТЬСЯ ПОДРОБНЕЕ</p>
+              <details name="faq-part-2">
+                <summary>Почему система может начать всего с нескольких оценщиков?</summary>
+                <p>Потому что для многих решений достаточно нескольких оценок. Подключать новых оценщиков стоит лишь тогда, когда ожидаемая польза оправдывает дополнительные затраты.</p>
+              </details>
+              <details name="faq-part-2">
+                <summary>Когда дополнительная проверка оправданна?</summary>
+                <p>Когда цена ошибки высока или имеющихся данных недостаточно, а ожидаемая польза от новых оценок превышает затраты.</p>
+              </details>
+              <details name="faq-part-2">
+                <summary>Зачем отдельно рассматривать повторную проверку текущего ответа и поиск нового?</summary>
+                <p>Потому что это траты на разное: повторная проверка добавляет данные о том же ответе, а новый вариант меняет сам предмет оценки. Прежде чем тратить следующую оценку, статья сопоставляет каждый из этих шагов с его ценой.</p>
+              </details>
+              <details name="faq-part-2">
+                <summary>Действительно ли работающая сеть следует этому идеальному правилу?</summary>
+                <p>Здесь это не показано. Правило — эталон для всезнающего планировщика; сеть совпадает с ним лишь тогда, когда кому-то лично выгодно запустить нужную эскалацию в нужный момент. Совпадают ли реальные стимулы апелляций с этим эталоном — как раз тот вопрос, который изучает статья Multi-Agent Appeal Games.</p>
+              </details>
+            </div>
+            <a class="chapter-read" href="../papers/part-2-adaptive-economic-disambiguation.pdf" target="paper-adaptive-economic-disambiguation">ЧИТАТЬ СТАТЬЮ · ADAPTIVE ECONOMIC DISAMBIGUATION ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="critical-chapter chapter-five" id="tokenomics">
+        <div class="shell chapter-layout">
+          <div class="chapter-copy">
+            <p class="eyebrow">ТОКЕНОМИКА</p>
+            <h2>Что мешает одному игроку запустить столько узлов, чтобы захватить сеть?</h2>
+            <p class="chapter-lede">Узлы дёшевы — любой может запустить хоть тысячу. Поэтому голосовать не могут сами узлы: статья GEN Tokenomics привязывает право голоса к активу с ограниченным предложением, GEN. Каждый валидатор блокирует стейк, который может потерять, а держатели, не запускающие собственный узел, делегируют свой стейк тем, кто узел запускает, — это делегированное доказательство доли (delegated proof of stake).</p>
+            <div class="chapter-contribution"><span>ГЛАВНЫЙ ВКЛАД</span><strong>Экономический двигатель, на котором держится этот суд: предложение, эмиссия, вознаграждения, стейкинг и штрафы — всё подобрано так, чтобы безопасность и полезность сети не расходились.</strong></div>
+          </div>
+          <div class="chapter-lab">
+            <div class="lab-head"><strong>Один и тот же атакующий — с барьером стейка и без него.</strong></div>
+            <div class="p38-wrap">
+              <div class="p38-panel p38-bad">
+                <small>ЕСЛИ БЫ ГОЛОСОВАЛИ УЗЛЫ</small>
+                <strong>Один атакующий, бесконечные узлы</strong>
+                <div class="p38-dots" id="p38-flood"></div>
+                <p id="p38-badnote">запуск узлов ничего не стоит…</p>
+              </div>
+              <div class="p38-panel p38-good">
+                <small>ГОЛОСА ПРИВЯЗАНЫ К ДЕФИЦИТНОМУ АКТИВУ</small>
+                <strong>Каждый голос блокирует долю ограниченного предложения</strong>
+                <div class="p38-dots" id="p38-staked"></div>
+                <div class="p38-supply"><i id="p38-fill"></i></div><p class="p38-supply-label">У ПРЕДЛОЖЕНИЯ ЕСТЬ ПОТОЛОК — ЭМИССИЯ ТОЛЬКО СНИЖАЕТСЯ</p>
+                <p id="p38-goodnote">у атакующего: <b id="p38-cost">0%</b> всех GEN — под угрозой слэшинга</p>
+              </div>
+            </div>
+            <p class="p38-footer">Барьер — это капитал, а не оборудование: чтобы захватить сеть, нужно купить — и поставить под удар — крупную долю самой сети.</p>
+            <p class="appeal-gap-note">Параметры из зафиксированных таблиц статьи: минимум собственного стейка валидатора — 42 000 GEN, минимум делегирования — 42 GEN, анбондинг — 7 эпох, вес при отборе — √(0,6·собств. + 0,4·делегир.).</p>
+          </div>
+          <div class="chapter-source-row">
+            <div class="paper-faq" aria-label="Вопросы о токеномике GEN">
+              <p class="paper-faq-label">РАЗОБРАТЬСЯ ПОДРОБНЕЕ</p>
+              <details name="faq-part-5">
+                <summary>Откуда берутся деньги, которыми платят валидаторам?</summary>
+                <p>Из двух потоков: комиссий за транзакции и запланированной эмиссии, которая снижается по фиксированной кривой с 9% к 4%. Этот график — потолок, а не обещание (сжигания могут его только понизить), и эффективная инфляция падает по мере роста предложения. DAO финансируется только из комиссий, поэтому его доход растёт с реальным использованием сети и никогда — за счёт эмиссии.</p>
+              </details>
+              <details name="faq-part-5">
+                <summary>За что валидатора действительно наказывают?</summary>
+                <p>Штрафы отделяют честную ошибку модели от доказуемых нарушений. Голосование на проигравшей стороне сжигает лишь суммы порядка комиссии — основной стейк за это не трогают вовсе. А вот простой узла срезает 1% стейка, доказуемое мошенничество лидера — 5%, а залог проваленной апелляции достаётся валидаторам, оказавшимся в большинстве этого апелляционного раунда. Расхождения в суждениях система переносит спокойно — расплачиваться приходится только за нарушения.</p>
+              </details>
+              <details name="faq-part-5">
+                <summary>Достаточно ли квадратного корня, чтобы остановить атаку Сивиллы?</summary>
+                <p>Нет, и статья говорит об этом прямо: вогнутый вес сглаживает концентрацию, но если бы новые учётные записи валидаторов ничего не стоили, дробление стейка увеличивало бы суммарный вес. Однако они не бесплатны: за каждой стоят полные 42 000 GEN заблокированного стейка, отдельный работающий узел, забота о его доступности — и свой собственный риск слэшинга.</p>
+              </details>
+              <details name="faq-part-5">
+                <summary>Можно ли получать вознаграждение, не запуская собственный узел?</summary>
+                <p>Да. Любой может делегировать от 42 GEN одному или нескольким валидаторам; вознаграждение автоматически реинвестируется. Сравнивать комиссии валидаторов не нужно: распределение задаёт сам протокол, и внутри позиции валидатора каждый GEN — собственный стейк или делегированный — приносит доход по одной и той же ставке.</p>
+              </details>
+            </div>
+            <p class="chapter-read chapter-read-soon">GEN TOKENOMICS · СТАТЬЯ СКОРО ВЫЙДЕТ</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="critical-chapter chapter-four" id="align">
+        <div class="shell chapter-layout">
+          <div class="chapter-copy">
+            <p class="eyebrow">СТИМУЛЫ</p>
+            <h2>Кто заплатит, чтобы оспорить неверное решение?</h2>
+            <p class="chapter-lede">Помните тот счёт 3–2? Именно такие пограничные решения и стоит пересматривать. Апелляция может улучшить решение системы, но эта общая польза сама по себе не гарантирует, что найдётся участник, готовый заплатить за её запуск.</p>
+            <div class="chapter-contribution"><span>ГЛАВНЫЙ ВКЛАД</span><strong>Статья разделяет то, что выгодно системе, и то, что выгодно отдельному участнику, а затем показывает, при каких условиях эти интересы можно согласовать.</strong></div>
+          </div>
+          <div class="chapter-lab incentive-lab dial-lab">
+            <div class="lab-head"><strong>Размер выплаты определяет, ради каких сомнений стоит действовать.</strong></div>
+            <label for="p4d-rho">Успешная апелляция возвращает <output id="p4d-rho-output" for="p4d-rho">2,5× залога</output></label>
+            <input id="p4d-rho" type="range" min="110" max="400" step="5" value="250" />
+            <svg class="dial-svg" id="p4d-svg" viewBox="0 0 720 320" role="img" aria-label="Две связанные оси: порог уверенности, при котором апелляция окупается, в сопоставлении с потолком, который способна оправдать честная перепроверка, и множитель выплаты в сопоставлении с его безопасным окном между 2 и примерно 2,9."></svg>
+            <div class="lab-result stop-verdict" id="p4d-result" role="status" aria-live="polite"><small>КТО ПОДАСТ АПЕЛЛЯЦИЮ</small><strong id="p4d-action">—</strong><p id="p4d-copy"></p></div>
+          </div>
+          <div class="chapter-source-row">
+            <div class="paper-faq" aria-label="Вопросы о Multi-Agent Appeal Games">
+              <p class="paper-faq-label">РАЗОБРАТЬСЯ ПОДРОБНЕЕ</p>
+              <details name="faq-part-4">
+                <summary>Что побуждает участника подать апелляцию?</summary>
+                <p>Ожидаемые участником шансы на успех, размер вознаграждения, риск потерять залог, стоимость самой апелляции — и его личная заинтересованность в исходе.</p>
+              </details>
+              <details name="faq-part-4">
+                <summary>Можно ли настроить стимулы так, чтобы участники действительно подавали полезные апелляции?</summary>
+                <p>При определённых условиях — да. Статья показывает, как настроить вознаграждение, чтобы личные стимулы участников точнее совпадали с теми случаями, когда дополнительная проверка нужна самой системе.</p>
+              </details>
+              <details name="faq-part-4">
+                <summary>Почему важно, что апелляцию могут подать несколько участников?</summary>
+                <p>Потому что их решения зависят друг от друга. Механизм должен учитывать ожидание, конкуренцию и возможное дублирование одной и той же апелляции.</p>
+              </details>
+              <details name="faq-part-4">
+                <summary>Почему просто не поднять залог, чтобы отсечь пустые апелляции?</summary>
+                <p>Больший залог действительно оплачивает дополнительную проверку и отпугивает спам, но его приходится замораживать до самого разрешения апелляции. Статья показывает: видимая арифметика выплат может остаться ровно той же, а круг тех, кому апелляция реально по карману, — резко сузиться.</p>
+              </details>
+            </div>
+            <a class="chapter-read" href="../papers/part-4-multi-agent-appeal-games.pdf" target="paper-multi-agent-appeal-games">ЧИТАТЬ СТАТЬЮ · MULTI-AGENT APPEAL GAMES ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="critical-chapter chapter-three verify-band" id="verify">
+        <div class="shell verify-band-grid">
+          <div class="verify-band-copy">
+            <p class="eyebrow">ФОРМАЛЬНАЯ ВЕРИФИКАЦИЯ</p>
+            <h2>Действительно ли протокол ведёт себя так, как задумано?</h2>
+            <p class="chapter-lede">Статья Layered Formal Verification не даёт машинно-проверяемой модели Optimistic Democracy разойтись с развёрнутыми контрактами и перепроверяет её по мере изменения кода — за 253 коммита это выявило расхождение, зависящее от порядка транзакций, и три незаметно сломанных инварианта; обо всём сообщено разработчикам.</p>
+          </div>
+          <div class="chapter-source-row">
+            <div class="paper-faq" aria-label="Вопросы о Layered Formal Verification">
+              <p class="paper-faq-label">РАЗОБРАТЬСЯ ПОДРОБНЕЕ</p>
+              <details name="faq-part-3">
+                <summary>Что именно охватывает верификация?</summary>
+                <p>Явно заявленные свойства многоуровневой модели: канонический граф состояний, сверенные с ним спецификации TLA+ и отображение каждого перехода на пути в Solidity-коде зафиксированной версии.</p>
+              </details>
+              <details name="faq-part-3">
+                <summary>Доказывает ли это, что в коде нет ошибок?</summary>
+                <p>Нет. Доказаны заявленные свойства заявленной модели для зафиксированной версии кода. Именно благодаря такой чётко очерченной области эти утверждения вообще можно проверить — а потом проверять снова и снова.</p>
+              </details>
+              <details name="faq-part-3">
+                <summary>Зачем перепроверять, а не доказать один раз?</summary>
+                <p>Потому что протокол продолжает развиваться. Спецификация служит инструментом семантического регрессионного контроля: каждую новую версию заново сверяют с теми же свойствами, и незаметный дрейф проявляется как проваленная проверка, а не как сбой в работающей системе.</p>
+              </details>
+              <details name="faq-part-3">
+                <summary>А этот контроль когда-нибудь ловил что-то настоящее?</summary>
+                <p>Да. Перепроверка спустя 4 месяца и 253 коммита вскрыла гонку между двумя путями в коде, обрабатывавшими одно и то же событие апелляции, а проверка моделей нашла три инварианта протокола, которые незаметно сломал один-единственный хотфикс. Все находки подтвердились в реализации, обо всём сообщено разработчикам.</p>
+              </details>
+            </div>
+            <a class="chapter-read" href="../papers/part-3-layered-formal-verification.pdf" target="paper-formal-verification">ЧИТАТЬ СТАТЬЮ · LAYERED FORMAL VERIFICATION ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="critical-papers" id="papers">
+        <div class="shell">
+          <div class="papers-heading"><p class="eyebrow">ОСНОВНЫЕ ИССЛЕДОВАНИЯ</p><h2>Пять вопросов — пять статей.</h2><p>В том порядке, в каком их задаёт эта страница: сначала измерить надёжность группы, затем рассчитать цену эскалации и профинансировать суд, дальше — согласовать стимулы апелляций и, наконец, верифицировать код.</p></div>
+          <div class="critical-shelf">
+            <a href="../papers/part-1-aggregate-disambiguation-systems.pdf" target="paper-aggregate-disambiguation"><img src="../covers/part-1.webp" alt="Первая страница Aggregate Disambiguation Systems" /><span>НАДЁЖНОСТЬ</span><strong>Aggregate Disambiguation Systems</strong><small>Как число оценщиков влияет на надёжность</small></a>
+            <a href="../papers/part-2-adaptive-economic-disambiguation.pdf" target="paper-adaptive-economic-disambiguation"><img src="../covers/part-2.webp" alt="Первая страница Adaptive Economic Aggregate Disambiguation" /><span>АДАПТАЦИЯ</span><strong>Adaptive Economic Disambiguation</strong><small>Когда дополнительная проверка оправданна</small></a>
+            <a class="shelf-soon" aria-disabled="true"><img src="../covers/part-5-noalloc-1.png" alt="Первая страница GEN Tokenomics" /><span>ТОКЕНОМИКА</span><strong>GEN Tokenomics</strong><small>Статья скоро выйдет</small></a>
+            <a href="../papers/part-4-multi-agent-appeal-games.pdf" target="paper-multi-agent-appeal-games"><img src="../covers/part-4.webp" alt="Первая страница Multi-Agent Appeal Games" /><span>СТИМУЛЫ</span><strong>Multi-Agent Appeal Games</strong><small>Когда участнику выгодно подать апелляцию</small></a>
+            <a href="../papers/part-3-layered-formal-verification.pdf" target="paper-layered-formal-verification"><img src="../covers/part-3.webp" alt="Первая страница Layered Formal Verification" /><span>ФОРМАЛЬНАЯ ВЕРИФИКАЦИЯ</span><strong>Layered Formal Verification</strong><small>Машинно-проверяемая модель протокола</small></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer><div class="shell"><span>GenLayerLabs Research · Суждение как протокол</span><div><a href="#top">Наверх ↑</a></div></div></footer>
+    <script src="../bridge-critical.js"></script>
+
+    <style>
+      .i9-stage { font-size: .62rem; font-weight: 900; letter-spacing: .1em; color: #8894ab; margin: 1.2rem 0 .45rem; }
+      .i9-stage:first-of-type { margin-top: 0; }
+      .i9-stage b { color: #ff5347; margin-right: .35rem; }
+      .i9-code { background: #161d44; color: #d5dcf2; font: .82rem/1.75 "SF Mono", Menlo, Consolas, monospace; padding: 1rem 1.2rem; margin: 0; white-space: pre-wrap; word-break: break-word; }
+      .i9-code b { font-weight: 400; color: #f7d154; }
+      .i9-code i { font-style: normal; background: rgba(247,209,84,.16); padding: .1rem .3rem; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+      .i9-alt { background: #161d44; padding: .1rem 1.2rem .8rem; margin: 0 0 .2rem; }
+      .i9-alt span { color: #7d89b8; font: .74rem/1.6 "SF Mono", Menlo, Consolas, monospace; }
+      .i9-alt button { font: inherit; font-size: .74rem; background: none; border: 0; cursor: pointer; color: #7d89b8; padding: 0; border-bottom: 1px dotted #7d89b8; }
+      .i9-alt button.active { color: #f7d154; border-bottom: 2px solid #f7d154; font-weight: 700; }
+      .i3-lead { border: 1px solid #d7deec; background: #fbfcfe; padding: .7rem .9rem; }
+      .i3-lead p { margin: 0; font: 700 .92rem/1.45 Georgia, serif; }
+      .i9-table { width: 100%; border-collapse: collapse; }
+      .i9-table td { border-top: 1px solid #17233f22; padding: .48rem .2rem; font: italic .84rem/1.4 Georgia, serif; }
+      .i9-table tr:first-child td { border-top: 0; }
+      .i9-table td:last-child { text-align: right; font: 900 .82rem/1 Georgia, serif; white-space: nowrap; padding-left: 1rem; }
+      .i9-table .g-ok { color: #078b87; } .i9-table .g-ko { color: #ff5347; }
+      .i3-tally { display: flex; align-items: center; gap: .9rem; margin-top: 1rem; }
+      .i3-pips { display: flex; gap: .35rem; }
+      .i3-pips span { width: 15px; height: 15px; background: #cfd7e6; transition: background .25s; }
+      .i3-pips span.ok { background: #078b87; } .i3-pips span.ko { background: #ff5347; }
+      .i3-tally strong { font: 800 1.05rem/1 Georgia, serif; white-space: nowrap; }
+      .ep-verdict { margin-top: 1rem; border-top: 3px solid #17233f; padding-top: .8rem; }
+      .ep-verdict strong { display: block; font-size: .8rem; font-weight: 900; letter-spacing: .05em; }
+      .ep-verdict p { margin: .35rem 0 0; font-size: .78rem; line-height: 1.5; color: #53617a; }
+      .ep-verdict p:empty { display: none; }
+      .od-flow { grid-column: 1 / -1; background: white; border-radius: 4px; padding: 1.2rem 1.4rem 1rem; margin-top: 1.4rem; }
+      .od-flow-label { margin: 0 0 .6rem; font-size: .64rem; font-weight: 900; letter-spacing: .12em; color: #53617a; }
+      .od-flow .sc-card { fill: #f0f3f9; }
+      .od-flow .sc-dark { fill: #1c2740; }
+      .od-flow .sc-ring { fill: none; stroke: #e2734a; stroke-width: 1.6; opacity: 0; transition: opacity .3s; }
+      .od-flow g.lit .sc-ring { opacity: 1; }
+      .od-flow .sc-t1 { font-size: 13px; font-weight: 700; text-anchor: middle; fill: #1c2740; }
+      .od-flow .sc-t2 { font-size: 9px; font-weight: 500; text-anchor: middle; fill: #8a94a6; }
+      .od-flow .sc-w { fill: white; } .od-flow .sc-wm { fill: #93a0b8; }
+      .odf-status { margin: .45rem 0 0; text-align: center; min-height: 1.2em; font-size: .62rem; font-weight: 700; letter-spacing: .12em; color: #8a94a6; text-transform: uppercase; }
+
+      /* OPTION C overrides: 5-scene intro + dark GenLayer block */
+      .critical-onboard .bi-progress { grid-template-columns: repeat(5, 1fr); }
+      @media (min-width: 1051px) { .bi-research-origin { grid-template-columns: minmax(360px, 1fr) minmax(480px, 1fr); } }
+      .bi-research-copy h1 { font-size: clamp(2.4rem, 3.4vw, 3.6rem); line-height: 1.06; max-width: none; }
+      .bi-research-origin .bi-built-ctas { justify-content: flex-start; margin-top: 1.4rem; }
+      .chapter-genlayer { background: #211c3d; color: white; padding: clamp(52px, 5vw, 72px) 0; }
+      .chapter-genlayer .eyebrow { color: #bba8f1; }
+      .chapter-genlayer h2 { max-width: 1020px; }
+      .chapter-genlayer .chapter-lede { max-width: 880px; color: #d0c9df; }
+      .solution-layout { display: grid; grid-template-columns: minmax(0, 940px); justify-content: center; gap: clamp(1.6rem, 3vw, 2.4rem); }
+      .solution-layout .od-flow { margin-top: 0; }
+      .p38-wrap { display: grid; grid-template-columns: 1fr; gap: .9rem; }
+      .p38-panel { border-radius: 12px; padding: 1rem 1.1rem 1.1rem; }
+      .p38-bad { background: #fdf3f0; }
+      .p38-good { background: #f0f7f5; }
+      .p38-panel small { display: block; font-size: .6rem; font-weight: 900; letter-spacing: .12em; margin-bottom: .3rem; }
+      .p38-bad small { color: #b3542a; }
+      .p38-good small { color: #0b6d6a; }
+      .p38-panel strong { display: block; font-size: .88rem; color: #1c2740; margin-bottom: .6rem; }
+      .p38-dots { display: flex; flex-wrap: wrap; gap: 5px; min-height: 50px; align-content: flex-start; }
+      .p38-dots i { width: 12px; height: 12px; border-radius: 50%; }
+      .p38-flood-dot { background: #e2734a; }
+      .p38-stake-dot { background: #0f8f8b; outline: 2px solid #bfe0dc; }
+      .p38-panel p { margin: .6rem 0 0; font-size: .72rem; color: #53617a; }
+      .p38-panel p b { color: #0b6d6a; font-weight: 800; }
+      .p38-supply { position: relative; height: 12px; background: #dde8e5; border-radius: 6px; margin-top: .7rem; overflow: hidden; }
+      .p38-supply i { position: absolute; inset: 0 auto 0 0; width: 0%; background: #0f8f8b; transition: width .4s; }
+      .p38-supply-label { margin: .4rem 0 0 !important; font-size: .54rem; font-weight: 900; letter-spacing: .1em; color: #33514c !important; text-align: center; }
+      .p38-footer { margin: 1rem 0 0; font-size: .8rem; line-height: 1.55; color: #33415e; border-top: 2px solid #1c2740; padding-top: .8rem; }
+      .chapter-genlayer h2 em { font-style: italic; color: #bba8f1; }
+      .chapter-genlayer .solution-head { text-align: center; }
+      .chapter-genlayer .chapter-lede { margin-left: auto; margin-right: auto; }
+            .chapter-genlayer .od-flow-label { text-align: center; }
+      .chapter-genlayer .od-flow { background: transparent; border: 0; box-shadow: none; padding: 0; border-radius: 0; }
+      .chapter-genlayer .od-flow-label { font: 700 1rem/1.25 Georgia, serif; letter-spacing: 0; text-transform: none; color: white; text-align: center; margin: 0 0 1.6rem; }
+      .chapter-genlayer .odf-status { color: #9aa3c7; }
+      .chapter-genlayer .sc-dark { fill: #3157d5; }
+      .chapter-genlayer .od-flow svg text[fill="#b3542a"] { fill: #e88b5e; }
+      .chapter-genlayer .chapter-lede { margin-bottom: .6rem; }
+            /* larger diagram cards */
+      .critical-chapter .shell { width: min(1320px, calc(100% - 48px)); }
+      @media (min-width: 1051px) { .chapter-layout, .part-two-layout { grid-template-columns: minmax(0, .85fr) minmax(560px, 1.15fr); } }
+      .i9-code { font-size: .9rem; }
+      .i9-alt span, .i9-alt button { font-size: .8rem; }
+      .i9-stage { font-size: .68rem; }
+      .i9-table td { font-size: .9rem; }
+      .i3-lead p { font-size: 1rem; }
+      .ep-verdict p { font-size: .84rem; }
+      .p38-panel p { font-size: .8rem; }
+      .p38-panel strong { font-size: .95rem; }
+      .p38-footer { font-size: .85rem; }
+      .verify-band { padding: clamp(34px, 3.5vw, 48px) 0; }
+      .verify-band-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4.5rem); align-items: start; }
+      .verify-band h2 { font-size: clamp(1.9rem, 2.6vw, 2.6rem); margin-top: .4rem; }
+      .verify-band .chapter-lede { margin-top: .9rem; }
+      .verify-band .chapter-source-row { margin-top: .2rem; grid-column: 2; grid-row: 1; }
+      .verify-band-copy { grid-column: 1; grid-row: 1; }
+      @media (max-width: 900px) { .verify-band .chapter-source-row { grid-column: 1; grid-row: auto; } }
+      @media (max-width: 900px) { .verify-band-grid { grid-template-columns: 1fr; } }
+      .chapter-lab { width: min(100%, 720px); }
+      .chapter-genlayer .od-flow { max-width: 720px; justify-self: center; width: 100%; }
+      .critical-papers .shell { width: min(1320px, calc(100% - 48px)); }
+      .policy-lab { padding: clamp(1.4rem, 3vw, 2.2rem); }
+      .critical-shelf a.shelf-soon { pointer-events: none; cursor: default; }
+      .critical-shelf a.shelf-soon img { opacity: .55; }
+      .critical-shelf a.shelf-soon small { color: var(--yellow); font-weight: 700; }
+    </style>
+    <script>
+    // Runtime strings for the inline widgets, keyed by English source text.
+    // The build-time translator cannot reach inside <script>, so locale maps are
+    // generated into GL_I18N by the translation integration; English falls through.
+    const GL_I18N = {
+      "es": {
+        "an ambiguous decision arrives": "llega una decisión ambigua",
+        "each validator judges with its own model": "cada validador juzga con su propio modelo",
+        "“Meets the brief; the pricing analysis is the strongest part.”": "«Cumple el encargo; el análisis de precios es lo más sólido.»",
+        "“The regulation section reads as missing, so it doesn’t meet the brief.”": "«La sección de regulación se echa en falta, así que no cumple el encargo.»",
+        "“Solid pricing work, but I can’t call the brief met.”": "«El trabajo de precios es sólido, pero no puedo dar el encargo por cumplido.»",
+        "Even the two validators who think the brief is unmet must vote accept, because the leader's answer is certainly coherent. Perfect agreement, zero information.": "Hasta los dos validadores que creen que el encargo no se cumple deben votar a favor, porque la respuesta del líder es, sin duda, coherente. Acuerdo perfecto, información nula.",
+        "No re-execution reproduces the leader's exact bytes, so even validators who agree with the verdict must reject. This is classical consensus's rule applied to judgment.": "Ninguna reejecución reproduce los bytes exactos del líder, así que incluso los validadores que comparten el veredicto deben rechazar. Es la regla del consenso clásico aplicada al juicio.",
+        "\"same verdict as your own re-execution\"": "\"el mismo veredicto que tu propia reejecución\"",
+        "\"any coherent assessment\"": "\"cualquier valoración coherente\"",
+        "\"byte-identical to your re-execution\"": "\"idéntica byte a byte a tu reejecución\"",
+        "✓ accept": "✓ aceptar",
+        "✗ reject": "✗ rechazar",
+        "spawning nodes costs nothing…": "levantar nodos no cuesta nada…",
+        "…and the honest majority is gone.": "…y la mayoría honesta ha desaparecido.",
+        "ACCEPTED": "ACEPTADA",
+        "REJECTED": "RECHAZADA",
+        "accepted: 30 minutes for anyone to object": "aceptada — 30 minutos para objetar",
+        "no one objects: final, payment executes": "nadie objeta — definitiva, se ejecuta el pago",
+        "challenged: the bond funds a panel of 7": "impugnada — la fianza financia un panel de 7",
+        "upheld: a fresh window opens": "confirmada — se abre una nueva ventana",
+        "final: the failed bond pays the round's majority validators": "definitiva — la fianza perdida paga a los validadores de la mayoría",
+        "“Meets the brief: all three areas are covered.”": "«Cumple el encargo: las tres áreas están cubiertas.»",
+        "“Meets it: regulation is covered, if thinly.”": "«Lo cumple: la regulación está tratada, aunque de forma escueta.»",
+        "3–2 · ACCEPTED · THE VOTE TRACKS JUDGMENT": "3–2 · ACEPTADA — EL VOTO REFLEJA EL JUICIO",
+        "5–0 · ACCEPTED · UNANIMOUS, AND MEANINGLESS": "5–0 · ACEPTADA — UNÁNIME, PERO SIN INFORMACIÓN",
+        "0–5 · REJECTED · HONEST WORK READS AS REFUSAL": "0–5 · RECHAZADA — EL TRABAJO HONESTO SE LEE COMO FALLO"
+      },
+      "ko": {
+        "an ambiguous decision arrives": "모호한 결정이 도착합니다",
+        "each validator judges with its own model": "검증자마다 자신의 모델로 판단합니다",
+        "“Meets the brief; the pricing analysis is the strongest part.”": "“요구사항 충족. 가격 분석이 가장 탄탄하다.”",
+        "“The regulation section reads as missing, so it doesn’t meet the brief.”": "“규제 섹션이 빠진 것이나 다름없어, 요구사항을 충족한다고 볼 수 없다.”",
+        "“Solid pricing work, but I can’t call the brief met.”": "“가격 분석은 탄탄하지만, 요구사항을 충족했다고는 말할 수 없다.”",
+        "Even the two validators who think the brief is unmet must vote accept, because the leader's answer is certainly coherent. Perfect agreement, zero information.": "요구사항이 충족되지 않았다고 생각하는 두 검증자도 수락에 투표할 수밖에 없습니다. 리더의 답이 조리 있다는 것만은 분명하기 때문입니다. 완벽한 합의지만, 얻는 정보는 하나도 없습니다.",
+        "No re-execution reproduces the leader's exact bytes, so even validators who agree with the verdict must reject. This is classical consensus's rule applied to judgment.": "어떤 재실행도 리더의 출력을 바이트 단위까지 똑같이 재현하지 못하므로, 평결에 동의하는 검증자조차 거부해야 합니다. 고전적 합의의 규칙을 판단에 그대로 적용하면 이렇게 됩니다.",
+        "\"same verdict as your own re-execution\"": "\"자신의 재실행과 같은 평결\"",
+        "\"any coherent assessment\"": "\"조리 있는 평가라면 무엇이든\"",
+        "\"byte-identical to your re-execution\"": "\"자신의 재실행과 바이트 단위로 일치\"",
+        "✓ accept": "✓ 수락",
+        "✗ reject": "✗ 거부",
+        "spawning nodes costs nothing…": "노드는 공짜로 얼마든지 만들 수 있습니다…",
+        "…and the honest majority is gone.": "…그리고 정직한 다수는 사라집니다.",
+        "ACCEPTED": "수락",
+        "REJECTED": "거부",
+        "accepted: 30 minutes for anyone to object": "수락 — 30분 동안 누구나 이의 제기 가능",
+        "no one objects: final, payment executes": "이의 없음 — 확정, 지급 실행",
+        "challenged: the bond funds a panel of 7": "이의 제기 — 예치금으로 7인 패널 구성",
+        "upheld: a fresh window opens": "결정 유지 — 이의 제기 기간 다시 시작",
+        "final: the failed bond pays the round's majority validators": "확정 — 실패한 예치금은 다수 측 검증자들에게 지급",
+        "“Meets the brief: all three areas are covered.”": "“요구사항 충족. 세 영역이 모두 다뤄져 있다.”",
+        "“Meets it: regulation is covered, if thinly.”": "“충족. 규제 부분도 얇게나마 다뤄져 있다.”",
+        "3–2 · ACCEPTED · THE VOTE TRACKS JUDGMENT": "3–2 · 수락 — 표가 판단을 반영합니다",
+        "5–0 · ACCEPTED · UNANIMOUS, AND MEANINGLESS": "5–0 · 수락 — 만장일치, 그러나 무의미",
+        "0–5 · REJECTED · HONEST WORK READS AS REFUSAL": "0–5 · 거부 — 정직한 작업이 결함으로 취급됩니다"
+      },
+      "zh": {
+        "an ambiguous decision arrives": "一个模糊的决定提交进来",
+        "each validator judges with its own model": "每个验证者用自己的模型作出判断",
+        "“Meets the brief; the pricing analysis is the strongest part.”": "“符合要求；定价分析是最出色的部分。”",
+        "“The regulation section reads as missing, so it doesn’t meet the brief.”": "“监管部分几乎等于没写，所以不符合要求。”",
+        "“Solid pricing work, but I can’t call the brief met.”": "“定价部分做得扎实，但我不能说它符合要求。”",
+        "Even the two validators who think the brief is unmet must vote accept, because the leader's answer is certainly coherent. Perfect agreement, zero information.": "连认为报告不符合要求的那两名验证者也必须投接受，因为领导者的答案无疑是言之成理的。票面上完全一致，实际上什么信息也没提供。",
+        "No re-execution reproduces the leader's exact bytes, so even validators who agree with the verdict must reject. This is classical consensus's rule applied to judgment.": "没有任何一次重新执行能逐字节复现领导者的输出，因此连认同其结论的验证者也必须投拒绝。这就是把经典共识的规则套用在判断上的结果。",
+        "\"same verdict as your own re-execution\"": "\"与你自己重新执行的结论一致\"",
+        "\"any coherent assessment\"": "\"任何言之成理的评估\"",
+        "\"byte-identical to your re-execution\"": "\"与你的重新执行逐字节一致\"",
+        "✓ accept": "✓ 接受",
+        "✗ reject": "✗ 拒绝",
+        "spawning nodes costs nothing…": "开节点毫无成本……",
+        "…and the honest majority is gone.": "……诚实多数就此消失。",
+        "ACCEPTED": "已接受",
+        "REJECTED": "已拒绝",
+        "accepted: 30 minutes for anyone to object": "已接受——任何人可在 30 分钟内提出异议",
+        "no one objects: final, payment executes": "无人异议——最终生效，付款执行",
+        "challenged: the bond funds a panel of 7": "遭到挑战——保证金资助 7 人评估组",
+        "upheld: a fresh window opens": "结果维持——挑战窗口重新开启",
+        "final: the failed bond pays the round's majority validators": "最终生效——失败方保证金付给多数一方的验证者",
+        "“Meets the brief: all three areas are covered.”": "“符合要求——三个方面都覆盖到了。”",
+        "“Meets it: regulation is covered, if thinly.”": "“符合——监管部分虽然单薄，但覆盖到了。”",
+        "3–2 · ACCEPTED · THE VOTE TRACKS JUDGMENT": "3–2 · 已接受——投票如实反映判断",
+        "5–0 · ACCEPTED · UNANIMOUS, AND MEANINGLESS": "5–0 · 已接受——全票一致，却毫无信息",
+        "0–5 · REJECTED · HONEST WORK READS AS REFUSAL": "0–5 · 已拒绝——诚实的答案被当成了故障"
+      },
+      "ru": {
+        "an ambiguous decision arrives": "поступает неоднозначный вопрос",
+        "each validator judges with its own model": "каждый валидатор судит своей моделью",
+        "“Meets the brief; the pricing analysis is the strongest part.”": "«Соответствует заданию; сильнее всего проработан анализ ценообразования».",
+        "“The regulation section reads as missing, so it doesn’t meet the brief.”": "«Раздел о регулировании по сути отсутствует, так что заданию работа не соответствует».",
+        "“Solid pricing work, but I can’t call the brief met.”": "«Ценообразование проработано добротно, но признать задание выполненным я не могу».",
+        "Even the two validators who think the brief is unmet must vote accept, because the leader's answer is certainly coherent. Perfect agreement, zero information.": "Даже те два валидатора, которые считают задание невыполненным, вынуждены голосовать «принять»: ответ лидера, безусловно, связный. Полное согласие — ноль информации.",
+        "No re-execution reproduces the leader's exact bytes, so even validators who agree with the verdict must reject. This is classical consensus's rule applied to judgment.": "Ни один повторный запуск не воспроизводит ответ лидера байт в байт, поэтому даже валидаторы, согласные с вердиктом, вынуждены голосовать «отклонить». Это правило классического консенсуса, применённое к суждению.",
+        "\"same verdict as your own re-execution\"": "\"тот же вердикт, что и при вашем повторном запуске\"",
+        "\"any coherent assessment\"": "\"любая связная оценка\"",
+        "\"byte-identical to your re-execution\"": "\"байт в байт с вашим повторным запуском\"",
+        "✓ accept": "✓ принять",
+        "✗ reject": "✗ отклонить",
+        "spawning nodes costs nothing…": "запуск узлов ничего не стоит…",
+        "…and the honest majority is gone.": "…и честного большинства больше нет.",
+        "ACCEPTED": "ПРИНЯТО",
+        "REJECTED": "ОТКЛОНЕНО",
+        "accepted: 30 minutes for anyone to object": "принято — 30 минут на возражения",
+        "no one objects: final, payment executes": "возражений нет — финализация, платёж исполняется",
+        "challenged: the bond funds a panel of 7": "оспорено — залог финансирует группу из 7 валидаторов",
+        "upheld: a fresh window opens": "решение устояло — открывается новое окно",
+        "final: the failed bond pays the round's majority validators": "финализация — залог достаётся валидаторам большинства",
+        "“Meets the brief: all three areas are covered.”": "«Соответствует заданию — все три раздела раскрыты».",
+        "“Meets it: regulation is covered, if thinly.”": "«Соответствует — регулирование затронуто, хотя и поверхностно».",
+        "3–2 · ACCEPTED · THE VOTE TRACKS JUDGMENT": "3–2 · ПРИНЯТО — ГОЛОСА ОТРАЖАЮТ СУЖДЕНИЯ",
+        "5–0 · ACCEPTED · UNANIMOUS, AND MEANINGLESS": "5–0 · ПРИНЯТО — ЕДИНОГЛАСНО И БЕССМЫСЛЕННО",
+        "0–5 · REJECTED · HONEST WORK READS AS REFUSAL": "0–5 · ОТКЛОНЕНО — ЧЕСТНУЮ РАБОТУ СОЧЛИ СБОЕМ"
+      }
+    };
+    const GL_T = (s) => (GL_I18N[(document.documentElement.lang || "en").split("-")[0]] || {})[s] || s;
+
+    (() => {
+      // OPTION A: the intro is trimmed to 5 scenes, but shared bridge-critical.js
+      // still autoplays through its hardcoded 7-step schedule (sceneDurations has
+      // six entries, so timers for steps 6 and 7 fire and hide every scene).
+      // When the shared stepper advances past scene 5, snap back to the final
+      // scene through the real progress control, whose click handler also runs
+      // the stepper's own stopIntro and clears the remaining timer.
+      const intro = document.querySelector(".critical-onboard");
+      const last = document.querySelector('[data-intro-progress="5"]');
+      if (!intro || !last) return;
+      new MutationObserver(() => {
+        if (Number(intro.dataset.step) > 5) last.click();
+      }).observe(intro, { attributes: true, attributeFilter: ["data-step"] });
+    })();
+
+    (() => {
+      const t9 = document.getElementById("i9-table");
+      if (!t9) return;
+      const QUOTES = [
+        "\u201cMeets the brief: all three areas are covered.\u201d",
+        "\u201cMeets the brief; the pricing analysis is the strongest part.\u201d",
+        "\u201cMeets it: regulation is covered, if thinly.\u201d",
+        "\u201cThe regulation section reads as missing, so it doesn\u2019t meet the brief.\u201d",
+        "\u201cSolid pricing work, but I can\u2019t call the brief met.\u201d",
+      ].map(GL_T);
+      const VOTES = [[1, 1, 1, 0, 0], [1, 1, 1, 1, 1], [0, 0, 0, 0, 0]];
+      const EQS = ['"same verdict as your own re-execution"', '"any coherent assessment"', '"byte-identical to your re-execution"'].map(GL_T);
+      const ACTIONS = [
+        ["3\u20132 \u00b7 ACCEPTED \u00b7 THE VOTE TRACKS JUDGMENT", ""],
+        ["5\u20130 \u00b7 ACCEPTED \u00b7 UNANIMOUS, AND MEANINGLESS", "Even the two validators who think the brief is unmet must vote accept, because the leader's answer is certainly coherent. Perfect agreement, zero information."],
+        ["0\u20135 \u00b7 REJECTED \u00b7 HONEST WORK READS AS REFUSAL", "No re-execution reproduces the leader's exact bytes, so even validators who agree with the verdict must reject. This is classical consensus's rule applied to judgment."],
+      ].map(([a, b]) => [GL_T(a), GL_T(b)]);
+      QUOTES.forEach((q) => { const tr = document.createElement("tr"); tr.innerHTML = "<td>" + q + "</td><td></td>"; t9.appendChild(tr); });
+      const pips = document.getElementById("i9-pips");
+      QUOTES.forEach(() => pips.appendChild(document.createElement("span")));
+      const sec = t9.closest("section");
+      const btns = [...sec.querySelectorAll(".i9-alt button")];
+      const eq = document.getElementById("i9-eq"), tally = document.getElementById("i9-tally");
+      const action = document.getElementById("i9-action"), copy = document.getElementById("i9-copy");
+      let timers = [];
+      const render = (c) => {
+        timers.forEach(clearTimeout); timers = [];
+        btns.forEach((b) => b.classList.toggle("active", Number(b.dataset.c) === c));
+        eq.textContent = EQS[c];
+        tally.textContent = "";
+        [...t9.querySelectorAll("td:last-child")].forEach((cell, i) => {
+          cell.textContent = ""; cell.className = ""; pips.children[i].className = "";
+          timers.push(setTimeout(() => {
+            const ok = VOTES[c][i] === 1;
+            cell.textContent = ok ? GL_T("\u2713 accept") : GL_T("\u2717 reject"); cell.className = ok ? "g-ok" : "g-ko";
+            pips.children[i].className = ok ? "ok" : "ko";
+            if (i === QUOTES.length - 1) {
+              const y = VOTES[c].filter(Boolean).length, n = QUOTES.length - y;
+              tally.textContent = (y > n ? GL_T("ACCEPTED") : GL_T("REJECTED")) + " \u00b7 " + y + "\u2013" + n;
+            }
+          }, 220 * (i + 1)));
+        });
+        action.textContent = ACTIONS[c][0]; copy.textContent = ACTIONS[c][1];
+      };
+      btns.forEach((b) => b.addEventListener("click", () => render(Number(b.dataset.c))));
+      render(0);
+    })();
+
+    (() => {
+      const flood = document.getElementById("p38-flood");
+      if (!flood) return;
+      const staked = document.getElementById("p38-staked");
+      const fill = document.getElementById("p38-fill");
+      const cost = document.getElementById("p38-cost");
+      const badnote = document.getElementById("p38-badnote");
+      let n = 0;
+      setInterval(() => {
+        n++;
+        if (n <= 40) {
+          for (let k = 0; k < 3; k++) { const d = document.createElement("i"); d.className = "p38-flood-dot"; flood.appendChild(d); }
+          if (n <= 8) {
+            const s = document.createElement("i"); s.className = "p38-stake-dot"; staked.appendChild(s);
+            cost.textContent = (n * 5) + "%";
+            fill.style.width = (n * 5) + "%";
+          }
+          if (n === 20) badnote.textContent = GL_T("\u2026and the honest majority is gone.");
+        } else {
+          flood.innerHTML = ""; staked.innerHTML = ""; n = 0;
+          fill.style.width = "0%"; cost.textContent = "0%";
+          badnote.textContent = GL_T("spawning nodes costs nothing\u2026");
+        }
+      }, 420);
+    })();
+
+    (() => {
+      const svg = document.getElementById("odf-svg");
+      if (!svg) return;
+      const token = document.getElementById("odf-token");
+      const note = document.getElementById("odf-note");
+      const boxes = [...svg.querySelectorAll("#odf-st g[data-b]")];
+      const loop = document.getElementById("odf-loop");
+      const loopLen = loop.getTotalLength();
+      const C = [{x:101,y:74},{x:297,y:74},{x:495,y:74},{x:676,y:74}];
+      const MODELS = ["GPT", "Claude", "Gemini", "Llama", "Mistral", "Qwen", "DeepSeek"];
+      const NSVG = "http://www.w3.org/2000/svg";
+      const ease = (t) => t < .5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2;
+      const light = (i) => boxes.forEach((b) => b.classList.toggle("lit", Number(b.dataset.b) === i));
+      const scene = (n) => new Promise((res) => {
+        const sub = svg.querySelector('#odf-st g[data-b="1"] .sc-t2');
+        const g = document.createElementNS(NSVG, "g");
+        svg.appendChild(g);
+        sub.style.opacity = 0;
+        const sp = n === 5 ? 15 : 12, x0 = 297 - ((n - 1) * sp) / 2, dy = 90;
+        const dots = [];
+        for (let i = 0; i < n; i++) {
+          const c = document.createElementNS(NSVG, "circle");
+          c.setAttribute("cx", x0 + i * sp); c.setAttribute("cy", dy);
+          c.setAttribute("r", i === 0 ? 4.4 : 3.4);
+          c.setAttribute("fill", i === 0 ? "#3157d5" : "#c5cdd9");
+          c.style.opacity = 0; c.style.transition = "opacity .25s, fill .3s";
+          g.appendChild(c); dots.push(c);
+        }
+        const chip = (i, hold, cb) => {
+          const name = MODELS[i % MODELS.length];
+          const w = name.length * 5.4 + 12;
+          const cg = document.createElementNS(NSVG, "g");
+          cg.style.opacity = 0; cg.style.transition = "opacity .18s";
+          const r = document.createElementNS(NSVG, "rect");
+          r.setAttribute("x", Math.min(Math.max(dots[i].getAttribute("cx") - w / 2, 220), 376 - w));
+          r.setAttribute("y", 16); r.setAttribute("width", w); r.setAttribute("height", 16); r.setAttribute("rx", 8);
+          r.setAttribute("fill", "#1c2740");
+          const t = document.createElementNS(NSVG, "text");
+          t.setAttribute("x", Number(r.getAttribute("x")) + w / 2); t.setAttribute("y", 27);
+          t.setAttribute("text-anchor", "middle"); t.setAttribute("font-size", "8.2");
+          t.setAttribute("font-weight", "700"); t.setAttribute("fill", "white");
+          t.textContent = name;
+          cg.appendChild(r); cg.appendChild(t); g.appendChild(cg);
+          requestAnimationFrame(() => (cg.style.opacity = 1));
+          setTimeout(() => { cg.style.opacity = 0; setTimeout(() => { cg.remove(); cb && cb(); }, 200); }, hold);
+        };
+        requestAnimationFrame(() => dots.forEach((d) => (d.style.opacity = 1)));
+        if (n === 5) {
+          setTimeout(() => chip(0, 700, () => { dots[0].setAttribute("fill", "#078b87"); }), 350);
+          [1, 2, 3, 4].forEach((i, k) => setTimeout(() => chip(i, 420, () => dots[i].setAttribute("fill", "#078b87")), 1450 + k * 330));
+          setTimeout(() => { g.style.transition = "opacity .3s"; g.style.opacity = 0; setTimeout(() => { g.remove(); sub.style.opacity = 1; res(); }, 320); }, 3350);
+        } else {
+          dots.forEach((d, i) => setTimeout(() => d.setAttribute("fill", "#078b87"), 350 + i * 110));
+          setTimeout(() => { g.style.transition = "opacity .3s"; g.style.opacity = 0; setTimeout(() => { g.remove(); sub.style.opacity = 1; res(); }, 320); }, 1500);
+        }
+      });
+      const move = (leg, done) => {
+        const t0 = performance.now();
+        const step = (now) => {
+          const raw = Math.min(1, (now - t0) / leg.ms);
+          const t = ease(raw);
+          let pt;
+          if (leg.arc) { const pp = loop.getPointAtLength(t * loopLen); pt = { x: pp.x, y: pp.y }; }
+          else pt = { x: leg.a.x + (leg.b.x - leg.a.x) * t, y: leg.a.y + (leg.b.y - leg.a.y) * t };
+          token.setAttribute("cx", pt.x); token.setAttribute("cy", pt.y);
+          if (raw < 1) requestAnimationFrame(step);
+          else {
+            light(leg.box); note.textContent = GL_T(leg.note);
+            if (leg.sceneN) scene(leg.sceneN).then(() => setTimeout(done, 350));
+            else setTimeout(done, 950);
+          }
+        };
+        requestAnimationFrame(step);
+      };
+      const play = (legs, i, done) => { if (i >= legs.length) return done(); move(legs[i], () => play(legs, i + 1, done)); };
+      let run = 0;
+      const cycle = () => {
+        run++;
+        const ch = run % 3 === 0;
+        token.setAttribute("cx", C[0].x); token.setAttribute("cy", C[0].y);
+        light(0); note.textContent = GL_T("an ambiguous decision arrives");
+        const L = (a, b, box, note, ms = 850) => ({ a: C[a], b: C[b], box, note, ms });
+        const legs = ch
+          ? [L(0,1,1,"each validator judges with its own model"), L(1,2,2,"accepted: 30 minutes for anyone to object"), { arc: true, box: 1, note: "challenged: the bond funds a panel of 7", ms: 1150 }, L(1,2,2,"upheld: a fresh window opens"), L(2,3,3,"final: the failed bond pays the round's majority validators")]
+          : [L(0,1,1,"each validator judges with its own model"), L(1,2,2,"accepted: 30 minutes for anyone to object"), L(2,3,3,"no one objects: final, payment executes")];
+        legs.forEach((lg) => { if (lg.box === 1) lg.sceneN = lg.arc ? 7 : 5; });
+        setTimeout(() => play(legs, 0, () => setTimeout(cycle, 1700)), 950);
+      };
+      cycle();
+    })();
+    </script>
+  </body>
+</html>

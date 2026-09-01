@@ -1,0 +1,14 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#DCEAFF"/>
+  <g transform="translate(636.8 -59.2) scale(3.2)" fill="#14203B" opacity="0.07">
+    <path d="M120.541 106.763L94.5535 161.323L119.017 173.531L51 200.254L120.541 56V106.763Z"/>
+    <path d="M135.059 106.763L161.046 161.323L136.583 173.531L204.6 200.254L135.059 56V106.763Z"/>
+    <path d="M127.423 124.698L142.648 154.764L127.423 162.217L113.015 154.732L127.423 124.698Z"/>
+  </g>
+  <text x="96" y="104" fill="#405577" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="800" letter-spacing="3">GENLAYER RESEARCH</text>
+  <text x="94" y="286" fill="#14203B" font-family="Georgia, 'Times New Roman', serif" font-size="77" font-weight="700">Aggregate Disambiguation</text>
+  <text x="94" y="372" fill="#14203B" font-family="Georgia, 'Times New Roman', serif" font-size="77" font-weight="700">Systems</text>
+  <text x="96" y="452" fill="#3C557D" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="500">How to automate decisions that have</text>
+  <text x="96" y="494" fill="#3C557D" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="500">no single right answer.</text>
+  <text x="96" y="566" fill="#405577" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="800" letter-spacing="2">A VISUAL RESEARCH GUIDE</text>
+</svg>

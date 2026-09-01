@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://genlayerlabs.github.io/research/</loc>
+  </url>
+  <url>
+    <loc>https://genlayerlabs.github.io/research/es/</loc>
+  </url>
+  <url>
+    <loc>https://genlayerlabs.github.io/research/ko/</loc>
+  </url>
+  <url>
+    <loc>https://genlayerlabs.github.io/research/zh/</loc>
+  </url>
+  <url>
+    <loc>https://genlayerlabs.github.io/research/ru/</loc>
+  </url>
+  <url>
+    <loc>https://genlayerlabs.github.io/research/papers/part-1-aggregate-disambiguation-systems.pdf</loc>
+  </url>
+  <url>
+    <loc>https://genlayerlabs.github.io/research/papers/part-2-adaptive-economic-disambiguation.pdf</loc>
+  </url>
+  <url>
+    <loc>https://genlayerlabs.github.io/research/papers/part-3-layered-formal-verification.pdf</loc>
+  </url>
+  <url>
+    <loc>https://genlayerlabs.github.io/research/papers/part-4-multi-agent-appeal-games.pdf</loc>
+  </url>
+  <url>
+    <loc>https://genlayerlabs.github.io/research/papers/genlayer-whitepaper-v2.pdf</loc>
+  </url>
+</urlset>
