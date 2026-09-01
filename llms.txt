@@ -1,4 +1,4 @@
-# GenLayer Research
+# GenLayer Labs Research
 
 > A visual guide to GenLayer's research on automating ambiguous decisions in adversarial environments: sampled panels of AI judges, exact reproducibility guarantees, cost-aware evaluation, appeal incentives, and machine-checked verification of the Optimistic Democracy protocol.
 
