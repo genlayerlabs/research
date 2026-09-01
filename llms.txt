@@ -15,10 +15,10 @@ The guide is a single page available in five languages; the papers are PDFs.
 ## Papers
 
 - [GenLayer Whitepaper v2](https://genlayerlabs.github.io/research/papers/genlayer-whitepaper-v2.pdf): the system paper: execution environment, Optimistic Democracy consensus, protocol economics
-- [Aggregate Disambiguation Systems](https://genlayerlabs.github.io/research/papers/part-1-aggregate-disambiguation-systems.pdf): exact finite-panel reproducibility — how often a sampled panel of AI judges matches its declared pool, with and without corruption
-- [Adaptive Economic Aggregate Disambiguation](https://genlayerlabs.github.io/research/papers/part-2-adaptive-economic-disambiguation.pdf): cost-aware evaluation policies that spend more judgment only where decisions are close
-- [Layered Formal Verification of the Optimistic Democracy Protocol](https://genlayerlabs.github.io/research/papers/part-3-layered-formal-verification.pdf): a machine-checked TLA+ model chain from canonical state graph to committed Solidity
-- [Multi-Agent Appeal Games in Aggregate Disambiguation Systems](https://genlayerlabs.github.io/research/papers/part-4-multi-agent-appeal-games.pdf): when private incentives produce the appeals the protocol needs — and when they stay unfiled or duplicated
+- [Aggregate Disambiguation Systems](https://arxiv.org/abs/2608.30805): exact finite-panel reproducibility — how often a sampled panel of AI judges matches its declared pool, with and without corruption
+- Adaptive Economic Aggregate Disambiguation: cost-aware evaluation policies that spend more judgment only where decisions are close (paper coming soon)
+- Layered Formal Verification of the Optimistic Democracy Protocol: a machine-checked TLA+ model chain from canonical state graph to committed Solidity (paper coming soon)
+- Multi-Agent Appeal Games in Aggregate Disambiguation Systems: when private incentives produce the appeals the protocol needs — and when they stay unfiled or duplicated (paper coming soon)
 
 ## Organization
 
