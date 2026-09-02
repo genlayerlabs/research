@@ -385,8 +385,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css?v=mtjnn25v" />
-    <link rel="stylesheet" href="../bridge-critical.css?v=mtjnn25v" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtjo3j8d" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtjo3j8d" />
   </head>
   <body>
 
@@ -537,19 +537,19 @@
       <div class="lab" aria-label="评估组可靠性实验">
         <span class="lab-chip">试一试</span>
         <p class="lab-head">调整群体倾向、对抗者比例和评估者人数。</p>
-        <div class="predict" data-predict="measure" data-answer="63">
+        <div class="predict" data-predict="measure" data-answer="99.8">
           <small>先猜一猜</small>
-          <p>对抗者把 65/35 的群体扭成了 55/45。十一名随机裁判投票。他们仍与诚实多数站在一起的概率有多大？</p>
-          <div class="predict-choices"><button type="button" data-guess="50">约 50%</button><button type="button" data-guess="63">约 63%</button><button type="button" data-guess="90">约 90%</button></div>
-          <p class="predict-reveal" hidden>约 63%。十一名裁判便宜，但结果不稳。换成 1,537 名裁判，同一个数字就是 99.996%。在下面试试看。</p>
+          <p>对抗者把 80/20 的群体扭成了 70/30。四十七名随机裁判投票。他们仍与诚实多数站在一起的概率有多大？</p>
+          <div class="predict-choices"><button type="button" data-guess="70">约 70%</button><button type="button" data-guess="90">约 90%</button><button type="button" data-guess="99.8">约 99.8%</button></div>
+          <p class="predict-reveal" hidden>约 99.8%。买通十分之一的群体，对 47 名裁判几乎没有影响。换成 11 名裁判，同一个数字降到 92%；换成 1,537 名，就几乎是 100%。在下面试试看。</p>
         </div>
-        <label for="p1b-agreement">诚实评估者中回答“是”的比例 <output id="p1b-agreement-output" for="p1b-agreement">65%</output></label>
-        <input id="p1b-agreement" type="range" min="51" max="95" value="65" />
+        <label for="p1b-agreement">诚实评估者中回答“是”的比例 <output id="p1b-agreement-output" for="p1b-agreement">80%</output></label>
+        <input id="p1b-agreement" type="range" min="51" max="95" value="80" />
         <label for="p1b-adversary">被对抗者翻转的群体比例 <output id="p1b-adversary-output" for="p1b-adversary">10%</output></label>
         <input id="p1b-adversary" type="range" min="0" max="40" value="10" />
         <div class="population-bar" aria-hidden="true"><i id="p1b-yes-bar"></i><b id="p1b-adv-bar"></b></div>
-        <div class="bar-labels"><span id="p1b-yes-label">55% 是</span><span id="p1b-adv-label">10% 被翻转</span><span id="p1b-no-label">35% 否</span></div>
-        <fieldset><legend>评估者人数</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" class="active" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
+        <div class="bar-labels"><span id="p1b-yes-label">70% 是</span><span id="p1b-adv-label">10% 被翻转</span><span id="p1b-no-label">20% 否</span></div>
+        <fieldset><legend>评估者人数</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" class="active" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
         <div class="lab-result" role="status" aria-live="polite"><small>评估组仍与诚实多数一致的概率</small><strong id="p1b-risk">—</strong><i><b id="p1b-risk-fill"></b></i><p id="p1b-risk-copy"></p></div>
         <p class="fine">这是论文中精确非自适应模型的最坏情况：每一张对抗票都投向诚实多数的对立面。</p>
       </div>
@@ -1322,6 +1322,6 @@
       } else cycle();
     })();
     </script>
-    <script src="../bridge-critical.js?v=mtjnn25v"></script>
+    <script src="../bridge-critical.js?v=mtjo3j8d"></script>
   </body>
 </html>

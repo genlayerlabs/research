@@ -385,8 +385,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css?v=mtjnn25v" />
-    <link rel="stylesheet" href="../bridge-critical.css?v=mtjnn25v" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtjo3j8d" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtjo3j8d" />
   </head>
   <body>
 
@@ -537,19 +537,19 @@
       <div class="lab" aria-label="패널 신뢰도 실험">
         <span class="lab-chip">직접 해보기</span>
         <p class="lab-head">‘예’ 응답 비율, 적대적 비율, 평가자 수를 바꿔 보세요.</p>
-        <div class="predict" data-predict="measure" data-answer="63">
+        <div class="predict" data-predict="measure" data-answer="99.8">
           <small>먼저 예상해 보세요</small>
-          <p>적대적 참여자가 65 대 35이던 집단을 55 대 45로 바꿔 놓았습니다. 무작위로 뽑힌 판정자 열한 명이 투표합니다. 이들이 그래도 정직한 다수와 같은 편에 설 확률은 얼마나 될까요?</p>
-          <div class="predict-choices"><button type="button" data-guess="50">약 50%</button><button type="button" data-guess="63">약 63%</button><button type="button" data-guess="90">약 90%</button></div>
-          <p class="predict-reveal" hidden>약 63%입니다. 판정자 열한 명은 값이 싼 대신 결과가 흔들립니다. 1,537명이면 같은 수치가 99.996%가 됩니다. 아래에서 직접 해 보세요.</p>
+          <p>적대적 참여자가 80 대 20이던 집단을 70 대 30으로 바꿔 놓았습니다. 무작위로 뽑힌 판정자 마흔일곱 명이 투표합니다. 이들이 그래도 정직한 다수와 같은 편에 설 확률은 얼마나 될까요?</p>
+          <div class="predict-choices"><button type="button" data-guess="70">약 70%</button><button type="button" data-guess="90">약 90%</button><button type="button" data-guess="99.8">약 99.8%</button></div>
+          <p class="predict-reveal" hidden>약 99.8%입니다. 집단의 십분의 일을 매수해도 판정자 47명은 거의 흔들리지 않습니다. 11명이면 같은 수치가 92%로 떨어지고, 1,537명이면 사실상 100%입니다. 아래에서 직접 해 보세요.</p>
         </div>
-        <label for="p1b-agreement">정직한 평가자 중 ‘예’라고 답하는 비율 <output id="p1b-agreement-output" for="p1b-agreement">65%</output></label>
-        <input id="p1b-agreement" type="range" min="51" max="95" value="65" />
+        <label for="p1b-agreement">정직한 평가자 중 ‘예’라고 답하는 비율 <output id="p1b-agreement-output" for="p1b-agreement">80%</output></label>
+        <input id="p1b-agreement" type="range" min="51" max="95" value="80" />
         <label for="p1b-adversary">전체 중 적대적 참여자가 뒤집는 비율 <output id="p1b-adversary-output" for="p1b-adversary">10%</output></label>
         <input id="p1b-adversary" type="range" min="0" max="40" value="10" />
         <div class="population-bar" aria-hidden="true"><i id="p1b-yes-bar"></i><b id="p1b-adv-bar"></b></div>
-        <div class="bar-labels"><span id="p1b-yes-label">55% 예</span><span id="p1b-adv-label">10% 뒤집힘</span><span id="p1b-no-label">35% 아니요</span></div>
-        <fieldset><legend>평가자 수</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" class="active" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
+        <div class="bar-labels"><span id="p1b-yes-label">70% 예</span><span id="p1b-adv-label">10% 뒤집힘</span><span id="p1b-no-label">20% 아니요</span></div>
+        <fieldset><legend>평가자 수</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" class="active" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
         <div class="lab-result" role="status" aria-live="polite"><small>그래도 그룹이 정직한 다수 결정을 재현할 확률</small><strong id="p1b-risk">—</strong><i><b id="p1b-risk-fill"></b></i><p id="p1b-risk-copy"></p></div>
         <p class="fine">논문의 비적응형 모델로 정확히 계산한 최악의 경우입니다. 모든 적대적 표가 정직한 다수의 반대쪽으로 움직입니다.</p>
       </div>
@@ -1322,6 +1322,6 @@
       } else cycle();
     })();
     </script>
-    <script src="../bridge-critical.js?v=mtjnn25v"></script>
+    <script src="../bridge-critical.js?v=mtjo3j8d"></script>
   </body>
 </html>

@@ -577,7 +577,7 @@
     const advFlipLabel = document.querySelector("#p1b-adv-label");
     const advNoLabel = document.querySelector("#p1b-no-label");
     const advSizeButtons = [...document.querySelectorAll("[data-p1b-size]")];
-    let advPanelSize = 11;
+    let advPanelSize = 47;
 
     const updateAdversary = () => {
       const honestYes = Number(advAgreement.value);

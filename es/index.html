@@ -385,8 +385,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css?v=mtjnn25v" />
-    <link rel="stylesheet" href="../bridge-critical.css?v=mtjnn25v" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtjo3j8d" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtjo3j8d" />
   </head>
   <body>
 
@@ -537,19 +537,19 @@
       <div class="lab" aria-label="Laboratorio de fiabilidad del panel">
         <span class="lab-chip">PRUÉBALO</span>
         <p class="lab-head">Cambia la proporción de respuestas, los adversarios y el número de evaluadores.</p>
-        <div class="predict" data-predict="measure" data-answer="63">
+        <div class="predict" data-predict="measure" data-answer="99.8">
           <small>HAZ UNA PREDICCIÓN</small>
-          <p>Los adversarios convierten un conjunto de 65/35 en uno de 55/45. Votan once jueces al azar. ¿Con qué frecuencia siguen coincidiendo con la mayoría honesta?</p>
-          <div class="predict-choices"><button type="button" data-guess="50">Alrededor del 50%</button><button type="button" data-guess="63">Alrededor del 63%</button><button type="button" data-guess="90">Alrededor del 90%</button></div>
-          <p class="predict-reveal" hidden>Alrededor del 63%. Once jueces salen baratos, pero el resultado es frágil. Con 1.537 jueces esa misma cifra es del 99,996%. Pruébalo aquí abajo.</p>
+          <p>Los adversarios convierten un conjunto de 80/20 en uno de 70/30. Votan cuarenta y siete jueces al azar. ¿Con qué frecuencia siguen coincidiendo con la mayoría honesta?</p>
+          <div class="predict-choices"><button type="button" data-guess="70">Alrededor del 70%</button><button type="button" data-guess="90">Alrededor del 90%</button><button type="button" data-guess="99.8">Alrededor del 99,8%</button></div>
+          <p class="predict-reveal" hidden>Alrededor del 99,8%. Comprar a una décima parte de la población apenas hace mella en 47 jueces. Con 11 jueces esa misma cifra baja al 92%; con 1.537 es prácticamente el 100%. Pruébalo aquí abajo.</p>
         </div>
-        <label for="p1b-agreement">Proporción de evaluadores honestos que responden «sí» <output id="p1b-agreement-output" for="p1b-agreement">65%</output></label>
-        <input id="p1b-agreement" type="range" min="51" max="95" value="65" />
+        <label for="p1b-agreement">Proporción de evaluadores honestos que responden «sí» <output id="p1b-agreement-output" for="p1b-agreement">80%</output></label>
+        <input id="p1b-agreement" type="range" min="51" max="95" value="80" />
         <label for="p1b-adversary">Proporción de evaluadores cuyo voto invierten los adversarios <output id="p1b-adversary-output" for="p1b-adversary">10%</output></label>
         <input id="p1b-adversary" type="range" min="0" max="40" value="10" />
         <div class="population-bar" aria-hidden="true"><i id="p1b-yes-bar"></i><b id="p1b-adv-bar"></b></div>
-        <div class="bar-labels"><span id="p1b-yes-label">55% SÍ</span><span id="p1b-adv-label">10% INVERTIDO</span><span id="p1b-no-label">35% NO</span></div>
-        <fieldset><legend>Número de evaluadores</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" class="active" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
+        <div class="bar-labels"><span id="p1b-yes-label">70% SÍ</span><span id="p1b-adv-label">10% INVERTIDO</span><span id="p1b-no-label">20% NO</span></div>
+        <fieldset><legend>Número de evaluadores</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" class="active" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
         <div class="lab-result" role="status" aria-live="polite"><small>CON QUÉ FRECUENCIA EL GRUPO SIGUE COINCIDIENDO CON LA MAYORÍA HONESTA</small><strong id="p1b-risk">—</strong><i><b id="p1b-risk-fill"></b></i><p id="p1b-risk-copy"></p></div>
         <p class="fine">Peor caso según el modelo exacto no adaptativo del paper: todos los votos de los adversarios van en contra de la mayoría honesta.</p>
       </div>
@@ -1322,6 +1322,6 @@
       } else cycle();
     })();
     </script>
-    <script src="../bridge-critical.js?v=mtjnn25v"></script>
+    <script src="../bridge-critical.js?v=mtjo3j8d"></script>
   </body>
 </html>

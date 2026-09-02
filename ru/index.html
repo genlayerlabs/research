@@ -385,8 +385,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css?v=mtjnn25v" />
-    <link rel="stylesheet" href="../bridge-critical.css?v=mtjnn25v" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtjo3j8d" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtjo3j8d" />
   </head>
   <body>
 
@@ -537,19 +537,19 @@
       <div class="lab" aria-label="Лаборатория надёжности группы">
         <span class="lab-chip">ПОПРОБУЙТЕ</span>
         <p class="lab-head">Измените долю ответов, долю злоумышленников и число оценщиков.</p>
-        <div class="predict" data-predict="measure" data-answer="63">
+        <div class="predict" data-predict="measure" data-answer="99.8">
           <small>ПОПРОБУЙТЕ УГАДАТЬ</small>
-          <p>Злоумышленники превращают совокупность 65/35 в 55/45. Голосуют одиннадцать случайных судей. Как часто они всё же окажутся на стороне честного большинства?</p>
-          <div class="predict-choices"><button type="button" data-guess="50">Около 50%</button><button type="button" data-guess="63">Около 63%</button><button type="button" data-guess="90">Около 90%</button></div>
-          <p class="predict-reveal" hidden>Около 63%. Одиннадцать судей обходятся дёшево, но результат шаткий. При 1537 судьях то же число — 99,996%. Попробуйте сами ниже.</p>
+          <p>Злоумышленники превращают совокупность 80/20 в 70/30. Голосуют сорок семь случайных судей. Как часто они всё же окажутся на стороне честного большинства?</p>
+          <div class="predict-choices"><button type="button" data-guess="70">Около 70%</button><button type="button" data-guess="90">Около 90%</button><button type="button" data-guess="99.8">Около 99,8%</button></div>
+          <p class="predict-reveal" hidden>Около 99,8%. Подмена десятой части совокупности почти не сказывается на 47 судьях. При 11 судьях то же число падает до 92%; при 1537 — практически 100%. Попробуйте сами ниже.</p>
         </div>
-        <label for="p1b-agreement">Доля честных оценщиков, выбравших «да» <output id="p1b-agreement-output" for="p1b-agreement">65%</output></label>
-        <input id="p1b-agreement" type="range" min="51" max="95" value="65" />
+        <label for="p1b-agreement">Доля честных оценщиков, выбравших «да» <output id="p1b-agreement-output" for="p1b-agreement">80%</output></label>
+        <input id="p1b-agreement" type="range" min="51" max="95" value="80" />
         <label for="p1b-adversary">Доля совокупности, подменённая злоумышленниками <output id="p1b-adversary-output" for="p1b-adversary">10%</output></label>
         <input id="p1b-adversary" type="range" min="0" max="40" value="10" />
         <div class="population-bar" aria-hidden="true"><i id="p1b-yes-bar"></i><b id="p1b-adv-bar"></b></div>
-        <div class="bar-labels"><span id="p1b-yes-label">55% ДА</span><span id="p1b-adv-label">10% ПОДМЕНЕНО</span><span id="p1b-no-label">35% НЕТ</span></div>
-        <fieldset><legend>Число оценщиков в группе</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" class="active" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
+        <div class="bar-labels"><span id="p1b-yes-label">70% ДА</span><span id="p1b-adv-label">10% ПОДМЕНЕНО</span><span id="p1b-no-label">20% НЕТ</span></div>
+        <fieldset><legend>Число оценщиков в группе</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" class="active" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
         <div class="lab-result" role="status" aria-live="polite"><small>КАК ЧАСТО ГРУППА ВСЁ ЖЕ ПОВТОРИТ РЕШЕНИЕ ЧЕСТНОГО БОЛЬШИНСТВА</small><strong id="p1b-risk">—</strong><i><b id="p1b-risk-fill"></b></i><p id="p1b-risk-copy"></p></div>
         <p class="fine">Худший случай по точной неадаптивной модели из статьи: каждый голос злоумышленников направлен против честного большинства.</p>
       </div>
@@ -1322,6 +1322,6 @@
       } else cycle();
     })();
     </script>
-    <script src="../bridge-critical.js?v=mtjnn25v"></script>
+    <script src="../bridge-critical.js?v=mtjo3j8d"></script>
   </body>
 </html>

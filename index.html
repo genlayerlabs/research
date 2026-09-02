@@ -382,8 +382,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="bridge-compact.css?v=mtjnn25v" />
-    <link rel="stylesheet" href="bridge-critical.css?v=mtjnn25v" />
+    <link rel="stylesheet" href="bridge-compact.css?v=mtjo3j8d" />
+    <link rel="stylesheet" href="bridge-critical.css?v=mtjo3j8d" />
   </head>
   <body>
 
@@ -534,19 +534,19 @@
       <div class="lab" aria-label="Panel reliability lab">
         <span class="lab-chip">TRY IT</span>
         <p class="lab-head">Change the population, the adversaries, and the panel.</p>
-        <div class="predict" data-predict="measure" data-answer="63">
+        <div class="predict" data-predict="measure" data-answer="99.8">
           <small>MAKE A PREDICTION</small>
-          <p>Adversaries flip a 65/35 pool to 55/45. Eleven random judges vote. How often do they still land with the honest majority?</p>
-          <div class="predict-choices"><button type="button" data-guess="50">About 50%</button><button type="button" data-guess="63">About 63%</button><button type="button" data-guess="90">About 90%</button></div>
-          <p class="predict-reveal" hidden>About 63%. Eleven judges are cheap but shaky. At 1,537 judges the same number is 99.996%. Try it below.</p>
+          <p>Adversaries flip an 80/20 pool to 70/30. Forty-seven random judges vote. How often do they still land with the honest majority?</p>
+          <div class="predict-choices"><button type="button" data-guess="70">About 70%</button><button type="button" data-guess="90">About 90%</button><button type="button" data-guess="99.8">About 99.8%</button></div>
+          <p class="predict-reveal" hidden>About 99.8%. Buying a tenth of the population barely dents 47 judges. With 11 judges the same number drops to 92%; at 1,537 it is effectively 100%. Try it below.</p>
         </div>
-        <label for="p1b-agreement">Share of honest evaluators choosing YES <output id="p1b-agreement-output" for="p1b-agreement">65%</output></label>
-        <input id="p1b-agreement" type="range" min="51" max="95" value="65" />
+        <label for="p1b-agreement">Share of honest evaluators choosing YES <output id="p1b-agreement-output" for="p1b-agreement">80%</output></label>
+        <input id="p1b-agreement" type="range" min="51" max="95" value="80" />
         <label for="p1b-adversary">Share of the population flipped by adversaries <output id="p1b-adversary-output" for="p1b-adversary">10%</output></label>
         <input id="p1b-adversary" type="range" min="0" max="40" value="10" />
         <div class="population-bar" aria-hidden="true"><i id="p1b-yes-bar"></i><b id="p1b-adv-bar"></b></div>
-        <div class="bar-labels"><span id="p1b-yes-label">55% YES</span><span id="p1b-adv-label">10% FLIPPED</span><span id="p1b-no-label">35% NO</span></div>
-        <fieldset><legend>Panel size</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" class="active" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
+        <div class="bar-labels"><span id="p1b-yes-label">70% YES</span><span id="p1b-adv-label">10% FLIPPED</span><span id="p1b-no-label">20% NO</span></div>
+        <fieldset><legend>Panel size</legend><div class="size-buttons"><button type="button" data-p1b-size="5">5</button><button type="button" data-p1b-size="11">11</button><button type="button" data-p1b-size="23">23</button><button type="button" class="active" data-p1b-size="47">47</button><button type="button" data-p1b-size="95">95</button><button type="button" data-p1b-size="191">191</button><button type="button" data-p1b-size="383">383</button><button type="button" data-p1b-size="767">767</button><button type="button" data-p1b-size="1537">1537</button></div></fieldset>
         <div class="lab-result" role="status" aria-live="polite"><small>CHANCE THE PANEL STILL REACHES THE HONEST MAJORITY</small><strong id="p1b-risk">—</strong><i><b id="p1b-risk-fill"></b></i><p id="p1b-risk-copy"></p></div>
         <p class="fine">Worst case from the paper’s exact non-adaptive model: every adversarial vote moves against the honest majority.</p>
       </div>
@@ -1319,6 +1319,6 @@
       } else cycle();
     })();
     </script>
-    <script src="bridge-critical.js?v=mtjnn25v"></script>
+    <script src="bridge-critical.js?v=mtjo3j8d"></script>
   </body>
 </html>
