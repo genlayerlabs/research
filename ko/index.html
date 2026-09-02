@@ -385,8 +385,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css?v=mtjo3j8d" />
-    <link rel="stylesheet" href="../bridge-critical.css?v=mtjo3j8d" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtjs5oaq" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtjs5oaq" />
   </head>
   <body>
 
@@ -625,11 +625,11 @@
       <div class="lab" aria-label="중단 규칙 실험">
         <span class="lab-chip">직접 해보기</span>
         <p class="lab-head">이 결정에는 평가자 몇 명을 쓰는 것이 적절할까요?</p>
-        <div class="predict" data-predict="adapt" data-answer="95">
+        <div class="predict" data-predict="adapt" data-answer="23">
           <small>먼저 예상해 보세요</small>
-          <p>논쟁적인 질문 하나에 2,000달러가 걸려 있습니다. 판정자 한 명당 10센트입니다. 어디서 멈추는 것이 가장 쌀까요?</p>
-          <div class="predict-choices"><button type="button" data-guess="11">판정자 11명</button><button type="button" data-guess="95">판정자 95명</button><button type="button" data-guess="767">판정자 767명</button></div>
-          <p class="predict-reveal" hidden>판정자 95명, 전부 합쳐 약 12달러입니다. 11명에서 멈추면 기대 손실이 297달러 남고, 767명까지 가면 수수료로 76.70달러를 쓰고도 줄어드는 손실은 거의 없습니다.</p>
+          <p>80%가 동의하는 질문 하나에 2,000달러가 걸려 있습니다. 판정자 한 명당 10센트입니다. 어디서 멈추는 것이 가장 쌀까요?</p>
+          <div class="predict-choices"><button type="button" data-guess="11">판정자 11명</button><button type="button" data-guess="23">판정자 23명</button><button type="button" data-guess="767">판정자 767명</button></div>
+          <p class="predict-reveal" hidden>판정자 23명, 전부 합쳐 약 3.50달러입니다. 11명에서 멈추면 기대 손실이 23달러 남고, 767명까지 가면 수수료로 76.70달러를 쓰고도 줄어드는 손실은 없습니다.</p>
         </div>
         <fieldset><legend>예시 결정 고르기</legend>
           <div class="size-buttons stop-presets">
@@ -640,8 +640,8 @@
         </fieldset>
         <label for="p2s-stakes">오판 시 걸려 있는 금액 <output id="p2s-stakes-output" for="p2s-stakes">$2,000</output></label>
         <input id="p2s-stakes" type="range" min="1" max="400" value="40" />
-        <label for="p2s-clarity">의견이 얼마나 갈리는 질문인가요? <output id="p2s-clarity-output" for="p2s-clarity">65% 동의 · 의견 갈림</output></label>
-        <input id="p2s-clarity" type="range" min="55" max="90" value="65" />
+        <label for="p2s-clarity">의견이 얼마나 갈리는 질문인가요? <output id="p2s-clarity-output" for="p2s-clarity">80% 동의 · 한쪽 우세</output></label>
+        <input id="p2s-clarity" type="range" min="55" max="90" value="80" />
         <p class="fine">평가자 한 명당 10센트입니다. 패널 크기는 프로토콜이 정한 라운드 규모를 따르며, 5명부터 1,537명까지입니다.</p>
         <svg class="stop-curve" id="p2s-svg" viewBox="0 0 720 300" role="img" aria-label="각 프로토콜 라운드에서 멈출 때의 총 기대 비용: 평가자 수가 늘수록 수수료는 오르고 오판으로 인한 기대 손실은 줄어들며, 둘의 합은 최적 지점에서 가장 낮아집니다."></svg>
         <p class="stop-caption">총비용 = 수수료 + 위험(라운드별). 검은 선이 가장 낮아지는 지점에서 멈추면 됩니다.</p>
@@ -1322,6 +1322,6 @@
       } else cycle();
     })();
     </script>
-    <script src="../bridge-critical.js?v=mtjo3j8d"></script>
+    <script src="../bridge-critical.js?v=mtjs5oaq"></script>
   </body>
 </html>

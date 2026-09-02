@@ -385,8 +385,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css?v=mtjo3j8d" />
-    <link rel="stylesheet" href="../bridge-critical.css?v=mtjo3j8d" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtjs5oaq" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtjs5oaq" />
   </head>
   <body>
 
@@ -625,11 +625,11 @@
       <div class="lab" aria-label="Durma kuralı laboratuvarı">
         <span class="lab-chip">DENE</span>
         <p class="lab-head">Bu karar kaç değerlendirici satın almalı?</p>
-        <div class="predict" data-predict="adapt" data-answer="95">
+        <div class="predict" data-predict="adapt" data-answer="23">
           <small>ÖNCE BİR TAHMİN YÜRÜT</small>
-          <p>Tartışmalı bir soruda 2.000 $ dönüyor. Yargıç başına 10 sent. Nerede durmak en ucuzu?</p>
-          <div class="predict-choices"><button type="button" data-guess="11">11 yargıç</button><button type="button" data-guess="95">95 yargıç</button><button type="button" data-guess="767">767 yargıç</button></div>
-          <p class="predict-reveal" hidden>95 yargıç: hepsi dahil 12 $ dolayında. 11'de durmak 297 $ beklenen kayıp bırakır; 767'ye çıkmaksa 76,70 $ ücret ödetip kaybı neredeyse hiç azaltmaz.</p>
+          <p>%80'inin hemfikir olduğu bir soruda 2.000 $ dönüyor. Yargıç başına 10 sent. Nerede durmak en ucuzu?</p>
+          <div class="predict-choices"><button type="button" data-guess="11">11 yargıç</button><button type="button" data-guess="23">23 yargıç</button><button type="button" data-guess="767">767 yargıç</button></div>
+          <p class="predict-reveal" hidden>23 yargıç: hepsi dahil 3,50 $ dolayında. 11'de durmak 23 $ beklenen kayıp bırakır; 767'ye çıkmaksa 76,70 $ ücret ödetip kaybı hiç azaltmaz.</p>
         </div>
         <fieldset><legend>Örnek bir karar seç</legend>
           <div class="size-buttons stop-presets">
@@ -640,8 +640,8 @@
         </fieldset>
         <label for="p2s-stakes">Karar yanlışsa riske giren tutar <output id="p2s-stakes-output" for="p2s-stakes">2.000 $</output></label>
         <input id="p2s-stakes" type="range" min="1" max="400" value="40" />
-        <label for="p2s-clarity">Soru ne kadar tartışmalı? <output id="p2s-clarity-output" for="p2s-clarity">%65 hemfikir · tartışmalı</output></label>
-        <input id="p2s-clarity" type="range" min="55" max="90" value="65" />
+        <label for="p2s-clarity">Soru ne kadar tartışmalı? <output id="p2s-clarity-output" for="p2s-clarity">%80 hemfikir · bir yana eğilimli</output></label>
+        <input id="p2s-clarity" type="range" min="55" max="90" value="80" />
         <p class="fine">Her değerlendirici 10 ¢ alır. Paneller protokolün tur büyüklüklerinde gelir: 5'ten 1.537'ye.</p>
         <svg class="stop-curve" id="p2s-svg" viewBox="0 0 720 300" role="img" aria-label="Her protokol turunda durmanın beklenen toplam maliyeti: panel büyüdükçe değerlendirici ücretleri artar, yanlış karardan doğan beklenen kayıp azalır; ikisinin toplamı tatlı noktada dibe vurur."></svg>
         <p class="stop-caption">Toplam = ücretler + risk, tur başına. Siyah çizginin dibe vurduğu yerde dur.</p>
@@ -1322,6 +1322,6 @@
       } else cycle();
     })();
     </script>
-    <script src="../bridge-critical.js?v=mtjo3j8d"></script>
+    <script src="../bridge-critical.js?v=mtjs5oaq"></script>
   </body>
 </html>

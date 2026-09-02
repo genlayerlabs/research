@@ -385,8 +385,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css?v=mtjo3j8d" />
-    <link rel="stylesheet" href="../bridge-critical.css?v=mtjo3j8d" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtjs5oaq" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtjs5oaq" />
   </head>
   <body>
 
@@ -625,11 +625,11 @@
       <div class="lab" aria-label="Laboratorio de la regla de parada">
         <span class="lab-chip">PRUÉBALO</span>
         <p class="lab-head">¿Cuántos evaluadores conviene pagar para esta decisión?</p>
-        <div class="predict" data-predict="adapt" data-answer="95">
+        <div class="predict" data-predict="adapt" data-answer="23">
           <small>HAZ UNA PREDICCIÓN</small>
-          <p>Hay 2.000 $ en juego en una pregunta discutible. Cada juez cuesta 10 centavos. ¿Dónde sale más barato parar?</p>
-          <div class="predict-choices"><button type="button" data-guess="11">11 jueces</button><button type="button" data-guess="95">95 jueces</button><button type="button" data-guess="767">767 jueces</button></div>
-          <p class="predict-reveal" hidden>95 jueces: unos 12 $ en total. Parar en 11 deja 297 $ de pérdida esperada; llegar a 767 cuesta 76,70 $ en honorarios para eliminar casi nada.</p>
+          <p>Hay 2.000 $ en juego en una pregunta en la que el 80% está de acuerdo. Cada juez cuesta 10 centavos. ¿Dónde sale más barato parar?</p>
+          <div class="predict-choices"><button type="button" data-guess="11">11 jueces</button><button type="button" data-guess="23">23 jueces</button><button type="button" data-guess="767">767 jueces</button></div>
+          <p class="predict-reveal" hidden>23 jueces: unos 3,50 $ en total. Parar en 11 deja 23 $ de pérdida esperada; llegar a 767 cuesta 76,70 $ en honorarios para no eliminar nada.</p>
         </div>
         <fieldset><legend>Elegir una decisión de ejemplo</legend>
           <div class="size-buttons stop-presets">
@@ -640,8 +640,8 @@
         </fieldset>
         <label for="p2s-stakes">Valor en riesgo si la decisión es errónea <output id="p2s-stakes-output" for="p2s-stakes">$2.000</output></label>
         <input id="p2s-stakes" type="range" min="1" max="400" value="40" />
-        <label for="p2s-clarity">¿Hasta qué punto está disputada la pregunta? <output id="p2s-clarity-output" for="p2s-clarity">65% de acuerdo · disputada</output></label>
-        <input id="p2s-clarity" type="range" min="55" max="90" value="65" />
+        <label for="p2s-clarity">¿Hasta qué punto está disputada la pregunta? <output id="p2s-clarity-output" for="p2s-clarity">80% de acuerdo · con tendencia clara</output></label>
+        <input id="p2s-clarity" type="range" min="55" max="90" value="80" />
         <p class="fine">Cada evaluador cobra 10 ¢. Los paneles siguen los tamaños de ronda del protocolo, de 5 hasta 1.537.</p>
         <svg class="stop-curve" id="p2s-svg" viewBox="0 0 720 300" role="img" aria-label="Coste total esperado de detenerse en cada ronda del protocolo: las tarifas de los evaluadores suben con el número de evaluadores, la pérdida esperada por una decisión errónea baja y la suma alcanza su mínimo en el punto óptimo."></svg>
         <p class="stop-caption">Total = tarifas + riesgo en cada ronda. Detente donde la línea negra alcanza su mínimo.</p>
@@ -1322,6 +1322,6 @@
       } else cycle();
     })();
     </script>
-    <script src="../bridge-critical.js?v=mtjo3j8d"></script>
+    <script src="../bridge-critical.js?v=mtjs5oaq"></script>
   </body>
 </html>

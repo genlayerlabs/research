@@ -385,8 +385,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css?v=mtjo3j8d" />
-    <link rel="stylesheet" href="../bridge-critical.css?v=mtjo3j8d" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtjs5oaq" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtjs5oaq" />
   </head>
   <body>
 
@@ -625,11 +625,11 @@
       <div class="lab" aria-label="Лаборатория правила остановки">
         <span class="lab-chip">ПОПРОБУЙТЕ</span>
         <p class="lab-head">Сколько оценщиков стоит оплатить для этого решения?</p>
-        <div class="predict" data-predict="adapt" data-answer="95">
+        <div class="predict" data-predict="adapt" data-answer="23">
           <small>ПОПРОБУЙТЕ УГАДАТЬ</small>
-          <p>На кону спорного вопроса 2000 $. Каждый судья стоит 10 центов. Где остановиться дешевле всего?</p>
-          <div class="predict-choices"><button type="button" data-guess="11">11 судей</button><button type="button" data-guess="95">95 судей</button><button type="button" data-guess="767">767 судей</button></div>
-          <p class="predict-reveal" hidden>95 судей: около 12 $ со всем. Остановка на 11 оставляет 297 $ ожидаемых потерь; 767 обходятся в 76,70 $ гонораров и почти ничего не убирают.</p>
+          <p>На кону вопроса, по которому согласны 80%, 2000 $. Каждый судья стоит 10 центов. Где остановиться дешевле всего?</p>
+          <div class="predict-choices"><button type="button" data-guess="11">11 судей</button><button type="button" data-guess="23">23 судьи</button><button type="button" data-guess="767">767 судей</button></div>
+          <p class="predict-reveal" hidden>23 судьи: около 3,50 $ со всем. Остановка на 11 оставляет 23 $ ожидаемых потерь; 767 обходятся в 76,70 $ гонораров и не убирают ничего.</p>
         </div>
         <fieldset><legend>Выберите пример решения</legend>
           <div class="size-buttons stop-presets">
@@ -640,8 +640,8 @@
         </fieldset>
         <label for="p2s-stakes">Сумма на кону, если решение окажется неверным <output id="p2s-stakes-output" for="p2s-stakes">$2,000</output></label>
         <input id="p2s-stakes" type="range" min="1" max="400" value="40" />
-        <label for="p2s-clarity">Насколько спорен вопрос? <output id="p2s-clarity-output" for="p2s-clarity">65% согласны · спорный</output></label>
-        <input id="p2s-clarity" type="range" min="55" max="90" value="65" />
+        <label for="p2s-clarity">Насколько спорен вопрос? <output id="p2s-clarity-output" for="p2s-clarity">80% согласны · с явным перевесом</output></label>
+        <input id="p2s-clarity" type="range" min="55" max="90" value="80" />
         <p class="fine">Каждый оценщик берёт 10 центов. Размеры групп берутся из раундов протокола — от 5 до 1537.</p>
         <svg class="stop-curve" id="p2s-svg" viewBox="0 0 720 300" role="img" aria-label="Полная ожидаемая стоимость остановки на каждом раунде протокола: плата оценщикам растёт с размером группы, ожидаемые потери от неверного решения снижаются, а их сумма достигает минимума в оптимальной точке."></svg>
         <p class="stop-caption">Итог = плата + риск для каждого раунда. Останавливайтесь там, где чёрная линия достигает минимума.</p>
@@ -1322,6 +1322,6 @@
       } else cycle();
     })();
     </script>
-    <script src="../bridge-critical.js?v=mtjo3j8d"></script>
+    <script src="../bridge-critical.js?v=mtjs5oaq"></script>
   </body>
 </html>

@@ -385,8 +385,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css?v=mtjo3j8d" />
-    <link rel="stylesheet" href="../bridge-critical.css?v=mtjo3j8d" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtjs5oaq" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtjs5oaq" />
   </head>
   <body>
 
@@ -625,11 +625,11 @@
       <div class="lab" aria-label="停止规则实验">
         <span class="lab-chip">试一试</span>
         <p class="lab-head">这个决定值得请多少名评估者？</p>
-        <div class="predict" data-predict="adapt" data-answer="95">
+        <div class="predict" data-predict="adapt" data-answer="23">
           <small>先猜一猜</small>
-          <p>一个有争议的问题上押着 2,000 美元。每名裁判收费 10 美分。在哪里停下最划算？</p>
-          <div class="predict-choices"><button type="button" data-guess="11">11 名裁判</button><button type="button" data-guess="95">95 名裁判</button><button type="button" data-guess="767">767 名裁判</button></div>
-          <p class="predict-reveal" hidden>95 名裁判：全部算下来约 12 美元。停在 11 名，会留下 297 美元的预期损失；用到 767 名，则要付 76.70 美元的费用，却几乎消不掉什么。</p>
+          <p>一个 80% 的人意见一致的问题上押着 2,000 美元。每名裁判收费 10 美分。在哪里停下最划算？</p>
+          <div class="predict-choices"><button type="button" data-guess="11">11 名裁判</button><button type="button" data-guess="23">23 名裁判</button><button type="button" data-guess="767">767 名裁判</button></div>
+          <p class="predict-reveal" hidden>23 名裁判：全部算下来约 3.50 美元。停在 11 名，会留下 23 美元的预期损失；用到 767 名，则要付 76.70 美元的费用，却什么也消不掉。</p>
         </div>
         <fieldset><legend>选择一个示例决策</legend>
           <div class="size-buttons stop-presets">
@@ -640,8 +640,8 @@
         </fieldset>
         <label for="p2s-stakes">决定出错时可能损失的金额 <output id="p2s-stakes-output" for="p2s-stakes">$2,000</output></label>
         <input id="p2s-stakes" type="range" min="1" max="400" value="40" />
-        <label for="p2s-clarity">这个问题争议有多大？ <output id="p2s-clarity-output" for="p2s-clarity">65% 同意 · 有争议</output></label>
-        <input id="p2s-clarity" type="range" min="55" max="90" value="65" />
+        <label for="p2s-clarity">这个问题争议有多大？ <output id="p2s-clarity-output" for="p2s-clarity">80% 同意 · 偏向一方</output></label>
+        <input id="p2s-clarity" type="range" min="55" max="90" value="80" />
         <p class="fine">每名评估者收费 10 美分。评估组的规模取协议规定的轮次大小，从 5 到 1,537。</p>
         <svg class="stop-curve" id="p2s-svg" viewBox="0 0 720 300" role="img" aria-label="在每个协议轮次停止的总预期成本：评估费用随评估者人数上升，判错带来的预期损失下降，两者之和在最佳区间降到最低。"></svg>
         <p class="stop-caption">总计 = 费用 + 风险，按轮次计算。在黑线降到最低处停止。</p>
@@ -1322,6 +1322,6 @@
       } else cycle();
     })();
     </script>
-    <script src="../bridge-critical.js?v=mtjo3j8d"></script>
+    <script src="../bridge-critical.js?v=mtjs5oaq"></script>
   </body>
 </html>

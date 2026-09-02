@@ -382,8 +382,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="bridge-compact.css?v=mtjo3j8d" />
-    <link rel="stylesheet" href="bridge-critical.css?v=mtjo3j8d" />
+    <link rel="stylesheet" href="bridge-compact.css?v=mtjs5oaq" />
+    <link rel="stylesheet" href="bridge-critical.css?v=mtjs5oaq" />
   </head>
   <body>
 
@@ -622,11 +622,11 @@
       <div class="lab" aria-label="Stopping rule lab">
         <span class="lab-chip">TRY IT</span>
         <p class="lab-head">How many evaluators should this decision buy?</p>
-        <div class="predict" data-predict="adapt" data-answer="95">
+        <div class="predict" data-predict="adapt" data-answer="23">
           <small>MAKE A PREDICTION</small>
-          <p>$2,000 rides on a contested question. Judges cost 10 cents each. Where is it cheapest to stop?</p>
-          <div class="predict-choices"><button type="button" data-guess="11">11 judges</button><button type="button" data-guess="95">95 judges</button><button type="button" data-guess="767">767 judges</button></div>
-          <p class="predict-reveal" hidden>95 judges: about $12 all-in. Stopping at 11 leaves $297 of expected loss; 767 pays $76.70 in fees to remove almost nothing.</p>
+          <p>$2,000 rides on a question where 80% agree. Judges cost 10 cents each. Where is it cheapest to stop?</p>
+          <div class="predict-choices"><button type="button" data-guess="11">11 judges</button><button type="button" data-guess="23">23 judges</button><button type="button" data-guess="767">767 judges</button></div>
+          <p class="predict-reveal" hidden>23 judges: about $3.50 all-in. Stopping at 11 leaves $23 of expected loss; 767 pays $76.70 in fees to remove nothing.</p>
         </div>
         <fieldset><legend>Pick an example decision</legend>
           <div class="size-buttons stop-presets">
@@ -637,8 +637,8 @@
         </fieldset>
         <label for="p2s-stakes">Value at risk if the decision is wrong <output id="p2s-stakes-output" for="p2s-stakes">$2,000</output></label>
         <input id="p2s-stakes" type="range" min="1" max="400" value="40" />
-        <label for="p2s-clarity">How contested is the question? <output id="p2s-clarity-output" for="p2s-clarity">65% agree · contested</output></label>
-        <input id="p2s-clarity" type="range" min="55" max="90" value="65" />
+        <label for="p2s-clarity">How contested is the question? <output id="p2s-clarity-output" for="p2s-clarity">80% agree · leaning one way</output></label>
+        <input id="p2s-clarity" type="range" min="55" max="90" value="80" />
         <p class="fine">Each evaluator charges 10¢. Panels come in the protocol&rsquo;s round sizes, 5 up to 1,537.</p>
         <svg class="stop-curve" id="p2s-svg" viewBox="0 0 720 300" role="img" aria-label="Total expected cost of stopping at each protocol round: evaluator fees rise with panel size, expected loss from a wrong call falls, and their sum bottoms out at the sweet spot."></svg>
         <p class="stop-caption">Total = fees + risk, per round. Stop where the black line bottoms out.</p>
@@ -1319,6 +1319,6 @@
       } else cycle();
     })();
     </script>
-    <script src="bridge-critical.js?v=mtjo3j8d"></script>
+    <script src="bridge-critical.js?v=mtjs5oaq"></script>
   </body>
 </html>
