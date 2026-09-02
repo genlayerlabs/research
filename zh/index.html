@@ -385,8 +385,8 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="../bridge-compact.css?v=mtjbgo9d" />
-    <link rel="stylesheet" href="../bridge-critical.css?v=mtjbgo9d" />
+    <link rel="stylesheet" href="../bridge-compact.css?v=mtjnn25v" />
+    <link rel="stylesheet" href="../bridge-critical.css?v=mtjnn25v" />
   </head>
   <body>
 
@@ -1058,6 +1058,7 @@
       },
       "tr": {
         "Validator": "Doğrulayıcı",
+        "Model checking": "Model denetleme",
         "A computer taking part in the network's judging. In GenLayer each validator runs an AI model of its own choosing and locks GEN tokens as a security deposit (stake).": "Ağın yargısına katılan bir bilgisayar. GenLayer'da her doğrulayıcı kendi seçtiği yapay zekâ modelini çalıştırır ve güvence olarak GEN kilitler (stake).",
         "The small random group of validators chosen to judge one decision. GenLayer's rounds use panels of 5, 7, 11 and so on, growing with each appeal.": "Bir kararı yargılamak üzere seçilen küçük, rastgele doğrulayıcı grubu. GenLayer'ın turları 5, 7, 11 diye büyüyen paneller kullanır; her itirazla bir boy büyür.",
         "Evaluator population": "Değerlendirici popülasyonu",
@@ -1193,7 +1194,7 @@
           if (n === 20) badnote.textContent = GL_T("\u2026fake voters outnumber everyone. One actor owns the vote.");
         } else {
           flood.innerHTML = ""; staked.innerHTML = ""; n = 0;
-          fill.style.width = "0%"; cost.textContent = "0%";
+          fill.style.width = "0%"; cost.textContent = GL_PCT(0);
           badnote.textContent = GL_T("spawning fake voters, each costing about $0\u2026");
         }
       };
@@ -1321,6 +1322,6 @@
       } else cycle();
     })();
     </script>
-    <script src="../bridge-critical.js?v=mtjbgo9d"></script>
+    <script src="../bridge-critical.js?v=mtjnn25v"></script>
   </body>
 </html>

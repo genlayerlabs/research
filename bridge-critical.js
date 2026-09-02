@@ -314,20 +314,20 @@
       excessAppeal: "GEREKSİZ İTİRAZ", excessCopy: "Sistem durmayı yeğlerken katılımcı yine de itiraz etmek istiyor.",
       aligned: "SEÇİMLER ÖRTÜŞÜYOR", alignedContinue: "Hem sistem hem katılımcı bir panel daha diyor.", alignedStop: "Hem sistem hem katılımcı durmayı seçiyor.",
       advFlipped: "%{pct} ÇEVRİLDİ",
-      advBelow: "En kötü durum: kötü niyetliler popülasyonda %{flipped} oranında oyu EVET'ten HAYIR'a çeviriyor. Rastgele {size} kişilik panel yine de olayların {label} oranında dürüst çoğunluğun tarafına ulaşıyor.",
+      advBelow: "En kötü durum: kötü niyetliler popülasyonda %{flipped} oranında oyu EVET'ten HAYIR'a çeviriyor. Rastgele {size} kişilik panel yine de {label} olasılıkla dürüst çoğunluğun tarafına ulaşıyor.",
       advTie: "Kötü niyetli pay, dürüst farkı tam olarak siliyor: bozulmuş popülasyon 50/50 bölünmüş durumda ve panelin kararı yazı tura.",
-      advAbove: "Kötü niyetli pay dürüst farkı aşıyor: bozulmuş popülasyon artık HAYIR'a eğilimli ve panel büyüdükçe devrilen karar daha da sağlamlaşıyor. Panel, dürüst çoğunluğun tarafına olayların yalnızca {label} oranında ulaşıyor.",
+      advAbove: "Kötü niyetli pay dürüst farkı aşıyor: bozulmuş popülasyon artık HAYIR'a eğilimli ve panel büyüdükçe devrilen karar daha da sağlamlaşıyor. Panel, dürüst çoğunluğun tarafına yalnızca {label} olasılıkla ulaşıyor.",
       clarityLevels: ["kıyasıya tartışmalı", "tartışmalı", "bir yana eğilimli", "net"],
       clarityReadout: "%{pct} hemfikir · {word}",
       stopTooRisky: "FAZLA RİSKLİ", stopSweet: "TATLI NOKTA", stopOverkill: "AŞIRIYA KAÇAR",
       stopRisk: "RİSK", stopFees: "ÜCRET", stopTotal: "TOPLAM",
       stopXAxis: "DURDUĞUN TURUN PANEL BÜYÜKLÜĞÜ",
       stopAction: "{K} DEĞERLENDİRİCİLİK TURDA DUR",
-      stopCopy: "{word} bir soruda {L} riskteyken {K} değerlendiricide durmak en iyisi: {feesK} ücret artı geriye kalan {riskK} risk. Sonraki tur ({nextK}) {fees} ekleyip riski yalnızca {risk} azaltır. Değmez.",
-      stopCopyMax: "{word} bir soruda {L} riskteyken en büyük panel bile masrafını çıkarıyor: {feesK} ücret, geriye {riskK} risk. Bundan büyük tur yok.",
-      dialRhoLabel: "{rho} teminat",
+      stopCopy: "Riskte {L} olan {word} bir soruda {K} değerlendiricide durmak en iyisi: {feesK} ücret artı geriye kalan {riskK} risk. Sonraki tur ({nextK}) {fees} ekleyip riski yalnızca {risk} azaltır. Değmez.",
+      stopCopyMax: "Riskte {L} olan {word} bir soruda en büyük panel bile masrafını çıkarıyor: {feesK} ücret, geriye {riskK} risk. Bundan büyük tur yok.",
+      dialRhoLabel: "teminatın {rho} katı",
       dialTitle: "İTİRAZ EDENİN BAŞABAŞ İNANCI",
-      dialCeiling: "≈%50 TAVAN: 3–2'Yİ YENİDEN ÇALIŞTIRMAK YAZI TURA",
+      dialCeiling: "≈%50 TAVAN: 3–2'Yİ YENİDEN ÇALIŞTIRMAK YAZI TURA DEMEK",
       dialReachable: "DÜRÜST YENİDEN ÇALIŞTIRMAYLA ULAŞILABİLİR",
       dialPrivate: "ÖZEL BİLGİ GEREKTİRİR",
       dialCosts: "MASRAFLAR BUNU YER",
@@ -338,11 +338,11 @@
       dialFloorTick: "2× · bilgili başabaş",
       dialSpamTick: "≈2,9× · kör itiraz artıya geçer",
       dialDeadAction: "KIL PAYI KARARLARDA MEKANİZMA ÖLÜ",
-      dialDeadCopy: "{rho} düzeyinde {pct} eşiği, 3–2'lik bir kararın dürüst yeniden çalıştırmasının haklı çıkarabileceği ≈%50'nin ötesinde kalıyor. Bilgiye dayanan hiçbir itiraz rasyonel değil; yalnızca özel kesinliği olan harekete geçer. Sıfıra yakın ölçülen itiraz oranı tasarımın geometrisidir, katılımcıların kayıtsızlığı değil.",
+      dialDeadCopy: "{rho} düzeyinde {pct} eşiği, 3–2'lik bir kararın dürüst yeniden çalıştırmasının haklı çıkarabileceği ≈%50'nin ötesinde kalıyor. Bilgiye dayanan hiçbir itiraz rasyonel değil; yalnızca kendine özel bilgisi olan harekete geçer. Sıfıra yakın ölçülen itiraz oranı tasarımın geometrisidir, katılımcıların kayıtsızlığı değil.",
       dialWindowAction: "PENCERENİN İÇİNDE",
       dialWindowCopy: "{rho} düzeyinde {pct} eşiği, dürüstçe ulaşılabilir bandın içinde ve itiraz edenin gerçek masrafları için {room} puanlık pay bırakıyor. Kıl payı kararlarda bilgili itiraz rasyonel hâle geliyor; kör spam hâlâ zarar ediyor.",
       dialSpamAction: "SPAM KÂRA GEÇİYOR",
-      dialSpamCopy: "{rho} düzeyinde, her kıl payı karara körlemesine itiraz etmek sıfır emekle kâr getiriyor. ≈2,9× sonrasında ödeme artık inceleme değil, gürültü satın alıyor; daha cömerti daha iyi değil, nedeni bu.",
+      dialSpamCopy: "{rho} düzeyinde, her kıl payı karara körlemesine itiraz etmek sıfır emekle kâr getiriyor. ≈2,9× sonrasında ödeme artık inceleme değil, gürültü satın alıyor — işte bu yüzden daha cömert ödeme daha iyi demek değil.",
     },
   };
   const copy = { ...localizedCopy.en, ...(localizedCopy[locale] || {}) };
@@ -720,7 +720,7 @@
       const threshold = 1 / rho;
       const pct = fmtPct(`${Math.round(threshold * 100)}%`);
       const rhoShort = `${fmtDec(rho.toFixed(2).replace(/0$/, "").replace(/\.0$/, ""))}×`;
-      const rhoLabel = tpl(copy.dialRhoLabel, { rho: rhoShort });
+      const rhoLabel = tpl(copy.dialRhoLabel, { rho: locale === "tr" ? String(rhoShort).replace("×", "") : rhoShort });
       dialRhoOut.textContent = rhoLabel;
       dialRho.setAttribute("aria-valuetext", rhoLabel);
 
