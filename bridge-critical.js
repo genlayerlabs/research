@@ -630,7 +630,9 @@
     const stopMoney = (x) => {
       // Turkish money reads "9,50 $" / "2.000 $": symbol after, tr-TR grouping,
       // so runtime readouts agree with the static preset chips.
-      const value = x < 20 ? fmtDec(x.toFixed(2).replace(/\.00$/, "")) : Math.round(x).toLocaleString(locale === "tr" ? "tr-TR" : langTag);
+      // es-ES skips the separator on four-digit numbers by default ("$2000"),
+      // so grouping is forced to match the "$2.000" preset chips.
+      const value = x < 20 ? fmtDec(x.toFixed(2).replace(/\.00$/, "")) : Math.round(x).toLocaleString(locale === "tr" ? "tr-TR" : langTag, { useGrouping: "always" });
       return locale === "tr" ? `${value} $` : `$${value}`;
     };
     const clarityWord = (v) => copy.clarityLevels[v < 62 ? 0 : v < 72 ? 1 : v < 82 ? 2 : 3];
